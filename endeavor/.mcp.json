@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "endeavor": {
+      "type": "http",
+      "url": "https://mcp-qa.endeavor.org.br/mcp",
+      "oauth": {
+        "clientId": "endeavor-mcp-plugin"
+      }
+    }
+  }
+}

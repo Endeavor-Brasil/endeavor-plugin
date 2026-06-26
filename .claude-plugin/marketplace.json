@@ -1,0 +1,23 @@
+{
+  "name": "endeavor",
+  "owner": {
+    "name": "Bruno Batista",
+    "email": "bruno.batista@zrp.com.br"
+  },
+  "metadata": {
+    "description": "Marketplace de plugins da rede Endeavor para o Claude do founder.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "endeavor",
+      "source": "./endeavor",
+      "description": "Análises da rede Endeavor: diagnóstico de desafios e matchmaking de mentores.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Bruno Batista",
+        "email": "bruno.batista@zrp.com.br"
+      }
+    }
+  ]
+}
