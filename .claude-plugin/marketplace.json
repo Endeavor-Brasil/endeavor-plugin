@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Marketplace de plugins da rede Endeavor para o Claude do founder.",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "endeavor",
       "source": "./endeavor",
-      "description": "Análises da rede Endeavor: diagnóstico de desafios e matchmaking de mentores.",
-      "version": "0.1.0",
+      "description": "Concierge de Go-to-Market da Endeavor: menu unico /endeavor que roteia para diagnostico, conexao com experts e busca na rede.",
+      "version": "0.2.0",
       "author": {
         "name": "Bruno Batista",
         "email": "bruno.batista@zrp.com.br"

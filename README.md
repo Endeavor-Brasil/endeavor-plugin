@@ -35,13 +35,16 @@ endeavor-plugin/
     ├── .claude-plugin/plugin.json # manifesto do plugin (nome, versão, autor)
     ├── .mcp.json                  # conector MCP → URL do servidor
     └── skills/
+        ├── endeavor/SKILL.md      # menu concierge /endeavor: roteia p/ a capacidade certa
         ├── diagnostico/SKILL.md   # roteiro: empresa → diagnostico() → polling → entrega
         └── matchmaking/SKILL.md   # roteiro: empresa → matchmaking() → polling → entrega
 ```
 
 As skills são **client-side**: não acessam dados, apenas orientam o Claude do
-founder a chamar as tools `diagnostico` / `matchmaking` e fazer polling com
-`consultar_analise` até o resultado curado ficar pronto.
+founder. A skill-menu `endeavor` (`/endeavor`) é a porta de entrada: mostra o
+cardápio de capacidades e roteia para `diagnostico` / `matchmaking`, que chamam
+as tools e fazem polling com `consultar_analise` até o resultado curado ficar
+pronto.
 
 ## Conector (`endeavor/.mcp.json`)
 
