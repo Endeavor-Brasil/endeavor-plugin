@@ -7,10 +7,10 @@ não, use opções numeradas. Texto de abertura, na voz do founder:
 > onde a gente te dá mais valor agora. Escolhe por onde começar:
 
 ## Opções
-- 🎯 **Diagnóstico de GTM** | entenda seu nível de maturidade, valide seu plano e ache a causa-raiz do gargalo.
-- 💡 **Conecte-se com experts de GTM** | insights acionáveis da nossa rede de mentores, async ou
+- 🎯 **Diagnóstico de GTM** — entenda seu nível de maturidade, valide seu plano e ache a causa-raiz do gargalo.
+- 💡 **Conecte-se com experts de GTM** — insights acionáveis da nossa rede de mentores, async ou
   por call.
-- 🔎 **Buscar a rede** | explore a rede da Endeavor, respeitando o Network of Trust.
+- 🔎 **Buscar a rede** — explore a rede da Endeavor, respeitando o Network of Trust.
 
 Abaixo das opções, deixe um campo aberto: "Escolhe uma opção ou me conta seu desafio."
 
