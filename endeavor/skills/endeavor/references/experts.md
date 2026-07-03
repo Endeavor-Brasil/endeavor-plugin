@@ -82,8 +82,9 @@ Feche confirmando em 1 linha o que entendeu, na linguagem do founder, e ofereça
 Se o founder topar:
 1. Chame a tool **`match_mentores`** com o **pedido** (formato abaixo). É assíncrona e devolve um
    `job_id`.
-2. **Polling:** chame **`consultar_analise(job_id)`**. Enquanto a resposta começar com "⏳", aguarde
-   ~20-30s e chame de novo, até ficar pronto.
+2. **Polling:** chame **`consultar_analise(job_id)`**. Enquanto a resposta começar com "⏳",
+   execute `sleep 30` (ou aguarde ~30s) e chame de novo, até ficar pronto | nunca duas chamadas
+   seguidas sem essa pausa.
 3. **Apresente SOMENTE o resultado curado** (o top-3 já vem em modo founder). Não reordene, não
    acrescente dado, não revele processo.
 

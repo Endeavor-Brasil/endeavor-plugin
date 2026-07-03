@@ -56,8 +56,9 @@ Chame `diagnostico(empresa, contexto)`. E assincrona | devolve um `job_id`.
 
 ### 4. Polling
 
-Chame `consultar_analise(job_id)`. Enquanto vier "⏳", aguarde 20-30s e chame de novo. Nao
-narre o processo ao founder. Quando pronto, va para o passo 5.
+Chame `consultar_analise(job_id)`. Enquanto vier "⏳", execute `sleep 30` (ou aguarde ~30s) antes
+de chamar de novo | nunca duas chamadas seguidas sem essa pausa. Nao narre o processo ao founder.
+Quando pronto, va para o passo 5.
 
 ### 5. Renderizar o artifact
 

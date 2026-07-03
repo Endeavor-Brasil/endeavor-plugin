@@ -47,7 +47,8 @@ Carregue `references/diagnostico.md` e conduza o fluxo completo:
    trava, reframe), rodar o loop de correcao ("e", nao "ou"; nunca concordar por concordar).
 3. Montar o `contexto` (JSON com metricas validadas, gold signal declarado/real, espelho
    confirmado, prioridade declarada) e chamar `diagnostico(empresa, contexto)`.
-4. Polling com `consultar_analise`: enquanto vier "⏳", aguardar 20-30s e chamar de novo.
+4. Polling com `consultar_analise`: enquanto vier "⏳", executar `sleep 30` (ou aguardar ~30s)
+   antes de chamar de novo | nunca duas chamadas seguidas sem essa pausa.
 5. Renderizar o resultado curado como **HTML artifact** on-brand (paleta teal/coral, pill GCEP,
    barras por dimensao, card de arquetipo, grid declarado vs real, plano com dono e prazo).
    O artifact e a entrega desta capacidade | nao ha resumo textual separado.
@@ -73,8 +74,9 @@ seguros devolvidos pelo servidor. A introdução de qualquer mentor ao founder �
   `references/experts.md`.
 - `buscar_rede(consulta)`: assíncrona. Devolve um `job_id`. Recebe a pergunta do founder em texto
   livre. Fluxo e campos em `references/buscar-rede.md`.
-- `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", aguarde 20-30s e
-  chame de novo. Quando pronto, apresente só o resultado curado.
+- `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
+  (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
+  Quando pronto, apresente só o resultado curado.
 
 ## Guardrails e anti-comportamentos
 - Nunca exibir o retrato cru (tabela ou JSON) nem dado interno ao founder.
