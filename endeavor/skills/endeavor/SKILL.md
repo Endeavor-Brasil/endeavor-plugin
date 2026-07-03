@@ -71,9 +71,10 @@ seguros devolvidos pelo servidor. A introdução de qualquer mentor ao founder �
 - `diagnostico(empresa, contexto)`: assíncrona. Devolve um `job_id`. O `contexto` e um JSON
   estruturado com metricas validadas na captura, gold signal (declarado e real), espelho
   confirmado e prioridade declarada pelo founder. Campos e fluxo em `references/diagnostico.md`.
-- `match_mentores(pedido)`: assíncrona. Devolve um `job_id`. Devolve uma LISTA RANQUEADA (top-8 por
-  default via `n`); o client mostra 3 e revela +5; `excluir`/`angulo` re-chamam para explorar/pivotar.
-  SEM `formato` (o founder escolhe o tipo no fim). Campos em `references/experts.md`.
+- `match_mentores(pedido)`: assíncrona. Devolve um `job_id`. Devolve uma LISTA RANQUEADA (top-13 por
+  default via `n`) com um marcador `<<<RESERVA_NAO_MOSTRAR>>>`; o client mostra 3 e revela +10;
+  `excluir`/`angulo` re-chamam para explorar/pivotar. SEM `formato` (o founder escolhe o tipo logo
+  após os 3). Campos em `references/experts.md`.
 - `buscar_rede(consulta)`: assíncrona. Devolve um `job_id`. Recebe a pergunta do founder em texto
   livre. Fluxo e campos em `references/buscar-rede.md`.
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
