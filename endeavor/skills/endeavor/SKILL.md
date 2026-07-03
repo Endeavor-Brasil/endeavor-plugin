@@ -58,9 +58,9 @@ Carregue `references/diagnostico.md` e conduza o fluxo completo:
 
 ### Bloco 3. Buscar a rede
 Carregue `references/buscar-rede.md`. Receba a pergunta do founder sobre quem na rede já fez algo
-ou tem experiência em um tema. Chame a tool `buscar_rede(consulta)` com a pergunta em texto livre
-e faça polling com `consultar_analise(job_id)` até o resultado ficar pronto. Apresente os perfis
-seguros devolvidos pelo servidor. A introdução de qualquer mentor ao founder é sempre via Endeavor.
+ou tem experiência em um tema. Chame a tool `buscar_rede(pergunta)` com a pergunta em texto livre —
+é **síncrona** e devolve **JSON** na mesma chamada (sem job_id, sem polling). Raciocine sobre o JSON
+e apresente os perfis seguros. A introdução de qualquer mentor ao founder é sempre via Endeavor.
 
 ## Contratos das tools
 - `varredura_empresa(empresa)`: síncrona. Devolve um retrato seguro da empresa (memória interna
@@ -75,8 +75,9 @@ seguros devolvidos pelo servidor. A introdução de qualquer mentor ao founder �
   default via `n`) com um marcador `<<<RESERVA_NAO_MOSTRAR>>>`; o client mostra 3 e revela +10;
   `excluir`/`angulo` re-chamam para explorar/pivotar. SEM `formato` (o founder escolhe o tipo logo
   após os 3). Campos em `references/experts.md`.
-- `buscar_rede(consulta)`: assíncrona. Devolve um `job_id`. Recebe a pergunta do founder em texto
-  livre. Fluxo e campos em `references/buscar-rede.md`.
+- `buscar_rede(pergunta)`: **síncrona**. Recebe a pergunta do founder em texto livre e devolve
+  **JSON** com os mentores (com LinkedIn) na mesma chamada — sem `job_id`. Fluxo em
+  `references/buscar-rede.md`.
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
