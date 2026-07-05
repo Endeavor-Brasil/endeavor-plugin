@@ -65,27 +65,57 @@ Quando pronto, va para o passo 5.
 A partir do conteudo curado devolvido pelo servidor, gere um **HTML artifact** on-brand e exiba
 no chat. O HTML e a entrega desta capacidade | nao ha resumo textual separado.
 
-Estrutura do artifact (seguindo o template e CSS do renderizador):
+Estrutura do artifact (identidade visual do site da Endeavor | cantos retos, sem border-radius):
 
 ```
-Paleta: --teal #0F6E56 | --coral #C04D26 | --teal-light #E1F5EE | --ink #01000F | --muted #6B6A66
-Font: Calibri, Arial, sans-serif | max-width 760px | padding 40px | fundo branco
+Paleta: --ink #01000F (base) | --blue #273AE9 (principal: scores, links, destaques)
+        --yellow #FFCF53 (atencao: releitura, scores baixos) | --aqua #09E1CD + #DCFBFA (positivo)
+        --gray #6B6C74 | --soft #F5F5F7 | fundo branco
+Fonts:  titulos "Founders Grotesk", Inter, "Segoe UI", sans-serif (peso 700-800)
+        corpo Inter, "Segoe UI", sans-serif | max-width 800px
+Topo:   barra preta full-width com wordmark ENDEAVOR (letter-spacing largo) + "Assessment de GTM" e data
 ```
 
-Elementos obrigatorios no HTML:
+Elementos obrigatorios no HTML, nesta ordem:
 
-1. **Cabecalho**: "Diagnostico de GTM" + empresa + founder como subtitulo.
-2. **Pill GCEP**: badge verde-teal com o score GCEP (ex.: "GCEP 54").
-3. **Barras por dimensao**: para cada dimensao presente no conteudo curado devolvido pelo servidor,
-   uma barra de progresso teal sobre trilha cinza (0-100), com label, score e justificativa em
-   texto menor abaixo. Use as dimensoes que vierem | nao fixe a lista.
-4. **Flag de assimetria** (se presente): caixa coral-claro com borda coral, avisando que a
-   diferenca entre aquisicao e amplificacao sugere revisar a prioridade declarada.
-5. **Card de arquetipo**: fundo teal-light, nome do arquetipo em negrito, destrave em texto.
-6. **Grid declarado vs real**: dois cartoes lado a lado | "Declarado" e "Real (dados)" | fundo
-   neutro, label em caixa-alta muted, valor em texto.
-7. **Plano sequenciado**: lista numerada com bolinhas teal-light | cada item traz acao em negrito
-   e dono + prazo em texto muted menor.
+1. **Cabecalho**: "Assessment de GTM | [Empresa]" + founder e estagio Endeavor como subtitulo.
+   Nomenclatura de estagios: Scaling, Growth, Maturity (nunca "Sequential Scaling" ou similares).
+2. **Score geral**: bloco azul com o score 0-100 e a faixa por extenso (ex.: "GTM-Fit 54 / 100 |
+   faixa: Emergente").
+3. **Paragrafo introdutorio** (fundo soft, borda esquerda preta): o que e o documento, de onde
+   vem (dados da empresa + padrao da rede + frameworks), como ler (conclusao e scores em 5 min,
+   aprofundamento opcional) e que todo dado tem botao "corrigir".
+4. **Conclusao** + **regua de faixas**: barra horizontal com 4 faixas (0-40 Em construcao cinza |
+   40-60 Emergente amarelo | 60-80 Consolidando aqua | 80-100 Maquina azul) e 1 linha explicando
+   que o numero so faz sentido com a regua (analogia NPS).
+5. **Barras por dimensao** (0-100, mesma regua): label, score, justificativa curta com fatos e
+   exemplos concretos da empresa, botao "corrigir" e um bloco recolhivel `<details>` "como
+   chegamos aqui" com fonte, data e referencia da conta. Use as dimensoes que vierem do servidor |
+   nao fixe a lista. Scores baixos em amarelo, altos em azul.
+6. **Releitura** (se o curado trouxer divergencia declarado vs dados): caixa amarela "A releitura
+   da Endeavor" | 1 paragrafo direto contrastando o que o founder declarou e o que os dados
+   indicam, com o reframe.
+7. **Card de arquetipo**: fundo aqua-claro, nome do arquetipo em negrito, destrave em texto.
+8. **Grid declarado vs real**: dois cartoes lado a lado com borda superior preta | "Prioridade
+   declarada" e "O que os dados indicam".
+9. **Benchmark "Como voce se compara com a rede"** (SOMENTE se o conteudo curado do servidor
+   trouxer esse bloco): perguntas na otica do founder ("estou fazendo as perguntas certas?",
+   "quais erros evitar?", "estou com os indicadores certos?", estrutura de times, perfil de
+   lider) com padroes SEMPRE agregados e anonimos | ver guardrail de confidencialidade.
+10. **Plano sequenciado**: lista numerada com quadrados pretos | cada item traz acao em negrito,
+    criterio de pronto quando houver, e dono + prazo em texto menor. Fechar com 1 linha de ponte
+    para mentores da rede (sem nomear mentores).
+11. **Caixa de feedback** (borda azul tracejada): convite explicito para o founder corrigir dados
+    desatualizados e pedir regeneracao | os botoes "corrigir" das dimensoes apontam para ca.
+12. **Glossario recolhivel** (`<details>`): definicao simples de todo termo tecnico usado no
+    documento (GTM, GM Fit / PM Fit, MQL, NRR, ICP, CAC etc.). Padronize "GM Fit" e "PM Fit",
+    nunca "PMF".
+13. **Rodape**: fontes do assessment (dados da empresa com datas, base agregada da rede,
+    frameworks) e a nota "documento pre-gerado pela Endeavor".
+
+Voz do texto: afirmacoes diretas e exemplos concretos | zero vicio de linguagem de LLM | nunca
+negativa seguida de positiva | score baixo e foto do estagio, nao critica. Corte palavras e
+icones decorativos: se nao carrega informacao, sai.
 
 Nao acrescente dado nem reordene o que veio curado. O artifact mostra so o que o servidor entregou.
 
@@ -102,6 +132,10 @@ repetir o intake.
 
 - Nunca exibir o dossie cru (JSON ou tabela) ao founder.
 - O artifact mostra so o que veio curado do servidor.
+- **Confidencialidade da rede: nunca mencionar outras empresas** | nem as mentoradas, nem as
+  empresas dos mentores. Benchmarks sempre como padrao agregado e anonimo ("healthtechs da rede",
+  "empresas B2B no mesmo estagio"). Se o curado vier com nome de outra empresa, remova o nome e
+  mantenha o padrao.
 - Voz do founder | separador "|" | nunca travessao.
 - Nao concordar por concordar no loop de correcao | integrar com "e", nao "ou".
 - Nao narrar processo ("deixa eu puxar", "cruzando", "sintetizando").
