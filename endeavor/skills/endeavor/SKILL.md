@@ -5,10 +5,11 @@ description: >
   Go-to-Market e roteia para a certa. Use quando o founder abrir o plugin, disser que precisa
   de ajuda com GTM, quiser um diagnóstico, quiser falar com mentores, ou quiser explorar a rede:
   "/endeavor", "preciso de ajuda com [tema]", "quero um diagnóstico", "que mentor me ajuda",
-  "quem na rede já fez X".
+  "quem na rede já fez X", "quero conversar com o [mentor]".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
-  varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede. Pode usar web_search e os conectores
+  varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session.
+  Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
 
@@ -34,6 +35,8 @@ opção ou descreve o desafio no campo aberto. Roteie:
   Bloco 1.
 - "Diagnóstico de GTM": vá para o Bloco 2.
 - "Buscar a rede", ou um pedido para explorar quem na rede já fez algo: vá para o Bloco 3.
+- "Sessão simulada com um mentor", ou um pedido para conversar/treinar com um mentor específico
+  ("quero conversar com o Bazzi"): vá para o Bloco 4.
 
 ### Bloco 1. Conexão com experts de GTM
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
@@ -62,6 +65,11 @@ ou tem experiência em um tema. Chame a tool `buscar_rede(pergunta)` com a pergu
 é **síncrona** e devolve **JSON** na mesma chamada (sem job_id, sem polling). Raciocine sobre o JSON
 e apresente os perfis seguros. A introdução de qualquer mentor ao founder é sempre via Endeavor.
 
+### Bloco 4. Sessão simulada com um mentor
+Carregue `references/mentor-session.md` e conduza a sessão de lá: catálogo via `mentor_session()`,
+pack via `mentor_session(mentor)`, roleplay inteiro aqui no client (turnos curtos, uma pergunta
+por vez), boundaries do pack invioláveis, e ponte para a conexão real só no fechamento.
+
 ## Contratos das tools
 - `varredura_empresa(empresa)`: síncrona. Devolve um retrato seguro da empresa (memória interna
   sua, nunca exibida crua).
@@ -81,6 +89,10 @@ e apresente os perfis seguros. A introdução de qualquer mentor ao founder é s
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
+- `mentor_session(mentor?)`: **síncrona**. Sem argumento devolve o catálogo (JSON) dos mentores
+  com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack — roteiro interno do
+  roleplay, NUNCA exibido cru. Pode responder que está em piloto interno (staff): explique e
+  ofereça a conexão real. Fluxo em `references/mentor-session.md`.
 
 ## Guardrails e anti-comportamentos
 - Nunca exibir o retrato cru (tabela ou JSON) nem dado interno ao founder.
@@ -88,6 +100,8 @@ e apresente os perfis seguros. A introdução de qualquer mentor ao founder é s
 - Nunca narrar processo nem gerar arquivo no fluxo conversacional. Excecao: o artifact HTML do
   Diagnostico de GTM (Bloco 2) e a entrega da capacidade e deve ser gerado no chat.
 - Nunca chegar com o desafio pronto para o founder só confirmar.
+- Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
+  pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 
 ## references/
 | Arquivo | Quando ler |
@@ -97,3 +111,4 @@ e apresente os perfis seguros. A introdução de qualquer mentor ao founder é s
 | `references/experts.md` | Ao entrar em Conexão com experts (Bloco 1) |
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
 | `references/buscar-rede.md` | Ao entrar em Buscar a rede (Bloco 3) |
+| `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4) |

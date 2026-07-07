@@ -101,6 +101,13 @@ outro ângulo (ex.: quem é forte em PLG)."
 
 Você **lista** os 3 tipos e **NÃO sugere** qual usar — quem escolhe é o founder.
 
+Test-drive simulado: depois de apresentar os 3, se ainda não tiver o catálogo na conversa, chame
+`mentor_session()` (síncrona, barata) uma única vez. Se algum dos mentores mostrados tiver sessão
+simulada disponível, ofereça em UMA frase: "quer experimentar uma sessão simulada com ele antes de
+pedir a conexão?". Se o founder topar, conduza pelo fluxo de `references/mentor-session.md`
+levando o desafio já enriquecido; ao final da sessão, volte para este fluxo de onde parou
+(carrinho e formato). A oferta não substitui o carrinho nem o plano.
+
 ### 6. Explorar mais / mudar de ângulo
 - **"Quer ver mais"**: revele a **reserva** — o texto que veio DEPOIS do `<<<RESERVA_NAO_MOSTRAR>>>`,
   que você guardou no passo 4 (pode revelar em blocos se ficar mais natural). **Não** chame a tool de novo.
