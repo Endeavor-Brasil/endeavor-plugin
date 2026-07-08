@@ -90,9 +90,10 @@ por vez), boundaries do pack invioláveis, e ponte para a conexão real só no f
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
 - `mentor_session(mentor?)`: **síncrona**. Sem argumento devolve o catálogo (JSON) dos mentores
-  com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack — roteiro interno do
-  roleplay, NUNCA exibido cru. Pode responder que está em piloto interno (staff): explique e
-  ofereça a conexão real. Fluxo em `references/mentor-session.md`.
+  com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack, roteiro interno do
+  roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
+  `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`. Pode
+  responder que está em piloto interno (staff): explique e ofereça a conexão real.
 
 ## Guardrails e anti-comportamentos
 - Nunca exibir o retrato cru (tabela ou JSON) nem dado interno ao founder.
