@@ -8,7 +8,8 @@ description: >
   "quem na rede já fez X", "quero conversar com o [mentor]".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
-  varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session.
+  varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session,
+  analise_renderizada, registrar_feedback.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -55,7 +56,8 @@ Carregue `references/diagnostico.md` e conduza o fluxo completo:
    antes de chamar de novo | nunca duas chamadas seguidas sem essa pausa.
 5. Renderizar o resultado curado como **HTML artifact** on-brand (paleta teal/coral, pill GCEP,
    barras por dimensao, card de arquetipo, grid declarado vs real, plano com dono e prazo).
-   O artifact e a entrega desta capacidade | nao ha resumo textual separado.
+   O artifact e a entrega desta capacidade | nao ha resumo textual separado. Logo apos exibir o
+   artifact, chame `analise_renderizada(empresa, job_id)` (telemetria de entrega; ver secao abaixo).
 6. Ponte: se houver gargalo claro, oferecer encadear para a Conexao com experts usando o gargalo
    como desafio, sem repetir o intake.
 
@@ -69,6 +71,16 @@ e apresente os perfis seguros. A introdução de qualquer mentor ao founder é s
 Carregue `references/mentor-session.md` e conduza a sessão de lá: catálogo via `mentor_session()`,
 pack via `mentor_session(mentor)`, roleplay inteiro aqui no client (turnos curtos, uma pergunta
 por vez), boundaries do pack invioláveis, e ponte para a conexão real só no fechamento.
+
+### Telemetria (entrega e feedback)
+Só registram sinal, não disparam análise nem mudam a conversa. Chame de forma silenciosa, sem
+narrar ao founder:
+- `analise_renderizada(empresa, job_id)`: logo após exibir ao founder o resultado de um
+  diagnóstico (o artifact HTML) ou de um match (a lista de mentores). É o único sinal de que a
+  entrega chegou; o servidor não enxerga o que é renderizado no chat.
+- `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: quando o founder reagir ao
+  resultado (`avaliacao`: "positivo" ou "negativo"; `comentario` opcional). Não force o pedido de
+  feedback; registre se surgir naturalmente.
 
 ## Contratos das tools
 - `varredura_empresa(empresa)`: síncrona. Devolve um retrato seguro da empresa (memória interna
@@ -94,6 +106,10 @@ por vez), boundaries do pack invioláveis, e ponte para a conexão real só no f
   roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
   `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`. Pode
   responder que está em piloto interno (staff): explique e ofereça a conexão real.
+- `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir o
+  resultado (artifact do diagnóstico ou lista do match) ao founder.
+- `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
+  `avaliacao` é "positivo" ou "negativo"; `comentario` é opcional.
 
 ## Guardrails e anti-comportamentos
 - Nunca exibir o retrato cru (tabela ou JSON) nem dado interno ao founder.
