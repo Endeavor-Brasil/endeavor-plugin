@@ -104,8 +104,7 @@ narrar ao founder:
 - `mentor_session(mentor?)`: **síncrona**. Sem argumento devolve o catálogo (JSON) dos mentores
   com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack, roteiro interno do
   roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
-  `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`. Pode
-  responder que está em piloto interno (staff): explique e ofereça a conexão real.
+  `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`.
 - `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir o
   resultado (artifact do diagnóstico ou lista do match) ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
