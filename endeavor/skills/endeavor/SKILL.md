@@ -47,17 +47,21 @@ carrinho e fechar formato e plano no fim.
 ### Bloco 2. Diagnóstico de GTM
 Carregue `references/diagnostico.md` e conduza o fluxo completo:
 1. Resolver a empresa e chamar `dossie_empresa(empresa)` (retrato interno, nunca exibido cru).
+   Omita `versao` para respeitar o switch do servidor; se o pedido mencionar explicitamente um
+   teste da v2, passe `versao: "v2"` tanto no dossie quanto no diagnostico.
 2. Captura rica: abrir pela divergencia de maior impacto do dossie, reconciliar metricas uma a
    uma, confirmar o gold signal por pergunta de lista, devolver o espelho de 3 frases (forca,
    trava, reframe), rodar o loop de correcao ("e", nao "ou"; nunca concordar por concordar).
 3. Montar o `contexto` (JSON com metricas validadas, gold signal declarado/real, espelho
-   confirmado, prioridade declarada) e chamar `diagnostico(empresa, contexto)`.
+   confirmado, prioridade declarada) e chamar `diagnostico(empresa, contexto)`, usando a mesma
+   versao do dossie.
 4. Polling com `consultar_analise`: enquanto vier "⏳", executar `sleep 30` (ou aguardar ~30s)
    antes de chamar de novo | nunca duas chamadas seguidas sem essa pausa.
-5. Renderizar o resultado curado como **HTML artifact** on-brand (paleta teal/coral, pill GCEP,
-   barras por dimensao, card de arquetipo, grid declarado vs real, plano com dono e prazo).
-   O artifact e a entrega desta capacidade | nao ha resumo textual separado. Logo apos exibir o
-   artifact, chame `analise_renderizada(empresa, job_id)` (telemetria de entrega; ver secao abaixo).
+5. Entregar conforme a versao retornada. Na v1, renderizar o resultado curado como HTML artifact
+   segundo `references/diagnostico.md`. Na v2, `consultar_analise` devolve dois resources HTML
+   prontos (completo interativo + completo estatico): apresente os dois arquivos sem reescrever,
+   resumir ou regenerar o HTML. Logo apos exibir a entrega, chame
+   `analise_renderizada(empresa, job_id)`.
 6. Ponte: se houver gargalo claro, oferecer encadear para a Conexao com experts usando o gargalo
    como desafio, sem repetir o intake.
 
@@ -85,10 +89,11 @@ narrar ao founder:
 ## Contratos das tools
 - `varredura_empresa(empresa)`: síncrona. Devolve um retrato seguro da empresa (memória interna
   sua, nunca exibida crua).
-- `dossie_empresa(empresa)`: sincrona. Devolve o retrato seguro do dossie interno (metricas
+- `dossie_empresa(empresa, versao?)`: sincrona. Devolve o retrato seguro do dossie interno (metricas
   estimadas, divergencias por impacto, arquetipo provavel). Memoria interna sua, nunca exibida
   crua ao founder. Usada no inicio do Bloco 2.
-- `diagnostico(empresa, contexto)`: assíncrona. Devolve um `job_id`. O `contexto` e um JSON
+- `diagnostico(empresa, contexto, versao?)`: assíncrona. Devolve um `job_id`. `versao` aceita
+  `v1` ou `v2`; omitir respeita o default protegido por feature flag no servidor. O `contexto` e um JSON
   estruturado com metricas validadas na captura, gold signal (declarado e real), espelho
   confirmado e prioridade declarada pelo founder. Campos e fluxo em `references/diagnostico.md`.
 - `match_mentores(pedido)`: assíncrona. Devolve um `job_id`. Devolve uma LISTA RANQUEADA (top-13 por
