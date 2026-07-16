@@ -1,7 +1,7 @@
 ﻿{
   "name": "endeavor",
   "displayName": "Endeavor",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Concierge de Go-to-Market da Endeavor: menu unico /endeavor que roteia para diagnostico, conexao com experts, busca na rede e sessao simulada com mentores (piloto).",
   "author": { "name": "Endeavor", "email": "admin@endeavor.org.br" }
 }
