@@ -23,7 +23,7 @@ No Claude Code, adicione este marketplace e instale o plugin:
 Depois de instalado, o Claude do founder passa a ter:
 
 - o conector MCP **endeavor** (HTTP) apontando para o servidor;
-- as skills `diagnostico` e `matchmaking`.
+- a skill concierge `endeavor`, que roteia diagnóstico, experts, busca na rede e sessão simulada.
 
 ## Conteúdo
 
@@ -35,16 +35,15 @@ endeavor-plugin/
     ├── .claude-plugin/plugin.json # manifesto do plugin (nome, versão, autor)
     ├── .mcp.json                  # conector MCP → URL do servidor
     └── skills/
-        ├── endeavor/SKILL.md      # menu concierge /endeavor: roteia p/ a capacidade certa
-        ├── diagnostico/SKILL.md   # roteiro: empresa → diagnostico() → polling → entrega
-        └── matchmaking/SKILL.md   # roteiro: empresa → matchmaking() → polling → entrega
+        └── endeavor/
+            ├── SKILL.md           # menu concierge /endeavor
+            └── references/        # roteiros por capacidade
 ```
 
-As skills são **client-side**: não acessam dados, apenas orientam o Claude do
-founder. A skill-menu `endeavor` (`/endeavor`) é a porta de entrada: mostra o
-cardápio de capacidades e roteia para `diagnostico` / `matchmaking`, que chamam
-as tools e fazem polling com `consultar_analise` até o resultado curado ficar
-pronto.
+As skills são **client-side**: não acessam dados diretamente, apenas orientam o Claude do
+founder. A skill `endeavor` (`/endeavor`) é a porta de entrada. Para diagnóstico, o plugin omite
+`versao` normalmente e respeita o switch do servidor; testes explícitos podem pedir `v2`. Na v2,
+os dois HTMLs chegam prontos como resources MCP e não são reconstruídos pelo cliente.
 
 ## Conector (`endeavor/.mcp.json`)
 
