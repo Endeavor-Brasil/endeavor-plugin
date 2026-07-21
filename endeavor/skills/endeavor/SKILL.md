@@ -42,7 +42,8 @@ opção ou descreve o desafio no campo aberto. Roteie:
 ### Bloco 1. Conexão com experts de GTM
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
 silenciosa, Q&A adaptativo, afunilar a intenção, buscar os mentores, explorar a lista, montar o
-carrinho e fechar formato e plano no fim.
+carrinho e, depois de escolher com quem falar, apresentar os três caminhos (síncrona, assíncrona,
+simular) e fechar o plano.
 
 ### Bloco 2. Diagnóstico de GTM
 Carregue `references/diagnostico.md` e conduza o fluxo completo:
@@ -98,8 +99,8 @@ narrar ao founder:
   confirmado e prioridade declarada pelo founder. Campos e fluxo em `references/diagnostico.md`.
 - `match_mentores(pedido)`: assíncrona. Devolve um `job_id`. Devolve uma LISTA RANQUEADA (top-13 por
   default via `n`) com um marcador `<<<RESERVA_NAO_MOSTRAR>>>`; o client mostra 3 e revela +10;
-  `excluir`/`angulo` re-chamam para explorar/pivotar. SEM `formato` (o founder escolhe o tipo logo
-  após os 3). Campos em `references/experts.md`.
+  `excluir`/`angulo` re-chamam para explorar/pivotar. SEM `formato` (o founder escolhe o tipo depois
+  de escolher com quem falar). Campos em `references/experts.md`.
 - `buscar_rede(pergunta)`: **síncrona**. Recebe a pergunta do founder em texto livre e devolve
   **JSON** com os mentores (com LinkedIn) na mesma chamada — sem `job_id`. Fluxo em
   `references/buscar-rede.md`.
