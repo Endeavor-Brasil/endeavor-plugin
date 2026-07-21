@@ -9,7 +9,7 @@ description: >
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session,
-  analise_renderizada, registrar_feedback.
+  company_data, analise_renderizada, registrar_feedback.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -38,6 +38,9 @@ opção ou descreve o desafio no campo aberto. Roteie:
 - "Buscar a rede", ou um pedido para explorar quem na rede já fez algo: vá para o Bloco 3.
 - "Sessão simulada com um mentor", ou um pedido para conversar/treinar com um mentor específico
   ("quero conversar com o Bazzi"): vá para o Bloco 4.
+- "Meus dados na Endeavor", ou uma pergunta sobre o próprio histórico ("quantas mentorias
+  tive?", "o que ficou da sessão com o mentor X?", "qual minha próxima mentoria?"): vá para o
+  Bloco 5.
 
 ### Bloco 1. Conexão com experts de GTM
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
@@ -77,6 +80,14 @@ Carregue `references/mentor-session.md` e conduza a sessão de lá: catálogo vi
 pack via `mentor_session(mentor)`, roleplay inteiro aqui no client (turnos curtos, uma pergunta
 por vez), boundaries do pack invioláveis, e ponte para a conexão real só no fechamento.
 
+### Bloco 5. Meus dados na Endeavor
+Carregue `references/my-data.md` e conduza de lá: o founder pergunta em linguagem natural
+sobre o histórico da empresa dele (mentorias, notas de sessão, prioridades, avaliações que
+deu, time na rede, giveback pessoal, agenda e eventos). Chame `company_data(empresa,
+pergunta)` — **síncrona**, devolve JSON na mesma chamada — raciocine sobre o JSON e apresente
+em prosa. Para mudar o recorte, re-pergunte. Honestidade sobre cobertura: resumos ricos
+existem de 2023/2024 em diante.
+
 ### Telemetria (entrega e feedback)
 Só registram sinal, não disparam análise nem mudam a conversa. Chame de forma silenciosa, sem
 narrar ao founder:
@@ -104,6 +115,10 @@ narrar ao founder:
 - `buscar_rede(pergunta)`: **síncrona**. Recebe a pergunta do founder em texto livre e devolve
   **JSON** com os mentores (com LinkedIn) na mesma chamada — sem `job_id`. Fluxo em
   `references/buscar-rede.md`.
+- `company_data(empresa, pergunta)`: **síncrona**. Pergunta em texto livre sobre os dados da
+  PRÓPRIA empresa; devolve JSON com os resultados na mesma chamada — sem `job_id`. O servidor
+  garante o escopo (só a empresa autorizada; giveback só do usuário logado). Fluxo em
+  `references/my-data.md`.
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
@@ -134,3 +149,4 @@ narrar ao founder:
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
 | `references/buscar-rede.md` | Ao entrar em Buscar a rede (Bloco 3) |
 | `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4) |
+| `references/my-data.md` | Ao entrar em Meus dados na Endeavor (Bloco 5) |
