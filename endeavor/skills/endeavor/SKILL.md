@@ -74,6 +74,9 @@ Carregue `references/buscar-rede.md`. Receba a pergunta do founder sobre quem na
 ou tem experiência em um tema. Chame a tool `buscar_rede(pergunta)` com a pergunta em texto livre —
 é **síncrona** e devolve **JSON** na mesma chamada (sem job_id, sem polling). Raciocine sobre o JSON
 e apresente os perfis seguros. A introdução de qualquer mentor ao founder é sempre via Endeavor.
+Quando o founder quiser falar com alguém que apareceu, apresente os caminhos de conexão (síncrona,
+assíncrona e, se o mentor tiver sessão simulada, simular) e feche o plano {quem, ângulo, tipo},
+conforme `references/buscar-rede.md`.
 
 ### Bloco 4. Sessão simulada com um mentor
 Carregue `references/mentor-session.md` e conduza a sessão de lá: catálogo via `mentor_session()`,
