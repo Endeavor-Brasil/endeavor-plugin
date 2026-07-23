@@ -66,8 +66,9 @@ desafio é sempre texto livre, 1 por turno. Só afunile quando o desafio tiver s
 já trouxe o que já foi tentado, não re-pergunte.
 
 ### 3. Intenção (só depois do desafio enriquecido)
-Uma pergunta, explicando cada opção para o founder não hesitar. Botões quando o cliente suportar;
-senão, opções numeradas.
+Uma pergunta, explicando cada opção para o founder não hesitar. Se a tool `AskUserQuestion` estiver
+disponível, use-a SEMPRE aqui: uma pergunta, as três intenções como opções (título curto no label,
+explicação na descrição), nenhuma marcada como recomendada. Sem a tool, opções numeradas.
 
 "O que mais te destrava agora?"
 - **Como fazer: frameworks e playbooks** — o passo a passo de quem montou uma máquina de vendas
@@ -116,11 +117,14 @@ como interagir, passo 7). A oferta não substitui o plano.
   guarda a reserva).
 
 <!-- Manutenção: a mecânica e a copy dos formatos de conexão são espelhadas em
-     references/buscar-rede.md (seção "os caminhos"). Mudou a promessa aqui, mude lá. -->
+     references/buscar-rede.md (seção "os caminhos"). Mudou a promessa ou a apresentação aqui, mude lá. -->
 ### 7. Como interagir com cada mentor: os três caminhos + plano
 Quando o founder disser com quem quer falar, apresente os **três caminhos** de como usar cada
 mentor, **nesta ordem**, cada um com uma explicação curta que não deixa dúvida do que acontece.
-Você **lista e confirma; NÃO sugere** qual usar.
+Você **lista e confirma; NÃO sugere** qual usar. Se a tool `AskUserQuestion` estiver disponível,
+use-a SEMPRE para este menu: uma pergunta por mentor (até 4 por chamada), os caminhos disponíveis
+como opções (2 ou 3, conforme o catálogo de sessão simulada), a explicação curta na descrição de
+cada opção e nenhuma marcada como recomendada. Sem a tool, liste numerado.
 
 1. **Conexão síncrona (conversa ao vivo).** A Endeavor manda um convite para o WhatsApp de vocês
    dois e ajuda a marcar uma conversa ao vivo com o mentor, virtual ou presencial, nos próximos dias.
