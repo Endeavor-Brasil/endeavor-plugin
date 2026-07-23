@@ -115,6 +115,8 @@ como interagir, passo 7). A oferta não substitui o plano.
   recorte) e `excluir` (os nomes já mostrados). Apresente a nova leva pela mesma regra (mostra 3,
   guarda a reserva).
 
+<!-- Manutenção: a mecânica e a copy dos formatos de conexão são espelhadas em
+     references/buscar-rede.md (seção "os caminhos"). Mudou a promessa aqui, mude lá. -->
 ### 7. Como interagir com cada mentor: os três caminhos + plano
 Quando o founder disser com quem quer falar, apresente os **três caminhos** de como usar cada
 mentor, **nesta ordem**, cada um com uma explicação curta que não deixa dúvida do que acontece.
