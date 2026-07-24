@@ -33,6 +33,7 @@ categorias genericas | derive-as do arquetipo provavel e das divergencias que o 
 em linguagem concreta da empresa do founder. Ex. de estrutura (adapte ao caso real):
 
 > "Qual sua dor n1 agora?"
+>
 > 1. [opcao concreta ligada ao gargalo provavel do dossie]
 > 2. [outra hipotese concreta plausivel pelo dossie]
 > 3. [uma alternativa que voce quer descartar ou confirmar]
@@ -54,8 +55,13 @@ confirmado). Monte o `contexto` como JSON antes de chamar a tool:
 
 ```json
 {
-  "metricas_validadas": { "<nome>": { "valor": "<valor>", "status": "validado" } },
-  "gold_signal": { "declarado": "<escolha do founder>", "real": "<o que os dados indicam>" },
+  "metricas_validadas": {
+    "<nome>": { "valor": "<valor>", "status": "validado" }
+  },
+  "gold_signal": {
+    "declarado": "<escolha do founder>",
+    "real": "<o que os dados indicam>"
+  },
   "espelho": { "forca": "...", "trava": "...", "reframe": "..." },
   "prioridade_declarada": "<em palavras do founder>"
 }
@@ -74,12 +80,14 @@ Quando pronto, va para o passo 5.
 
 #### Quando o retorno for v2
 
-`consultar_analise` devolve um texto curto e dois resources `text/html`:
+`consultar_analise` devolve um texto curto e dois ou tres resources `text/html`:
 
 1. `diagnostico-{empresa}-completo.html` (interativo).
 2. `diagnostico-{empresa}-completo-estatico.html` (completo sem JavaScript, para preview ou WhatsApp).
+3. `trilha-gtm-{empresa}.html` (trilha de conteudo de GTM personalizada; presente quando o
+   diagnostico tem conteudo para a frente critica). Segue o mesmo design system do diagnostico.
 
-Apresente os dois arquivos exatamente como vieram. Nao reconstrua HTML, nao aplique estilo novo,
+Apresente todos os arquivos retornados exatamente como vieram. Nao reconstrua HTML, nao aplique estilo novo,
 nao passe o conteudo por outro modelo e nao misture com o template GCEP da v1. Se o host exigir
 um artifact para exibir um resource, use o texto HTML embutido byte a byte, sem alteracao. Nao ha
 resumo textual separado.
@@ -113,7 +121,24 @@ Elementos obrigatorios no HTML:
 
 Nao acrescente dado nem reordene o que veio curado. O artifact mostra so o que o servidor entregou.
 
-### 6. Ponte para experts
+### 6. Registrar a entrega
+
+Logo apos exibir o resultado, notifique o usuário sobre, e então tente `analise_renderizada(empresa, job_id)`.
+A chamada e best-effort. Mesmo que falhe, retorne erro ou nao receba aprovacao, vá obrigatoriamente para o passo 7. O feedback nao depende do sucesso desta tool.
+
+### 7. Pedir e registrar feedback
+
+Antes de oferecer qualquer ponte ou encerrar, SEMPRE pergunte uma vez:
+
+> "De 1 a 5, quanto isso foi util pra voce? Se quiser, me conta tambem o que faltou."
+
+Espere a resposta. Se o founder informar uma nota inteira de 1 a 5, chame
+`registrar_feedback(empresa, job_id, avaliacao, comentario?)` com a nota explicita e o comentario,
+se houver. Nunca infira nota de elogio, critica ou silencio. Se ele nao der nota ou nao quiser
+responder, nao chame a tool e siga para o passo 8. Essa condicao permite pular apenas a tool, nunca
+a pergunta.
+
+### 8. Ponte para experts
 
 Se o assessment trouxe um gargalo claro, ofereca em 1 linha:
 
@@ -122,6 +147,11 @@ Se o assessment trouxe um gargalo claro, ofereca em 1 linha:
 Se o founder topar, siga o fluxo de `references/experts.md` usando o gargalo como desafio, sem
 repetir o intake.
 
+Esta ponte so acontece depois do passo 7. A conversa nunca termina por aceite ou recusa da ponte
+sem que a pergunta de feedback tenha sido feita antes. Se a ponte tiver sido oferecida por engano
+antes do passo 7, mesmo que o founder ja tenha respondido "nao", recupere fazendo a pergunta de
+feedback antes de encerrar, sem narrar o erro interno.
+
 ## Guardrails
 
 - Nunca exibir o dossie cru (JSON ou tabela) ao founder.
@@ -129,3 +159,5 @@ repetir o intake.
 - Voz do founder | separador "|" | nunca travessao.
 - Nao concordar por concordar no loop de correcao | integrar com "e", nao "ou".
 - Nao narrar processo ("deixa eu puxar", "cruzando", "sintetizando").
+- Nunca oferecer a ponte nem encerrar antes de fazer a pergunta do passo 7, mesmo se
+  `analise_renderizada` falhar ou nao receber aprovacao.
