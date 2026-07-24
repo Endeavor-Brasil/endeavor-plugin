@@ -69,9 +69,10 @@ Carregue `references/diagnostico.md` e conduza o fluxo completo:
 4. Polling com `consultar_analise`: enquanto vier "⏳", executar `sleep 30` (ou aguardar ~30s)
    antes de chamar de novo | nunca duas chamadas seguidas sem essa pausa.
 5. Entregar conforme a versao retornada. Na v1, renderizar o resultado curado como HTML artifact
-   segundo `references/diagnostico.md`. Na v2, `consultar_analise` devolve dois resources HTML
-   prontos (completo interativo + completo estatico): apresente os dois arquivos sem reescrever,
-   resumir ou regenerar o HTML. Notifique, dizendo ao usuário após a renderização dos documentos,
+   segundo `references/diagnostico.md`. Na v2, `consultar_analise` devolve dois ou tres resources HTML
+   prontos (diagnostico completo interativo + completo estatico + trilha de conteudo de GTM,
+   quando houver): apresente todos os arquivos retornados sem reescrever, resumir ou regenerar o
+   HTML. Notifique, dizendo ao usuário após a renderização dos documentos,
    que a entrega foi realizada, que ele pode agora já analisar os resultados.
 6. Registrar a entrega: logo apos exibir o resultado, tente
    `analise_renderizada(empresa, job_id)`. Esta chamada e best-effort: falha, erro ou falta de

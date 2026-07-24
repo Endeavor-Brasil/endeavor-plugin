@@ -2,7 +2,7 @@
   "mcpServers": {
     "endeavor": {
       "type": "http",
-      "url": "https://mcp-qa.endeavor.org.br/mcp",
+      "url": "https://f40a-2804-5d80-854b-8e10-c5d7-dde1-bafa-e6db.ngrok-free.app/mcp",
       "oauth": {
         "clientId": "endeavor-mcp-plugin"
       }
