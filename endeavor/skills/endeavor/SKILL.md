@@ -50,8 +50,8 @@ opção ou descreve o desafio no campo aberto. Roteie:
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
 silenciosa, Q&A adaptativo, afunilar a intenção, buscar os mentores, explorar a lista, montar o
 carrinho e, depois de escolher com quem falar, apresentar os três caminhos (síncrona, assíncrona,
-simular) e fechar o plano. O fechamento da entrega e a pergunta de feedback são o passo 5 desse
-fluxo e acontecem obrigatoriamente antes de convidar o founder a escolher ou explorar.
+simular) e fechar o plano. Neste bloco NÃO há pergunta de feedback: logo após os 3 mentores vem o
+convite para escolher ou explorar, como manda `references/experts.md`.
 
 ### Bloco 2. Diagnóstico de GTM
 
@@ -117,18 +117,19 @@ ao founder:
 - `analise_renderizada(empresa, job_id)`: logo após exibir ao founder o resultado de um
   diagnóstico (o artifact HTML) ou de um match (a lista de mentores). É o único sinal de que a
   entrega chegou; o servidor não enxerga o que é renderizado no chat.
-- Depois da entrega, pergunte uma vez: "De 1 a 5, quanto isso foi útil pra você? Se quiser, me
-  conta também o que faltou." Só então chame
-  `registrar_feedback(empresa, job_id, avaliacao, comentario?)`, com a nota inteira explícita em
-  `avaliacao` (1 = nada útil; 5 = muito útil) e o comentário, se houver. Nunca deduza a nota de
-  elogio, crítica ou silêncio. Se o founder não der uma nota ou não quiser responder, não chame.
+- `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: a pergunta de feedback ("De 1 a
+  5, quanto isso foi útil pra você? Se quiser, me conta também o que faltou.") existe SÓ no
+  Diagnóstico de GTM (Bloco 2, passo 7). Nos demais fluxos, não force o pedido de feedback: chame
+  a tool apenas se o founder der espontaneamente uma nota inteira de 1 a 5 (1 = nada útil;
+  5 = muito útil), com o comentário, se houver. Nunca deduza a nota de elogio, crítica ou silêncio.
 
-**Ordem obrigatória de fechamento de toda entrega:** entregar → tentar `analise_renderizada` →
-SEMPRE fazer a pergunta de feedback → chamar `registrar_feedback` apenas se houver nota → só então
-oferecer ponte ou encerrar. Falha ou falta de aprovação de `analise_renderizada` não autoriza pular
-a pergunta. "Se não quiser responder, não chame" vale para a tool, nunca para pular a pergunta.
-Se perceber que ofereceu a ponte antes da pergunta, recupere imediatamente: mesmo que o founder já
-tenha recusado a ponte, faça a pergunta de feedback antes de encerrar, sem narrar o erro interno.
+**Ordem obrigatória de fechamento do diagnóstico (Bloco 2):** entregar → tentar
+`analise_renderizada` → SEMPRE fazer a pergunta de feedback → chamar `registrar_feedback` apenas
+se houver nota → só então oferecer a ponte ou encerrar. Falha ou falta de aprovação de
+`analise_renderizada` não autoriza pular a pergunta. "Se não quiser responder, não chame" vale
+para a tool, nunca para pular a pergunta. Se perceber que ofereceu a ponte antes da pergunta,
+recupere imediatamente, sem narrar o erro interno. Nos outros blocos essa ordem NÃO se aplica —
+só `analise_renderizada` após a entrega.
 
 ## Contratos das tools
 
@@ -163,7 +164,7 @@ tenha recusado a ponte, faça a pergunta de feedback antes de encerrar, sem narr
   resultado (artifact do diagnóstico ou lista do match) ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
   `avaliacao` é uma nota inteira de 1 a 5; `comentario` é opcional. Chame somente após o founder
-  informar a nota explicitamente; nunca a infira.
+  informar a nota explicitamente; nunca a infira. A pergunta de feedback é exclusiva do Bloco 2.
 
 ## Guardrails e anti-comportamentos
 
@@ -172,8 +173,9 @@ tenha recusado a ponte, faça a pergunta de feedback antes de encerrar, sem narr
 - Nunca narrar processo nem gerar arquivo no fluxo conversacional. Excecao: o artifact HTML do
   Diagnostico de GTM (Bloco 2) e a entrega da capacidade e deve ser gerado no chat.
 - Nunca chegar com o desafio pronto para o founder só confirmar.
-- Nunca oferecer ponte, escolha, exploração ou encerramento antes de fazer a pergunta de feedback
-  da entrega, mesmo se `analise_renderizada` falhar ou não receber aprovação.
+- No Diagnóstico de GTM (Bloco 2), nunca oferecer a ponte nem encerrar antes de fazer a pergunta
+  de feedback, mesmo se `analise_renderizada` falhar ou não receber aprovação. Nos demais blocos
+  a pergunta de feedback não existe — não a faça.
 - Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
   pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 
