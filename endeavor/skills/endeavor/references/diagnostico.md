@@ -80,12 +80,14 @@ Quando pronto, va para o passo 5.
 
 #### Quando o retorno for v2
 
-`consultar_analise` devolve um texto curto e dois resources `text/html`:
+`consultar_analise` devolve um texto curto e dois ou tres resources `text/html`:
 
 1. `diagnostico-{empresa}-completo.html` (interativo).
 2. `diagnostico-{empresa}-completo-estatico.html` (completo sem JavaScript, para preview ou WhatsApp).
+3. `trilha-gtm-{empresa}.html` (trilha de conteudo de GTM personalizada; presente quando o
+   diagnostico tem conteudo para a frente critica). Segue o mesmo design system do diagnostico.
 
-Apresente os dois arquivos exatamente como vieram. Nao reconstrua HTML, nao aplique estilo novo,
+Apresente todos os arquivos retornados exatamente como vieram. Nao reconstrua HTML, nao aplique estilo novo,
 nao passe o conteudo por outro modelo e nao misture com o template GCEP da v1. Se o host exigir
 um artifact para exibir um resource, use o texto HTML embutido byte a byte, sem alteracao. Nao ha
 resumo textual separado.
