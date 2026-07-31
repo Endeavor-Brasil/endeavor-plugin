@@ -90,7 +90,8 @@ numerado.
 3. Mostre a pergunta por inteiro e deixe claro que é essa que vai para o mentor: "é essa a pergunta
    que vai para o mentor, quer ajustar?". O founder aprova ou edita.
 4. Ofereça o multi: "quer mandar a mesma pergunta para mais alguém que apareceu?". Ele escolhe entre
-   os nomes já mostrados na busca.
+   os **mentores** já mostrados na busca (pessoa de empresa não entra no multi — o caminho dela é o
+   repasse).
 5. Feche: "fechado, essa pergunta vai para o WhatsApp de [nomes]. Cada um responde quando puder,
    direto no seu WhatsApp." As respostas chegam pelo WhatsApp, não pelo chat.
 
