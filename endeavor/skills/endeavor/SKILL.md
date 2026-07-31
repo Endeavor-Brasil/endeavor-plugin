@@ -86,13 +86,16 @@ Carregue `references/diagnostico.md` e conduza o fluxo completo:
 
 ### Bloco 3. Buscar a rede
 
-Carregue `references/buscar-rede.md`. Receba a pergunta do founder sobre quem na rede já fez algo
-ou tem experiência em um tema. Chame a tool `buscar_rede(pergunta)` com a pergunta em texto livre —
-é **síncrona** e devolve **JSON** na mesma chamada (sem job_id, sem polling). Raciocine sobre o JSON
-e apresente os perfis seguros. A introdução de qualquer mentor ao founder é sempre via Endeavor.
-Quando o founder quiser falar com alguém que apareceu, apresente os caminhos de conexão (síncrona,
-assíncrona e, se o mentor tiver sessão simulada, simular) e feche o plano {quem, ângulo, tipo},
-conforme `references/buscar-rede.md`.
+Carregue `references/buscar-rede.md`. Receba a pergunta do founder sobre quem na rede já fez algo,
+tem experiência em um tema, ou sobre **empresas da rede** (pares, benchmark, concorrentes, turma do
+Scale-Up). Chame a tool `buscar_rede(pergunta)` com a pergunta em texto livre — é **síncrona** e
+devolve **JSON** na mesma chamada (sem job_id, sem polling), com `mentores` e/ou `empresas` (a tool
+infere o alvo sozinha). Se o recorte depender do perfil do founder (pares, benchmark), escreva esse
+perfil dentro da pergunta. Raciocine sobre o JSON e apresente os perfis seguros. A introdução de
+qualquer mentor ao founder é sempre via Endeavor. Quando o founder quiser falar com um mentor que
+apareceu, apresente os caminhos de conexão (síncrona, assíncrona e, se o mentor tiver sessão
+simulada, simular) e feche o plano {quem, ângulo, tipo}; para pessoa de empresa, o caminho é o
+repasse à Endeavor — tudo conforme `references/buscar-rede.md`.
 
 ### Bloco 4. Sessão simulada com um mentor
 
@@ -147,8 +150,9 @@ só `analise_renderizada` após a entrega.
   `excluir`/`angulo` re-chamam para explorar/pivotar. SEM `formato` (o founder escolhe o tipo depois
   de escolher com quem falar). Campos em `references/experts.md`.
 - `buscar_rede(pergunta)`: **síncrona**. Recebe a pergunta do founder em texto livre e devolve
-  **JSON** com os mentores (com LinkedIn) na mesma chamada — sem `job_id`. Fluxo em
-  `references/buscar-rede.md`.
+  **JSON** com `mentores` e/ou `empresas` da rede (com LinkedIn) na mesma chamada — sem `job_id`;
+  a tool infere o alvo sozinha. Não recebe a empresa do founder: contexto de pares/benchmark vai
+  escrito na pergunta. Fluxo em `references/buscar-rede.md`.
 - `company_data(empresa, pergunta)`: **síncrona**. Pergunta em texto livre sobre os dados da
   PRÓPRIA empresa; devolve JSON com os resultados na mesma chamada — sem `job_id`. O servidor
   garante o escopo (só a empresa autorizada; giveback só do usuário logado). Fluxo em

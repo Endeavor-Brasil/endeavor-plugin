@@ -14,7 +14,7 @@ Texto de abertura, na voz do founder:
 1. 🎯 **Diagnóstico de GTM** — entenda seu nível de maturidade, valide seu plano e ache a causa-raiz do gargalo.
 2. 💡 **Conecte-se com experts de GTM** — insights acionáveis da nossa rede de mentores, async ou
    por call.
-3. 🔎 **Buscar a rede** — explore a rede da Endeavor, respeitando o Network of Trust.
+3. 🔎 **Buscar a rede** — explore a rede da Endeavor, mentores e empresas, respeitando o Network of Trust.
 4. 🎙️ **Sessão simulada com um mentor** — converse com uma versão IA de mentores da rede, treinada
    nas mentorias reais (piloto).
 5. 🗂️ **Meus dados na Endeavor** — explore seu histórico com a Endeavor: mentorias, o que ficou
