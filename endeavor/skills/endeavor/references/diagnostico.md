@@ -80,12 +80,10 @@ Quando pronto, va para o passo 5.
 
 #### Quando o retorno for v2
 
-`consultar_analise` devolve um texto curto e dois ou tres resources `text/html`:
+`consultar_analise` devolve um texto curto e dois resources `text/html`:
 
 1. `diagnostico-{empresa}-completo.html` (interativo).
 2. `diagnostico-{empresa}-completo-estatico.html` (completo sem JavaScript, para preview ou WhatsApp).
-3. `trilha-gtm-{empresa}.html` (trilha de conteudo de GTM personalizada; presente quando o
-   diagnostico tem conteudo para a frente critica). Segue o mesmo design system do diagnostico.
 
 Apresente todos os arquivos retornados exatamente como vieram. Nao reconstrua HTML, nao aplique estilo novo,
 nao passe o conteudo por outro modelo e nao misture com o template GCEP da v1. Se o host exigir
@@ -146,6 +144,9 @@ Se o assessment trouxe um gargalo claro, ofereca em 1 linha:
 
 Se o founder topar, siga o fluxo de `references/experts.md` usando o gargalo como desafio, sem
 repetir o intake.
+
+Alternativa de ponte, se o founder quiser estudar antes de falar com alguem: a trilha de conteudo
+do gargalo, via Bloco 6 do SKILL.md. Ofereca uma ponte por vez, nao as duas juntas.
 
 Esta ponte so acontece depois do passo 7. A conversa nunca termina por aceite ou recusa da ponte
 sem que a pergunta de feedback tenha sido feita antes. Se a ponte tiver sido oferecida por engano
