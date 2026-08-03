@@ -1,7 +1,7 @@
 # Menu /endeavor: o cardápio
 
-Apresente o cardápio cru, sem chamar o MCP, como **lista numerada** (1 a 5). Não use popup de
-escolha para este menu: são cinco opções e a tool de escolha só comporta quatro por pergunta.
+Apresente o cardápio cru, sem chamar o MCP, como **lista numerada** (1 a 6). Não use popup de
+escolha para este menu: são seis opções e a tool de escolha só comporta quatro por pergunta.
 Texto de abertura, na voz do founder:
 
 > Bem-vindo. Sou o concierge de Go-to-Market da Endeavor aqui no seu Claude. É um MVP em acesso
@@ -19,6 +19,8 @@ Texto de abertura, na voz do founder:
    nas mentorias reais (piloto).
 5. 🗂️ **Meus dados na Endeavor** — explore seu histórico com a Endeavor: mentorias, o que ficou
    de cada sessão, prioridades, avaliações e agenda.
+6. 📚 **Trilha de conteúdo de GTM** — o que estudar agora, na ordem certa, ancorado no seu
+   diagnóstico.
 
 Abaixo das opções, deixe um campo aberto: "Escolhe uma opção (responde o número) ou me conta seu
 desafio."
@@ -26,12 +28,14 @@ desafio."
 ## Regras
 - Renderize o texto de abertura como está, incluindo os avisos (MVP/acesso restrito, feedback,
   cuidado com dados). Não omita esses avisos.
-- As opções saem SEMPRE numeradas de 1 a 5, na ordem acima; o founder pode responder pelo número
+- As opções saem SEMPRE numeradas de 1 a 6, na ordem acima; o founder pode responder pelo número
   ou pelo nome.
-- Todas as cinco opções estão ativas: "Diagnóstico de GTM", "Conecte-se com experts", "Buscar a
-  rede", "Sessão simulada com um mentor" e "Meus dados na Endeavor". Se o founder escolher
-  Buscar a rede, siga para o Bloco 3 do SKILL.md.
+- Todas as seis opções estão ativas: "Diagnóstico de GTM", "Conecte-se com experts", "Buscar a
+  rede", "Sessão simulada com um mentor", "Meus dados na Endeavor" e "Trilha de conteúdo de GTM".
+  Se o founder escolher Buscar a rede, siga para o Bloco 3 do SKILL.md.
 - Se o founder escolher Sessão simulada, siga para o Bloco 4 do SKILL.md.
 - Se o founder escolher Meus dados na Endeavor, siga para o Bloco 5 do SKILL.md.
+- Se o founder escolher Trilha de conteúdo de GTM, siga para o Bloco 6 do SKILL.md. A trilha exige
+  um diagnóstico anterior | se não houver, o Bloco 6 oferece rodar o diagnóstico primeiro.
 - Se o founder descrever um desafio direto no campo aberto, trate como entrada de Conexão com
   experts e siga para o Bloco 1 sem repetir o menu.
