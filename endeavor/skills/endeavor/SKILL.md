@@ -10,7 +10,7 @@ description: >
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session,
-  company_data, content_curation, analise_renderizada, registrar_feedback.
+  company_data, conteudo_para_voce, content_curation, analise_renderizada, registrar_feedback.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -45,8 +45,8 @@ opção ou descreve o desafio no campo aberto. Roteie:
 - "Meus dados na Endeavor", ou uma pergunta sobre o próprio histórico ("quantas mentorias
   tive?", "o que ficou da sessão com o mentor X?", "qual minha próxima mentoria?"): vá para o
   Bloco 5.
-- "Trilha de conteúdo de GTM", ou um pedido de conteúdo para estudar ("o que eu estudo agora?",
-  "tem material sobre precificação?", "me manda uma trilha"): vá para o Bloco 6.
+- "Conteúdo de GTM", ou um pedido de conteúdo ("o que eu estudo agora?", "tem material sobre
+  precificação?", "me manda uma trilha", "o que a rede aprendeu sobre isso?"): vá para o Bloco 6.
 
 ### Bloco 1. Conexão com experts de GTM
 
@@ -116,13 +116,19 @@ pergunta)` — **síncrona**, devolve JSON na mesma chamada — raciocine sobre 
 em prosa. Para mudar o recorte, re-pergunte. Honestidade sobre cobertura: resumos ricos
 existem de 2023/2024 em diante.
 
-### Bloco 6. Trilha de conteúdo de GTM
+### Bloco 6. Conteúdo de GTM
 
-Carregue `references/content-curation.md` e conduza de lá: resolver a empresa, chamar
-`content_curation(empresa)` **sem** `frente` (o servidor ancora na frente que o diagnóstico aponta
-como crítica | é essa que você deve sugerir), apresentar o resource HTML como veio e só então
-oferecer os outros temas, sempre a partir de `structuredContent.available_fronts`. A trilha EXIGE um
-diagnóstico anterior: se não houver, ofereça rodar o Bloco 2 e não invente uma trilha.
+Carregue `references/content-curation.md`, que tem **dois caminhos** e diz qual seguir:
+
+- **A. Conteúdos da Endeavor** (`conteudo_para_voce`): peças proprietárias, produzidas a partir do
+  acervo de mentorias da rede. **Não exige diagnóstico** e é o default. A tool ranqueia contra os
+  desafios que a empresa levou às mentorias e devolve o motivo de cada escolha | você apresenta o
+  motivo como veio e nunca escreve um seu.
+- **B. Trilha curada** (`content_curation`): o melhor do mundo na ordem certa, ancorado na frente
+  crítica. **Exige diagnóstico anterior.** Sem diagnóstico, ofereça o caminho A ou o Bloco 2 |
+  nunca encerre de mãos vazias e nunca invente uma trilha.
+
+Nos dois, o HTML vem pronto do servidor: exiba como veio, nunca gere nem reescreva.
 
 ### Telemetria (entrega e feedback)
 
@@ -172,6 +178,12 @@ só `analise_renderizada` após a entrega.
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
+- `conteudo_para_voce(empresa?, pilar?, n?)`: **síncrona**. Sem argumento devolve o catálogo das
+  peças proprietárias; com `empresa` devolve o ranking (`hits[]` com `title`, `lead` e `reasons[]`,
+  mais `degraded`/`note`); com `pilar` (ex.: `"06"`) devolve o HTML da peça. **Não exige
+  diagnóstico.** Nunca exiba `score`, `provisionalMapping` nem `thesisId` ao founder. Quando
+  `degraded` for `true`, diga que a lista é o ranking da rede, não uma recomendação personalizada.
+  Fluxo em `references/content-curation.md`.
 - `content_curation(empresa, frente?, job_id?)`: **síncrona**. Devolve um texto curto + **um**
   resource `text/html` com a trilha de conteúdo, na mesma chamada | sem `job_id`, sem polling.
   Exige um diagnóstico de GTM anterior (a frente crítica e o nível saem dele). `frente` é opcional
@@ -194,8 +206,8 @@ só `analise_renderizada` após a entrega.
 - Nunca exibir o retrato cru (tabela ou JSON) nem dado interno ao founder.
 - Nunca ranquear ou nomear mentores você mesmo; isso é do servidor.
 - Nunca narrar processo nem gerar arquivo no fluxo conversacional. Excecao: o artifact HTML do
-  Diagnostico de GTM (Bloco 2) e a entrega da capacidade e deve ser gerado no chat. A trilha do
-  Bloco 6 ja vem pronta do servidor | exiba, nunca gere nem reescreva.
+  Diagnostico de GTM (Bloco 2) e a entrega da capacidade e deve ser gerado no chat. O conteudo do
+  Bloco 6 (peca ou trilha) ja vem pronto do servidor | exiba, nunca gere nem reescreva.
 - Nunca chegar com o desafio pronto para o founder só confirmar.
 - No Diagnóstico de GTM (Bloco 2), nunca oferecer a ponte nem encerrar antes de fazer a pergunta
   de feedback, mesmo se `analise_renderizada` falhar ou não receber aprovação. Nos demais blocos
@@ -214,4 +226,4 @@ só `analise_renderizada` após a entrega.
 | `references/buscar-rede.md`    | Ao entrar em Buscar a rede (Bloco 3)          |
 | `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
-| `references/content-curation.md` | Ao entrar na Trilha de conteúdo (Bloco 6)   |
+| `references/content-curation.md` | Ao entrar em Conteúdo de GTM (Bloco 6)      |

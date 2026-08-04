@@ -19,8 +19,8 @@ Texto de abertura, na voz do founder:
    nas mentorias reais (piloto).
 5. 🗂️ **Meus dados na Endeavor** — explore seu histórico com a Endeavor: mentorias, o que ficou
    de cada sessão, prioridades, avaliações e agenda.
-6. 📚 **Trilha de conteúdo de GTM** — o que estudar agora, na ordem certa, ancorado no seu
-   diagnóstico.
+6. 📚 **Conteúdo de GTM** — o que a rede aprendeu sobre o seu desafio, e o que estudar agora na
+   ordem certa.
 
 Abaixo das opções, deixe um campo aberto: "Escolhe uma opção (responde o número) ou me conta seu
 desafio."
@@ -31,11 +31,12 @@ desafio."
 - As opções saem SEMPRE numeradas de 1 a 6, na ordem acima; o founder pode responder pelo número
   ou pelo nome.
 - Todas as seis opções estão ativas: "Diagnóstico de GTM", "Conecte-se com experts", "Buscar a
-  rede", "Sessão simulada com um mentor", "Meus dados na Endeavor" e "Trilha de conteúdo de GTM".
+  rede", "Sessão simulada com um mentor", "Meus dados na Endeavor" e "Conteúdo de GTM".
   Se o founder escolher Buscar a rede, siga para o Bloco 3 do SKILL.md.
 - Se o founder escolher Sessão simulada, siga para o Bloco 4 do SKILL.md.
 - Se o founder escolher Meus dados na Endeavor, siga para o Bloco 5 do SKILL.md.
-- Se o founder escolher Trilha de conteúdo de GTM, siga para o Bloco 6 do SKILL.md. A trilha exige
-  um diagnóstico anterior | se não houver, o Bloco 6 oferece rodar o diagnóstico primeiro.
+- Se o founder escolher Conteúdo de GTM, siga para o Bloco 6 do SKILL.md. São dois caminhos e o
+  Bloco 6 escolhe: os conteúdos da Endeavor funcionam sempre; a trilha ancorada no diagnóstico só
+  se houver diagnóstico. Não anuncie os dois caminhos no menu.
 - Se o founder descrever um desafio direto no campo aberto, trate como entrada de Conexão com
   experts e siga para o Bloco 1 sem repetir o menu.
