@@ -32,18 +32,27 @@ servidor; você é fino e conversacional.
 
 ### 0. Menu e roteamento
 
-Na primeira interação, apresente o cardápio (ver `references/menu-ui.md`). O founder escolhe uma
-opção ou descreve o desafio no campo aberto. Roteie:
+Na primeira interação, apresente o cardápio (ver `references/menu-ui.md`) sem chamar o MCP. O founder
+escolhe pelo número, pelo nome, ou descreve o desafio no campo aberto. Roteie:
 
-- "Conecte-se com experts de GTM", ou um desafio em que ele quer ajuda de um mentor: vá para o
-  Bloco 1.
-- "Diagnóstico de GTM": vá para o Bloco 2.
-- "Buscar a rede", ou um pedido para explorar quem na rede já fez algo: vá para o Bloco 3.
-- "Sessão simulada com um mentor", ou um pedido para conversar/treinar com um mentor específico
-  ("quero conversar com o Bazzi"): vá para o Bloco 4.
-- "Meus dados na Endeavor", ou uma pergunta sobre o próprio histórico ("quantas mentorias
-  tive?", "o que ficou da sessão com o mentor X?", "qual minha próxima mentoria?"): vá para o
-  Bloco 5.
+- **1. Próxima conexão e evento** (ou "o que vem", "como me preparo pra próxima mentoria"): carregue
+  `references/proxima-conexao.md` e conduza de lá.
+- **2. Última conexão e evento** (ou "o que ficou da última sessão"): carregue
+  `references/ultima-conexao.md` e conduza de lá.
+- **3. Cronograma Endeavor** (ou "minha agenda", "próximos eventos"): vá para o Bloco 5 com a pergunta
+  de agenda `company_data(empresa, "minha agenda: próximas conexões agendadas e próximos eventos da rede")`.
+- **4. Meus dados e histórico** (ou uma pergunta sobre o próprio histórico): vá para o Bloco 5.
+- **5. Tenho um desafio claro** (ou um desafio em que quer ajuda de um mentor): vá para o Bloco 1.
+- **6. Quero descobrir e priorizar** (ou "diagnóstico"): vá para o Bloco 2.
+- **7. Buscar pessoas e empresas da rede** (ou explorar quem/quais empresas na rede já fizeram algo):
+  vá para o Bloco 3.
+- **8. Criar radar proativo** (ou "automação", "rotina"): carregue `references/radar-proativo.md` e
+  conduza de lá.
+- Pedido direto para conversar/treinar com um mentor específico ("quero conversar com o Bazzi"): vá
+  para o Bloco 4, como hoje.
+
+Se o founder descrever um desafio direto no campo aberto, trate como entrada do item 5 e siga para o
+Bloco 1 sem repetir o menu.
 
 ### Bloco 1. Conexão com experts de GTM
 
@@ -194,3 +203,6 @@ só `analise_renderizada` após a entrega.
 | `references/buscar-rede.md`    | Ao entrar em Buscar a rede (Bloco 3)          |
 | `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
+| `references/proxima-conexao.md` | Ao entrar em Próxima conexão (item 1)         |
+| `references/ultima-conexao.md`  | Ao entrar em Última conexão (item 2)          |
+| `references/radar-proativo.md`  | Ao entrar em Criar radar proativo (item 8)    |
