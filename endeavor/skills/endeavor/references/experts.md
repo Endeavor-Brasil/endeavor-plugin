@@ -1,4 +1,4 @@
-# Conexão com experts de GTM: a conversa
+# Conexão com experts: a conversa
 
 Este é o fluxo que a /endeavor carrega quando o founder escolhe Conexão com experts (ou descreve
 um desafio). Você descobre a empresa, entende o cenário com uma varredura silenciosa, conduz um
@@ -80,6 +80,23 @@ explicação na descrição), nenhuma marcada como recomendada. Sem a tool, opç
 
 **Formato da conexão NÃO é perguntado aqui.** (Urgência: só 1 linha, se agregar; e a decisão
 específica, quando a intenção for "uma decisão na mesa".)
+
+### Classificar o challenge (silencioso; nunca vira pergunta de taxonomia)
+
+Antes de chamar o match, classifique o desafio num challenge e passe o campo `challenge` na
+chamada. Rubrica (uma linha por challenge disponível):
+
+- `gtm`: máquina de receita — vendas, canais, time comercial, marketing, pricing, CS/retenção,
+  growth, posicionamento, ICP.
+
+Hoje só `gtm` está disponível (fundraising chega com a wiki própria; quando lançar, a linha
+dele entra aqui). Founder nunca vê o termo "challenge" nem escolhe categoria. Se um dia houver
+mais de um challenge e o desafio for genuinamente indecidível, faça UMA pergunta de gargalo em
+linguagem de negócio ("hoje o que trava mais: a máquina de receita ou o processo de captação?")
+e classifique pela resposta.
+
+Nas re-chamadas de "ver mais" (`excluir`) e de pivô (`angulo`), repasse o MESMO `challenge` da
+chamada original — refinamento nunca troca de challenge sozinho.
 
 ### 4. Buscar os mentores (dispara direto após a intenção)
 Assim que o founder escolhe a intenção (passo 3), NÃO pergunte se pode buscar. Solte UMA linha curta e
@@ -174,6 +191,7 @@ Monte como objeto. Os campos batem 1:1 com a tool:
 ```
 empresa:   <nome da empresa do founder>
 desafio:   <texto livre | o desafio nas palavras do founder, já enriquecido na conversa>
+challenge: <gtm>                                      # da rubrica (classificação silenciosa); repasse o mesmo nas re-chamadas
 intencao:  <playbook | decisao | founder_a_founder>  # do passo 3 (omita se não escolheu)
 n:         13                                         # top-13 na 1a busca; mostra 3 e guarda 10 (revela no "ver mais")
 excluir:   [<nomes já mostrados>]                     # só na re-chamada (explorar mais / pivot)

@@ -50,7 +50,7 @@ intenção: entenda o objetivo (o job, não o número) e roteie para a capacidad
 Se o founder descrever um desafio direto no campo aberto, trate como o item 3 e siga para o Bloco 1
 sem repetir o menu.
 
-### Bloco 1. Conexão com experts de GTM
+### Bloco 1. Conexão com experts
 
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
 silenciosa, Q&A adaptativo, afunilar a intenção, buscar os mentores, explorar a lista, montar o
