@@ -45,7 +45,7 @@ opção ou descreve o desafio no campo aberto. Roteie:
   tive?", "o que ficou da sessão com o mentor X?", "qual minha próxima mentoria?"): vá para o
   Bloco 5.
 
-### Bloco 1. Conexão com experts de GTM
+### Bloco 1. Conexão com experts
 
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
 silenciosa, Q&A adaptativo, afunilar a intenção, buscar os mentores, explorar a lista, montar o
