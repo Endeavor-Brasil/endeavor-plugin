@@ -1,37 +1,31 @@
 # Menu /endeavor: o cardápio
 
-Apresente o cardápio cru, sem chamar o MCP, como **lista numerada** (1 a 5). Não use popup de
-escolha para este menu: são cinco opções e a tool de escolha só comporta quatro por pergunta.
-Texto de abertura, na voz do founder:
+Apresente o cardápio cru, sem chamar o MCP, como lista numerada de 1 a 6 sob 3 cabeçalhos. Não use
+popup de escolha (a tool de escolha só comporta quatro opções por pergunta). Voz da Endeavor: direto,
+concreto, profissional e simples. Sem travessão, sem emoji, sem jargão de IA.
 
-> Bem-vindo. Sou o concierge de Go-to-Market da Endeavor aqui no seu Claude. É um MVP em acesso
-> restrito a algumas empresas, então seu feedback conta muito: viu algo pra melhorar ou algum dado
-> estranho, manda um print ou texto pra gente.
+Texto de abertura e cardápio (renderize como está):
+
+> Produto em Beta. Use e mande seus feedbacks pelo WhatsApp. Obrigado!
 >
-> Escolhe por onde começar:
-
-## Opções
-1. 🎯 **Diagnóstico de GTM** — entenda seu nível de maturidade, valide seu plano e ache a causa-raiz do gargalo.
-2. 💡 **Conecte-se com experts de GTM** — insights acionáveis da nossa rede de mentores, async ou
-   por call.
-3. 🔎 **Buscar a rede** — explore a rede da Endeavor, mentores e empresas, respeitando o Network of Trust.
-4. 🎙️ **Sessão simulada com um mentor** — converse com uma versão IA de mentores da rede, treinada
-   nas mentorias reais (piloto).
-5. 🗂️ **Meus dados na Endeavor** — explore seu histórico com a Endeavor: mentorias, o que ficou
-   de cada sessão, prioridades, avaliações e agenda.
-
-Abaixo das opções, deixe um campo aberto: "Escolhe uma opção (responde o número) ou me conta seu
-desafio."
+> **Sua Jornada**
+> 1. Minha agenda: próximas conexões e eventos, com preparo para a próxima mentoria
+> 2. Meu histórico: mentorias, o que ficou de cada sessão, prioridades e meus dados
+>
+> **Desafios de Negócio**
+> 3. Tenho um desafio claro: os mentores certos e o que a rede já aprendeu sobre ele
+> 4. Quero descobrir e priorizar desafios: diagnóstico de GTM com plano de ação
+>
+> **Explorar e automatizar**
+> 5. Buscar pessoas e empresas da rede: pares, benchmark, investidores
+> 6. Criar radar proativo: a Endeavor de olho na sua semana, em rotina automática
+>
+> Escolha um número ou me conte com suas palavras, que eu vou tentar te ajudar da melhor forma.
 
 ## Regras
-- Renderize o texto de abertura como está, incluindo os avisos (MVP/acesso restrito, feedback,
-  cuidado com dados). Não omita esses avisos.
-- As opções saem SEMPRE numeradas de 1 a 5, na ordem acima; o founder pode responder pelo número
-  ou pelo nome.
-- Todas as cinco opções estão ativas: "Diagnóstico de GTM", "Conecte-se com experts", "Buscar a
-  rede", "Sessão simulada com um mentor" e "Meus dados na Endeavor". Se o founder escolher
-  Buscar a rede, siga para o Bloco 3 do SKILL.md.
-- Se o founder escolher Sessão simulada, siga para o Bloco 4 do SKILL.md.
-- Se o founder escolher Meus dados na Endeavor, siga para o Bloco 5 do SKILL.md.
-- Se o founder descrever um desafio direto no campo aberto, trate como entrada de Conexão com
-  experts e siga para o Bloco 1 sem repetir o menu.
+- Renderize a abertura, os itens e a linha final como estão. Itens sempre numerados de 1 a 6, na
+  ordem acima, sob os 3 cabeçalhos. O founder responde pelo número, pelo nome ou com as próprias
+  palavras.
+- Desafio descrito direto no campo aberto: trate como o item 3 e siga para o Bloco 1 sem repetir o
+  menu.
+- Sem travessão, sem emoji, sem separador de ponto no meio dos itens.
