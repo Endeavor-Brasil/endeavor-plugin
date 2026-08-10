@@ -21,6 +21,8 @@ Texto de abertura e cardápio (renderize como está):
 > 6. Criar radar proativo: a Endeavor de olho na sua semana, em rotina automática
 >
 > Escolha um número ou me conte com suas palavras, que eu vou tentar te ajudar da melhor forma.
+>
+> Se quiser entender o que a Endeavor faz com os seus dados, é só perguntar.
 
 ## Regras
 - Renderize a abertura, os itens e a linha final como estão. Itens sempre numerados de 1 a 6, na
@@ -29,3 +31,5 @@ Texto de abertura e cardápio (renderize como está):
 - Desafio descrito direto no campo aberto: trate como o item 3 e siga para o Bloco 1 sem repetir o
   menu.
 - Sem travessão, sem emoji, sem separador de ponto no meio dos itens.
+- A linha final sobre dados fica fora da numeração, sempre por último. Ela não é uma sétima opção:
+  o founder chega nela perguntando, não escolhendo número.
