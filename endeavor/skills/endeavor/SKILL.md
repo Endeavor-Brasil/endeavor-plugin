@@ -6,7 +6,7 @@ description: >
   de ajuda com GTM, quiser um diagnóstico, quiser falar com mentores, ou quiser explorar a rede:
   "/endeavor", "preciso de ajuda com [tema]", "quero um diagnóstico", "que mentor me ajuda",
   "quem na rede já fez X", "quero conversar com o [mentor]", "o que vocês fazem com os meus
-  dados", "isso é seguro", "vocês veem os meus dados".
+  dados", "isso é seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session,
@@ -47,9 +47,10 @@ intenção: entenda o objetivo (o job, não o número) e roteie para a capacidad
 - **6. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
 - Pedido direto para conversar/treinar com um mentor específico ("quero conversar com o Bazzi"): vá
   para o Bloco 4, como hoje.
-- Pergunta sobre dados, privacidade, confidencialidade, LGPD, segurança, quem tem acesso, ou
-  pedido de exclusão: vá para o Bloco 8. Não confunda com o item 2: mentorias, notas de sessão,
-  prioridades e agenda continuam sendo o Bloco 5.
+- Pergunta sobre dados, privacidade, confidencialidade, LGPD, segurança, quem tem acesso, o que os
+  sócios enxergam, ou pedido de exclusão: vá para o Bloco 8. Não confunda com o item 2: mentorias,
+  notas de sessão, prioridades e agenda continuam sendo o Bloco 5, e o link de uma gravação
+  específica também é o Bloco 5.
 
 Se o founder descrever um desafio direto no campo aberto, trate como o item 3 e siga para o Bloco 1
 sem repetir o menu.
