@@ -88,12 +88,12 @@ chamada. Rubrica (uma linha por challenge disponível):
 
 - `gtm`: máquina de receita — vendas, canais, time comercial, marketing, pricing, CS/retenção,
   growth, posicionamento, ICP.
+- `fundraising`: captação e estrutura de capital — rodada (seed a growth), dívida e fomento,
+  term sheet e cap table, ESOP, venda da empresa e abertura de capital.
 
-Hoje só `gtm` está disponível (fundraising chega com a wiki própria; quando lançar, a linha
-dele entra aqui). Founder nunca vê o termo "challenge" nem escolhe categoria. Se um dia houver
-mais de um challenge e o desafio for genuinamente indecidível, faça UMA pergunta de gargalo em
-linguagem de negócio ("hoje o que trava mais: a máquina de receita ou o processo de captação?")
-e classifique pela resposta.
+Founder nunca vê o termo "challenge" nem escolhe categoria. Se o desafio for genuinamente
+indecidível entre os dois, faça UMA pergunta de gargalo em linguagem de negócio ("hoje o que
+trava mais: a máquina de receita ou o processo de captação?") e classifique pela resposta.
 
 Nas re-chamadas de "ver mais" (`excluir`) e de pivô (`angulo`), repasse o MESMO `challenge` da
 chamada original — refinamento nunca troca de challenge sozinho.
@@ -191,7 +191,7 @@ Monte como objeto. Os campos batem 1:1 com a tool:
 ```
 empresa:   <nome da empresa do founder>
 desafio:   <texto livre | o desafio nas palavras do founder, já enriquecido na conversa>
-challenge: <gtm>                                      # da rubrica (classificação silenciosa); repasse o mesmo nas re-chamadas
+challenge: <gtm | fundraising>                        # da rubrica (classificação silenciosa); repasse o mesmo nas re-chamadas
 intencao:  <playbook | decisao | founder_a_founder>  # do passo 3 (omita se não escolheu)
 n:         13                                         # top-13 na 1a busca; mostra 3 e guarda 10 (revela no "ver mais")
 excluir:   [<nomes já mostrados>]                     # só na re-chamada (explorar mais / pivot)
