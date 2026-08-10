@@ -5,7 +5,8 @@ description: >
   Go-to-Market e roteia para a certa. Use quando o founder abrir o plugin, disser que precisa
   de ajuda com GTM, quiser um diagnóstico, quiser falar com mentores, ou quiser explorar a rede:
   "/endeavor", "preciso de ajuda com [tema]", "quero um diagnóstico", "que mentor me ajuda",
-  "quem na rede já fez X", "quero conversar com o [mentor]".
+  "quem na rede já fez X", "quero conversar com o [mentor]", "o que vocês fazem com os meus
+  dados", "isso é seguro", "vocês veem os meus dados".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session,
@@ -46,6 +47,9 @@ intenção: entenda o objetivo (o job, não o número) e roteie para a capacidad
 - **6. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
 - Pedido direto para conversar/treinar com um mentor específico ("quero conversar com o Bazzi"): vá
   para o Bloco 4, como hoje.
+- Pergunta sobre dados, privacidade, confidencialidade, LGPD, segurança, quem tem acesso, ou
+  pedido de exclusão: vá para o Bloco 8. Não confunda com o item 2: mentorias, notas de sessão,
+  prioridades e agenda continuam sendo o Bloco 5.
 
 Se o founder descrever um desafio direto no campo aberto, trate como o item 3 e siga para o Bloco 1
 sem repetir o menu.
@@ -155,6 +159,15 @@ insights. Depois entregue a rotina para o founder copiar e agendar no Claude del
 
 Diga que ele pode ajustar o intervalo e o canal de entrega. Não prometa a automação autônoma completa.
 
+### Bloco 8. Privacidade e uso de dados
+
+Carregue `references/data-policy.md` e conduza de lá. **Não há chamada de MCP neste bloco**: todo o
+conteúdo está no reference. O default é responder em prosa curta a pergunta que o founder fez,
+ancorada na seção que a cobre, e oferecer o texto completo uma vez; a entrega integral do corpo
+verbatim acontece só a pedido dele. Pergunta que o documento não cobre: diga que verifica com o
+time da Endeavor, nunca invente. Pedido de exclusão: encaminhe ao contato de relacionamento, sem
+dizer que registrou nem que apagou. Sem pergunta de feedback e sem `analise_renderizada` aqui.
+
 ### Telemetria (entrega e feedback)
 
 Só registram sinal e não disparam análise. As chamadas são silenciosas, sem narrar a telemetria
@@ -225,6 +238,8 @@ só `analise_renderizada` após a entrega.
   a pergunta de feedback não existe — não a faça.
 - Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
   pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
+- Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
+  `references/data-policy.md`, e nunca alegar que registrou ou executou pedido de exclusão.
 
 ## references/
 
@@ -237,6 +252,8 @@ só `analise_renderizada` após a entrega.
 | `references/buscar-rede.md`    | Ao entrar em Buscar a rede (Bloco 3)          |
 | `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
+| `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
 
 Os Blocos 6 (Minha agenda) e 7 (Radar proativo) não têm reference próprio: são fluxos curtos,
-conduzidos por este arquivo. Reference é só para fluxo longo com regras críticas.
+conduzidos por este arquivo. Reference é para fluxo longo com regras críticas, ou, no caso do
+Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
