@@ -136,7 +136,10 @@ O founder quer saber o que vem e chegar preparado. Fluxo curto, sem reference pr
    agendadas com data futura e os próximos eventos da rede")`. Síncrona, devolve JSON; raciocine sobre
    ele, nunca o exiba.
 2. Apresente a agenda em prosa: o que vem, com quem, quando. Sem conexão agendada, diga com
-   honestidade e ofereça buscar um expert (item 3) em vez de inventar.
+   honestidade e ofereça buscar um expert (item 3) em vez de inventar. Os eventos que voltam são
+   as coletivas em que ele foi convidado mais os eventos abertos da rede: encontro fechado de
+   outro grupo e evento ainda não confirmado ficam de fora, então não anuncie a lista como "tudo
+   o que a Endeavor tem marcado".
 3. Se a próxima conexão for uma mentoria, ofereça o preparo:
    - contexto do mentor: `buscar_rede("perfil e trajetória do mentor <nome>")`, apresente o
      overview/bio seguros, em nível visão-geral;
