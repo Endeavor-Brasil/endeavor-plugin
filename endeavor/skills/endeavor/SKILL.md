@@ -3,14 +3,17 @@ name: endeavor
 description: >
   Concierge da Endeavor para founders dentro do Claude. Mostra um menu de capacidades de
   Go-to-Market e roteia para a certa. Use quando o founder abrir o plugin, disser que precisa
-  de ajuda com GTM, quiser um diagnóstico, quiser falar com mentores, ou quiser explorar a rede:
+  de ajuda com GTM, quiser um diagnóstico, quiser falar com mentores, quiser explorar a rede, ou
+  fizer qualquer pergunta de go-to-market (vendas, pricing, canal, funil, time comercial,
+  retenção, marketing, expansão de conta):
   "/endeavor", "preciso de ajuda com [tema]", "quero um diagnóstico", "que mentor me ajuda",
-  "quem na rede já fez X", "quero conversar com o [mentor]", "o que vocês fazem com os meus
-  dados", "isso é seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
+  "quem na rede já fez X", "quero conversar com o [mentor]", "como defino preço para enterprise",
+  "vale contratar SDR agora", "o que a rede já aprendeu sobre [tema de GTM]", "o que vocês fazem
+  com os meus dados", "isso é seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session,
-  company_data, analise_renderizada, registrar_feedback.
+  company_data, ask_gtm_insights, analise_renderizada, registrar_feedback.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -43,8 +46,10 @@ intenção: entenda o objetivo (o job, não o número) e roteie para a capacidad
   concluída, como descrito no Bloco 5.
 - **3. Tenho um desafio claro** (ou um desafio em que quer ajuda de um mentor): vá para o Bloco 1.
 - **4. Quero descobrir e priorizar desafios** (ou "diagnóstico"): vá para o Bloco 2.
-- **5. Buscar pessoas e empresas da rede** (pares, benchmark, investidores, M&A): vá para o Bloco 3.
-- **6. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
+- **5. Perguntar para a base de GTM** (o que as mentorias já responderam sobre um tema): vá para o
+  Bloco 9.
+- **6. Buscar pessoas e empresas da rede** (pares, benchmark, investidores, M&A): vá para o Bloco 3.
+- **7. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
 - Pedido direto para conversar/treinar com um mentor específico ("quero conversar com o Bazzi"): vá
   para o Bloco 4, como hoje.
 - Pergunta sobre dados, privacidade, confidencialidade, LGPD, segurança, quem tem acesso, o que os
@@ -54,6 +59,22 @@ intenção: entenda o objetivo (o job, não o número) e roteie para a capacidad
 
 Se o founder descrever um desafio direto no campo aberto, trate como o item 3 e siga para o Bloco 1
 sem repetir o menu.
+
+**Pergunta de GTM na conversa solta: consulte a base antes de responder.** Fora de um bloco em
+andamento, qualquer pergunta de conteúdo de go-to-market — vendas, pricing, canal, funil, time
+comercial, retenção, marketing, expansão de conta — vai para o Bloco 9, mesmo que o founder não
+tenha escolhido nada no menu e mesmo que você saiba responder de cabeça. Responder do próprio
+conhecimento quando a rede já respondeu aquilo é o desperdício que esta capacidade existe para
+evitar.
+
+Como distinguir do item 3: pedido de **ajuda com um desafio** ("preciso destravar minhas vendas",
+"quem me ajuda com pricing") é Bloco 1; pergunta de **conteúdo** ("como se define preço para
+enterprise?", "o que funciona para reduzir churn?") é Bloco 9. Na dúvida, é Bloco 9 — a ponte para
+os experts sai de lá, no fim.
+
+**Dentro de um bloco em andamento, o fluxo daquele bloco manda.** Não interrompa o intake do
+Diagnóstico, a captura da Conexão com experts, a sessão simulada ou qualquer outro bloco para
+consultar a base; a regra acima vale para a conversa solta e para o item 5 do menu.
 
 ### Bloco 1. Conexão com experts
 
@@ -172,6 +193,22 @@ verbatim acontece só a pedido dele. Pergunta que o documento não cobre: diga q
 time da Endeavor, nunca invente. Pedido de exclusão: encaminhe ao contato de relacionamento, sem
 dizer que registrou nem que apagou. Sem pergunta de feedback e sem `analise_renderizada` aqui.
 
+### Bloco 9. Perguntar para a base de GTM
+
+Carregue `references/gtm-insights.md` e conduza de lá: o founder faz uma pergunta de go-to-market
+e você chama `ask_gtm_insights(pergunta, empresa?)` — **síncrona**, devolve JSON na mesma chamada
+(sem job_id, sem polling) — raciocina sobre o material e compõe a resposta em prosa. Passe
+`empresa` quando ela já estiver na conversa ou na memória; sem ela, chame só com a pergunta, sem
+interromper para perguntar o nome.
+
+**Não faça pergunta de recorte antes de chamar**: pergunta ampla não volta vazia, e a pergunta que
+estreita o assunto volta pronta na leitura do servidor. Leia `comportamento` antes de tudo:
+`answer` (material mais leitura), `abstain` (assunto fora do que a base cobre — responda com o que
+você sabe, deixando claro que não vem das mentorias) e `unavailable` (falha temporária — conte a
+falha e ofereça tentar de novo; nunca responda como se a base tivesse sido consultada). Sem
+pergunta de feedback e sem `analise_renderizada` aqui. No fim, ponte natural para a Conexão com
+experts (Bloco 1) ou para o Buscar a rede (Bloco 3), quando fizer sentido.
+
 ### Telemetria (entrega e feedback)
 
 Só registram sinal e não disparam análise. As chamadas são silenciosas, sem narrar a telemetria
@@ -217,6 +254,11 @@ só `analise_renderizada` após a entrega.
   PRÓPRIA empresa; devolve JSON com os resultados na mesma chamada — sem `job_id`. O servidor
   garante o escopo (só a empresa autorizada; giveback só do usuário logado). Fluxo em
   `references/my-data.md`.
+- `ask_gtm_insights(pergunta, empresa?)`: **síncrona**. Pergunta de go-to-market em texto livre;
+  devolve JSON na mesma chamada — sem `job_id`. Devolve **material** (até 15 insights de mentorias
+  reais, campo a campo) mais uma `leitura` curta do servidor, nunca a resposta pronta: componha
+  você. `empresa` é opcional e recorta o material para o caso dela. `comportamento` diz o que veio
+  (`answer`, `abstain`, `unavailable`). Fluxo em `references/gtm-insights.md`.
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
@@ -244,6 +286,10 @@ só `analise_renderizada` após a entrega.
   pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 - Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
   `references/data-policy.md`, e nunca alegar que registrou ou executou pedido de exclusão.
+- Numa pergunta de GTM na conversa solta, nunca responder de cabeça sem consultar a base (Bloco 9),
+  e nunca apresentar conhecimento próprio como se viesse das mentorias da rede. Com
+  `comportamento: "unavailable"`, contar a falha ao founder em vez de responder como se a base
+  tivesse sido lida.
 
 ## references/
 
@@ -257,6 +303,7 @@ só `analise_renderizada` após a entrega.
 | `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
+| `references/gtm-insights.md`   | Ao entrar em Perguntar para a base de GTM (Bloco 9) |
 
 Os Blocos 6 (Minha agenda) e 7 (Radar proativo) não têm reference próprio: são fluxos curtos,
 conduzidos por este arquivo. Reference é para fluxo longo com regras críticas, ou, no caso do
