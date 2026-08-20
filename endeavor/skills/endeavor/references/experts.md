@@ -105,11 +105,14 @@ na sequência, sem esperar um "sim":
 1. Chame **`match_mentores`** com o pedido (formato abaixo), **`n: 13`** e **sem `formato`**. Assíncrona: devolve `job_id`.
 2. **Polling:** chame `consultar_analise(job_id)`. Enquanto a resposta começar com "⏳", execute
    `sleep 30` (ou aguarde ~30s) e só então chame de novo. Nunca faça duas chamadas seguidas sem essa pausa.
-3. O resultado traz um marcador de controle, a linha `<<<RESERVA_NAO_MOSTRAR>>>`. **Mostre só o que
-   está ANTES** do marcador (o enquadramento + os 3 primeiros mentores), em prosa fluida (já vem
-   curado, modo founder). **Guarde** o que vem DEPOIS do marcador (a reserva) para o "ver mais". Se
-   **não houver** o marcador, mostre tudo que veio (a lista era curta). Não reordene, não acrescente,
-   **não mostre o marcador**, não revele processo.
+3. O resultado traz até dois marcadores de controle: a linha `<<<RESERVA_NAO_MOSTRAR>>>` e, quando
+   há mentor com apresentação comercial liberada, a linha `<<<CAPACIDADES>>>` no fim (ver
+   `references/scheduling.md`). **Mostre só o que está ANTES** de `<<<RESERVA_NAO_MOSTRAR>>>` (o
+   enquadramento + os 3 primeiros mentores), em prosa fluida (já vem curado, modo founder).
+   **Guarde** o que vem depois dele, até `<<<CAPACIDADES>>>`, como a reserva do "ver mais". O bloco
+   de `<<<CAPACIDADES>>>` é leitura sua, nunca do founder. Se **não houver** o marcador de reserva,
+   mostre tudo que veio antes do de capacidades (a lista era curta). Não reordene, não acrescente,
+   **não mostre marcador nenhum**, não revele processo.
 
 ### 5. Convergir: escolher com quem falar (logo após os 3)
 Logo depois dos 3, uma mensagem curta que (a) convida a escolher com quem falar e (b) deixa leve a
@@ -127,8 +130,10 @@ levando o desafio já enriquecido; ao final da sessão, volte para este fluxo de
 como interagir, passo 7). A oferta não substitui o plano.
 
 ### 6. Explorar mais / mudar de ângulo
-- **"Quer ver mais"**: revele a **reserva** — o texto que veio DEPOIS do `<<<RESERVA_NAO_MOSTRAR>>>`,
-  que você guardou no passo 4 (pode revelar em blocos se ficar mais natural). **Não** chame a tool de novo.
+- **"Quer ver mais"**: revele a **reserva**, que é o texto ENTRE `<<<RESERVA_NAO_MOSTRAR>>>` e
+  `<<<CAPACIDADES>>>`, guardado no passo 4 (pode revelar em blocos se ficar mais natural). Se não
+  houver `<<<CAPACIDADES>>>`, a reserva vai até o fim. O que vem depois de `<<<CAPACIDADES>>>` é
+  controle do servidor e NUNCA é revelado. **Não** chame a tool de novo.
 - **Mudar de direção** ("e quem é forte em PLG?"): re-chame `match_mentores` com `angulo` (o novo
   recorte) e `excluir` (os nomes já mostrados). Apresente a nova leva pela mesma regra (mostra 3,
   guarda a reserva).
