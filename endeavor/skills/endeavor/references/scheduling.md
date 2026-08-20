@@ -36,6 +36,14 @@ Com a agenda em mão, proponha 3 horários escolhidos com critério, não os pri
 - Prefira horário comercial, evite primeira e última hora, evite colar em outro compromisso.
 - Nunca antes de 48h a partir de agora, nunca além de 3 semanas.
 
+**Cada opção é um instante de 1 hora, nunca uma faixa.** "terça 26 às 14h" está certo; "terça das
+10h às 11h30" está errado, porque é disponibilidade sua, não convite para o mentor.
+
+**Dia da semana e data saem do calendário, não da sua cabeça.** Use as datas que a ferramenta
+devolveu e derive o dia da semana delas. Errar isso ("segunda 25" quando 25 é terça) faz o founder
+te corrigir e queima a confiança no resto. Se ficou em dúvida, releia a resposta do calendário em
+vez de calcular.
+
 "Olhei sua agenda. Consigo terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h, uma hora cada.
 Serve?"
 
@@ -89,14 +97,29 @@ personal_participation: true                           # só em commercial_intro
 saem APENAS da conversa com o founder, do resultado curado do match e de dado público. Nunca use
 `varredura_empresa`, `dossie_empresa` ou qualquer consulta de base nesses campos.
 
-Depois de enviar, **com conector**, crie um evento por horário proposto na agenda do founder,
-título `[Endeavor] - Block Conexão`, com descrição dizendo que é reserva provisória enquanto o
-mentor responde. Sem conector, não crie nada e diga que não conseguiu segurar os horários.
+### Passo D: segurar os horários na agenda (obrigatório)
+
+Assim que a tool responder que o pedido foi enviado, **crie um evento por horário proposto** na
+agenda do founder. Não é opcional e não é "se der": é a última ação do fluxo, e é o que impede
+alguém ocupar o horário enquanto o mentor não responde. Um evento por slot, com:
+
+- título exatamente `[Endeavor] - Block Conexão`
+- duração de 1 hora, no horário proposto
+- descrição dizendo que é reserva provisória enquanto o mentor responde, e que pode ser apagada
+
+Só não crie se você não tiver conector de agenda. Nesse caso, diga ao founder em uma linha que não
+conseguiu segurar os horários, para ele saber que a agenda está desprotegida.
+
+Se a tool respondeu "registrado" em vez de "enviado", crie os blocos do mesmo jeito: o pedido
+existe, só não foi confirmado ainda.
 
 Feche assim:
 
 "Enviado. Deixei os três horários reservados na sua agenda como `[Endeavor] - Block Conexão`, pra
 ninguém ocupar enquanto ele responde. Quer chamar mais alguém da lista?"
+
+Só diga essa frase se você REALMENTE criou os eventos. Sem conector, troque por: "Enviado. Não
+consegui bloquear sua agenda por aqui, então vale segurar esses horários na mão."
 
 Se a tool responder que o pedido foi **registrado** em vez de enviado, repasse isso sem inventar:
 a Endeavor encaminha nos próximos dias.
@@ -144,3 +167,8 @@ procurar na rede quem tem mais cara de comprador. Não insista e não tente de n
 - ❌ Usar dado de `varredura_empresa` ou `dossie_empresa` nos campos que o mentor lê.
 - ❌ Mostrar o marcador `<<<CAPACIDADES>>>`.
 - ❌ Criar bloco na agenda sem ter enviado o pedido.
+- ❌ Enviar o pedido e NÃO criar os blocos, tendo conector de agenda.
+- ❌ Dizer que reservou a agenda sem ter criado os eventos.
+- ❌ Oferecer faixa de disponibilidade ("das 10h às 11h30") em vez de instante de 1 hora.
+- ❌ Calcular dia da semana de cabeça em vez de ler a data que o calendário devolveu.
+- ❌ Prometer quando o convite chega ("nos próximos dias"), que é prazo disfarçado.
