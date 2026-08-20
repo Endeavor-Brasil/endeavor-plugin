@@ -223,6 +223,13 @@ identidade e números de outras empresas, benchmarks nominais, notas e volume de
 internos de staff da Endeavor e dados financeiros de terceiros. No diagnóstico, os números e scores
 da **sua própria** empresa são liberados — são seus.
 
+### Pedido de conexão com mentor
+
+Ao pedir uma conexão, o mentor recebe: quem é o founder, uma linha pública sobre a empresa, o
+desafio nas palavras do próprio founder e por que aquele mentor especificamente. Não recebe o
+dossiê da empresa, dado de faturamento, resultado de diagnóstico nem qualquer consulta à nossa
+base. Os horários propostos são os que o founder confirmou.
+
 ### O que não fazemos
 - Não usamos seus dados para treinar modelos de IA.
 - Não vendemos, não licenciamos e não compartilhamos seus dados com terceiros comerciais.
