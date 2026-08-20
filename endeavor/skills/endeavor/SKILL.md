@@ -55,6 +55,19 @@ intenção: entenda o objetivo (o job, não o número) e roteie para a capacidad
 Se o founder descrever um desafio direto no campo aberto, trate como o item 3 e siga para o Bloco 1
 sem repetir o menu.
 
+#### Primeira conexão do founder
+
+Na primeira vez que um founder chega ao ponto de pedir uma conexão, ensine as regras do jogo
+enquanto faz, em UM turno, sem virar aula:
+
+"Como é a primeira vez que você pede uma conexão, deixa eu te mostrar como funciona enquanto a
+gente faz. Você escolhe com quem falar e de que jeito. Se for conversa ao vivo, eu pego alguns
+horários com você e a Endeavor cuida do resto pelo WhatsApp do mentor. A partir daí a marcação vive
+lá: é por lá que você recebe a confirmação, o convite e é por lá que remarca se precisar. Aqui no
+Claude a gente volta quando você quiser buscar outra pessoa."
+
+Uma vez só. Se já houve conexão antes na memória do founder, pule.
+
 ### Bloco 1. Conexão com experts
 
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
@@ -224,6 +237,10 @@ só `analise_renderizada` após a entrega.
   com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack, roteiro interno do
   roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
   `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`.
+- `submit_connection(...)`: **síncrona**. Registra o pedido de conexão do founder com UM mentor e
+  dispara o início da marcação pelo WhatsApp. Uma chamada por mentor, sempre depois de o founder
+  confirmar mentor, formato e (em `sync`/`commercial_intro`) os horários. Campos e regras de
+  confidencialidade em `references/scheduling.md`.
 - `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir o
   resultado (artifact do diagnóstico ou lista do match) ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.

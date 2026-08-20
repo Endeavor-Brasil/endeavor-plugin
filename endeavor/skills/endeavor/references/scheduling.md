@@ -56,7 +56,7 @@ Chame `submit_connection` com:
 
 ```
 company:               <empresa do founder>
-job_id:                <job_id do match que gerou a lista>
+job_id:                <job_id do match que gerou a lista; "buscar_rede" se veio da busca na rede>
 mentor:                <nome exato como apareceu na recomendação>
 format:                sync | async | commercial_intro
 connection_reason:     <o paralelo específico entre a trajetória DELE e o momento da empresa>

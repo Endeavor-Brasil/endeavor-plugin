@@ -65,7 +65,8 @@ catálogo de sessões simuladas (se ainda não tem na conversa, chame `mentor_se
 vez — síncrona, barata) e apresente os caminhos, **nesta ordem**, cada um com uma explicação curta
 que não deixa dúvida do que acontece. Você **lista e confirma; NÃO sugere** qual usar. Se a tool
 `AskUserQuestion` estiver disponível, use-a SEMPRE para este menu: uma pergunta por mentor (até 4
-por chamada), os caminhos disponíveis como opções (2 ou 3, conforme o catálogo de sessão simulada),
+por chamada), os caminhos disponíveis como opções (2 a 4, conforme o catálogo de sessão simulada e o que a
+busca sinalizou),
 a explicação curta na descrição de cada opção e nenhuma marcada como recomendada. Sem a tool, liste
 numerado.
 
@@ -80,6 +81,11 @@ numerado.
    para mentores no catálogo de `mentor_session()`; sem sessão simulada, apresente só os dois
    primeiros caminhos, sem mencionar simulação. Se o founder escolher simular, conduza por
    `references/mentor-session.md` e, ao terminar, volte para este menu.
+
+**Apresentação comercial.** Quando o founder quiser vender para alguém da rede, e só quando a
+pessoa vier com `commercial_intro_allowed: true` no resultado, ofereça esse caminho e siga
+`references/scheduling.md`. Para quem vier `false`, o caminho não existe: não mencione e não
+ofereça exceção.
 
 **Sub-fluxo da conexão assíncrona.** Quando o founder escolher assíncrona:
 1. Garanta a dúvida: se o recorte da busca e a conversa ainda não dizem O QUE ele quer perguntar
@@ -101,11 +107,12 @@ tocando a [Empresa], certo?") — olhe memória e contexto antes de perguntar. M
 plano {quem, ângulo, tipo}**, um item por mentor, cada um com seu tipo (`síncrona` ou `assíncrona`);
 o ângulo vem do recorte da busca (por que esse mentor apareceu).
 
-**Guardrail do handoff.** O encaminhamento (o convite síncrono ou o envio da pergunta assíncrona) é
-feito manualmente pela Endeavor nos bastidores. Você **pode** confirmar que a conexão ou a pergunta
-será encaminhada nos próximos dias, mas **não** marque data ou hora específica, **não** prometa
-integração automática, e **não** dispare nenhuma tool para isso. Simular é a única ação executada na
-hora (via `mentor_session`).
+**Handoff.** Conexão ao vivo e apresentação comercial seguem `references/scheduling.md`: colete os
+horários, confirme e chame `submit_connection`. Pergunta enviada mantém o sub-fluxo acima e chama
+`submit_connection` com `format: async`, uma chamada por mentor. Como a busca na rede não gera job,
+mande `job_id: "buscar_rede"` — é o que marca a origem do pedido. Não marque data e hora com o
+mentor você mesmo e não prometa prazo de resposta. Pessoa de empresa continua fora disto: o caminho
+dela é o repasse, sem tool.
 
 **Pedido por quem não veio na busca.** Sem menu de formatos: diga com honestidade que não encontra
 a pessoa na rede ativa que você enxerga e ofereça repassar o interesse para a Endeavor avaliar.
