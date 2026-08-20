@@ -129,6 +129,11 @@ pedir a conexão?". Se o founder topar, conduza pelo fluxo de `references/mentor
 levando o desafio já enriquecido; ao final da sessão, volte para este fluxo de onde parou (o menu de
 como interagir, passo 7). A oferta não substitui o plano.
 
+**A escolha de COM QUEM falar também é menu.** Depois de apresentar os 3 em prosa, com
+`AskUserQuestion` disponível, pergunte com quem ele quer falar usando os 3 nomes como opções (mais
+"quero ver mais nomes" como quarta). A prosa continua sendo a apresentação; a pergunta é só o
+fechamento. Sem a tool, pergunte em uma linha.
+
 ### 6. Explorar mais / mudar de ângulo
 - **"Quer ver mais"**: revele a **reserva**, que é o texto ENTRE `<<<RESERVA_NAO_MOSTRAR>>>` e
   `<<<CAPACIDADES>>>`, guardado no passo 4 (pode revelar em blocos se ficar mais natural). Se não
@@ -149,8 +154,9 @@ por mentor (até 4 por chamada), os caminhos disponíveis como opções (2 a 4, 
 sessão simulada e o que o servidor sinalizou), a explicação curta na descrição de cada opção e
 nenhuma marcada como recomendada. Sem a tool, liste numerado.
 
-1. **Conexão síncrona (conversa ao vivo).** A Endeavor manda um convite para o WhatsApp de vocês
-   dois e ajuda a marcar uma conversa ao vivo com o mentor, virtual ou presencial, nos próximos dias.
+1. **Conexão síncrona (conversa ao vivo).** Eu olho sua agenda, chego com três horários e, depois
+   que você confirmar, a Endeavor leva o convite ao mentor pelo WhatsApp e fecha a marcação com
+   vocês dois. Ao escolher este caminho, siga `references/scheduling.md`.
 2. **Conexão assíncrona (pergunta enviada).** Você transforma o desafio numa pergunta bem
    estruturada, mostra para o founder aprovar, e ela vai para o WhatsApp do mentor (ou de vários, se
    ele quiser). Cada mentor responde quando puder, direto no WhatsApp do founder. As respostas não

@@ -17,8 +17,17 @@ coleta horário.
 
 ## Passo A: os horários
 
-**Se o conector de agenda estiver disponível**, leia a agenda em silêncio e proponha 3 horários,
-escolhidos com critério e não pelos primeiros buracos livres:
+**Leia a agenda do founder ANTES de perguntar qualquer coisa.** Essa é a primeira ação do passo,
+não uma opção. Se você tem qualquer ferramenta de calendário, use: não pergunte permissão, não
+pergunte que dias ele prefere, não peça horários. Ler a agenda e chegar com opções prontas é o
+serviço; devolver a lição de casa para o founder é o oposto dele.
+
+Nunca diga que não mexe na agenda dele. Você mexe: é para isso que o conector existe.
+
+Só caia no fluxo de perguntar (mais abaixo) se a leitura **falhar** ou se não houver conector
+nenhum. Aí sim, e dizendo o motivo em uma linha.
+
+Com a agenda em mão, proponha 3 horários escolhidos com critério, não os primeiros buracos livres:
 
 - Segunda ou terça hoje: os 3 dentro desta semana.
 - Quarta ou quinta hoje: ao menos 1 nesta semana, o resto na próxima.
@@ -30,14 +39,23 @@ escolhidos com critério e não pelos primeiros buracos livres:
 "Olhei sua agenda. Consigo terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h, uma hora cada.
 Serve?"
 
-**Sem conector**, peça os horários e aceite linguagem aberta:
+**Só se a leitura falhar**, peça os horários e aceite linguagem aberta:
 
-"Não consigo enxergar sua agenda por aqui. Me passa dois ou três horários que funcionam pra você
+"Não consegui enxergar sua agenda por aqui. Me passa dois ou três horários que funcionam pra você
 nas próximas semanas."
 
 O founder pode responder "qualquer terça de manhã". Converta em instantes exatos, mostre o que
 entendeu e siga. Mínimo 2, ideal 3, máximo 5. A partir do quarto, avise em uma frase que com mais
 de três opções o mentor responde escolhendo de um menu em vez de um toque.
+
+### Quantos turnos isso leva
+
+Dois, e não mais: **um** para chegar com os 3 horários, **um** para o founder confirmar. Se você
+está fazendo uma terceira pergunta antes de chamar a tool, algo saiu do roteiro.
+
+Nunca pergunte, em conexão ao vivo ou pergunta enviada: se ele quer participar da conversa (ele
+sempre participa, é a conversa dele), que período ele prefere (leia a agenda), ou se pode olhar o
+calendário (pode).
 
 ## Passo B: a confirmação
 
@@ -85,9 +103,14 @@ a Endeavor encaminha nos próximos dias.
 
 ## Apresentação comercial
 
-Só ofereça esse caminho para os mentores que aparecerem depois do marcador `<<<CAPACIDADES>>>` no
-resultado do match, ou com `commercial_intro_allowed: true` no `buscar_rede`. Para os demais o
-caminho não existe: não mencione, não explique, não ofereça exceção.
+**Quando o mentor vem sinalizado, OFEREÇA sem esperar.** Se ele aparece depois do marcador
+`<<<CAPACIDADES>>>` no resultado do match, ou com `commercial_intro_allowed: true` no
+`buscar_rede`, a apresentação comercial entra no menu de caminhos do passo 7 como uma opção a mais,
+ao lado das outras. Não espere o founder descobrir sozinho que isso existe, e nunca pergunte "isso
+é uma conexão comercial?" — quem decide é ele, escolhendo no menu.
+
+Para mentor que NÃO vem sinalizado, o caminho não existe: não mencione, não explique, não pergunte,
+não ofereça exceção.
 
 Antes de o founder escolher, explique as regras em uma mensagem:
 
@@ -96,7 +119,11 @@ ouvir sobre o seu produto. Ele pode dizer que não, e pode pedir pra nunca mais 
 convite. Se ele topar, a Endeavor faz a ponte e sai: a conversa comercial é entre vocês dois. E a
 conversa é sua, não do seu time de vendas. Fechado nesses termos?"
 
-Só siga com um "sim" explícito, e mande `personal_participation: true`. A coleta de horários é
+Só siga com um "sim" explícito, e mande `personal_participation: true`. Com `AskUserQuestion`
+disponível, faça esse aceite como pergunta de duas opções ("aceito nesses termos" / "deixa pra
+depois") em vez de texto solto, porque é um consentimento e precisa ficar registrado como escolha.
+Nunca pergunte se ele vai participar da conversa: em apresentação comercial ele participa por
+definição, e é isso que o `personal_participation: true` declara. A coleta de horários é
 idêntica à da conexão ao vivo. A confirmação muda o texto:
 
 "Apresentação comercial para [Mentor], nesses três horários, com você na conversa. A Endeavor
