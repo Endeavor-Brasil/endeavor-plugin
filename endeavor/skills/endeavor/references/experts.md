@@ -135,13 +135,14 @@ como interagir, passo 7). A oferta não substitui o plano.
 
 <!-- Manutenção: a mecânica e a copy dos formatos de conexão são espelhadas em
      references/buscar-rede.md (seção "os caminhos"). Mudou a promessa ou a apresentação aqui, mude lá. -->
-### 7. Como interagir com cada mentor: os três caminhos + plano
-Quando o founder disser com quem quer falar, apresente os **três caminhos** de como usar cada
-mentor, **nesta ordem**, cada um com uma explicação curta que não deixa dúvida do que acontece.
-Você **lista e confirma; NÃO sugere** qual usar. Se a tool `AskUserQuestion` estiver disponível,
-use-a SEMPRE para este menu: uma pergunta por mentor (até 4 por chamada), os caminhos disponíveis
-como opções (2 ou 3, conforme o catálogo de sessão simulada), a explicação curta na descrição de
-cada opção e nenhuma marcada como recomendada. Sem a tool, liste numerado.
+### 7. Como interagir com cada mentor: os caminhos + plano
+Quando o founder disser com quem quer falar, apresente os **caminhos** de como usar cada mentor,
+**nesta ordem** (os três primeiros sempre; o quarto só para quem o servidor sinalizou), cada um com
+uma explicação curta que não deixa dúvida do que acontece. Você **lista e confirma; NÃO sugere**
+qual usar. Se a tool `AskUserQuestion` estiver disponível, use-a SEMPRE para este menu: uma pergunta
+por mentor (até 4 por chamada), os caminhos disponíveis como opções (2 a 4, conforme o catálogo de
+sessão simulada e o que o servidor sinalizou), a explicação curta na descrição de cada opção e
+nenhuma marcada como recomendada. Sem a tool, liste numerado.
 
 1. **Conexão síncrona (conversa ao vivo).** A Endeavor manda um convite para o WhatsApp de vocês
    dois e ajuda a marcar uma conversa ao vivo com o mentor, virtual ou presencial, nos próximos dias.
@@ -153,6 +154,9 @@ cada opção e nenhuma marcada como recomendada. Sem a tool, liste numerado.
    como ele pensaria sobre o caso. É um preview, não fala com o mentor de verdade. Ofereça só para
    mentores com sessão simulada (os que aparecem no catálogo de `mentor_session()`); é o mesmo fluxo
    do test-drive (passo 5 e `references/mentor-session.md`), e ao terminar volte para este menu.
+4. **Apresentação comercial.** Você quer vender para essa pessoa, não pedir conselho. A Endeavor
+   pergunta se ela topa te ouvir, e se topar faz a ponte. Ofereça **apenas** para quem vier
+   sinalizado pelo servidor (ver `references/scheduling.md`).
 
 Se o mentor tiver sessão simulada, você **pode** sugerir simular antes de enviar a pergunta ("quer
 testar a resposta dele aqui antes de mandar?"), mas quem decide é o founder; nunca é obrigatório.
@@ -177,11 +181,11 @@ vieram na recomendação para afiar "falar com fulano sobre X") e o **tipo** (`s
 `assíncrona`). Simular não é item de plano: é executado na hora e a conversa volta para este menu.
 **Confirme o {quem, ângulo, tipo}** e feche.
 
-**Guardrail do handoff.** O encaminhamento (o convite síncrono ou o envio da pergunta assíncrona) é
-feito manualmente pela Endeavor nos bastidores. Você **pode** confirmar que a conexão ou a pergunta
-será encaminhada nos próximos dias, mas **não** marque data ou hora específica, **não** prometa
-integração automática, e **não** dispare nenhuma tool para isso. Simular é a única ação executada na
-hora (via `mentor_session`).
+**Handoff.** Quando o founder escolher conexão ao vivo ou apresentação comercial, siga
+`references/scheduling.md`: colete os horários, confirme e chame `submit_connection`. Para pergunta
+enviada, mantenha o sub-fluxo de redigir e aprovar a pergunta e chame `submit_connection` com
+`format: async`, uma chamada por mentor. Não marque data e hora com o mentor você mesmo e não
+prometa prazo de resposta.
 
 A skill para aqui; você não ranqueia nem nomeia mentores (isso é do servidor).
 
@@ -215,7 +219,8 @@ varredura) são **memória de trabalho** sua para conversar melhor, nunca saída
 - ❌ SUGERIR o formato de conexão (você lista os tipos e confirma; quem escolhe é o founder).
 - ❌ "Enviar" a pergunta assíncrona sem antes redigir e MOSTRAR a pergunta para o founder aprovar.
 - ❌ Dizer que a resposta do assíncrono volta no chat (ela chega pelo WhatsApp do founder).
-- ❌ Marcar data/hora, prometer integração automática, ou disparar tool no handoff (é manual pela Endeavor).
+- ❌ Chamar `submit_connection` sem o founder ter confirmado os horários e o pedido.
+- ❌ Oferecer apresentação comercial para mentor que o servidor não sinalizou.
 - ❌ Mostrar o marcador `<<<RESERVA_NAO_MOSTRAR>>>` ou despejar a reserva sem o founder pedir "ver mais".
 - ❌ Usar "|", barras ou tabelas ASCII na conversa.
 - ❌ Narrar processo ("deixa eu puxar", "cruzando", "sintetizando").
@@ -228,3 +233,4 @@ varredura) são **memória de trabalho** sua para conversar melhor, nunca saída
 | Arquivo | Quando ler |
 |---|---|
 | `references/web-enrichment.md` | Ao enriquecer o perfil via web/ferramentas do próprio founder (passo 1) |
+| `references/scheduling.md` | Quando o founder escolher com quem falar e o formato (passo 7) |
