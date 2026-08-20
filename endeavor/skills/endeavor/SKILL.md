@@ -228,7 +228,14 @@ só `analise_renderizada` após a entrega.
   resultado (artifact do diagnóstico ou lista do match) ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
   `avaliacao` é uma nota inteira de 1 a 5; `comentario` é opcional. Chame somente após o founder
+<<<<<<< Updated upstream
   informar a nota explicitamente; nunca a infira. A pergunta de feedback é exclusiva do Bloco 2.
+=======
+  informar a nota explicitamente; nunca a infira.
+- `agendar_conexao(empresa, disponibilidade, observacao?, mentor_nome, mentor_email?)`: cria o
+  pedido de agendamento e aciona o time em segundo plano. Devolve confirmação de que o pedido
+  foi registrado, não de que o mentor já foi notificado. Fluxo em `references/agendamento.md`.
+>>>>>>> Stashed changes
 
 ## Guardrails e anti-comportamentos
 
@@ -256,8 +263,12 @@ só `analise_renderizada` após a entrega.
 | `references/buscar-rede.md`    | Ao entrar em Buscar a rede (Bloco 3)          |
 | `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
+<<<<<<< Updated upstream
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
 
 Os Blocos 6 (Minha agenda) e 7 (Radar proativo) não têm reference próprio: são fluxos curtos,
 conduzidos por este arquivo. Reference é para fluxo longo com regras críticas, ou, no caso do
 Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
+=======
+| `references/agendamento.md`    | Ao founder escolher conexão síncrona (dentro do Bloco 1) |
+>>>>>>> Stashed changes

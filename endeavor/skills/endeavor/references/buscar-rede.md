@@ -69,8 +69,9 @@ por chamada), os caminhos disponíveis como opções (2 ou 3, conforme o catálo
 a explicação curta na descrição de cada opção e nenhuma marcada como recomendada. Sem a tool, liste
 numerado.
 
-1. **Conexão síncrona (conversa ao vivo).** A Endeavor manda um convite para o WhatsApp de vocês
-   dois e ajuda a marcar uma conversa ao vivo com o mentor, virtual ou presencial, nos próximos dias.
+1. **Conexão síncrona (conversa ao vivo).** Você coleta sua disponibilidade e uma observação, eu
+   confirmo com você e então registramos o pedido — o time aciona o mentor e envia o convite em
+   seguida. Carregue `references/agendamento.md` quando o founder escolher este caminho.
 2. **Conexão assíncrona (pergunta enviada).** Você transforma o que o founder quer saber numa
    pergunta bem estruturada, mostra para o founder aprovar, e ela vai para o WhatsApp do mentor (ou
    de mais gente que apareceu na busca, se ele quiser). Cada mentor responde quando puder, direto no
@@ -101,11 +102,12 @@ tocando a [Empresa], certo?") — olhe memória e contexto antes de perguntar. M
 plano {quem, ângulo, tipo}**, um item por mentor, cada um com seu tipo (`síncrona` ou `assíncrona`);
 o ângulo vem do recorte da busca (por que esse mentor apareceu).
 
-**Guardrail do handoff.** O encaminhamento (o convite síncrono ou o envio da pergunta assíncrona) é
-feito manualmente pela Endeavor nos bastidores. Você **pode** confirmar que a conexão ou a pergunta
-será encaminhada nos próximos dias, mas **não** marque data ou hora específica, **não** prometa
-integração automática, e **não** dispare nenhuma tool para isso. Simular é a única ação executada na
-hora (via `mentor_session`).
+**Guardrail do handoff.** A conexão **assíncrona** continua manual: a Endeavor encaminha a pergunta
+nos bastidores; você **não** dispara tool para ela. A conexão **síncrona** usa `agendar_conexao`
+depois que o founder confirmar horários e observação (`references/agendamento.md`) — a tool só
+registra o pedido; o convite ao mentor sai depois, em segundo plano. Em ambos os casos, **não**
+marque data ou hora específica como certa e **não** diga que o mentor já foi avisado. Simular é
+executado na hora (via `mentor_session`).
 
 **Pedido por quem não veio na busca.** Sem menu de formatos: diga com honestidade que não encontra
 a pessoa na rede ativa que você enxerga e ofereça repassar o interesse para a Endeavor avaliar.
@@ -126,8 +128,8 @@ Nenhuma promessa de mecânica ou prazo.
 - ❌ Abrir o menu de caminhos sem o founder ter nomeado com quem quer falar.
 - ❌ "Enviar" a pergunta assíncrona sem antes redigir e MOSTRAR a pergunta para o founder aprovar.
 - ❌ Dizer que a resposta do assíncrono volta no chat (ela chega pelo WhatsApp do founder).
-- ❌ Marcar data/hora, prometer integração automática, ou disparar tool no handoff (é manual pela
-  Endeavor).
+- ❌ Marcar data/hora fechada, ou disparar tool no handoff da conexão **assíncrona** (essa continua
+  manual). Conexão síncrona usa `agendar_conexao` depois da confirmação do founder.
 - ❌ Oferecer simulação para mentor fora do catálogo de `mentor_session()`.
 - ❌ Prometer mecânica de conexão para quem não apareceu na busca (honestidade e repasse à
   Endeavor).
