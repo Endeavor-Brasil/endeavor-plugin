@@ -4,8 +4,8 @@ Entra em cena quando o founder já escolheu COM QUEM falar e escolheu **conexão
 tanto para o match de experts (Bloco 1) quanto para a busca na rede (Bloco 3): o fim dos dois
 fluxos é o mesmo. Pergunta enviada (assíncrona) não passa por aqui e não coleta horário.
 
-São seis passos, nesta ordem, e o founder responde em dois turnos: um para confirmar os horários,
-um para autorizar o envio. Se você está fazendo uma terceira pergunta, saiu do roteiro.
+São cinco passos, nesta ordem, e o founder responde em dois turnos: um para confirmar os horários,
+um para aprovar o convite. Se você está fazendo uma terceira pergunta, saiu do roteiro.
 
 ## Regras que não se quebram
 
@@ -25,10 +25,18 @@ um para autorizar o envio. Se você está fazendo uma terceira pergunta, saiu do
 **Leia a agenda do founder antes de perguntar qualquer coisa.** Primeira ação do passo, não uma
 opção. Não pergunte permissão, não pergunte que dias ele prefere, não peça horários.
 
-Para achar a ferramenta: procure, entre as suas, a que **lista eventos de um calendário**. A
-descrição dela é `Lists calendar events in a given calendar`. Chame essa. Não procure por "conector
-de agenda" nem por nada com "Endeavor" no nome: o calendário é uma ferramenta do próprio founder,
-conectada por ele.
+Para achar a ferramenta, procure pelo que ela FAZ, não por um nome exato: o identificador muda de
+um conector para outro, então nunca conclua que a capacidade não existe só porque nada se chama
+exatamente como está escrito abaixo. O calendário é uma ferramenta do próprio founder, conectada por
+ele; não procure por "conector de agenda" nem por nada com "Endeavor" no nome.
+
+Em ordem de preferência:
+
+1. **A que sugere períodos livres**, descrita como algo próximo de `suggest time periods across one
+   or more calendars`. É a melhor: devolve horários candidatos prontos, então você não precisa
+   deduzir os buracos entre compromissos, que é onde erro de data acontece. Peça janelas de 1 hora.
+2. **A que lista eventos**, descrita como algo próximo de `list calendar events in a given calendar`
+   ou `searches for events on the user's primary calendar`. Aí sim você deriva os horários livres.
 
 Nunca diga que você não mexe na agenda dele. Você mexe, é para isso que a conexão existe.
 
@@ -36,6 +44,10 @@ Se a leitura falhar, ou se nenhuma ferramenta de calendário existir, aí sim pe
 o motivo em uma linha: "não consegui enxergar sua agenda por aqui, me passa dois ou três horários
 que funcionam nas próximas semanas". O founder pode responder "qualquer terça de manhã"; converta em
 instantes exatos, mostre o que entendeu e siga.
+
+Existe um caso intermediário: o founder tem ferramenta de LEITURA de calendário mas nenhuma de
+escrita. Aí você propõe os horários normalmente e, no último passo, avisa que não conseguiu reservar
+a agenda. Não invente que reservou.
 
 ## Passo 2: propor três horários
 
@@ -67,18 +79,14 @@ Se a tool `AskUserQuestion` estiver disponível, ofereça as três saídas como 
 três` / `Trocar um deles` / `Outros dias`). Ela pode não estar disponível: nesse caso a frase acima
 já é o turno completo e o founder responde em texto. Não trate o menu como pré-requisito de nada.
 
-## Passo 3: confirmar
-
-Uma mensagem curta, sem prazo e sem mostrar o convite ainda:
-
-> Conexão ao vivo com [Mentor], nesses três horários. Daqui pra frente a marcação corre pelo
-> WhatsApp: a Endeavor manda o convite, ele escolhe um dos horários ou avisa que não consegue, e
-> você recebe a confirmação por lá. Remarcação depois também é por lá. Confirmo e mando?
-
-## Passo 4: escrever o convite
+## Passo 3: escrever o convite e mostrar
 
 O `convite` é a mensagem de WhatsApp que o mentor vai receber. Você escreve, porque só você tem a
-conversa inteira. Quatro blocos curtos, em prosa corrida, sem título de seção:
+conversa inteira, e **mostra ao founder por inteiro antes de enviar**. Ele precisa reconhecer o que
+sai no nome dele: é a empresa dele que está sendo descrita e é ele que vai sentar na conversa. É a
+mesma regra da pergunta enviada, que também é mostrada antes de ir.
+
+Quatro blocos curtos, em prosa corrida, sem título de seção:
 
 1. **Saudação, quem fala e o convite.** Primeiro nome do mentor, "tudo bem?", a Endeavor se
    apresentando, e o convite nomeando o founder, o cargo e a empresa.
@@ -94,15 +102,34 @@ O link do site da empresa entra como URL crua, em linha própria antes do pedido
 renderiza link com texto, então nome entre colchetes vira lixo na tela. Não link o mentor: ele é
 quem recebe a mensagem.
 
-**O que pode entrar:** o que o founder falou na conversa, o resultado curado do match, e dado
-público. Nada mais. Se um número não saiu da boca do founder, ele não entra, mesmo que você tenha
-visto em `varredura_empresa`, em `dossie_empresa` ou em consulta de base. É a diferença entre este
-convite e o do time interno, que digita os números à mão a partir de material aprovado.
+**De onde vem o conteúdo.** Além do que o founder falou e do resultado curado do match, você **pode
+e deve** usar o que a Endeavor já sabe sobre a empresa dele: `varredura_empresa` e `dossie_empresa`
+têm o que a empresa faz, estágio, porte, captação, mercado e o histórico do desafio. Isso é o que faz
+o convite ter lastro em vez de ficar genérico. A amarra é o desafio: o dado entra porque explica
+POR QUE esta conversa faz sentido agora, não como currículo.
 
-**Nunca:** inventar dado de tração, inventar ou montar URL, usar negrito, usar travessão, usar
-rótulo de seção ("Desafio:", "Contexto:"), prometer prazo, dizer que a Endeavor garante a conversa,
-ou usar jargão vazio ("sinergia", "ecossistema de inovação", "jornada transformadora", "empoderar",
-"trajetória brilhante").
+O parágrafo do **"por que ele"** é a única exceção: ele sai do resultado curado do match, não do
+perfil bruto do mentor. O curado já passou pelos filtros de confidencialidade do servidor.
+
+**Quatro coisas que estão na base e NÃO podem sair daqui:**
+
+1. **A leitura interna da Endeavor sobre a empresa ou o founder.** Status na rede, classificação
+   ("não é EE formal", "candidata", "nurturing"), nome do gerente da conta, notas de relacionamento,
+   qualquer avaliação. Isso é assunto da Endeavor com o founder, não do founder com o mentor.
+2. **Nome de outro mentor ou de outra empresa** que apareça no dossiê. O dossiê cita quem já
+   mentorou e cita transcrições por autor; contar isso a um terceiro entrega o envolvimento de gente
+   que não autorizou.
+3. **Número marcado com ⚠ ou em conflito.** Os dossiês sinalizam dado errado, desatualizado e
+   divergência entre fontes de propósito. Quando há dois números para a mesma coisa, não escolha:
+   prefira o que o founder falou, ou não cite número nenhum. Mandar cifra errada para o mentor é
+   pior que não mandar cifra.
+4. **Tabela, JSON ou trecho colado da saída da tool.** Você reescreve em prosa. A saída da
+   `varredura_empresa` é memória de trabalho sua, nunca texto de saída.
+
+**Nunca:** inventar dado que não está em lugar nenhum, inventar ou montar URL, usar negrito, usar
+travessão, usar rótulo de seção ("Desafio:", "Contexto:"), prometer prazo, dizer que a Endeavor
+garante a conversa, ou usar jargão vazio ("sinergia", "ecossistema de inovação", "jornada
+transformadora", "empoderar", "trajetória brilhante").
 
 Exemplo hipotético, para calibrar extensão e ritmo:
 
@@ -111,17 +138,25 @@ Exemplo hipotético, para calibrar extensão e ritmo:
 > Aqui é a Endeavor. Queria te convidar para uma conversa de 1h com a Marina Duarte, cofundadora e
 > CEO da Nortis, empresa da nossa rede.
 >
-> A Nortis vende software de gestão de frota para transportadoras de médio porte. Cresceram com
-> venda fundadora e agora estão montando o primeiro time comercial. O desafio é o de sempre nessa
-> virada: o processo que funcionava na mão da Marina não está passando para os vendedores novos, e o
-> ciclo de venda dobrou.
+> A Nortis vende software de gestão de frota para transportadoras de médio porte. Levantaram Série A
+> no ano passado, cresceram com venda fundadora e agora estão montando o primeiro time comercial. O
+> desafio é o de sempre nessa virada: o processo que funcionava na mão da Marina não está passando
+> para os vendedores novos, e o ciclo de venda dobrou.
 >
 > nortis.com.br
 >
 > Pensamos em você pela sua experiência construindo a máquina de vendas enterprise da Escala, saindo
 > do founder-led. Topa? Ela consegue terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h.
 
-## Passo 5: enviar
+Mostre o texto e feche assim:
+
+> É essa a mensagem que vai pro [Mentor], com esses três horários. Daqui pra frente a marcação corre
+> pelo WhatsApp: ele escolhe um dos horários ou avisa que não consegue, e você recebe a confirmação
+> por lá. Remarcação depois também é por lá. Confirmo e mando, ou quer ajustar algo?
+
+Se ele pedir ajuste, ajuste e mostre de novo. Só chame a tool depois do "manda".
+
+## Passo 4: enviar
 
 Chame `agendar_conexao`:
 
@@ -129,7 +164,7 @@ Chame `agendar_conexao`:
 empresa:          <a empresa do founder, já conhecida da conversa>
 mentor_nome:      <nome do mentor como apareceu na recomendação>
 disponibilidade:  [<ISO 8601 com fuso EXPLÍCITO>, ...]
-convite:          <o texto do passo 4>
+convite:          <o texto aprovado no passo 3>
 observacao:       <preferência de horário do founder, se ele disse alguma>
 job_id:           <o job do match que gerou a lista, se veio de um match>
 ```
@@ -143,13 +178,14 @@ A tool devolve confirmação de que o PEDIDO foi registrado. Não diga que o men
 marque data e não prometa quando o convite chega. Se ela recusar, repasse o motivo que ela devolveu,
 corrija e chame de novo. Se ela falhar por erro de servidor, diga isso e ofereça tentar de novo.
 
-## Passo 6: segurar os horários na agenda
+## Passo 5: segurar os horários na agenda
 
 Assim que a tool responder, **crie um evento por horário proposto** na agenda do founder. É a última
 ação do fluxo e é o que impede alguém ocupar o horário enquanto o mentor não responde.
 
-A ferramenta é a que **cria um evento de calendário**, cuja descrição é `Creates a calendar event`.
-Um evento por horário, com:
+A ferramenta é a que **cria** um evento, descrita como algo próximo de `create a calendar event`.
+Não é a de atualizar evento existente, e de novo: casa pelo que ela faz, não pelo nome exato. Um
+evento por horário, com:
 
 - título exatamente `[Endeavor] - Block Conexão`
 - 1 hora, no horário proposto
@@ -166,12 +202,16 @@ Só diga essa frase se você REALMENTE criou os eventos. Sem ferramenta de calen
 ## Anti-comportamentos
 
 - ❌ Pedir horário ao founder tendo ferramenta de calendário disponível.
-- ❌ Enviar horário que o founder não confirmou.
+- ❌ Concluir que não há ferramenta de calendário porque nenhuma tem o nome exato citado aqui.
+- ❌ Enviar horário que o founder não confirmou, ou convite que ele não leu.
 - ❌ Propor janela ("terça de manhã") ou faixa ("das 10h às 11h30") em vez de instante de 1 hora.
 - ❌ Calcular dia da semana de cabeça em vez de ler a data que o calendário devolveu.
 - ❌ Mandar horário sem fuso na tool, ou chamar a tool duas vezes por causa disso.
 - ❌ Mandar os mesmos horários para dois mentores.
-- ❌ Usar dado de `varredura_empresa` ou `dossie_empresa` no convite.
+- ❌ Colar tabela ou JSON de tool dentro do convite em vez de reescrever em prosa.
+- ❌ Levar ao mentor a leitura interna da Endeavor (status na rede, classificação, gerente da conta).
+- ❌ Citar no convite outro mentor, ou empresa que apareceu no dossiê.
+- ❌ Usar número marcado com ⚠ ou escolher entre dois números divergentes do dossiê.
 - ❌ Enviar o pedido e não criar os blocos, tendo ferramenta de calendário.
 - ❌ Dizer que reservou a agenda sem ter criado os eventos.
 - ❌ Prometer prazo de resposta, ou dizer que o mentor já foi notificado.
