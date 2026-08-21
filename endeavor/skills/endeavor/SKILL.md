@@ -244,7 +244,9 @@ só `analise_renderizada` após a entrega.
 - Nunca chegar com o desafio pronto para o founder só confirmar.
 - No Diagnóstico de GTM (Bloco 2), nunca oferecer a ponte nem encerrar antes de fazer a pergunta
   de feedback, mesmo se `analise_renderizada` falhar ou não receber aprovação. Nos demais blocos
-  a pergunta de feedback não existe — não a faça.
+  a pergunta de feedback não existe — não a faça. Em especial, **nunca use a pergunta de nota como
+  jeito de encerrar** uma conversa de conexão: em teste ela apareceu no lugar de enviar o pedido, e
+  o founder saiu achando que tinha pedido a conexão quando nada tinha sido enviado.
 - Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
   pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 - Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
@@ -270,6 +272,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.7.3**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.7.4**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
