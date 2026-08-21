@@ -84,8 +84,10 @@ numerado.
 
 **Apresentação comercial.** Quando o founder quiser vender para alguém da rede, e só quando a
 pessoa vier com `commercial_intro_allowed: true` no resultado, ofereça esse caminho e siga
-`references/scheduling.md`. Para quem vier `false`, o caminho não existe: não mencione e não
-ofereça exceção.
+`references/scheduling.md`. Quando a chave **não aparece** (o caso da maioria), o caminho comercial
+não existe para essa pessoa, e isso não diz NADA sobre conexão de mentoria: síncrona e assíncrona
+seguem normais. Nunca leia a ausência dessa chave como "essa pessoa não aceita conexão", e nunca
+ofereça trocar de mentor por causa dela.
 
 **Sub-fluxo da conexão assíncrona.** Quando o founder escolher assíncrona:
 1. Garanta a dúvida: se o recorte da busca e a conversa ainda não dizem O QUE ele quer perguntar

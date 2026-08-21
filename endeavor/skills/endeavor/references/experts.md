@@ -154,6 +154,17 @@ por mentor (até 4 por chamada), os caminhos disponíveis como opções (2 a 4, 
 sessão simulada e o que o servidor sinalizou), a explicação curta na descrição de cada opção e
 nenhuma marcada como recomendada. Sem a tool, liste numerado.
 
+**A decisão do formato acontece AQUI e em nenhum outro lugar.** Antes de montar o menu, olhe o
+bloco `<<<CAPACIDADES>>>` do resultado do match e veja se o mentor escolhido está nele.
+
+- **Está** → o menu tem 4 opções, com a apresentação comercial entrando como a quarta.
+- **Não está** → o menu tem 3 opções e a apresentação comercial NÃO EXISTE nesta conversa. Não
+  mencione, não pergunte se é comercial, não use `format: commercial_intro`. O founder pediu uma
+  mentoria; qualquer outra leitura é sua invenção.
+
+Depois que o founder escolher, o formato está decidido. Não volte a perguntar sobre isso, e não
+troque de formato no meio do fluxo de horários.
+
 1. **Conexão síncrona (conversa ao vivo).** Eu olho sua agenda, chego com três horários e, depois
    que você confirmar, a Endeavor leva o convite ao mentor pelo WhatsApp e fecha a marcação com
    vocês dois. Ao escolher este caminho, siga `references/scheduling.md`.
