@@ -67,7 +67,11 @@ que não deixa dúvida do que acontece. Você **lista e confirma; NÃO sugere** 
 `AskUserQuestion` estiver disponível, use-a SEMPRE para este menu: uma pergunta por mentor (até 4
 por chamada), os caminhos disponíveis como opções (2 ou 3, conforme o catálogo de sessão simulada),
 a explicação curta na descrição de cada opção e nenhuma marcada como recomendada. Sem a tool, liste
-numerado.
+numerado em texto.
+
+**A lista abaixo é fechada.** São esses os caminhos que existem, com esses nomes e essa mecânica.
+Não invente formato ("uma intro", "eu levo sua pergunta e trago a resposta dele"), não prometa
+mecânica que não está escrita aqui, e não ofereça quatro opções quando existem três.
 
 1. **Conexão ao vivo.** Eu olho sua agenda, chego com três horários e, depois que você confirmar,
    a Endeavor leva o convite ao mentor pelo WhatsApp e fecha a marcação com vocês dois. Ao escolher
