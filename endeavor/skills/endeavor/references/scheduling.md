@@ -102,10 +102,10 @@ O link do site da empresa entra como URL crua, em linha própria antes do pedido
 renderiza link com texto, então nome entre colchetes vira lixo na tela. Não link o mentor: ele é
 quem recebe a mensagem.
 
-**De onde vem o conteúdo.** Além do que o founder falou e do resultado curado do match, você **pode
-e deve** usar o que a Endeavor já sabe sobre a empresa dele: `varredura_empresa` e `dossie_empresa`
-têm o que a empresa faz, estágio, porte, captação, mercado e o histórico do desafio. Isso é o que faz
-o convite ter lastro em vez de ficar genérico. A amarra é o desafio: o dado entra porque explica
+**De onde vem o conteúdo.** Além do que o founder falou e do resultado curado do match, use o que a
+Endeavor já sabe sobre a empresa dele. A `varredura_empresa` e o `dossie_empresa` têm o que a empresa
+faz, estágio, porte, captação, mercado e o histórico do desafio, e é isso que dá lastro ao convite em
+vez de deixá-lo genérico. A amarra é o desafio: o dado entra porque explica
 POR QUE esta conversa faz sentido agora, não como currículo.
 
 O parágrafo do **"por que ele"** é a única exceção: ele sai do resultado curado do match, não do
