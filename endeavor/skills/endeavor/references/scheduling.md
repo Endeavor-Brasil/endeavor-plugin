@@ -266,8 +266,8 @@ o próximo mentor:
 - A Endeavor leva o convite pro WhatsApp do [Mentor]
 - Ele pode aceitar um dos horários ou avisar que não consegue
 - A partir daí a marcação corre por lá, e a confirmação chega no seu WhatsApp
-- Deixei os três horários reservados na sua agenda como `[Endeavor] - Block Conexão`, é só um save
-  the date, pode apagar quando ele escolher um
+- Deixei os três horários reservados na sua agenda como `[Endeavor] - Block Conexão`
+- É só um save the date, pode apagar quando ele escolher um
 ```
 
 A última linha só entra se você REALMENTE criou os eventos. Sem ferramenta de calendário, troque por:
