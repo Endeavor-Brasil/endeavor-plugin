@@ -1,7 +1,7 @@
 {
   "name": "endeavor",
   "displayName": "Endeavor",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "Concierge de Go-to-Market da Endeavor: menu unico /endeavor organizado pela jornada do founder (proxima e ultima conexao, cronograma, meus dados), desafios de negocio (experts, diagnostico) e exploracao da rede (busca, radar proativo).",
   "author": {
     "name": "Endeavor",
