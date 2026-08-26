@@ -263,14 +263,12 @@ só `analise_renderizada` após a entrega.
   resultado (artifact do diagnóstico ou lista do match) ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
   `avaliacao` é uma nota inteira de 1 a 5; `comentario` é opcional. Chame somente após o founder
-<<<<<<< Updated upstream
   informar a nota explicitamente; nunca a infira. A pergunta de feedback é exclusiva do Bloco 2.
-=======
-  informar a nota explicitamente; nunca a infira.
-- `agendar_conexao(empresa, disponibilidade, observacao?, mentor_nome, mentor_email?)`: cria o
-  pedido de agendamento e aciona o time em segundo plano. Devolve confirmação de que o pedido
-  foi registrado, não de que o mentor já foi notificado. Fluxo em `references/agendamento.md`.
->>>>>>> Stashed changes
+- `agendar_conexao(empresa, disponibilidade, mentor_nome, convite?, observacao?, mentor_email?, job_id?)`:
+  cria o pedido de conexão ao vivo e aciona o time em segundo plano. Devolve confirmação de que o
+  PEDIDO foi registrado, não de que o mentor já foi notificado. `disponibilidade` são 2 a 5
+  horários em ISO 8601 com fuso explícito (`2026-08-26T14:00:00-03:00`); sem fuso a tool recusa.
+  `convite` é a mensagem de WhatsApp pronta para o mentor. Fluxo em `references/scheduling.md`.
 
 ## Guardrails e anti-comportamentos
 
@@ -281,7 +279,9 @@ só `analise_renderizada` após a entrega.
 - Nunca chegar com o desafio pronto para o founder só confirmar.
 - No Diagnóstico de GTM (Bloco 2), nunca oferecer a ponte nem encerrar antes de fazer a pergunta
   de feedback, mesmo se `analise_renderizada` falhar ou não receber aprovação. Nos demais blocos
-  a pergunta de feedback não existe — não a faça.
+  a pergunta de feedback não existe — não a faça. Em especial, **nunca use a pergunta de nota como
+  jeito de encerrar** uma conversa de conexão: em teste ela apareceu no lugar de enviar o pedido, e
+  o founder saiu achando que tinha pedido a conexão quando nada tinha sido enviado.
 - Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
   pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 - Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
@@ -298,12 +298,15 @@ só `analise_renderizada` após a entrega.
 | `references/buscar-rede.md`    | Ao entrar em Buscar a rede (Bloco 3)          |
 | `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
-<<<<<<< Updated upstream
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
+| `references/scheduling.md`     | Ao founder escolher conexão ao vivo (dentro do Bloco 1 ou 3) |
 
 Os Blocos 6 (Minha agenda) e 7 (Radar proativo) não têm reference próprio: são fluxos curtos,
 conduzidos por este arquivo. Reference é para fluxo longo com regras críticas, ou, no caso do
 Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
-=======
-| `references/agendamento.md`    | Ao founder escolher conexão síncrona (dentro do Bloco 1) |
->>>>>>> Stashed changes
+
+## Versão desta skill
+
+Esta skill é a **0.7.4**. Se alguém perguntar qual versão você carregou, responda com esse número e
+nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
+uma cópia em cache.
