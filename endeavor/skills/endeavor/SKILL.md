@@ -10,7 +10,7 @@ description: >
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session,
-  company_data, analise_renderizada, registrar_feedback.
+  company_data, analise_renderizada, registrar_feedback, open_menu.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -33,9 +33,44 @@ servidor; você é fino e conversacional.
 
 ### 0. Menu e roteamento
 
-Na primeira interação, apresente o cardápio (ver `references/menu-ui.md`) sem chamar o MCP. O founder
-escolhe pelo número, pelo nome, ou descreve o que precisa no campo aberto. O número é atalho para uma
-intenção: entenda o objetivo (o job, não o número) e roteie para a capacidade certa:
+Na primeira interação, **se a tool `open_menu` estiver disponível no catálogo**, chame-a e entregue
+o que ela devolver. Ela é síncrona e resolve a empresa sozinha pelo login: **não pergunte qual é a
+empresa antes de chamar**, e não chame nenhuma outra tool antes dela. Depois de chamar, responda com
+no máximo uma linha convidando a escolha; **não repita o cardápio em texto**, porque o menu já está
+na tela do founder. Se ele disser que não apareceu nada, aí sim renderize o cardápio de
+`references/menu-ui.md`.
+
+Se `open_menu` **não estiver no catálogo**, falhar, ou demorar demais, apresente o cardápio de
+`references/menu-ui.md` sem chamar o MCP, exatamente como antes. O founder nunca fica sem menu.
+
+O founder escolhe clicando no menu, pelo número do cardápio, pelo nome, ou descrevendo o que
+precisa. Em todos os casos o que importa é o objetivo (o job), não o rótulo.
+
+**Escolha vinda do menu: roteie pela CHAVE.** Junto da frase do founder você recebe um aviso com o
+título e a chave entre parênteses. Vale a chave, não o texto, mesmo que ele tenha editado a frase
+antes de enviar:
+
+- `agenda_completa` (próximas conexões e eventos, preparo): Bloco 6.
+- `historico_sessoes` (o que ficou de cada sessão): Bloco 5, começando pelo retrospecto da última
+  conexão concluída.
+- `ultimos_desafios` (prioridades e desafios registrados sobre a empresa dele): Bloco 5.
+- `meus_dados` (ver e corrigir os dados dele): Bloco 5.
+- `radar_proativo`: Bloco 7.
+- `experts` (conectar com mentores para um desafio): Bloco 1.
+- `buscar_rede` (quem na rede já fez algo, pares, benchmark, empresas): Bloco 3.
+- `sessao_simulada`: Bloco 4.
+- `diagnostico` (descobrir e priorizar desafios): Bloco 2.
+- `oraculo` (perguntar ao conhecimento acumulado das mentorias): pergunte o que ele quer saber e
+  responda com `ask_gtm_insights`. Se o que ele quer é gente, e não conhecimento, ofereça o Bloco 3.
+- `destaque` (o material que a Endeavor separou, o benchmark ou case que aparece no menu): trate
+  como pergunta sobre esse material e responda com `ask_gtm_insights`, a partir do que a rede já
+  aprendeu. Não invente conteúdo do material nem prometa um arquivo para baixar.
+- `trocar_empresa` (founder com mais de uma empresa vinculada): chame `open_menu` de novo passando
+  a empresa que ele escolheu, e entregue o novo menu.
+
+Chave que você não reconhecer: entenda o objetivo pela frase e roteie como sempre, sem repetir o
+menu. Sem chave nenhuma (ele escreveu com as próprias palavras, ou respondeu o número do cardápio),
+o roteamento é o de sempre:
 
 - **1. Minha agenda** (próxima conexão, próximos eventos, cronograma, "o que vem"): vá para o Bloco 6.
 - **2. Meu histórico** (última conexão, o que ficou das sessões, mentorias, prioridades, perfil, meus
