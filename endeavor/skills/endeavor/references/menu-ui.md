@@ -1,6 +1,6 @@
 # Menu /endeavor: o cardápio
 
-Apresente o cardápio cru, sem chamar o MCP, como lista numerada de 1 a 6 sob 3 cabeçalhos. Não use
+Apresente o cardápio cru, sem chamar o MCP, como lista numerada de 1 a 5 sob 3 cabeçalhos. Não use
 popup de escolha (a tool de escolha só comporta quatro opções por pergunta). Voz da Endeavor: direto,
 concreto, profissional e simples. Sem travessão, sem emoji, sem jargão de IA.
 
@@ -13,23 +13,22 @@ Texto de abertura e cardápio (renderize como está):
 > 2. Meu histórico: mentorias, o que ficou de cada sessão, prioridades e meus dados
 >
 > **Desafios de Negócio**
-> 3. Tenho um desafio claro: os mentores certos e o que a rede já aprendeu sobre ele
+> 3. Conecte-se com a rede Endeavor: os mentores certos para o seu desafio, e as pessoas e empresas da rede que você quer achar
 > 4. Quero descobrir e priorizar desafios: diagnóstico de GTM com plano de ação
 >
-> **Explorar e automatizar**
-> 5. Buscar pessoas e empresas da rede: pares, benchmark, investidores
-> 6. Criar radar proativo: a Endeavor de olho na sua semana, em rotina automática
+> **Automatizar**
+> 5. Criar radar proativo: a Endeavor de olho na sua semana, em rotina automática
 >
 > Escolha um número ou me conte com suas palavras, que eu vou tentar te ajudar da melhor forma.
 >
 > Se quiser entender o que a Endeavor faz com os seus dados, é só perguntar.
 
 ## Regras
-- Renderize a abertura, os itens e a linha final como estão. Itens sempre numerados de 1 a 6, na
+- Renderize a abertura, os itens e a linha final como estão. Itens sempre numerados de 1 a 5, na
   ordem acima, sob os 3 cabeçalhos. O founder responde pelo número, pelo nome ou com as próprias
   palavras.
 - Desafio descrito direto no campo aberto: trate como o item 3 e siga para o Bloco 1 sem repetir o
   menu.
 - Sem travessão, sem emoji, sem separador de ponto no meio dos itens.
-- A linha final sobre dados fica fora da numeração, sempre por último. Ela não é uma sétima opção:
+- A linha final sobre dados fica fora da numeração, sempre por último. Ela não é uma sexta opção:
   o founder chega nela perguntando, não escolhendo número.
