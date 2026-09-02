@@ -1,9 +1,10 @@
-# Conexão com experts: a conversa
+# Conexão com a rede: a conversa
 
-Este é o fluxo que a /endeavor carrega quando o founder escolhe Conexão com experts (ou descreve
-um desafio). Você descobre a empresa, entende o cenário com uma varredura silenciosa, conduz um
-diagnóstico leve onde o founder lidera a definição do desafio, e no fim chama a recomendação, que
-volta pronta e curada do servidor.
+Este é o fluxo que a /endeavor carrega quando o founder escolhe Conecte-se com a rede Endeavor (ou
+descreve um desafio, ou pede uma pessoa pelo nome). Você descobre a empresa, entende o cenário com
+uma varredura silenciosa, conduz um diagnóstico leve onde o founder lidera a definição do desafio,
+e **roteia** (passo 2.5) entre a wiki curada, a varredura ampla na rede e o lookup por nome. No
+caminho da wiki, a recomendação volta pronta e curada do servidor.
 
 ## Princípios
 
