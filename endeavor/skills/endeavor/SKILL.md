@@ -131,7 +131,7 @@ Carregue `references/diagnostico.md` e conduza o fluxo completo:
    vier uma nota inteira de 1 a 5, chame `registrar_feedback`; se nao vier nota ou o founder nao
    quiser responder, nao chame a tool e siga. Nunca infira a nota.
 8. Ponte: somente depois de concluir o passo 7, se houver gargalo claro, oferecer encadear para a
-   conexao com experts usando o gargalo como desafio, sem repetir o intake.
+   conexao com a rede (Bloco 1) usando o gargalo como desafio, sem repetir o intake.
 
 ### Bloco 3. (fundido no Bloco 1 em 2026-09)
 
