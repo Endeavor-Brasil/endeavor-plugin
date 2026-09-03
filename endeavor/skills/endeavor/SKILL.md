@@ -56,12 +56,11 @@ antes de enviar:
 - `ultimos_desafios` (prioridades e desafios registrados sobre a empresa dele): Bloco 5.
 - `meus_dados` (ver e corrigir os dados dele): Bloco 5.
 - `radar_proativo`: Bloco 7.
-- `experts` (conectar com mentores para um desafio): Bloco 1.
-- `buscar_rede` (quem na rede já fez algo, pares, benchmark, empresas): Bloco 3.
+- `experts` (conectar com pessoas e empresas da rede, para um desafio ou para achar alguém): Bloco 1.
 - `sessao_simulada`: Bloco 4.
 - `diagnostico` (descobrir e priorizar desafios): Bloco 2.
 - `oraculo` (perguntar ao conhecimento acumulado das mentorias): pergunte o que ele quer saber e
-  responda com `ask_gtm_insights`. Se o que ele quer é gente, e não conhecimento, ofereça o Bloco 3.
+  responda com `ask_gtm_insights`. Se o que ele quer é gente, e não conhecimento, ofereça o Bloco 1.
 - `destaque` (o material que a Endeavor separou, o benchmark ou case que aparece no menu): trate
   como pergunta sobre esse material e responda com `ask_gtm_insights`, a partir do que a rede já
   aprendeu. Não invente conteúdo do material nem prometa um arquivo para baixar.
@@ -76,10 +75,10 @@ o roteamento é o de sempre:
 - **2. Meu histórico** (última conexão, o que ficou das sessões, mentorias, prioridades, perfil, meus
   dados): vá para o Bloco 5. Sem recorte específico, comece pelo retrospecto da última conexão
   concluída, como descrito no Bloco 5.
-- **3. Tenho um desafio claro** (ou um desafio em que quer ajuda de um mentor): vá para o Bloco 1.
+- **3. Conecte-se com a rede Endeavor** (um desafio em que quer ajuda de um mentor, ou pessoas e
+  empresas da rede que ele quer achar): vá para o Bloco 1.
 - **4. Quero descobrir e priorizar desafios** (ou "diagnóstico"): vá para o Bloco 2.
-- **5. Buscar pessoas e empresas da rede** (pares, benchmark, investidores, M&A): vá para o Bloco 3.
-- **6. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
+- **5. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
 - Pedido direto para conversar/treinar com um mentor específico ("quero conversar com o Bazzi"): vá
   para o Bloco 4, como hoje.
 - Pergunta sobre dados, privacidade, confidencialidade, LGPD, segurança, quem tem acesso, o que os
@@ -90,13 +89,18 @@ o roteamento é o de sempre:
 Se o founder descrever um desafio direto no campo aberto, trate como o item 3 e siga para o Bloco 1
 sem repetir o menu.
 
-### Bloco 1. Conexão com experts
+### Bloco 1. Conexão com a rede
 
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
-silenciosa, Q&A adaptativo, afunilar a intenção, buscar os mentores, explorar a lista, montar o
-carrinho e, depois de escolher com quem falar, apresentar os três caminhos (síncrona, assíncrona,
-simular) e fechar o plano. Neste bloco NÃO há pergunta de feedback: logo após os 3 mentores vem o
-convite para escolher ou explorar, como manda `references/experts.md`.
+silenciosa, abertura contextual, **rotear** (passo 2.5), e daí seguir o caminho que o roteador
+escolheu.
+
+Quando o roteador mandar para a **rede ampla** ou para o **lookup**, carregue TAMBÉM
+`references/buscar-rede.md`: é ele que descreve a apresentação e os caminhos de conexão desse lado.
+Quando mandar para a **wiki**, siga o `experts.md` até o fim.
+
+Neste bloco NÃO há pergunta de feedback. Logo após os 3 nomes vem o convite para escolher, explorar
+ou dizer que nenhum serve, como manda o `references/experts.md`.
 
 ### Bloco 2. Diagnóstico de GTM
 
@@ -129,18 +133,10 @@ Carregue `references/diagnostico.md` e conduza o fluxo completo:
 8. Ponte: somente depois de concluir o passo 7, se houver gargalo claro, oferecer encadear para a
    conexao com experts usando o gargalo como desafio, sem repetir o intake.
 
-### Bloco 3. Buscar a rede
+### Bloco 3. (fundido no Bloco 1 em 2026-09)
 
-Carregue `references/buscar-rede.md`. Receba a pergunta do founder sobre quem na rede já fez algo,
-tem experiência em um tema, ou sobre **empresas da rede** (pares, benchmark, concorrentes, turma do
-Scale-Up). Chame a tool `buscar_rede(pergunta)` com a pergunta em texto livre — é **síncrona** e
-devolve **JSON** na mesma chamada (sem job_id, sem polling), com `mentores` e/ou `empresas` (a tool
-infere o alvo sozinha). Se o recorte depender do perfil do founder (pares, benchmark), escreva esse
-perfil dentro da pergunta. Raciocine sobre o JSON e apresente os perfis seguros. A introdução de
-qualquer mentor ao founder é sempre via Endeavor. Quando o founder quiser falar com um mentor que
-apareceu, apresente os caminhos de conexão (síncrona, assíncrona e, se o mentor tiver sessão
-simulada, simular) e feche o plano {quem, ângulo, tipo}; para pessoa de empresa, o caminho é o
-repasse à Endeavor — tudo conforme `references/buscar-rede.md`.
+Buscar a rede deixou de ser um bloco separado: virou um dos destinos do roteador do Bloco 1. O
+número fica reservado para não quebrar as referências cruzadas do resto do arquivo.
 
 ### Bloco 4. Sessão simulada com um mentor
 
@@ -247,7 +243,9 @@ só `analise_renderizada` após a entrega.
 - `buscar_rede(pergunta)`: **síncrona**. Recebe a pergunta do founder em texto livre e devolve
   **JSON** com `mentores` e/ou `empresas` da rede (com LinkedIn) na mesma chamada — sem `job_id`;
   a tool infere o alvo sozinha. Não recebe a empresa do founder: contexto de pares/benchmark vai
-  escrito na pergunta. Fluxo em `references/buscar-rede.md`.
+  escrito na pergunta. Fluxo em `references/buscar-rede.md`. Aceita também `tema` (`gtm` |
+  `fundraising` | `outro`) e `motivo` (`direto` | `cascata` | `lookup` | `empresa`), opcionais, só
+  de telemetria do roteador: preencha sempre que a chamada vier do Bloco 1.
 - `company_data(empresa, pergunta)`: **síncrona**. Pergunta em texto livre sobre os dados da
   PRÓPRIA empresa; devolve JSON com os resultados na mesma chamada — sem `job_id`. O servidor
   garante o escopo (só a empresa autorizada; giveback só do usuário logado). Fluxo em
@@ -293,9 +291,9 @@ só `analise_renderizada` após a entrega.
 | ------------------------------ | --------------------------------------------- |
 | `references/menu-ui.md`        | Ao montar o cardápio (passo 0)                |
 | `references/diagnostico.md`    | Ao entrar em Diagnóstico de GTM (Bloco 2)     |
-| `references/experts.md`        | Ao entrar em Conexão com experts (Bloco 1)    |
+| `references/experts.md`        | Ao entrar em Conexão com a rede (Bloco 1)     |
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
-| `references/buscar-rede.md`    | Ao entrar em Buscar a rede (Bloco 3)          |
+| `references/buscar-rede.md`    | Ao roteador escolher rede ampla ou lookup (dentro do Bloco 1) |
 | `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
@@ -307,6 +305,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.7.4**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.8.1**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
