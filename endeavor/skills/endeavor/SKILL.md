@@ -9,8 +9,9 @@ description: >
   dados", "isso é seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
-  varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede, mentor_session,
-  company_data, analise_renderizada, registrar_feedback, open_menu.
+  varredura_empresa, dossie_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede,
+  mentor_session, company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
+  registrar_feedback, open_menu.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -305,6 +306,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.8.2**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.8.3**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
