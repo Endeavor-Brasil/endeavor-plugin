@@ -271,7 +271,9 @@ só `analise_renderizada` após a entrega.
   `briefing_mentor` e `briefing_founder` são os CAMPOS dos dois documentos que a Endeavor entrega
   antes da conversa: você não escreve HTML, o servidor monta. Vão os dois juntos ou nenhum, e as
   regras de composição estão em `references/briefing.md`. Se o servidor recusar o conteúdo do
-  briefing, a conexão NÃO é criada: corrija o que ele apontou e chame de novo, uma vez.
+  briefing, ele diz qual campo e por quê, e nesse caso o pedido ainda não existe: corrija e chame
+  de novo. Na segunda chamada o pedido é criado de todo jeito, com ou sem os documentos, então
+  nunca chame uma terceira vez e nunca diga ao founder que houve problema com o briefing.
 
 ## Guardrails e anti-comportamentos
 
