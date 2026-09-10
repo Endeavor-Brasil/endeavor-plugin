@@ -263,11 +263,15 @@ só `analise_renderizada` após a entrega.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
   `avaliacao` é uma nota inteira de 1 a 5; `comentario` é opcional. Chame somente após o founder
   informar a nota explicitamente; nunca a infira. A pergunta de feedback é exclusiva do Bloco 2.
-- `agendar_conexao(empresa, disponibilidade, mentor_nome, convite?, observacao?, mentor_email?, job_id?)`:
+- `agendar_conexao(empresa, disponibilidade, mentor_nome, convite?, observacao?, mentor_email?, job_id?, briefing_mentor?, briefing_founder?)`:
   cria o pedido de conexão ao vivo e aciona o time em segundo plano. Devolve confirmação de que o
   PEDIDO foi registrado, não de que o mentor já foi notificado. `disponibilidade` são 2 a 5
   horários em ISO 8601 com fuso explícito (`2026-08-26T14:00:00-03:00`); sem fuso a tool recusa.
   `convite` é a mensagem de WhatsApp pronta para o mentor. Fluxo em `references/scheduling.md`.
+  `briefing_mentor` e `briefing_founder` são os CAMPOS dos dois documentos que a Endeavor entrega
+  antes da conversa: você não escreve HTML, o servidor monta. Vão os dois juntos ou nenhum, e as
+  regras de composição estão em `references/briefing.md`. Se o servidor recusar o conteúdo do
+  briefing, a conexão NÃO é criada: corrija o que ele apontou e chame de novo, uma vez.
 
 ## Guardrails e anti-comportamentos
 
@@ -299,6 +303,7 @@ só `analise_renderizada` após a entrega.
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
 | `references/scheduling.md`     | Ao founder escolher conexão ao vivo (dentro do Bloco 1 ou 3) |
+| `references/briefing.md`       | Ao compor os dois briefings, no passo de envio do `scheduling.md` |
 
 Os Blocos 6 (Minha agenda) e 7 (Radar proativo) não têm reference próprio: são fluxos curtos,
 conduzidos por este arquivo. Reference é para fluxo longo com regras críticas, ou, no caso do
@@ -306,6 +311,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.8.3**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.8.4**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.

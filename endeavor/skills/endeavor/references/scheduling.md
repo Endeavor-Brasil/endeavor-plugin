@@ -218,7 +218,12 @@ disponibilidade:  [<ISO 8601 com fuso EXPLÍCITO>, ...]
 convite:          <o texto escrito no passo 3, que o founder autorizou pelo resumo>
 observacao:       <preferência de horário do founder, se ele disse alguma>
 job_id:           <o job do match que gerou a lista, se veio de um match>
+briefing_mentor:  <os campos do documento do mentor, ver references/briefing.md>
+briefing_founder: <os campos do documento do founder, ver references/briefing.md>
 ```
+
+Junto do convite, componha os dois briefings e mande nos campos `briefing_mentor` e
+`briefing_founder`. As regras estão em `references/briefing.md`.
 
 **O formato do horário é rígido e o servidor recusa o resto.** Cada item precisa de fuso explícito,
 assim: `2026-08-26T14:00:00-03:00`. Não mande `"Quarta 10h"`, nem `"2026-08-26 10:00"`, nem
