@@ -11,7 +11,7 @@ compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede,
   mentor_session, company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
-  registrar_feedback, open_menu.
+  registrar_feedback, open_menu, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -241,10 +241,15 @@ menu dele. Se ele quiser outro, chame `acao: "atualizar"` com `campos: { "title"
 Chame `priority` com `acao: "propor"`, passando `desafio_id` e a fala dele em `fala`. Você NÃO
 decide o que mudou: o servidor lê a fala e devolve a proposta.
 
+A resposta traz `alteracoes` (cada uma com `campo`, `tipo` e o `texto` novo), `campos` (o MESMO
+conteúdo já no formato que o `atualizar` espera), `precisa_confirmar` e `observacao`. Você LÊ
+`alteracoes` para escrever a frase de confirmação — é lá que está o `tipo` de cada mudança — e
+DEVOLVE `campos` sem mexer.
+
 | A proposta veio | O que fazer |
 | --- | --- |
-| Só `acrescimo` | `acao: "atualizar"` direto, com os `campos` que vieram. Uma linha depois do fato: "Anotei." |
-| Qualquer `contradicao` (`precisa_confirmar: true`) | Confirme ANTES, **numa frase, sem nomear campo**. Só com o sim vem o `atualizar`, aí com `confirmado: true`. |
+| Só `acrescimo` | `acao: "atualizar"` direto, passando o `campos` que veio. Uma linha depois do fato: "Anotei." |
+| Qualquer `contradicao` (`precisa_confirmar: true`) | Confirme ANTES, **numa frase, sem nomear campo**. Só com o sim vem o `atualizar`, com o mesmo `campos` e `confirmado: true`. |
 | Lista de alterações vazia | NÃO chame `atualizar`. Siga a conversa usando a `observacao` que veio. |
 
 Exemplo de confirmação boa, para uma fala que corrigiu duas coisas de uma vez: "Entendi que ABM
