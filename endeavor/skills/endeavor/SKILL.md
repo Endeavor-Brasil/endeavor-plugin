@@ -65,8 +65,18 @@ antes de enviar:
 - `destaque` (o material que a Endeavor separou, o benchmark ou case que aparece no menu): trate
   como pergunta sobre esse material e responda com `ask_gtm_insights`, a partir do que a rede já
   aprendeu. Não invente conteúdo do material nem prometa um arquivo para baixar.
+- `priority:<id>` (o founder clicou num desafio do menu e quer seguir para conexões): Bloco 1,
+  carregando `references/experts.md`. O aviso traz também `theme` e `rank`: repasse os dois para
+  a tool do fluxo, é assim que a conversão por desafio é medida.
+- `criar_priority`: Bloco 9.
+- `atualizar_priority:<id>` e `arquivar_priority:<id>`: Bloco 9.
 - `trocar_empresa` (founder com mais de uma empresa vinculada): chame `open_menu` de novo passando
   a empresa que ele escolheu, e entregue o novo menu.
+
+**Chaves do menu anterior.** `ultimos_desafios` e `radar_proativo` continuam roteando como sempre
+(Bloco 5 e Bloco 7). O host cacheia o widget POR URI e não revalida: founder que já tem o menu
+anterior na tela vai continuar mandando essas chaves por tempo indeterminado, e nem reconectar o
+conector invalida. Remover qualquer uma delas quebra quem ainda não recarregou.
 
 Chave que você não reconhecer: entenda o objetivo pela frase e roteie como sempre, sem repetir o
 menu. Sem chave nenhuma (ele escreveu com as próprias palavras, ou respondeu o número do cardápio),
@@ -204,6 +214,58 @@ verbatim acontece só a pedido dele. Pergunta que o documento não cobre: diga q
 time da Endeavor, nunca invente. Pedido de exclusão: encaminhe ao contato de relacionamento, sem
 dizer que registrou nem que apagou. Sem pergunta de feedback e sem `analise_renderizada` aqui.
 
+### Bloco 9. Meus desafios
+
+Três fluxos, todos pela tool `priority`: registrar um desafio novo, atualizar um que já existe, e
+arquivar. **A palavra que o founder lê é sempre "desafio"** — nunca "prioridade", "priority",
+"campo" ou "registro".
+
+**9.1 Registrar um desafio novo** (`criar_priority`, ou o founder pedindo para registrar)
+
+Anuncie assim, verbatim:
+
+> Para registrar um desafio novo eu preciso de quatro coisas: o que está travando, o que muda se
+> isso for resolvido, o que vocês já tentaram, e o que você perguntaria para alguém que já passou
+> por isso. Leva uns três minutos. Vamos?
+
+Uma pergunta por turno, em texto livre — não ofereça alternativas nem peça para ele escolher de uma
+lista. Depois das quatro, uma quinta pergunta curta de nível ("isso é o que mais trava hoje, ou dá
+pra esperar?"). Só então chame `priority` com `acao: "criar"`, passando as quatro respostas em
+`respostas` e a fala de nível em `respostas.prioridade`.
+
+O título volta na resposta: **confirme com o founder**, porque é o texto que vai aparecer no card do
+menu dele. Se ele quiser outro, chame `acao: "atualizar"` com `campos: { "title": "<o dele>" }`.
+
+**9.2 Atualizar um desafio** (`atualizar_priority:<id>`, ou o founder falando sobre um que existe)
+
+Chame `priority` com `acao: "propor"`, passando `desafio_id` e a fala dele em `fala`. Você NÃO
+decide o que mudou: o servidor lê a fala e devolve a proposta.
+
+| A proposta veio | O que fazer |
+| --- | --- |
+| Só `acrescimo` | `acao: "atualizar"` direto, com os `campos` que vieram. Uma linha depois do fato: "Anotei." |
+| Qualquer `contradicao` (`precisa_confirmar: true`) | Confirme ANTES, **numa frase, sem nomear campo**. Só com o sim vem o `atualizar`, aí com `confirmado: true`. |
+| Lista de alterações vazia | NÃO chame `atualizar`. Siga a conversa usando a `observacao` que veio. |
+
+Exemplo de confirmação boa, para uma fala que corrigiu duas coisas de uma vez: "Entendi que ABM
+nunca entrou e que o gatilho foi a análise de ICP do seu cofounder, não a troca do CMO. Corrijo
+assim?"
+
+Grave exatamente o texto que voltou na proposta e que ele aprovou.
+
+**9.3 Arquivar** (`arquivar_priority:<id>`)
+
+Sem entrevista e sem proposta. Uma frase de confirmação — "Vou tirar esse desafio da sua tela. Ele
+não é apagado, e a gente pode trazer de volta." — e então `acao: "arquivar"`.
+
+**Guardrails deste bloco**
+
+- Nunca diga "campo", "registro", "priority" ou "prioridade" ao founder. A palavra é **desafio**.
+- Nunca pergunte qual campo ele quer mudar. Ele fala, o servidor entende.
+- Nunca reescreva o texto que a tool devolveu antes de gravar.
+- Nunca crie um desafio a partir de conversa solta. Criação exige a entrevista.
+- Arquivar não apaga. Diga isso ao confirmar.
+
 ### Telemetria (entrega e feedback)
 
 Só registram sinal e não disparam análise. As chamadas são silenciosas, sem narrar a telemetria
@@ -258,6 +320,12 @@ só `analise_renderizada` após a entrega.
   com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack, roteiro interno do
   roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
   `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`.
+- `priority(empresa, acao, desafio_id?, respostas?, fala?, campos?, versao?, confirmado?)`:
+  **síncrona**. Lê, cria, atualiza ou arquiva um desafio registrado da empresa do founder. `acao`
+  é `listar` | `criar` | `propor` | `atualizar` | `arquivar` | `desarquivar`. `listar` devolve as
+  fichas inteiras, com as mentorias que cada desafio gerou; `criar` EXIGE as quatro respostas da
+  entrevista; `propor` lê a fala do founder e devolve a proposta de alteração **sem gravar**.
+  Nada é apagado: arquivar é reversível com `desarquivar`. Fluxo no Bloco 9.
 - `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir o
   resultado (artifact do diagnóstico ou lista do match) ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
@@ -306,6 +374,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.8.3**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.0**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
