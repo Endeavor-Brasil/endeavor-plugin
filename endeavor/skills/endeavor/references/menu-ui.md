@@ -5,6 +5,10 @@
 **Caso A — o `open_menu` respondeu, mas o host não renderiza widget.** A tool devolve, além do
 payload, um cardápio em TEXTO já pronto, e ele **já lista os desafios do founder numerados no
 topo**, com as portas continuando a numeração (se ele tem 3 desafios, as portas vão de 4 a 8).
+Depois das portas ele traz o bloco **Sua agenda**, com duas seções — **Conexões** e **Eventos**,
+até 3 linhas em cada, no mesmo recorte do widget. Seção sem dado leva uma linha honesta em vez de
+sumir, e agenda que não pôde ser lida vira a frase de indisponível: nunca as duas coisas juntas.
+As linhas da agenda **não entram na numeração**, porque são informação e não alvo de escolha.
 **Renderize o texto que a tool devolveu, como está.** Não use o cardápio estático deste arquivo:
 a numeração seria outra, e o founder respondendo "4" cairia no fluxo errado.
 
@@ -13,7 +17,7 @@ com `acao: "listar"`. É degradação aceita — diga ao founder que você abre 
 deixá-lo esperando um clique que naquele host não existe.
 
 **Caso B — o `open_menu` não está no catálogo, falhou, ou demorou demais.** Aí não há desafio
-nenhum para listar (eles vêm no payload da tool), e o cardápio é o de sempre, abaixo.
+nem agenda para listar (os dois vêm no payload da tool), e o cardápio é o de sempre, abaixo.
 
 ---
 
@@ -50,4 +54,7 @@ Texto de abertura e cardápio (renderize como está):
 - A linha final sobre dados fica fora da numeração, sempre por último. Ela não é uma sexta opção:
   o founder chega nela perguntando, não escolhendo número.
 - **As regras acima valem para o caso B.** No caso A quem manda é o texto que a tool devolveu: ele
-  já vem com a abertura, os desafios, as portas renumeradas e a linha final no lugar certo.
+  já vem com a abertura, os desafios, as portas renumeradas, o bloco da agenda e a linha final no
+  lugar certo.
+- O item 1 ("Minha agenda") continua existindo nos dois casos. Ele é a porta para o preparo da
+  próxima conexão, não um jeito de ver a lista: no caso A a lista já está na tela.
