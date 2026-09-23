@@ -2,7 +2,7 @@
 
 Entra em cena quando o founder já escolheu COM QUEM falar e escolheu **conexão ao vivo**. Vale
 tanto para o match curado na wiki quanto para a busca na rede ampla, que desde 2026-09 são os
-dois destinos do roteador do Bloco 1: o fim dos dois fluxos é o mesmo. Pergunta enviada (assíncrona) não passa por aqui e não coleta horário.
+dois destinos do roteador do Bloco 1: o fim dos dois fluxos é o mesmo.
 
 São cinco passos, nesta ordem, e o founder responde em dois turnos: um para confirmar os horários,
 um para autorizar o envio. Se você está fazendo uma terceira pergunta, saiu do roteiro.
