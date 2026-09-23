@@ -11,7 +11,7 @@ compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede,
   mentor_session, company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
-  registrar_feedback, open_menu.
+  registrar_feedback, open_menu, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -65,8 +65,18 @@ antes de enviar:
 - `destaque` (o material que a Endeavor separou, o benchmark ou case que aparece no menu): trate
   como pergunta sobre esse material e responda com `ask_gtm_insights`, a partir do que a rede já
   aprendeu. Não invente conteúdo do material nem prometa um arquivo para baixar.
+- `priority:<id>` (o founder clicou num desafio do menu e quer seguir para conexões): Bloco 1,
+  carregando `references/experts.md`. O aviso traz também `theme` e `rank`: repasse os dois para
+  a tool do fluxo, é assim que a conversão por desafio é medida.
+- `criar_priority`: Bloco 9.
+- `atualizar_priority:<id>` e `arquivar_priority:<id>`: Bloco 9.
 - `trocar_empresa` (founder com mais de uma empresa vinculada): chame `open_menu` de novo passando
   a empresa que ele escolheu, e entregue o novo menu.
+
+**Chaves do menu anterior.** `ultimos_desafios` e `radar_proativo` continuam roteando como sempre
+(Bloco 5 e Bloco 7). O host cacheia o widget POR URI e não revalida: founder que já tem o menu
+anterior na tela vai continuar mandando essas chaves por tempo indeterminado, e nem reconectar o
+conector invalida. Remover qualquer uma delas quebra quem ainda não recarregou.
 
 Chave que você não reconhecer: entenda o objetivo pela frase e roteie como sempre, sem repetir o
 menu. Sem chave nenhuma (ele escreveu com as próprias palavras, ou respondeu o número do cardápio),
@@ -198,11 +208,134 @@ Diga que ele pode ajustar o intervalo e o canal de entrega. Não prometa a autom
 ### Bloco 8. Privacidade e uso de dados
 
 Carregue `references/data-policy.md` e conduza de lá. **Não há chamada de MCP neste bloco**: todo o
-conteúdo está no reference. O default é responder em prosa curta a pergunta que o founder fez,
+conteúdo está no reference.
+
+**Quem vê os desafios registrados.** Esta é a resposta canônica, e é aqui que ela mora (o Bloco 9
+não a dá, de propósito):
+
+> Os desafios da empresa aparecem para os outros founders dela que usam a Endeavor. Um desafio que
+> o founder marcou como só dele não aparece para eles. Em qualquer um dos dois casos, o time da
+> Endeavor continua com o mesmo acesso de sempre, como no resto do produto.
+
+Nunca diga nem sugira que um desafio marcado como "só meu" fica invisível para a Endeavor. O default é responder em prosa curta a pergunta que o founder fez,
 ancorada na seção que a cobre, e oferecer o texto completo uma vez; a entrega integral do corpo
 verbatim acontece só a pedido dele. Pergunta que o documento não cobre: diga que verifica com o
 time da Endeavor, nunca invente. Pedido de exclusão: encaminhe ao contato de relacionamento, sem
 dizer que registrou nem que apagou. Sem pergunta de feedback e sem `analise_renderizada` aqui.
+
+### Bloco 9. Meus desafios
+
+Três fluxos, todos pela tool `priority`: registrar um desafio novo, atualizar um que já existe, e
+arquivar. **A palavra que o founder lê é sempre "desafio"** — nunca "prioridade", "priority",
+"campo" ou "registro".
+
+**9.1 Registrar um desafio novo** (`criar_priority`, ou o founder pedindo para registrar)
+
+Anuncie assim, verbatim:
+
+> Para registrar um desafio novo eu preciso de quatro coisas: o que está travando, o que muda se
+> isso for resolvido, o que vocês já tentaram, e o que você perguntaria para alguém que já passou
+> por isso. Leva uns três minutos. Vamos?
+
+Uma pergunta por turno, em texto livre — não ofereça alternativas nem peça para ele escolher de uma
+lista. Depois das quatro, uma quinta pergunta curta de nível ("isso é o que mais trava hoje, ou dá
+pra esperar?"). Só então chame `priority` com `acao: "criar"`, passando as quatro respostas em
+`respostas` e a fala de nível em `respostas.prioridade`.
+
+**A pergunta de quem vê.** Em empresa com mais de um founder, `acao: "criar"` sem `visibilidade`
+**não grava**: a resposta vem com `precisa_perguntar_visibilidade`, trazendo o enunciado, as duas
+opções e as instruções. Faça a pergunta com `AskUserQuestion`, usando o texto que veio, e chame
+`priority` de novo com `acao: "criar"`, as MESMAS `respostas`, e `visibilidade: "empresa"` ou
+`"pessoal"`.
+
+Quando o campo não vier, **não pergunte nada**: a empresa tem um founder só e não existe de quem
+esconder. O desafio nasce da empresa e pronto.
+
+Regras desta pergunta, que não são estilo:
+
+- Use o enunciado e as descrições **como vieram**. Eles enunciam a regra antes de perguntar, e o
+  founder precisa saber que o padrão é compartilhado antes de escolher.
+- Nunca use as palavras **privado**, **confidencial**, **sigiloso** ou **secreto**. A pergunta é
+  sobre quem vê, não sobre segredo: falar em sigilo faz o founder marcar tudo como pessoal por
+  precaução.
+- **Nunca grave sem a resposta dele.** "Other" no `AskUserQuestion` é pedido de explicação:
+  explique com as descrições que vieram e pergunte de novo.
+- Nunca diga que o time da Endeavor vê ou não vê. Isso é assunto do Bloco 8, e afirmar aqui seria
+  promessa que este bloco não tem como cumprir.
+
+O título volta na resposta: **confirme com o founder**, porque é o texto que vai aparecer no card do
+menu dele. Se ele quiser outro, chame `acao: "atualizar"` com `campos: { "title": "<o dele>" }`.
+
+**9.2 Atualizar um desafio** (`atualizar_priority:<id>`, ou o founder falando sobre um que existe)
+
+Chame `priority` com `acao: "propor"`, passando `desafio_id` e a fala dele em `fala`. Você NÃO
+decide o que mudou: o servidor lê a fala e devolve a proposta.
+
+A resposta traz `alteracoes` (cada uma com `campo`, `tipo` e o `texto` novo), `campos` (o MESMO
+conteúdo já no formato que o `atualizar` espera), `precisa_confirmar` e `observacao`. Você LÊ
+`alteracoes` para escrever a frase de confirmação — é lá que está o `tipo` de cada mudança — e
+DEVOLVE `campos` sem mexer.
+
+| A proposta veio | O que fazer |
+| --- | --- |
+| Só `acrescimo` | `acao: "atualizar"` direto, passando o `campos` que veio. Uma linha depois do fato: "Anotei." |
+| Qualquer `contradicao` (`precisa_confirmar: true`) | Confirme ANTES, **numa frase, sem nomear campo**. Só com o sim vem o `atualizar`, com o mesmo `campos` e `confirmado: true`. |
+| Lista de alterações vazia | NÃO chame `atualizar`. Siga a conversa usando a `observacao` que veio. |
+
+Exemplo de confirmação boa, para uma fala que corrigiu duas coisas de uma vez: "Entendi que ABM
+nunca entrou e que o gatilho foi a análise de ICP do seu cofounder, não a troca do CMO. Corrijo
+assim?"
+
+Grave exatamente o texto que voltou na proposta e que ele aprovou.
+
+**9.3 Arquivar** (`arquivar_priority:<id>`)
+
+Sem entrevista e sem proposta. Uma frase de confirmação — "Vou tirar esse desafio da sua tela. Ele
+não é apagado, e a gente pode trazer de volta." — e então `acao: "arquivar"`.
+
+**9.4 Trocar quem vê um desafio** (o founder pedindo, ou o botão da ficha)
+
+A ficha do menu tem uma ação que alterna entre desafio da empresa e desafio só dele. Confirme o
+EFEITO numa frase antes de chamar, porque é a única ação da ficha que muda o que outra pessoa vê:
+
+- Indo para a empresa: "Assim os outros founders da {empresa} passam a ver esse desafio no menu
+  deles. Pode ser?"
+- Indo para pessoal: "Assim ele sai do menu dos outros founders e fica só com você. Confirma?"
+
+Com o sim, chame `priority` com `acao: "mudar_visibilidade"`, `desafio_id` e `visibilidade`.
+
+**Tornar pessoal só funciona para quem registrou o desafio.** Se a tool recusar, ela devolve o
+motivo pronto: repasse em uma linha e não insista. É proteção contra alguém tirar da tela dos
+sócios um desafio que é da empresa, ou um que veio das conversas com a Endeavor.
+
+**9.5 Mudar o nível ou o andamento** (o founder pedindo)
+
+Quando ele disser que um desafio ficou mais ou menos urgente, que começou a atacar, ou que
+resolveu, chame `priority` com `acao: "repriorizar"`, `desafio_id` e `nivel` e/ou `status`:
+
+- `nivel`: `low` | `medium` | `high` — o quanto o desafio pesa hoje.
+- `status`: `backlog` (ainda não começou) | `ongoing` (atacando agora) | `concluded` (resolvido).
+
+Mande só o que mudou: pedir o nível junto quando ele falou só do andamento inventa uma decisão
+que o founder não tomou. Confirme em uma linha depois de gravar, com a palavra dele ("anotei que
+vocês já estão atacando esse", não "status atualizado para ongoing").
+
+**Desafio arquivado não aceita.** A tool devolve o motivo pronto, dizendo que é preciso trazer de
+volta antes. Repasse e ofereça o `desarquivar`.
+
+Se ele quer tirar o desafio da tela, isso é **arquivar** (9.3), não `concluded`: concluído é um
+desafio que continua na lista, com a história dele preservada.
+
+**Guardrails deste bloco**
+
+- Nunca diga "campo", "registro", "priority" ou "prioridade" ao founder. A palavra é **desafio**.
+- Nunca pergunte qual campo ele quer mudar. Ele fala, o servidor entende.
+- Nunca reescreva o texto que a tool devolveu antes de gravar.
+- Nunca decida a visibilidade por ele, nem sugira uma das duas opções como a recomendada.
+- Nunca fale de sigilo, privacidade ou confidencialidade ao perguntar quem vê. A pergunta é sobre
+  audiência.
+- Nunca crie um desafio a partir de conversa solta. Criação exige a entrevista.
+- Arquivar não apaga. Diga isso ao confirmar.
 
 ### Telemetria (entrega e feedback)
 
@@ -258,6 +391,15 @@ só `analise_renderizada` após a entrega.
   com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack, roteiro interno do
   roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
   `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`.
+- `priority(empresa, acao, desafio_id?, respostas?, fala?, campos?, versao?, visibilidade?,
+  nivel?, status?, confirmado?)`: **síncrona**. Lê, cria, atualiza, reprioriza ou arquiva um
+  desafio registrado da empresa do founder. `acao` é `listar` | `criar` | `propor` | `atualizar` |
+  `arquivar` | `desarquivar` | `mudar_visibilidade` | `repriorizar`. `listar` devolve as fichas
+  inteiras, com as mentorias que cada desafio gerou; `criar` EXIGE as quatro respostas da
+  entrevista; `propor` lê a fala do founder e devolve a proposta de alteração **sem gravar**;
+  `mudar_visibilidade` alterna entre desafio da empresa e desafio só do founder (Bloco 9.4);
+  `repriorizar` muda `nivel` e/ou `status` (Bloco 9.5).
+  Nada é apagado: arquivar é reversível com `desarquivar`. Fluxo no Bloco 9.
 - `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir o
   resultado (artifact do diagnóstico ou lista do match) ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
@@ -313,6 +455,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.8.4**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.8.6**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.

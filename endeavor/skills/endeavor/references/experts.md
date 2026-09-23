@@ -104,6 +104,21 @@ pergunta de enriquecimento em cima do desafio declarado ("o que está puxando es
 agora?"): é a resposta dela que dá o recorte para rotear, e o desafio que veio da base pode estar
 velho.
 
+**Quem chega pelo CARD de um desafio** (a chave veio como `priority:<id>`) chega com mais coisa: o
+aviso do menu trouxe a **ficha inteira** do desafio — título, contexto, impacto, o que já tentaram,
+as perguntas em aberto, os `endeavorChallenges` e o tema.
+
+- **Pule a pergunta guiada de três opções.** Ele não está escolhendo entre desafio, pessoa e tema:
+  ele apontou para um desafio específico que já está registrado.
+- **A varredura silenciosa usa a ficha que veio no contexto.** NÃO chame `varredura_empresa` de
+  novo para descobrir o desafio — ele está na sua frente. (A empresa você ainda resolve, se o
+  roteador mandar para a wiki e você não a tiver: `match_mentores` exige `empresa`.)
+- **A pergunta de enriquecimento muda de forma.** Em vez de "o que está puxando isso agora?",
+  pergunte **"o que mudou desde que registramos isso?"** — o registro pode ter meses.
+- **Se a resposta dele CORRIGIR o registro** ("na verdade a gente nunca testou ABM"), desvie para o
+  Bloco 9 (`priority` com `acao: "propor"`) ANTES de buscar mentor. Buscar em cima de um texto que
+  ele acabou de dizer que está errado desperdiça a busca e o turno dele.
+
 ### 2.5 Rotear (silencioso, uma vez, nunca vira pergunta)
 
 Com a primeira resposta com substância na mão, decida qual caminho serve. Três testes, na ordem; o
@@ -128,6 +143,20 @@ empresa, e a tool já resolve isso sozinha. Não reformule a pergunta dele nesse
 - `fundraising`: rodada (seed a growth), dívida e fomento, term sheet e cap table, ESOP, venda da
   empresa e abertura de capital.
 
+**Chegando pelo card, o teste 3 não é julgamento seu: é consulta.** A ficha traz os
+`endeavorChallenges`, que são o picklist oficial do Connect, e o mapa é por FAMÍLIA:
+
+- família **Marketing & Sales** inteira → `gtm`;
+- família **Raising Capital & Exiting** inteira → `fundraising`;
+- três exceções nominais, que vão contra a família delas: `Market Entry` e
+  `Unit Economics, Pricing Strategy, & Profitability` → `gtm`;
+  `Board Management, Governance, & Investor Relations` → `fundraising`.
+
+Vence o PRIMEIRO rótulo da lista que mapear. **Nenhum rótulo mapeia** (é a maioria: produto,
+tecnologia, pessoas, jurídico, operação) → teste 3 NEGATIVO, e segue para a varredura ampla, como
+hoje. Ficha sem `endeavorChallenges` nenhum (a classificação ainda não rodou): julgue pelo texto,
+como em qualquer outra chegada.
+
 **Sim:** vá para a **wiki**. Siga para o passo 3 (intenção) e o passo 4, chamando `match_mentores`
 com o `challenge` correspondente.
 **Antes disso, garanta a empresa.** `match_mentores` exige `empresa` e `buscar_rede` não, então se
@@ -146,9 +175,28 @@ ou a captação?" para quem não está em nenhuma das duas.
 `outro`, o que você julgou) e `motivo` (`direto`, `cascata`, `lookup` ou `empresa`). São opcionais e
 só de telemetria: nunca mude a pergunta nem a resposta por causa deles.
 
-**Quem chega pelo chip do menu** pula a pergunta ABERTA do passo 2, mas não pula a de enriquecimento
-e **não pula estes testes**: o desafio que veio da base ainda precisa de tema, e ele pode estar
-velho. Um desafio como "definir perfil e adicionar conselheiro para o board" é varredura, não wiki.
+**Chegando pelo card, some três campos**, em `buscar_rede` e em `match_mentores`: `de_desafio: true`,
+`tema_desafio` (o tema que veio no aviso) e `rank_desafio` (a posição do card, 1, 2 ou 3). Também só
+telemetria, e é assim que o clique no card é medido — pela consequência, no fluxo que ele abriu.
+
+**Quem chega pelo chip ou pelo card** pula a pergunta ABERTA do passo 2, mas não pula a de
+enriquecimento e **não pula estes testes**: o desafio que veio da base ainda precisa de tema, e ele
+pode estar velho. Um desafio como "definir perfil e adicionar conselheiro para o board" é varredura,
+não wiki.
+
+**O que a ficha vira em cada caminho.** Indo para a **wiki**, o campo `desafio` do frame de
+`match_mentores` é o texto COMPOSTO da ficha (o contexto, o impacto e as perguntas em aberto), não
+só o título: o título tem 60 caracteres e foi escrito para caber num card, não para alimentar um
+match. Indo para a **varredura**, a ficha serve para você escrever uma `pergunta` melhor — e só.
+**Nada da ficha vira campo da tool `buscar_rede`**: ela recebe uma pergunta em texto livre, e
+inventar campo ali quebraria o contrato dela.
+
+**Atenção ao roteamento por riqueza.** Com os desafios extraídos das conversas do processo
+seletivo, todo founder de scale-up passa a cair em "base rica" no D0, trilha que antes ele
+nunca via. A abertura de base rica afirma coisas sobre a empresa, e aqui essas coisas vieram de
+extração de transcrição, que é menos confiável que priority escrita por um AM. Abra mostrando
+que conhece, sem afirmar demais. E lembre que o mesmo founder cai em "base zero" se os desafios
+estiverem indisponíveis: as duas trilhas vão acontecer, e as duas precisam ficar boas.
 
 ### 3. Intenção (só depois do desafio enriquecido)
 Uma pergunta, explicando cada opção para o founder não hesitar. Se a tool `AskUserQuestion` estiver

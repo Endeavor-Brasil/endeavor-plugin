@@ -1,5 +1,22 @@
 # Menu /endeavor: o cardápio
 
+**Antes de tudo, saiba qual dos dois casos é o seu.**
+
+**Caso A — o `open_menu` respondeu, mas o host não renderiza widget.** A tool devolve, além do
+payload, um cardápio em TEXTO já pronto, e ele **já lista os desafios do founder numerados no
+topo**, com as portas continuando a numeração (se ele tem 3 desafios, as portas vão de 4 a 8).
+**Renderize o texto que a tool devolveu, como está.** Não use o cardápio estático deste arquivo:
+a numeração seria outra, e o founder respondendo "4" cairia no fluxo errado.
+
+Sem widget não existe detalhe local: ver a ficha de um desafio custa um turno, chamando `priority`
+com `acao: "listar"`. É degradação aceita — diga ao founder que você abre a ficha, em vez de
+deixá-lo esperando um clique que naquele host não existe.
+
+**Caso B — o `open_menu` não está no catálogo, falhou, ou demorou demais.** Aí não há desafio
+nenhum para listar (eles vêm no payload da tool), e o cardápio é o de sempre, abaixo.
+
+---
+
 Apresente o cardápio cru, sem chamar o MCP, como lista numerada de 1 a 5 sob 3 cabeçalhos. Não use
 popup de escolha (a tool de escolha só comporta quatro opções por pergunta). Voz da Endeavor: direto,
 concreto, profissional e simples. Sem travessão, sem emoji, sem jargão de IA.
@@ -32,3 +49,5 @@ Texto de abertura e cardápio (renderize como está):
 - Sem travessão, sem emoji, sem separador de ponto no meio dos itens.
 - A linha final sobre dados fica fora da numeração, sempre por último. Ela não é uma sexta opção:
   o founder chega nela perguntando, não escolhendo número.
+- **As regras acima valem para o caso B.** No caso A quem manda é o texto que a tool devolveu: ele
+  já vem com a abertura, os desafios, as portas renumeradas e a linha final no lugar certo.
