@@ -128,6 +128,11 @@ abaixo, e o que ele decide é enviar ou não.
 - **Duração:** 1 hora
 ```
 
+**Nunca pergunte "envio assim?" sem ter escrito o cartão de resumo na mensagem anterior.** Se você
+está prestes a perguntar e o cartão não está visível na conversa, escreva o cartão primeiro, na
+mesma resposta, e só então pergunte. Resumo dentro do raciocínio não conta: o founder não lê o
+raciocínio.
+
 A linha "o que ele vai saber" existe para o founder poder corrigir. É ali que ele percebe um número
 errado ou um recorte que ele não quer contar, sem precisar ler a mensagem inteira. Se ele pedir para
 ver o texto exato, mostre; só não ofereça por conta própria.
@@ -282,6 +287,8 @@ Depois disso, pare. Não pergunte se ele quer chamar mais alguém e não peça n
 
 ## Anti-comportamentos
 
+- ❌ Perguntar "envio assim?" sem o cartão de resumo visível logo acima.
+- ❌ Pedir a autorização em texto corrido quando `AskUserQuestion` está disponível.
 - ❌ Pedir horário ao founder tendo ferramenta de calendário disponível.
 - ❌ Concluir que não há ferramenta de calendário porque nenhuma tem o nome exato citado aqui.
 - ❌ Enviar horário que o founder não confirmou, ou convite que ele não leu.
