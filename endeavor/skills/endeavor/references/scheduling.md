@@ -18,17 +18,17 @@ aqui, ainda mais no lugar de enviar o pedido, encerra a conversa no meio do cami
 
 ## Regras que não se quebram
 
-- **Um mentor por vez.** Se o founder quer falar com dois, complete o ciclo do primeiro e só então
-  ofereça o segundo. A agenda é relida a cada mentor, então o segundo nunca recebe os mesmos
+- **Uma pessoa por vez.** Se o founder quer falar com duas, complete o ciclo da primeira e só então
+  ofereça a segunda. A agenda é relida a cada pedido, então a segunda nunca recebe os mesmos
   horários.
 - **A empresa se estabelece UMA vez.** Se ela já apareceu na conversa, ou está na memória, ou saiu
   de uma `varredura_empresa`, use e siga. Se realmente não apareceu ainda (o founder pode entrar
-  direto nomeando o mentor, sem passar pelo match), pergunte UMA vez, junto de outra coisa, e nunca
+  direto nomeando a pessoa, sem passar pelo match), pergunte UMA vez, junto de outra coisa, e nunca
   volte a perguntar.
 - **Nada sai sem o founder autorizar.** Nem horário, nem pedido.
 - **Horário cravado, nunca janela.** "terça 26 às 14h", não "terça de manhã".
 - **Duração de 1h**, fuso de São Paulo.
-- **Não prometa prazo** de resposta do mentor e não diga que ele já foi avisado.
+- **Não prometa prazo** de resposta e não diga que a pessoa já foi avisada.
 - Depois do envio, **a marcação vive no WhatsApp**. Diga isso e não ofereça acompanhar por aqui.
 
 ## Passo 1: ler a agenda
@@ -84,7 +84,7 @@ Com a agenda em mão, escolha 3 com critério, não os primeiros buracos livres:
   propor um horário e retirá-lo depois queima a confiança no resto.
 
 **Cada opção é um instante de 1 hora, nunca uma faixa.** "terça 26 às 14h" está certo; "terça das
-10h às 11h30" está errado, porque é disponibilidade sua, não convite para o mentor.
+10h às 11h30" está errado, porque é disponibilidade sua, não convite para a pessoa.
 
 **Dia da semana e data saem do calendário, não da sua cabeça.** Use as datas que a ferramenta
 devolveu e derive o dia da semana delas.
@@ -104,7 +104,7 @@ Você já fez o trabalho: apresente o resultado.
 
 As regras deste arquivo (mínimo de 48h, teto de 3 semanas, instante em vez de faixa, 2 a 5 opções)
 são SUAS, não lição de casa do founder. Nunca as recite para ele. Se o horário que ele pediu não
-passa, diga só o que muda: "essa terça é cedo demais pro mentor conseguir responder, consigo a
+passa, diga só o que muda: "essa terça é cedo demais pra pessoa conseguir responder, consigo a
 seguinte".
 
 Se a tool `AskUserQuestion` estiver disponível, ofereça as três saídas como opções (`Mandar esses
@@ -114,16 +114,16 @@ já é o turno completo e o founder responde em texto. Não trate o menu como pr
 ## Passo 3: o resumo e a autorização
 
 Você escreve o convite (regras abaixo), mas **o texto do convite NÃO aparece para o founder**. Ele é
-a mensagem que o mentor vai ler, e mostrar a cópia crua aqui polui a conversa e convida revisão de
+a mensagem que a pessoa vai ler, e mostrar a cópia crua aqui polui a conversa e convida revisão de
 redação em vez de decisão. O que o founder vê é um resumo do que está sendo pedido, no formato
 abaixo, e o que ele decide é enviar ou não.
 
 ```
-**Conexão ao vivo com [Mentor]**
+**Conexão ao vivo com [Nome]**
 
-- **Quem:** [nome], [cargo e empresa atual dele]
+- **Quem:** [nome], [cargo e empresa atual]
 - **Assunto:** [o ângulo da conversa, uma linha]
-- **O que ele vai saber sobre você:** [a empresa em meia linha + o desafio em meia linha]
+- **O que a pessoa vai saber sobre você:** [a empresa em meia linha + o desafio em meia linha]
 - **Horários oferecidos:** [os três, por extenso]
 - **Duração:** 1 hora
 ```
@@ -139,11 +139,11 @@ Sem a tool, pergunte em uma linha: "envio assim, quer alterar algo, ou prefere d
 - **Alterar:** ele diz o que muda, você refaz o resumo e pergunta de novo.
 - **Cancelar:** encerre sem chamar a tool e sem insistir. Não pergunte o motivo.
 
-### O convite (o texto que vai ao mentor)
+### O convite (o texto que vai à pessoa)
 
 Quatro blocos curtos, em prosa corrida, sem título de seção:
 
-1. **Saudação, quem fala e o convite.** Primeiro nome do mentor, "tudo bem?", a Endeavor se
+1. **Saudação, quem fala e o convite.** Primeiro nome da pessoa, "tudo bem?", a Endeavor se
    apresentando, e o convite nomeando o founder, o cargo e a empresa. Quem senta na conversa é quem
    está falando com você, então é o nome dele que vai no convite. Não pergunte quem vai participar.
 2. **O que a empresa faz e qual o desafio, juntos.** Duas a quatro linhas. A solução em uma frase, o
@@ -152,13 +152,13 @@ Quatro blocos curtos, em prosa corrida, sem título de seção:
    decide se ele responde, então tem que ser específico: "pela sua experiência montando o time de
    vendas enterprise da [empresa dele]", não "pela sua vasta experiência".
 4. **O pedido.** Interesse mais os três horários, **escritos por extenso dentro da mensagem**. Aqui
-   o convite INVERTE o padrão de e-mail do time interno: não peça horários ao mentor, ofereça os
+   o convite INVERTE o padrão de e-mail do time interno: não peça horários à pessoa, ofereça os
    três que o founder já confirmou. "Topa? Ela consegue terça 26 às 14h, quarta 27 às 10h ou quinta
-   28 às 16h" está certo. "Temos algumas janelas pré-alinhadas" está errado: o mentor não tem o que
+   28 às 16h" está certo. "Temos algumas janelas pré-alinhadas" está errado: a pessoa não tem o que
    responder.
 
 O link do site da empresa entra como URL crua, em linha própria antes do pedido. WhatsApp não
-renderiza link com texto, então nome entre colchetes vira lixo na tela. Não link o mentor: ele é
+renderiza link com texto, então nome entre colchetes vira lixo na tela. Não link a pessoa: ela é
 quem recebe a mensagem.
 
 **De onde vem o conteúdo.** Além do que o founder falou e do resultado curado do match, use o que a
@@ -174,13 +174,13 @@ perfil bruto do mentor. O curado já passou pelos filtros de confidencialidade d
 
 1. **A leitura interna da Endeavor sobre a empresa ou o founder.** Status na rede, classificação
    ("não é EE formal", "candidata", "nurturing"), nome do gerente da conta, notas de relacionamento,
-   qualquer avaliação. Isso é assunto da Endeavor com o founder, não do founder com o mentor.
+   qualquer avaliação. Isso é assunto da Endeavor com o founder, não do founder com a pessoa.
 2. **Nome de outro mentor ou de outra empresa** que apareça no dossiê. O dossiê cita quem já
    mentorou e cita transcrições por autor; contar isso a um terceiro entrega o envolvimento de gente
    que não autorizou.
 3. **Número marcado com ⚠ ou em conflito.** Os dossiês sinalizam dado errado, desatualizado e
    divergência entre fontes de propósito. Quando há dois números para a mesma coisa, não escolha:
-   prefira o que o founder falou, ou não cite número nenhum. Mandar cifra errada para o mentor é
+   prefira o que o founder falou, ou não cite número nenhum. Mandar cifra errada para a pessoa é
    pior que não mandar cifra.
 4. **Tabela, JSON ou trecho colado da saída da tool.** Você reescreve em prosa. A saída da
    `varredura_empresa` é memória de trabalho sua, nunca texto de saída.
@@ -213,7 +213,7 @@ Chame `agendar_conexao`:
 
 ```
 empresa:          <a empresa do founder, já conhecida da conversa>
-mentor_nome:      <nome do mentor como apareceu na recomendação>
+mentor_nome:      <nome da pessoa como apareceu na busca ou no match>
 disponibilidade:  [<ISO 8601 com fuso EXPLÍCITO>, ...]
 convite:          <o texto escrito no passo 3, que o founder autorizou pelo resumo>
 observacao:       <preferência de horário do founder, se ele disse alguma>
@@ -230,7 +230,7 @@ assim: `2026-08-26T14:00:00-03:00`. Não mande `"Quarta 10h"`, nem `"2026-08-26 
 `"2026-08-26T10:00"`. Sem fuso o horário seria resolvido no fuso do servidor e a reunião cairia
 horas fora.
 
-A tool devolve confirmação de que o PEDIDO foi registrado. Não diga que o mentor já foi avisado, não
+A tool devolve confirmação de que o PEDIDO foi registrado. Não diga que a pessoa já foi avisada, não
 marque data e não prometa quando o convite chega.
 
 **Se ela recusar o conteúdo** (horário fora de formato, fora do prazo, poucos horários), corrija o
@@ -252,7 +252,7 @@ o erro.
 ## Passo 5: segurar os horários na agenda
 
 Assim que a tool responder, **crie um evento por horário proposto** na agenda do founder. É a última
-ação do fluxo e é o que impede alguém ocupar o horário enquanto o mentor não responde.
+ação do fluxo e é o que impede alguém ocupar o horário enquanto a pessoa não responde.
 
 A ferramenta é a que **cria** um evento, descrita como algo próximo de `create a calendar event`.
 Não é a de atualizar evento existente, e de novo: casa pelo que ela faz, não pelo nome exato. Um
@@ -260,19 +260,19 @@ evento por horário, com:
 
 - título exatamente `[Endeavor] - Block Conexão`
 - 1 hora, no horário proposto
-- descrição dizendo que é reserva provisória enquanto o mentor responde, e que pode ser apagada
+- descrição dizendo que é reserva provisória enquanto a pessoa responde, e que pode ser apagada
 
 Feche com uma confirmação e o que acontece daqui pra frente, em bullets, sem gancho e sem oferecer
-o próximo mentor:
+a próxima pessoa:
 
 ```
 **Pedido enviado.**
 
-- A Endeavor leva o convite pro WhatsApp do [Mentor]
-- Ele pode aceitar um dos horários ou avisar que não consegue
+- A Endeavor leva o convite pro WhatsApp de [Nome]
+- A pessoa pode aceitar um dos horários ou avisar que não consegue
 - A partir daí a marcação corre por lá, e a confirmação chega no seu WhatsApp
 - Deixei os três horários reservados na sua agenda como `[Endeavor] - Block Conexão`
-- É só um save the date, pode apagar quando ele escolher um
+- É só um save the date, pode apagar quando ela escolher um
 ```
 
 A última linha só entra se você REALMENTE criou os eventos. Sem ferramenta de calendário, troque por:
@@ -288,14 +288,14 @@ Depois disso, pare. Não pergunte se ele quer chamar mais alguém e não peça n
 - ❌ Propor janela ("terça de manhã") ou faixa ("das 10h às 11h30") em vez de instante de 1 hora.
 - ❌ Calcular dia da semana de cabeça em vez de ler a data que o calendário devolveu.
 - ❌ Mandar horário sem fuso na tool, ou chamar a tool duas vezes por causa disso.
-- ❌ Mandar os mesmos horários para dois mentores.
+- ❌ Mandar os mesmos horários para duas pessoas.
 - ❌ Colar tabela ou JSON de tool dentro do convite em vez de reescrever em prosa.
-- ❌ Levar ao mentor a leitura interna da Endeavor (status na rede, classificação, gerente da conta).
+- ❌ Levar à pessoa a leitura interna da Endeavor (status na rede, classificação, gerente da conta).
 - ❌ Citar no convite outro mentor, ou empresa que apareceu no dossiê.
 - ❌ Usar número marcado com ⚠ ou escolher entre dois números divergentes do dossiê.
 - ❌ Enviar o pedido e não criar os blocos, tendo ferramenta de calendário.
 - ❌ Dizer que reservou a agenda sem ter criado os eventos.
-- ❌ Prometer prazo de resposta, ou dizer que o mentor já foi notificado.
+- ❌ Prometer prazo de resposta, ou dizer que a pessoa já foi notificada.
 - ❌ Prometer encaminhamento manual, ou dizer que a Endeavor leva nos bastidores, depois de a tool
   falhar. Nada saiu.
 - ❌ Criar bloqueio na agenda quando o pedido não entrou.
