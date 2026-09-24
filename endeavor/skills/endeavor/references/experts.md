@@ -200,6 +200,10 @@ que não lê a ficha, e só quando o founder veio pelo card, some três campos: 
 são só telemetria, e é assim que o clique no card é medido: pela consequência, no fluxo que ele
 abriu.
 
+**Ficha pessoal** (`visibilidade: "pessoal"` no `listar`): no `match_mentores`, o `desafio_id` é
+obrigatório, sem exceção. Com ele, o servidor mantém o desafio fora do dossiê da empresa, que o
+sócio lê. Sem ele, o que você escrever em `desafio` vai para esse dossiê.
+
 **Quem chega pelo chip ou pelo card** pula a pergunta ABERTA do passo 2, mas não pula a de
 enriquecimento e **não pula estes testes**: o desafio que veio da base ainda precisa de tema, e ele
 pode estar velho. Pelo card, a de enriquecimento é a da ficha: o que mudou desde que ele escreveu, e
