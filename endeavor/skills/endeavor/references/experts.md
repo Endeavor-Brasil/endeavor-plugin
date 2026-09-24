@@ -228,7 +228,7 @@ Uma pergunta, explicando cada opção para o founder não hesitar. Se a tool `As
 disponível, use-a SEMPRE aqui: uma pergunta, as três intenções como opções (título curto no label,
 explicação na descrição), nenhuma marcada como recomendada. Sem a tool, opções numeradas.
 
-"O que mais te destrava agora?"
+"Qual estilo de conversa mais te ajuda?"
 - **Como fazer: frameworks e playbooks** — o passo a passo de quem montou uma máquina de vendas
   repetível e escalável.
 - **Uma decisão na mesa** — você tem uma decisão específica (contratar um CRO, abrir uma função,

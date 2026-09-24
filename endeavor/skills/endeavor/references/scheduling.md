@@ -128,17 +128,24 @@ abaixo, e o que ele decide é enviar ou não.
 - **Duração:** 1 hora
 ```
 
-**Nunca pergunte "envio assim?" sem ter escrito o cartão de resumo na mensagem anterior.** Se você
-está prestes a perguntar e o cartão não está visível na conversa, escreva o cartão primeiro, na
-mesma resposta, e só então pergunte. Resumo dentro do raciocínio não conta: o founder não lê o
-raciocínio.
+**A pergunta de autorização vai na MESMA mensagem do cartão, logo abaixo dele, e nunca diz
+"assim".** "Envio assim?" aponta para um convite que o founder não vê: quando o cartão ficou de fora
+(23/09 e de novo 24/09), a pergunta saiu sozinha e ele não tinha o que aprovar. Por isso a própria
+pergunta diz para quem, sobre o quê e quando, e se sustenta mesmo que o cartão falhe:
+
+> Envio o convite para o [Nome], sobre [o assunto em poucas palavras], oferecendo [os três
+> horários]?
+
+Resumo dentro do raciocínio não conta: o founder não lê o raciocínio. O convite você só escreve na
+chamada da tool (passo 4); ele não precisa aparecer em mensagem nenhuma.
 
 A linha "o que ele vai saber" existe para o founder poder corrigir. É ali que ele percebe um número
 errado ou um recorte que ele não quer contar, sem precisar ler a mensagem inteira. Se ele pedir para
 ver o texto exato, mostre; só não ofereça por conta própria.
 
-Com `AskUserQuestion`, as opções são exatamente três, nesta ordem: `Enviar` / `Alterar` / `Cancelar`.
-Sem a tool, pergunte em uma linha: "envio assim, quer alterar algo, ou prefere deixar pra depois?".
+Com `AskUserQuestion`, essa frase é o texto da pergunta, e as opções são exatamente três, nesta
+ordem: `Enviar` / `Alterar` / `Cancelar`. Sem a tool, a mesma frase fecha a mensagem, seguida de "ou
+quer alterar algo antes?".
 
 - **Enviar:** vá para o passo 4.
 - **Alterar:** ele diz o que muda, você refaz o resumo e pergunta de novo.
@@ -299,7 +306,8 @@ Depois disso, pare. Não pergunte se ele quer chamar mais alguém e não peça n
 
 ## Anti-comportamentos
 
-- ❌ Perguntar "envio assim?" sem o cartão de resumo visível logo acima.
+- ❌ Perguntar "envio assim?", ou qualquer pergunta de envio que não diga para quem, sobre o quê e
+  em quais horários, ou que venha sem o cartão de resumo logo acima, na mesma mensagem.
 - ❌ Pedir a autorização em texto corrido quando `AskUserQuestion` está disponível.
 - ❌ Pedir horário ao founder tendo ferramenta de calendário disponível.
 - ❌ Concluir que não há ferramenta de calendário porque nenhuma tem o nome exato citado aqui.
