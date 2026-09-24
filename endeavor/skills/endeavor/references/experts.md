@@ -265,58 +265,52 @@ que nenhum serve.
 
 <!-- Manutenção: a mecânica e a copy dos formatos de conexão são espelhadas em
      references/buscar-rede.md (seção "os caminhos"). Mudou a promessa ou a apresentação aqui, mude lá. -->
-### 7. Como interagir com cada mentor: os três caminhos + plano
-Quando o founder disser com quem quer falar, apresente os **três caminhos** de como usar cada
-mentor, **nesta ordem**, cada um com uma explicação curta que não deixa dúvida do que acontece.
+### 7. Como interagir com cada mentor: os caminhos + plano
+Quando o founder disser com quem quer falar, apresente os caminhos de como usar cada mentor,
+**nesta ordem**, cada um com uma explicação curta que não deixa dúvida do que acontece.
 Você **lista e confirma; NÃO sugere** qual usar. Se a tool `AskUserQuestion` estiver disponível,
 use-a SEMPRE para este menu: uma pergunta por mentor (até 4 por chamada), os caminhos disponíveis
-como opções (2 ou 3, conforme o catálogo de sessão simulada), a explicação curta na descrição de
-cada opção e nenhuma marcada como recomendada. Sem a tool, liste numerado em texto.
+como opções, a explicação curta na descrição de cada opção e nenhuma marcada como recomendada. Sem
+a tool, liste numerado em texto.
 
 **A lista abaixo é fechada.** São esses os caminhos que existem, com esses nomes e essa mecânica.
 Não invente formato ("uma intro", "eu levo sua pergunta e trago a resposta dele"), não prometa
-mecânica que não está escrita aqui, e não ofereça quatro opções quando existem três.
+mecânica que não está escrita aqui, e não ofereça três opções quando existem duas.
 
 1. **Conexão ao vivo.** Eu olho sua agenda, chego com três horários e, depois que você confirmar,
    a Endeavor leva o convite ao mentor pelo WhatsApp e fecha a marcação com vocês dois. Ao escolher
    este caminho, siga `references/scheduling.md`.
-2. **Conexão assíncrona (pergunta enviada).** Você transforma o desafio numa pergunta bem
-   estruturada, mostra para o founder aprovar, e ela vai para o WhatsApp do mentor (ou de vários, se
-   ele quiser). Cada mentor responde quando puder, direto no WhatsApp do founder. As respostas não
-   voltam para o chat.
-3. **Simular agora.** O founder conversa com uma réplica do mentor aqui mesmo, na hora, para sentir
+2. **Simular agora.** O founder conversa com uma réplica do mentor aqui mesmo, na hora, para sentir
    como ele pensaria sobre o caso. É um preview, não fala com o mentor de verdade. Ofereça só para
    mentores com sessão simulada (os que aparecem no catálogo de `mentor_session()`); é o mesmo fluxo
    do test-drive (passo 5 e `references/mentor-session.md`), e ao terminar volte para este menu.
 
-Se o mentor tiver sessão simulada, você **pode** sugerir simular antes de enviar a pergunta ("quer
-testar a resposta dele aqui antes de mandar?"), mas quem decide é o founder; nunca é obrigatório.
+**Quando só existe um caminho.** A simulação só vale para mentor com pack em `mentor_session()`.
+Para quem não tem, sobra só a conexão ao vivo — e aí **não existe menu**: menu de uma opção é um
+turno gasto para confirmar o óbvio. Faça a pergunta direta:
 
-**Sub-fluxo da conexão assíncrona.** Quando o founder escolher assíncrona:
-1. Redija UMA pergunta forte a partir do desafio já enriquecido: contexto suficiente para o mentor
-   entender o caso, mais o pedido específico. Objetiva, no tom do founder.
-2. Mostre a pergunta por inteiro e deixe claro que é essa que vai para o mentor: "é essa a pergunta
-   que vai para o mentor, quer ajustar?". O founder aprova ou edita.
-3. Ofereça o multi: "quer mandar a mesma pergunta para mais alguém da lista?". Ele escolhe os nomes
-   (dos 3 mostrados ou da reserva já revelada).
-4. Feche: "fechado, essa pergunta vai para o WhatsApp de [nomes]. Cada um responde quando puder,
-   direto no seu WhatsApp." As respostas chegam pelo WhatsApp, não pelo chat.
+> Quer que eu marque uma conversa ao vivo com o {nome}?
 
-**Privacidade, se o founder perguntar.** O mentor recebe apenas a pergunta que o founder aprovou,
+Com `AskUserQuestion`, duas saídas: `Sim` / `Ainda não`. Sem a tool, a mesma pergunta em uma linha.
+Com o sim, siga `references/scheduling.md`. Com o "ainda não", não insista e não pergunte o motivo.
+
+Se o mentor tiver sessão simulada, você **pode** sugerir simular antes de marcar a conversa ("quer
+testar a resposta dele aqui antes?"), mas quem decide é o founder; nunca é obrigatório.
+
+**Privacidade, se o founder perguntar.** O mentor recebe apenas o convite que o founder aprovou,
 não o dossiê nem dados internos da empresa. A introdução e o contato seguem intermediados pela
 Endeavor.
 
-**Plano {quem, ângulo, tipo}.** Conforme o founder escolhe com quem falar e o formato de cada um,
-monte o **plano explícito**: para cada mentor, **quem**, o **ângulo** da conversa (use os ganchos que
-vieram na recomendação para afiar "falar com fulano sobre X") e o **tipo** (`síncrona` ou
-`assíncrona`). Simular não é item de plano: é executado na hora e a conversa volta para este menu.
-**Confirme o {quem, ângulo, tipo}** e feche.
+**Plano {quem, ângulo}.** Conforme o founder escolhe com quem falar, monte o **plano explícito**:
+para cada mentor, **quem** e o **ângulo** da conversa (use os ganchos que vieram na recomendação
+para afiar "falar com fulano sobre X"). O tipo saiu do plano porque só existe um: toda conexão
+fechada aqui é ao vivo. Simular não é item de plano: é executado na hora e a conversa volta para
+este menu. **Confirme o {quem, ângulo}** e feche.
 
 **Handoff.** A conexão **ao vivo** segue `references/scheduling.md`: você lê a agenda, propõe três
 horários, confirma, escreve o convite e chama `agendar_conexao`. A tool registra o PEDIDO; o convite
-ao mentor sai depois, em segundo plano. A **pergunta enviada** continua manual: a Endeavor encaminha
-nos bastidores e você não dispara tool para ela. Em nenhum dos dois marque data como certa, prometa
-prazo, ou diga que o mentor já foi avisado. Simular é executado na hora (via `mentor_session`).
+ao mentor sai depois, em segundo plano. Não marque data como certa, não prometa prazo, e não diga
+que o mentor já foi avisado. Simular é executado na hora (via `mentor_session`).
 
 A skill para aqui; você não ranqueia nem nomeia mentores (isso é do servidor).
 
@@ -348,11 +342,9 @@ varredura) são **memória de trabalho** sua para conversar melhor, nunca saída
 - ❌ Chegar com o desafio pronto para o founder só confirmar.
 - ❌ Ir para a intenção antes de o founder enriquecer o desafio.
 - ❌ SUGERIR o formato de conexão (você lista os tipos e confirma; quem escolhe é o founder).
-- ❌ "Enviar" a pergunta assíncrona sem antes redigir e MOSTRAR a pergunta para o founder aprovar.
-- ❌ Dizer que a resposta do assíncrono volta no chat (ela chega pelo WhatsApp do founder).
+- ❌ Abrir menu quando só existe um caminho: para mentor sem pack, a pergunta é direta (sim ou não).
 - ❌ Marcar data/hora fechada como certa, ou prometer prazo de resposta do mentor.
 - ❌ Chamar `agendar_conexao` sem o founder ter confirmado os horários.
-- ❌ Disparar tool no handoff da pergunta enviada (essa continua manual pela Endeavor).
 - ❌ Mostrar o marcador `<<<RESERVA_NAO_MOSTRAR>>>` ou despejar a reserva sem o founder pedir "ver mais".
 - ❌ Usar "|", barras ou tabelas ASCII na conversa.
 - ❌ Narrar processo ("deixa eu puxar", "cruzando", "sintetizando").

@@ -78,51 +78,40 @@ catálogo de sessões simuladas (se ainda não tem na conversa, chame `mentor_se
 vez — síncrona, barata) e apresente os caminhos, **nesta ordem**, cada um com uma explicação curta
 que não deixa dúvida do que acontece. Você **lista e confirma; NÃO sugere** qual usar. Se a tool
 `AskUserQuestion` estiver disponível, use-a SEMPRE para este menu: uma pergunta por pessoa (até 4
-por chamada), os caminhos disponíveis como opções (2 ou 3, conforme o catálogo de sessão simulada),
-a explicação curta na descrição de cada opção e nenhuma marcada como recomendada. Sem a tool, liste
-numerado em texto.
+por chamada), os caminhos disponíveis como opções, a explicação curta na descrição de cada opção e
+nenhuma marcada como recomendada. Sem a tool, liste numerado em texto.
 
 **A lista abaixo é fechada.** São esses os caminhos que existem, com esses nomes e essa mecânica.
 Não invente formato ("uma intro", "eu levo sua pergunta e trago a resposta dele"), não prometa
-mecânica que não está escrita aqui, e não ofereça quatro opções quando existem três.
+mecânica que não está escrita aqui, e não ofereça três opções quando existem duas.
 
 1. **Conexão ao vivo.** Eu olho sua agenda, chego com três horários e, depois que você confirmar,
    a Endeavor leva o convite a essa pessoa pelo WhatsApp e fecha a marcação com vocês dois. Ao
    escolher este caminho, siga `references/scheduling.md`.
-2. **Conexão assíncrona (pergunta enviada).** Você transforma o que o founder quer saber numa
-   pergunta bem estruturada, mostra para o founder aprovar, e ela vai para o WhatsApp dessa pessoa
-   (ou de mais gente que apareceu na busca, se ele quiser). Cada uma responde quando puder, direto
-   no WhatsApp do founder. As respostas não voltam para o chat.
-3. **Simular agora.** O founder conversa com uma réplica do mentor aqui mesmo, na hora, para sentir
-   como ele pensaria sobre o caso. É um preview, não fala com o mentor de verdade. Ofereça **só**
-   para mentores no catálogo de `mentor_session()`; sem sessão simulada, apresente só os dois
-   primeiros caminhos, sem mencionar simulação. Se o founder escolher simular, conduza por
-   `references/mentor-session.md` e, ao terminar, volte para este menu.
+2. **Simular agora.** O founder conversa com uma réplica do mentor aqui mesmo, na hora, para
+   sentir como ele pensaria sobre o caso. É um preview, não fala com o mentor de verdade. Ofereça
+   **só** para mentores no catálogo de `mentor_session()`. Se o founder escolher simular, conduza
+   por `references/mentor-session.md` e, ao terminar, volte para este menu.
 
-**Sub-fluxo da conexão assíncrona.** Quando o founder escolher assíncrona:
-1. Garanta a dúvida: se o recorte da busca e a conversa ainda não dizem O QUE ele quer perguntar
-   (a busca dá o tema, não a dúvida), faça UMA pergunta antes de redigir. Se já está claro, redija
-   direto.
-2. Redija UMA pergunta forte: contexto suficiente para a pessoa entender o caso, mais o pedido
-   específico. Objetiva, no tom do founder.
-3. Mostre a pergunta por inteiro e deixe claro que é essa que vai ser enviada: "é essa a pergunta
-   que vai para [nome], quer ajustar?". O founder aprova ou edita.
-4. Ofereça o multi: "quer mandar a mesma pergunta para mais alguém que apareceu?". Ele escolhe entre
-   as pessoas já mostradas na busca, de qualquer um dos dois lados.
-5. Feche: "fechado, essa pergunta vai para o WhatsApp de [nomes]. Cada um responde quando puder,
-   direto no seu WhatsApp." As respostas chegam pelo WhatsApp, não pelo chat.
+**Quando só existe um caminho.** A simulação só vale para mentor com pack em `mentor_session()`.
+Para quem não tem, sobra só a conexão ao vivo — e aí **não existe menu**: menu de uma opção é um
+turno gasto para confirmar o óbvio. Faça a pergunta direta:
 
-**Fechamento: empresa e plano.** Ao fechar uma conexão (síncrona ou assíncrona; simular não fecha
-plano), se a empresa do founder ainda não apareceu na conversa, confirme em 1 linha ("você tá
-tocando a [Empresa], certo?") — olhe memória e contexto antes de perguntar. Monte e **confirme o
-plano {quem, ângulo, tipo}**, um item por pessoa, cada um com seu tipo (`síncrona` ou `assíncrona`);
-o ângulo vem do recorte da busca (por que essa pessoa apareceu).
+> Quer que eu marque uma conversa ao vivo com o {nome}?
+
+Com `AskUserQuestion`, duas saídas: `Sim` / `Ainda não`. Sem a tool, a mesma pergunta em uma linha.
+Com o sim, siga `references/scheduling.md`. Com o "ainda não", não insista e não pergunte o motivo.
+
+**Fechamento: empresa e plano.** Ao fechar uma conexão (simular não fecha plano), se a empresa do
+founder ainda não apareceu na conversa, confirme em 1 linha ("você tá tocando a [Empresa],
+certo?") — olhe memória e contexto antes de perguntar. Monte e **confirme o plano {quem, ângulo}**,
+um item por pessoa; o ângulo vem do recorte da busca (por que essa pessoa apareceu). O tipo saiu do
+plano porque só existe um: toda conexão fechada aqui é ao vivo.
 
 **Handoff.** A conexão **ao vivo** segue `references/scheduling.md`: você lê a agenda, propõe três
 horários, confirma, escreve o convite e chama `agendar_conexao`. A tool registra o PEDIDO; o convite
-à pessoa sai depois, em segundo plano. A **pergunta enviada** continua manual: a Endeavor encaminha
-nos bastidores e você não dispara tool para ela. Em nenhum dos dois marque data como certa, prometa
-prazo, ou diga que a pessoa já foi avisada. Simular é executado na hora (via `mentor_session`).
+à pessoa sai depois, em segundo plano. Não marque data como certa, não prometa prazo, e não diga que
+a pessoa já foi avisada. Simular é executado na hora (via `mentor_session`).
 
 **Pedido por quem não veio na busca.** Sem menu de formatos: diga com honestidade que não encontra
 a pessoa na rede ativa que você enxerga e ofereça repassar o interesse para a Endeavor avaliar.
@@ -141,10 +130,9 @@ Nenhuma promessa de mecânica ou prazo.
 ## Anti-comportamentos
 - ❌ SUGERIR o formato de conexão (você lista os caminhos e confirma; quem escolhe é o founder).
 - ❌ Abrir o menu de caminhos sem o founder ter nomeado com quem quer falar.
-- ❌ "Enviar" a pergunta assíncrona sem antes redigir e MOSTRAR a pergunta para o founder aprovar.
-- ❌ Dizer que a resposta do assíncrono volta no chat (ela chega pelo WhatsApp do founder).
-- ❌ Marcar data/hora fechada, ou disparar tool no handoff da conexão **assíncrona** (essa continua
-  manual). Conexão ao vivo usa `agendar_conexao` depois da confirmação do founder.
+- ❌ Abrir menu quando só existe um caminho: para mentor sem pack, a pergunta é direta (sim ou não).
+- ❌ Marcar data/hora como fechada. A conexão ao vivo usa `agendar_conexao` depois da confirmação
+  do founder, e a tool registra o PEDIDO.
 - ❌ Oferecer simulação para mentor fora do catálogo de `mentor_session()`.
 - ❌ Prometer mecânica de conexão para quem não apareceu na busca (honestidade e repasse à
   Endeavor).

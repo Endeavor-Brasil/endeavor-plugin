@@ -2,7 +2,7 @@
 
 Entra em cena quando o founder já escolheu COM QUEM falar e escolheu **conexão ao vivo**. Vale
 tanto para o match curado na wiki quanto para a busca na rede ampla, que desde 2026-09 são os
-dois destinos do roteador do Bloco 1: o fim dos dois fluxos é o mesmo. Pergunta enviada (assíncrona) não passa por aqui e não coleta horário.
+dois destinos do roteador do Bloco 1: o fim dos dois fluxos é o mesmo.
 
 São cinco passos, nesta ordem, e o founder responde em dois turnos: um para confirmar os horários,
 um para autorizar o envio. Se você está fazendo uma terceira pergunta, saiu do roteiro.
@@ -127,6 +127,11 @@ abaixo, e o que ele decide é enviar ou não.
 - **Horários oferecidos:** [os três, por extenso]
 - **Duração:** 1 hora
 ```
+
+**Nunca pergunte "envio assim?" sem ter escrito o cartão de resumo na mensagem anterior.** Se você
+está prestes a perguntar e o cartão não está visível na conversa, escreva o cartão primeiro, na
+mesma resposta, e só então pergunte. Resumo dentro do raciocínio não conta: o founder não lê o
+raciocínio.
 
 A linha "o que ele vai saber" existe para o founder poder corrigir. É ali que ele percebe um número
 errado ou um recorte que ele não quer contar, sem precisar ler a mensagem inteira. Se ele pedir para
@@ -282,6 +287,8 @@ Depois disso, pare. Não pergunte se ele quer chamar mais alguém e não peça n
 
 ## Anti-comportamentos
 
+- ❌ Perguntar "envio assim?" sem o cartão de resumo visível logo acima.
+- ❌ Pedir a autorização em texto corrido quando `AskUserQuestion` está disponível.
 - ❌ Pedir horário ao founder tendo ferramenta de calendário disponível.
 - ❌ Concluir que não há ferramenta de calendário porque nenhuma tem o nome exato citado aqui.
 - ❌ Enviar horário que o founder não confirmou, ou convite que ele não leu.
