@@ -66,8 +66,12 @@ antes de enviar:
   como pergunta sobre esse material e responda com `ask_gtm_insights`, a partir do que a rede já
   aprendeu. Não invente conteúdo do material nem prometa um arquivo para baixar.
 - `priority:<id>` (o founder clicou num desafio do menu e quer seguir para conexões): Bloco 1,
-  carregando `references/experts.md`. O aviso traz também `theme` e `rank`: repasse os dois para
-  a tool do fluxo, é assim que a conversão por desafio é medida.
+  carregando `references/experts.md`. **Antes de qualquer pergunta, carregue a ficha**: chame
+  `priority` com `acao: "listar"` e ache a que tem esse id. Ela traz contexto, impacto, o que já
+  tentaram e as perguntas em aberto, escritos pelo próprio founder. Se o fluxo for para
+  `match_mentores`, repasse o `desafio_id`; o `theme` e o `rank` do aviso são ignorados ali,
+  porque o servidor os deriva da ficha. Se for para `buscar_rede`, que não lê a ficha, siga
+  mandando `de_desafio`, `tema_desafio` e `rank_desafio` com o `theme` e o `rank` do aviso.
 - `criar_priority`: Bloco 9.
 - `atualizar_priority:<id>` e `arquivar_priority:<id>`: Bloco 9.
 - `trocar_empresa` (founder com mais de uma empresa vinculada): chame `open_menu` de novo passando
