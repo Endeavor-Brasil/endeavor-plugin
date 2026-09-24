@@ -146,7 +146,7 @@ Sem a tool, pergunte em uma linha: "envio assim, quer alterar algo, ou prefere d
 
 ### O convite (o texto que vai à pessoa)
 
-Quatro blocos curtos, em prosa corrida, sem título de seção:
+Cinco blocos curtos, em prosa corrida, sem título de seção:
 
 1. **Saudação, quem fala e o convite.** Primeiro nome da pessoa, "tudo bem?", a Endeavor se
    apresentando, e o convite nomeando o founder, o cargo e a empresa. Quem senta na conversa é quem
@@ -161,6 +161,15 @@ Quatro blocos curtos, em prosa corrida, sem título de seção:
    três que o founder já confirmou. "Topa? Ela consegue terça 26 às 14h, quarta 27 às 10h ou quinta
    28 às 16h" está certo. "Temos algumas janelas pré-alinhadas" está errado: a pessoa não tem o que
    responder.
+5. **A saída.** Uma linha, parágrafo próprio, depois dos horários:
+
+   > Se nenhum desses funcionar, me diga qual horário funciona melhor, e se não for o momento,
+   > sem problema.
+
+   Ela pede um horário de volta em vez de só abrir a porta, o que transforma o "não" em "quando".
+   Quem recebe é um voluntário, e quem conduz a resposta é gente do time de agendamento, então
+   contrapor horário é caminho que existe. **Não** acrescente prazo de resposta: continua sendo
+   anti-padrão.
 
 O link do site da empresa entra como URL crua, em linha própria antes do pedido. WhatsApp não
 renderiza link com texto, então nome entre colchetes vira lixo na tela. Não link a pessoa: ela é
