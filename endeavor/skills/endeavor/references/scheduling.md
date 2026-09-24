@@ -220,6 +220,9 @@ Exemplo hipotético, para calibrar extensão e ritmo:
 >
 > Pensamos em você pela sua experiência construindo a máquina de vendas enterprise da Escala, saindo
 > do founder-led. Topa? Ela consegue terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h.
+>
+> Se nenhum desses funcionar, me diga qual horário funciona melhor, e se não for o momento, sem
+> problema.
 
 ## Passo 4: enviar
 
