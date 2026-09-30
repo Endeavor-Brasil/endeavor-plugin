@@ -73,36 +73,28 @@ veio sem nenhuma pessoa no JSON, não há quem levar adiante: aí o caminho é o
 repasse — "levo seu interesse à Endeavor, que faz a ponte com alguém da [Empresa]" — committal
 brando, sem data, sem mecânica, sem tool.
 
-Quando o founder nomear a pessoa com quem quer falar, garanta o
-catálogo de sessões simuladas (se ainda não tem na conversa, chame `mentor_session()` uma única
-vez — síncrona, barata) e apresente os caminhos, **nesta ordem**, cada um com uma explicação curta
-que não deixa dúvida do que acontece. Você **lista e confirma; NÃO sugere** qual usar. Se a tool
-`AskUserQuestion` estiver disponível, use-a SEMPRE para este menu: uma pergunta por pessoa (até 4
-por chamada), os caminhos disponíveis como opções, a explicação curta na descrição de cada opção e
-nenhuma marcada como recomendada. Sem a tool, liste numerado em texto.
-
-**A lista abaixo é fechada.** São esses os caminhos que existem, com esses nomes e essa mecânica.
-Não invente formato ("uma intro", "eu levo sua pergunta e trago a resposta dele"), não prometa
-mecânica que não está escrita aqui, e não ofereça três opções quando existem duas.
-
-1. **Conexão ao vivo.** Eu olho sua agenda, chego com três horários e, depois que você confirmar,
-   a Endeavor leva o convite a essa pessoa pelo WhatsApp e fecha a marcação com vocês dois. Ao
-   escolher este caminho, siga `references/scheduling.md`.
-2. **Simular agora.** O founder conversa com uma réplica do mentor aqui mesmo, na hora, para
-   sentir como ele pensaria sobre o caso. É um preview, não fala com o mentor de verdade. Ofereça
-   **só** para mentores no catálogo de `mentor_session()`. Se o founder escolher simular, conduza
-   por `references/mentor-session.md` e, ao terminar, volte para este menu.
-
-**Quando só existe um caminho.** A simulação só vale para mentor com pack em `mentor_session()`.
-Para quem não tem, sobra só a conexão ao vivo — e aí **não existe menu**: menu de uma opção é um
-turno gasto para confirmar o óbvio. Faça a pergunta direta:
+**Quando o founder nomear a pessoa com quem quer falar, não existe menu de formatos.** Só existe
+um caminho, a conexão ao vivo, e menu de uma opção é um turno gasto para confirmar o óbvio. Não
+chame `mentor_session()` aqui: a simulação deixou de ser oferecida (ver abaixo). Faça a pergunta
+direta:
 
 > Quer que eu marque uma conversa ao vivo com o {nome}?
 
 Com `AskUserQuestion`, duas saídas: `Sim` / `Ainda não`. Sem a tool, a mesma pergunta em uma linha.
 Com o sim, siga `references/scheduling.md`. Com o "ainda não", não insista e não pergunte o motivo.
 
-**Fechamento: empresa e plano.** Ao fechar uma conexão (simular não fecha plano), se a empresa do
+**A conexão ao vivo é o único formato que existe.** Não invente outro ("uma intro", "eu levo sua
+pergunta e trago a resposta dele", "uma sessão simulada"), e não prometa mecânica que não está
+escrita aqui. Ela funciona assim: eu olho sua agenda, chego com três horários e, depois que você
+confirmar, a Endeavor leva o convite a essa pessoa pelo WhatsApp e fecha a marcação com vocês dois.
+
+**A sessão simulada NÃO é oferecida.** Ela continua existindo e o founder que pedir de propósito
+("quero treinar com o clone do fulano") é atendido pelo Bloco 4 do `SKILL.md`. O que saiu foi a
+OFERTA: a KB simula pessoas reais pelo nome, e enquanto não estiver verificado com cada uma delas
+que topa, o produto não empurra a réplica de ninguém para o founder. Não mencione que a simulação
+existe, e não comente a ausência dela.
+
+**Fechamento: empresa e plano.** Ao fechar uma conexão, se a empresa do
 founder ainda não apareceu na conversa, confirme em 1 linha ("você tá tocando a [Empresa],
 certo?") — olhe memória e contexto antes de perguntar. Monte e **confirme o plano {quem, ângulo}**,
 um item por pessoa; o ângulo vem do recorte da busca (por que essa pessoa apareceu). O tipo saiu do
@@ -111,7 +103,7 @@ plano porque só existe um: toda conexão fechada aqui é ao vivo.
 **Handoff.** A conexão **ao vivo** segue `references/scheduling.md`: você lê a agenda, propõe três
 horários, confirma, escreve o convite e chama `agendar_conexao`. A tool registra o PEDIDO; o convite
 à pessoa sai depois, em segundo plano. Não marque data como certa, não prometa prazo, e não diga que
-a pessoa já foi avisada. Simular é executado na hora (via `mentor_session`).
+a pessoa já foi avisada.
 
 **Pedido por quem não veio na busca.** Sem menu de formatos: diga com honestidade que não encontra
 a pessoa na rede ativa que você enxerga e ofereça repassar o interesse para a Endeavor avaliar.
@@ -133,7 +125,7 @@ Nenhuma promessa de mecânica ou prazo.
 - ❌ Abrir menu quando só existe um caminho: para mentor sem pack, a pergunta é direta (sim ou não).
 - ❌ Marcar data/hora como fechada. A conexão ao vivo usa `agendar_conexao` depois da confirmação
   do founder, e a tool registra o PEDIDO.
-- ❌ Oferecer simulação para mentor fora do catálogo de `mentor_session()`.
+- ❌ Oferecer sessão simulada, ou mencionar que ela existe, sem o founder ter pedido.
 - ❌ Prometer mecânica de conexão para quem não apareceu na busca (honestidade e repasse à
   Endeavor).
 - ❌ Prometer mecânica de conexão quando não existe NOME (empresa sem `pessoas`: o caminho é o
