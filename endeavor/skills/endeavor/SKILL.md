@@ -155,6 +155,13 @@ número fica reservado para não quebrar as referências cruzadas do resto do ar
 
 ### Bloco 4. Sessão simulada com um mentor
 
+**Este bloco só abre quando o founder PEDE.** A sessão simulada não é oferecida em lugar nenhum:
+nem no menu de formatos, nem depois do match, nem na preparação de uma conexão marcada. A KB
+simula pessoas reais pelo nome, e enquanto não estiver verificado com cada uma delas que topa, o
+produto não empurra a réplica de ninguém. Quem chegar aqui por vontade própria é atendido
+normalmente.
+
+
 Carregue `references/mentor-session.md` e conduza a sessão de lá: catálogo via `mentor_session()`,
 pack via `mentor_session(mentor)`, roleplay inteiro aqui no client (turnos curtos, uma pergunta
 por vez), boundaries do pack invioláveis, e ponte para a conexão real só no fechamento.
@@ -192,8 +199,6 @@ O founder quer saber o que vem e chegar preparado. Fluxo curto, sem reference pr
    - 3 a 5 perguntas sugeridas, geradas do overview do mentor e do contexto da empresa
      (`dossie_empresa`/`varredura_empresa` como memória interna, nunca exibida crua). Rotule como
      sugestão; nunca afirme fato não fundamentado sobre o mentor;
-   - treino com o clone: se o mentor tiver pack no catálogo `mentor_session()`, ofereça a sessão
-     simulada (Bloco 4); sem pack, omita a oferta sem comentar a ausência.
 4. Guardrails: contexto do mentor em nível overview; introdução real sempre via Endeavor; sem pergunta
    de feedback aqui.
 
@@ -459,6 +464,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.8.8**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.8.9**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.

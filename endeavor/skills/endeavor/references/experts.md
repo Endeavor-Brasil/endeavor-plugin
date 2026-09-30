@@ -264,13 +264,6 @@ quem quer falar (passo 7).
 "Quer falar com algum desses? Me diz com quem. Se quiser, também te mostro mais nomes ou foco em
 outro ângulo (por exemplo, quem é forte em PLG)."
 
-Test-drive simulado: depois de apresentar os 3, se ainda não tiver o catálogo na conversa, chame
-`mentor_session()` (síncrona, barata) uma única vez. Se algum dos mentores mostrados tiver sessão
-simulada disponível, ofereça em UMA frase: "quer experimentar uma sessão simulada com ele antes de
-pedir a conexão?". Se o founder topar, conduza pelo fluxo de `references/mentor-session.md`
-levando o desafio já enriquecido; ao final da sessão, volte para este fluxo de onde parou (o menu de
-como interagir, passo 7). A oferta não substitui o plano.
-
 ### 6. Explorar mais / mudar de ângulo
 - **"Quer ver mais"**: revele a **reserva** — o texto que veio DEPOIS do `<<<RESERVA_NAO_MOSTRAR>>>`,
   que você guardou no passo 4 (pode revelar em blocos se ficar mais natural). **Não** chame a tool de novo.
@@ -297,34 +290,24 @@ que nenhum serve.
 ### 7. Como interagir com cada mentor: os caminhos + plano
 Quando o founder disser com quem quer falar, apresente os caminhos de como usar cada mentor,
 **nesta ordem**, cada um com uma explicação curta que não deixa dúvida do que acontece.
-Você **lista e confirma; NÃO sugere** qual usar. Se a tool `AskUserQuestion` estiver disponível,
-use-a SEMPRE para este menu: uma pergunta por mentor (até 4 por chamada), os caminhos disponíveis
-como opções, a explicação curta na descrição de cada opção e nenhuma marcada como recomendada. Sem
-a tool, liste numerado em texto.
-
-**A lista abaixo é fechada.** São esses os caminhos que existem, com esses nomes e essa mecânica.
-Não invente formato ("uma intro", "eu levo sua pergunta e trago a resposta dele"), não prometa
-mecânica que não está escrita aqui, e não ofereça três opções quando existem duas.
-
-1. **Conexão ao vivo.** Eu olho sua agenda, chego com três horários e, depois que você confirmar,
-   a Endeavor leva o convite ao mentor pelo WhatsApp e fecha a marcação com vocês dois. Ao escolher
-   este caminho, siga `references/scheduling.md`.
-2. **Simular agora.** O founder conversa com uma réplica do mentor aqui mesmo, na hora, para sentir
-   como ele pensaria sobre o caso. É um preview, não fala com o mentor de verdade. Ofereça só para
-   mentores com sessão simulada (os que aparecem no catálogo de `mentor_session()`); é o mesmo fluxo
-   do test-drive (passo 5 e `references/mentor-session.md`), e ao terminar volte para este menu.
-
-**Quando só existe um caminho.** A simulação só vale para mentor com pack em `mentor_session()`.
-Para quem não tem, sobra só a conexão ao vivo — e aí **não existe menu**: menu de uma opção é um
-turno gasto para confirmar o óbvio. Faça a pergunta direta:
+**Não existe menu de formatos.** Só existe um caminho, a conexão ao vivo, e menu de uma opção é um
+turno gasto para confirmar o óbvio. Não chame `mentor_session()` aqui. Faça a pergunta direta:
 
 > Quer que eu marque uma conversa ao vivo com o {nome}?
 
 Com `AskUserQuestion`, duas saídas: `Sim` / `Ainda não`. Sem a tool, a mesma pergunta em uma linha.
 Com o sim, siga `references/scheduling.md`. Com o "ainda não", não insista e não pergunte o motivo.
 
-Se o mentor tiver sessão simulada, você **pode** sugerir simular antes de marcar a conversa ("quer
-testar a resposta dele aqui antes?"), mas quem decide é o founder; nunca é obrigatório.
+**A conexão ao vivo é o único formato que existe.** Não invente outro ("uma intro", "eu levo sua
+pergunta e trago a resposta dele", "uma sessão simulada"), e não prometa mecânica que não está
+escrita aqui. Ela funciona assim: eu olho sua agenda, chego com três horários e, depois que você
+confirmar, a Endeavor leva o convite ao mentor pelo WhatsApp e fecha a marcação com vocês dois.
+
+**A sessão simulada NÃO é oferecida, em momento nenhum deste fluxo.** Ela continua existindo, e o
+founder que pedir de propósito ("quero treinar com o clone do fulano") é atendido pelo Bloco 4 do
+`SKILL.md`. O que saiu foi a OFERTA: a KB simula pessoas reais pelo nome, e enquanto não estiver
+verificado com cada uma delas que topa, o produto não empurra a réplica de ninguém para o founder.
+Não mencione que a simulação existe, e não comente a ausência dela.
 
 **Privacidade, se o founder perguntar.** O mentor recebe apenas o convite que o founder aprovou,
 não o dossiê nem dados internos da empresa. A introdução e o contato seguem intermediados pela
@@ -333,13 +316,12 @@ Endeavor.
 **Plano {quem, ângulo}.** Conforme o founder escolhe com quem falar, monte o **plano explícito**:
 para cada mentor, **quem** e o **ângulo** da conversa (use os ganchos que vieram na recomendação
 para afiar "falar com fulano sobre X"). O tipo saiu do plano porque só existe um: toda conexão
-fechada aqui é ao vivo. Simular não é item de plano: é executado na hora e a conversa volta para
-este menu. **Confirme o {quem, ângulo}** e feche.
+fechada aqui é ao vivo. **Confirme o {quem, ângulo}** e feche.
 
 **Handoff.** A conexão **ao vivo** segue `references/scheduling.md`: você lê a agenda, propõe três
 horários, confirma, escreve o convite e chama `agendar_conexao`. A tool registra o PEDIDO; o convite
 ao mentor sai depois, em segundo plano. Não marque data como certa, não prometa prazo, e não diga
-que o mentor já foi avisado. Simular é executado na hora (via `mentor_session`).
+que o mentor já foi avisado.
 
 A skill para aqui; você não ranqueia nem nomeia mentores (isso é do servidor).
 
@@ -379,7 +361,8 @@ varredura) são **memória de trabalho** sua para conversar melhor, nunca saída
   founder acabou de apontar.
 - ❌ Conduzir o diagnóstico do zero sem ter olhado se o desafio já está registrado.
 - ❌ SUGERIR o formato de conexão (você lista os tipos e confirma; quem escolhe é o founder).
-- ❌ Abrir menu quando só existe um caminho: para mentor sem pack, a pergunta é direta (sim ou não).
+- ❌ Abrir menu de formatos: só existe a conexão ao vivo, e a pergunta é direta (sim ou não).
+- ❌ Oferecer sessão simulada, ou mencionar que ela existe, sem o founder ter pedido.
 - ❌ Marcar data/hora fechada como certa, ou prometer prazo de resposta do mentor.
 - ❌ Chamar `agendar_conexao` sem o founder ter confirmado os horários.
 - ❌ Mostrar o marcador `<<<RESERVA_NAO_MOSTRAR>>>` ou despejar a reserva sem o founder pedir "ver mais".
