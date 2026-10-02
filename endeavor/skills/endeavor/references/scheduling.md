@@ -115,37 +115,36 @@ já é o turno completo e o founder responde em texto. Não trate o menu como pr
 
 Você escreve o convite (regras abaixo), mas **o texto do convite NÃO aparece para o founder**. Ele é
 a mensagem que a pessoa vai ler, e mostrar a cópia crua aqui polui a conversa e convida revisão de
-redação em vez de decisão. O que o founder vê é um resumo do que está sendo pedido, no formato
-abaixo, e o que ele decide é enviar ou não.
+redação em vez de decisão. O que o founder vê é o cartão abaixo, e o que ele decide é enviar ou não.
+
+**O CARTÃO É A PERGUNTA.** Não é um bloco acima dela, não é um resumo que a antecede: o enunciado da
+autorização É esse cartão, inteiro, com as cinco linhas. Quando ele era um bloco separado, ele caiu
+três vezes (23/09, 24/09 e de novo em 01/10) e sobrou um "envio assim?" apontando para um convite
+que o founder nunca viu. Pergunta e cartão não têm como se separar quando são a mesma coisa.
 
 ```
-**Conexão ao vivo com [Nome]**
+Envio este convite para o [Nome]?
 
 - **Quem:** [nome], [cargo e empresa atual]
 - **Assunto:** [o ângulo da conversa, uma linha]
-- **O que a pessoa vai saber sobre você:** [a empresa em meia linha + o desafio em meia linha]
+- **O que ele vai saber sobre você:** [a empresa em meia linha + o desafio em meia linha]
 - **Horários oferecidos:** [os três, por extenso]
 - **Duração:** 1 hora
 ```
 
-**A pergunta de autorização vai na MESMA mensagem do cartão, logo abaixo dele, e nunca diz
-"assim".** "Envio assim?" aponta para um convite que o founder não vê: quando o cartão ficou de fora
-(23/09 e de novo 24/09), a pergunta saiu sozinha e ele não tinha o que aprovar. Por isso a própria
-pergunta diz para quem, sobre o quê e quando, e se sustenta mesmo que o cartão falhe:
+Com `AskUserQuestion`, **o cartão inteiro é o texto da pergunta**, e as opções são exatamente três,
+nesta ordem: `Enviar` / `Alterar` / `Cancelar`. Sem a tool, o cartão é a mensagem e a primeira linha
+já é a pergunta.
 
-> Envio o convite para o [Nome], sobre [o assunto em poucas palavras], oferecendo [os três
-> horários]?
+**Nunca pergunte "envio assim?".** "Assim" aponta para algo que o founder não tem na frente. A
+pergunta nomeia a pessoa, e o cartão abaixo dela diz o resto.
 
 Resumo dentro do raciocínio não conta: o founder não lê o raciocínio. O convite você só escreve na
 chamada da tool (passo 4); ele não precisa aparecer em mensagem nenhuma.
 
-A linha "o que ele vai saber" existe para o founder poder corrigir. É ali que ele percebe um número
-errado ou um recorte que ele não quer contar, sem precisar ler a mensagem inteira. Se ele pedir para
-ver o texto exato, mostre; só não ofereça por conta própria.
-
-Com `AskUserQuestion`, essa frase é o texto da pergunta, e as opções são exatamente três, nesta
-ordem: `Enviar` / `Alterar` / `Cancelar`. Sem a tool, a mesma frase fecha a mensagem, seguida de "ou
-quer alterar algo antes?".
+A linha "o que ele vai saber" é a razão de o cartão existir. É ali que o founder percebe um número
+errado ou um recorte que ele não quer contar, sem precisar ler a mensagem inteira. Ela nunca sai do
+cartão. Se ele pedir para ver o texto exato do convite, mostre; só não ofereça por conta própria.
 
 - **Enviar:** vá para o passo 4.
 - **Alterar:** ele diz o que muda, você refaz o resumo e pergunta de novo.
