@@ -100,9 +100,12 @@ certo?") — olhe memória e contexto antes de perguntar. Monte e **confirme o p
 um item por pessoa; o ângulo vem do recorte da busca (por que essa pessoa apareceu). O tipo saiu do
 plano porque só existe um: toda conexão fechada aqui é ao vivo.
 
-**Handoff.** A conexão **ao vivo** segue `references/scheduling.md`: você lê a agenda, propõe três
-horários, confirma, escreve o convite e chama `agendar_conexao`. A tool registra o PEDIDO; o convite
-à pessoa sai depois, em segundo plano. Não marque data como certa, não prometa prazo, e não diga que
+**Handoff.** A conexão **ao vivo** segue `references/scheduling.md`, e você **carrega esse arquivo
+antes de agir**: a sequência abaixo é um índice, não a receita. Você lê a agenda, propõe três
+horários, confirma os horários, e então **mostra o CARTÃO de autorização, que é a própria pergunta**
+(quem, assunto, o que a pessoa vai saber sobre ele, horários, duração) e só chama `agendar_conexao`
+depois do sim. Nunca pergunte "envio assim?" sem o cartão: foi o defeito de 23/09, 24/09 e 01/10. A
+tool registra o PEDIDO; o convite à pessoa sai depois, em segundo plano. Não marque data como certa, não prometa prazo, e não diga que
 a pessoa já foi avisada.
 
 **Pedido por quem não veio na busca.** Sem menu de formatos: diga com honestidade que não encontra
