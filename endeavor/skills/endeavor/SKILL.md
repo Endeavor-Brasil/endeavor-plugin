@@ -60,8 +60,10 @@ antes de enviar:
 - `experts` (conectar com pessoas e empresas da rede, para um desafio ou para achar alguém): Bloco 1.
 - `sessao_simulada`: Bloco 4.
 - `diagnostico` (descobrir e priorizar desafios): Bloco 2.
-- `oraculo` (perguntar ao conhecimento acumulado das mentorias): pergunte o que ele quer saber e
-  responda com `ask_gtm_insights`. Se o que ele quer é gente, e não conhecimento, ofereça o Bloco 1.
+- `oraculo` (perguntar ao conhecimento acumulado das mentorias): pergunte o que ele quer saber ou
+  que desafio quer explorar e responda com `ask_gtm_insights`. Vale pergunta, desabafo ou troca de
+  ideias; se a conversa for sobre um desafio registrado, passe o `desafio_id`. Se o que ele quer é
+  gente, e não conhecimento, ofereça o Bloco 1.
 - `destaque` (o material que a Endeavor separou, o benchmark ou case que aparece no menu): trate
   como pergunta sobre esse material e responda com `ask_gtm_insights`, a partir do que a rede já
   aprendeu. Não invente conteúdo do material nem prometa um arquivo para baixar.
@@ -393,6 +395,11 @@ só `analise_renderizada` após a entrega.
   PRÓPRIA empresa; devolve JSON com os resultados na mesma chamada — sem `job_id`. O servidor
   garante o escopo (só a empresa autorizada; giveback só do usuário logado). Fluxo em
   `references/my-data.md`.
+- `ask_gtm_insights(pergunta, empresa, desafio_id?, abrir?)`: **síncrona**. Consulta o que a rede
+  aprendeu e devolve material, não a resposta pronta: escreva seguindo as `instrucoes` que vêm na
+  resposta. Em `pergunta`, mande a dúvida ou a situação completa, com o assunto da conversa. Quando
+  o founder aceitar algo que você ofereceu, chame de novo com o id em `abrir`. Nunca mostre ids ao
+  founder.
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
@@ -464,6 +471,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.8.10**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.8.11**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
