@@ -3,13 +3,13 @@ name: endeavor
 description: >
   Concierge da Endeavor para founders dentro do Claude. Mostra um menu de capacidades de
   Go-to-Market e roteia para a certa. Use quando o founder abrir o plugin, disser que precisa
-  de ajuda com GTM, quiser um diagnóstico, quiser falar com mentores, ou quiser explorar a rede:
-  "/endeavor", "preciso de ajuda com [tema]", "quero um diagnóstico", "que mentor me ajuda",
+  de ajuda com GTM, quiser falar com mentores, ou quiser explorar a rede:
+  "/endeavor", "preciso de ajuda com [tema]", "que mentor me ajuda",
   "quem na rede já fez X", "quero conversar com o [mentor]", "o que vocês fazem com os meus
   dados", "isso é seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
-  varredura_empresa, dossie_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede,
+  varredura_empresa, dossie_empresa, match_mentores, consultar_analise, buscar_rede,
   mentor_session, company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
   registrar_feedback, open_menu, priority.
   Pode usar web_search e os conectores
@@ -59,7 +59,7 @@ antes de enviar:
 - `radar_proativo`: Bloco 7.
 - `experts` (conectar com pessoas e empresas da rede, para um desafio ou para achar alguém): Bloco 1.
 - `sessao_simulada`: Bloco 4.
-- `diagnostico` (descobrir e priorizar desafios): Bloco 2.
+- `diagnostico` (só chega de menu antigo em cache: o diagnóstico saiu do produto): Bloco 2.
 - `oraculo` (perguntar ao conhecimento acumulado das mentorias): pergunte o que ele quer saber ou
   que desafio quer explorar e responda com `ask_gtm_insights`. Vale pergunta, desabafo ou troca de
   ideias; se a conversa for sobre um desafio registrado, passe o `desafio_id`. Se o que ele quer é
@@ -80,9 +80,10 @@ antes de enviar:
   a empresa que ele escolheu, e entregue o novo menu.
 
 **Chaves do menu anterior.** `ultimos_desafios` e `radar_proativo` continuam roteando como sempre
-(Bloco 5 e Bloco 7). O host cacheia o widget POR URI e não revalida: founder que já tem o menu
-anterior na tela vai continuar mandando essas chaves por tempo indeterminado, e nem reconectar o
-conector invalida. Remover qualquer uma delas quebra quem ainda não recarregou.
+(Bloco 5 e Bloco 7), e `diagnostico` vai para o Bloco 2, que hoje só explica que ele saiu. O host
+cacheia o widget POR URI e não revalida: founder que já tem o menu anterior na tela vai continuar
+mandando essas chaves por tempo indeterminado, e nem reconectar o conector invalida. Remover
+qualquer uma delas quebra quem ainda não recarregou.
 
 Chave que você não reconhecer: entenda o objetivo pela frase e roteie como sempre, sem repetir o
 menu. Sem chave nenhuma (ele escreveu com as próprias palavras, ou respondeu o número do cardápio),
@@ -94,8 +95,9 @@ o roteamento é o de sempre:
   concluída, como descrito no Bloco 5.
 - **3. Conecte-se com a rede Endeavor** (um desafio em que quer ajuda de um mentor, ou pessoas e
   empresas da rede que ele quer achar): vá para o Bloco 1.
-- **4. Quero descobrir e priorizar desafios** (ou "diagnóstico"): vá para o Bloco 2.
-- **5. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
+- **4. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
+- Pedido de diagnóstico ("quero um diagnóstico", "descobrir e priorizar desafios"): vá para o
+  Bloco 2.
 - Pedido direto para conversar/treinar com um mentor específico ("quero conversar com o Bazzi"): vá
   para o Bloco 4, como hoje.
 - Pergunta sobre dados, privacidade, confidencialidade, LGPD, segurança, quem tem acesso, o que os
@@ -119,36 +121,17 @@ Quando mandar para a **wiki**, siga o `experts.md` até o fim.
 Neste bloco NÃO há pergunta de feedback. Logo após os 3 nomes vem o convite para escolher, explorar
 ou dizer que nenhum serve, como manda o `references/experts.md`.
 
-### Bloco 2. Diagnóstico de GTM
+### Bloco 2. (diagnóstico removido em 2026-10)
 
-Carregue `references/diagnostico.md` e conduza o fluxo completo:
+O diagnóstico de GTM saiu do produto. O número fica reservado para não quebrar as referências
+cruzadas do resto do arquivo. Chega aqui quem pediu um diagnóstico ou clicou nele num menu antigo.
 
-1. Resolver a empresa e chamar `dossie_empresa(empresa)` (retrato interno, nunca exibido cru).
-   Omita `versao` para respeitar o switch do servidor; se o pedido mencionar explicitamente um
-   teste da v2, passe `versao: "v2"` tanto no dossie quanto no diagnostico.
-2. Captura rica: abrir pela divergencia de maior impacto do dossie, reconciliar metricas uma a
-   uma, confirmar o gold signal por pergunta de lista, devolver o espelho de 3 frases (forca,
-   trava, reframe), rodar o loop de correcao ("e", nao "ou"; nunca concordar por concordar).
-3. Montar o `contexto` (JSON com metricas validadas, gold signal declarado/real, espelho
-   confirmado, prioridade declarada) e chamar `diagnostico(empresa, contexto)`, usando a mesma
-   versao do dossie.
-4. Polling com `consultar_analise`: enquanto vier "⏳", executar `sleep 30` (ou aguardar ~30s)
-   antes de chamar de novo | nunca duas chamadas seguidas sem essa pausa.
-5. Entregar conforme a versao retornada. Na v1, renderizar o resultado curado como HTML artifact
-   segundo `references/diagnostico.md`. Na v2, `consultar_analise` devolve dois ou tres resources HTML
-   prontos (diagnostico completo interativo + completo estatico + trilha de conteudo de GTM,
-   quando houver): apresente todos os arquivos retornados sem reescrever, resumir ou regenerar o
-   HTML. Notifique, dizendo ao usuário após a renderização dos documentos,
-   que a entrega foi realizada, que ele pode agora já analisar os resultados.
-6. Registrar a entrega: logo apos exibir o resultado, tente
-   `analise_renderizada(empresa, job_id)`. Esta chamada e best-effort: falha, erro ou falta de
-   aprovacao NAO interrompe nem altera os passos seguintes.
-7. Pedir feedback: SEMPRE pergunte uma vez, antes de qualquer ponte ou encerramento: "De 1 a 5,
-   quanto isso foi util pra voce? Se quiser, me conta tambem o que faltou." Espere a resposta. Se
-   vier uma nota inteira de 1 a 5, chame `registrar_feedback`; se nao vier nota ou o founder nao
-   quiser responder, nao chame a tool e siga. Nunca infira a nota.
-8. Ponte: somente depois de concluir o passo 7, se houver gargalo claro, oferecer encadear para a
-   conexao com a rede (Bloco 1) usando o gargalo como desafio, sem repetir o intake.
+Diga em uma frase que o diagnóstico não faz mais parte do plugin, sem pedir desculpas e sem
+explicar o porquê. Na mesma resposta, ofereça o que existe para o mesmo objetivo: registrar e
+priorizar o desafio dele (Bloco 9) ou conectar com mentores e empresas da rede para esse desafio
+(Bloco 1). Se ele já disse qual é o desafio, siga pelo que ele escolher sem repetir a pergunta.
+
+Não chame `diagnostico` nem `dossie_empresa` aqui, e não prometa que o diagnóstico volta.
 
 ### Bloco 3. (fundido no Bloco 1 em 2026-09)
 
@@ -353,22 +336,13 @@ desafio que continua na lista, com a história dele preservada.
 Só registram sinal e não disparam análise. As chamadas são silenciosas, sem narrar a telemetria
 ao founder:
 
-- `analise_renderizada(empresa, job_id)`: logo após exibir ao founder o resultado de um
-  diagnóstico (o artifact HTML) ou de um match (a lista de mentores). É o único sinal de que a
-  entrega chegou; o servidor não enxerga o que é renderizado no chat.
-- `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: a pergunta de feedback ("De 1 a
-  5, quanto isso foi útil pra você? Se quiser, me conta também o que faltou.") existe SÓ no
-  Diagnóstico de GTM (Bloco 2, passo 7). Nos demais fluxos, não force o pedido de feedback: chame
-  a tool apenas se o founder der espontaneamente uma nota inteira de 1 a 5 (1 = nada útil;
-  5 = muito útil), com o comentário, se houver. Nunca deduza a nota de elogio, crítica ou silêncio.
-
-**Ordem obrigatória de fechamento do diagnóstico (Bloco 2):** entregar → tentar
-`analise_renderizada` → SEMPRE fazer a pergunta de feedback → chamar `registrar_feedback` apenas
-se houver nota → só então oferecer a ponte ou encerrar. Falha ou falta de aprovação de
-`analise_renderizada` não autoriza pular a pergunta. "Se não quiser responder, não chame" vale
-para a tool, nunca para pular a pergunta. Se perceber que ofereceu a ponte antes da pergunta,
-recupere imediatamente, sem narrar o erro interno. Nos outros blocos essa ordem NÃO se aplica —
-só `analise_renderizada` após a entrega.
+- `analise_renderizada(empresa, job_id)`: logo após exibir ao founder o resultado de um match (a
+  lista de mentores). É o único sinal de que a entrega chegou; o servidor não enxerga o que é
+  renderizado no chat.
+- `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: o produto não pede nota em
+  nenhum fluxo. Chame a tool apenas se o founder der espontaneamente uma nota inteira de 1 a 5
+  (1 = nada útil; 5 = muito útil), com o comentário, se houver. Nunca deduza a nota de elogio,
+  crítica ou silêncio.
 
 ## Contratos das tools
 
@@ -376,11 +350,8 @@ só `analise_renderizada` após a entrega.
   sua, nunca exibida crua).
 - `dossie_empresa(empresa, versao?)`: sincrona. Devolve o retrato seguro do dossie interno (metricas
   estimadas, divergencias por impacto, arquetipo provavel). Memoria interna sua, nunca exibida
-  crua ao founder. Usada no inicio do Bloco 2.
-- `diagnostico(empresa, contexto, versao?)`: assíncrona. Devolve um `job_id`. `versao` aceita
-  `v1` ou `v2`; omitir respeita o default protegido por feature flag no servidor. O `contexto` e um JSON
-  estruturado com metricas validadas na captura, gold signal (declarado e real), espelho
-  confirmado e prioridade declarada pelo founder. Campos e fluxo em `references/diagnostico.md`.
+  crua ao founder. Omita `versao`. Usada para aprofundar a sessão simulada (Bloco 4) e o preparo
+  da agenda (Bloco 6).
 - `match_mentores(pedido)`: assíncrona. Devolve um `job_id`. Devolve uma LISTA RANQUEADA (top-13 por
   default via `n`) com um marcador `<<<RESERVA_NAO_MOSTRAR>>>`; o client mostra 3 e revela +10;
   `excluir`/`angulo` re-chamam para explorar/pivotar. SEM `formato` (o founder escolhe o tipo depois
@@ -416,11 +387,11 @@ só `analise_renderizada` após a entrega.
   `mudar_visibilidade` alterna entre desafio da empresa e desafio só do founder (Bloco 9.4);
   `repriorizar` muda `nivel` e/ou `status` (Bloco 9.5).
   Nada é apagado: arquivar é reversível com `desarquivar`. Fluxo no Bloco 9.
-- `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir o
-  resultado (artifact do diagnóstico ou lista do match) ao founder.
+- `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir a
+  lista do match ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
   `avaliacao` é uma nota inteira de 1 a 5; `comentario` é opcional. Chame somente após o founder
-  informar a nota explicitamente; nunca a infira. A pergunta de feedback é exclusiva do Bloco 2.
+  informar a nota explicitamente; nunca a infira. Não peça nota.
 - `agendar_conexao(empresa, disponibilidade, mentor_nome, convite?, observacao?, mentor_email?, job_id?, briefing_mentor?, briefing_founder?)`:
   cria o pedido de conexão ao vivo e aciona o time em segundo plano. Devolve confirmação de que o
   PEDIDO foi registrado, não de que o mentor já foi notificado. `disponibilidade` são 2 a 5
@@ -437,13 +408,11 @@ só `analise_renderizada` após a entrega.
 
 - Nunca exibir o retrato cru (tabela ou JSON) nem dado interno ao founder.
 - Nunca ranquear ou nomear mentores você mesmo; isso é do servidor.
-- Nunca narrar processo nem gerar arquivo no fluxo conversacional. Excecao: o artifact HTML do
-  Diagnostico de GTM (Bloco 2) e a entrega da capacidade e deve ser gerado no chat.
+- Nunca narrar processo nem gerar arquivo no fluxo conversacional.
 - Nunca chegar com o desafio pronto para o founder só confirmar.
-- No Diagnóstico de GTM (Bloco 2), nunca oferecer a ponte nem encerrar antes de fazer a pergunta
-  de feedback, mesmo se `analise_renderizada` falhar ou não receber aprovação. Nos demais blocos
-  a pergunta de feedback não existe — não a faça. Em especial, **nunca use a pergunta de nota como
-  jeito de encerrar** uma conversa de conexão: em teste ela apareceu no lugar de enviar o pedido, e
+- Nunca chamar `diagnostico`: a tool ficou só para versões antigas do plugin e não roda nada.
+- A pergunta de nota de 1 a 5 não existe em nenhum bloco: não a faça. Em especial, **nunca use a
+  pergunta de nota como jeito de encerrar** uma conversa de conexão: em teste ela apareceu no lugar de enviar o pedido, e
   o founder saiu achando que tinha pedido a conexão quando nada tinha sido enviado.
 - Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
   pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
@@ -455,7 +424,6 @@ só `analise_renderizada` após a entrega.
 | Arquivo                        | Quando ler                                    |
 | ------------------------------ | --------------------------------------------- |
 | `references/menu-ui.md`        | Ao montar o cardápio (passo 0)                |
-| `references/diagnostico.md`    | Ao entrar em Diagnóstico de GTM (Bloco 2)     |
 | `references/experts.md`        | Ao entrar em Conexão com a rede (Bloco 1)     |
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
 | `references/buscar-rede.md`    | Ao roteador escolher rede ampla ou lookup (dentro do Bloco 1) |

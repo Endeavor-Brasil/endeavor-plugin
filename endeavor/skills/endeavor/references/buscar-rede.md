@@ -13,8 +13,8 @@ sênior.
    Se estiver vaga, faça 1 pergunta para focar.
 2. **Se o recorte depende do perfil do founder** (pares, concorrentes, "empresas de benchmark para
    os meus desafios"), escreva esse perfil DENTRO da pergunta — a tool não recebe a empresa dele.
-   Use o que a conversa já estabeleceu (setor, modelo, ICP; resultado de `varredura_empresa`,
-   diagnóstico ou match de experts, se houver). Ex.: "sou fintech B2B que vende para PME; quais
+   Use o que a conversa já estabeleceu (setor, modelo, ICP; resultado de `varredura_empresa`
+   ou match de experts, se houver). Ex.: "sou fintech B2B que vende para PME; quais
    empresas da rede se parecem comigo?".
 3. Chame `buscar_rede(pergunta)` com a pergunta em texto livre. É **síncrona**: devolve **JSON** na
    mesma chamada (sem job_id, sem polling), com `mentores` e/ou `empresas` conforme o `alvo`.

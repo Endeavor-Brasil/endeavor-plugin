@@ -23,7 +23,7 @@ No Claude Code, adicione este marketplace e instale o plugin:
 Depois de instalado, o Claude do founder passa a ter:
 
 - o conector MCP **endeavor** (HTTP) apontando para o servidor;
-- a skill concierge `endeavor`, que roteia diagnóstico, experts, busca na rede e sessão simulada.
+- a skill concierge `endeavor`, que roteia conexão com a rede, meus dados, agenda, desafios e sessão simulada.
 
 ## Conteúdo
 
@@ -41,9 +41,8 @@ endeavor-plugin/
 ```
 
 As skills são **client-side**: não acessam dados diretamente, apenas orientam o Claude do
-founder. A skill `endeavor` (`/endeavor`) é a porta de entrada. Para diagnóstico, o plugin omite
-`versao` normalmente e respeita o switch do servidor; testes explícitos podem pedir `v2`. Na v2,
-os dois HTMLs chegam prontos como resources MCP e não são reconstruídos pelo cliente.
+founder. A skill `endeavor` (`/endeavor`) é a porta de entrada. O diagnóstico de GTM saiu do
+produto; a skill responde a quem pedir e oferece registrar o desafio ou a conexão com a rede.
 
 ## Conector (`endeavor/.mcp.json`)
 

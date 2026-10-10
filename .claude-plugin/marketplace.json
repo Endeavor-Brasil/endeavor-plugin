@@ -12,7 +12,7 @@
     {
       "name": "endeavor",
       "source": "./endeavor",
-      "description": "Concierge de Go-to-Market da Endeavor: menu unico /endeavor organizado pela jornada do founder (proxima e ultima conexao, cronograma, meus dados), desafios de negocio (conexao com a rede, diagnostico) e automacao (radar proativo).",
+      "description": "Concierge de Go-to-Market da Endeavor: menu unico /endeavor organizado pela jornada do founder (proxima e ultima conexao, cronograma, meus dados), desafios de negocio (conexao com a rede) e automacao (radar proativo).",
       "version": "0.8.11",
       "author": {
         "name": "Endeavor",
