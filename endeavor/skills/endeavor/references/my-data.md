@@ -21,7 +21,8 @@ Voz do founder, prosa fluida, sem "|", barras nem tabelas ASCII; tom de operador
    explique que a gravação fica no Fireflies da Endeavor e o acesso é de quem participou.
 5. Para ver mais ou mudar o recorte, **re-pergunte** (nova chamada, outra pergunta).
 6. Ponte natural, sem forçar: gargalo recorrente nos dados → ofereça a Conexão com a rede
-   (Bloco 1) com esse desafio; prioridade parada → ofereça o Diagnóstico (Bloco 2).
+   (Bloco 1) com esse desafio; prioridade parada → ofereça atualizar o andamento ou o nível dela
+   (Bloco 9.5).
 
 ## Honestidade sobre o que existe
 - Resumos ricos das sessões existem de 2023/2024 em diante; antes disso normalmente há só
