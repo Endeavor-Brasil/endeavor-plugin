@@ -5,7 +5,8 @@ description: >
   Go-to-Market e roteia para a certa. Use quando o founder abrir o plugin, disser que precisa
   de ajuda com GTM, quiser um diagnóstico, quiser falar com mentores, ou quiser explorar a rede:
   "/endeavor", "preciso de ajuda com [tema]", "quero um diagnóstico", "que mentor me ajuda",
-  "quem na rede já fez X".
+  "quem na rede já fez X". Também quando o founder trouxer dúvidas ou desafios de IA — adoção,
+  agentes, transformação AI-first, capacitação do time: "como começo com IA", "insights de IA".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, diagnostico, match_mentores, consultar_analise, buscar_rede. Pode usar web_search e os conectores
@@ -34,6 +35,11 @@ opção ou descreve o desafio no campo aberto. Roteie:
   Bloco 1.
 - "Diagnóstico de GTM": vá para o Bloco 2.
 - "Buscar a rede", ou um pedido para explorar quem na rede já fez algo: vá para o Bloco 3.
+- "Insights de IA", ou uma pergunta/dúvida/desafio sobre IA (adoção, agentes, transformação
+  AI-first, capacitação do time, custo, governança): vá para o Bloco 4.
+- Qualquer pergunta sobre dados, privacidade, confidencialidade, memória, segurança ou "o que vocês
+  sabem sobre mim": carregue `references/politica-de-dados.md` e responda de lá. Vale a qualquer
+  momento, dentro de qualquer bloco — não é uma opção do menu, é uma pergunta que pode surgir sempre.
 
 ### Bloco 1. Conexão com experts de GTM
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
@@ -61,6 +67,29 @@ Carregue `references/buscar-rede.md`. Receba a pergunta do founder sobre quem na
 ou tem experiência em um tema. Chame a tool `buscar_rede(pergunta)` com a pergunta em texto livre —
 é **síncrona** e devolve **JSON** na mesma chamada (sem job_id, sem polling). Raciocine sobre o JSON
 e apresente os perfis seguros. A introdução de qualquer mentor ao founder é sempre via Endeavor.
+
+### Bloco 4. Insights de IA
+Base local, sem MCP. Carregue `references/insights-ia.md` (128 perguntas e respostas de 10
+encontros da trilha de IA das mentorias coletivas, em 12 temas, material anonimizado) e atenda
+em dois modos:
+
+1. **Navegação**: se o founder escolheu a opção no menu sem uma pergunta específica, apresente
+   os 12 temas em prosa curta e pergunte por onde ele quer começar (ou se prefere trazer uma
+   dúvida direta). Ao escolher um tema, apresente as perguntas daquele tema e aprofunde na que
+   ele pedir, com o conteúdo da base. Se o founder quiser explorar o material completo
+   visualmente, publique `references/insights-ia.html` como artifact (é a página pronta, com
+   busca e filtro por tema).
+2. **Pergunta, dúvida ou desafio de IA**: responda ancorado na base. Traga os aprendizados,
+   contrapontos e números de ordem de grandeza que ela registra, conectando com o contexto que
+   o founder descreveu. Quando a base registrar visões divergentes, apresente as duas. Quando a
+   base não cobrir o tema, diga isso com clareza antes de complementar com conhecimento geral —
+   nunca apresente conhecimento seu como se fosse aprendizado dos encontros.
+
+Guardrails do bloco:
+- O material é anonimizado; nunca especule quem disse o quê nem atribua a empresas ou pessoas.
+- Não é diagnóstico: se o desafio do founder pedir análise da empresa dele, ofereça a ponte para
+  o Diagnóstico de GTM (Bloco 2); se ele quiser falar com quem viveu aquilo, ofereça a Conexão
+  com experts (Bloco 1) usando o desafio como entrada, sem repetir o intake.
 
 ## Contratos das tools
 - `varredura_empresa(empresa)`: síncrona. Devolve um retrato seguro da empresa (memória interna
@@ -97,3 +126,6 @@ e apresente os perfis seguros. A introdução de qualquer mentor ao founder é s
 | `references/experts.md` | Ao entrar em Conexão com experts (Bloco 1) |
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
 | `references/buscar-rede.md` | Ao entrar em Buscar a rede (Bloco 3) |
+| `references/insights-ia.md` | Ao entrar em Insights de IA (Bloco 4) — a base de Q&A |
+| `references/insights-ia.html` | Só quando o founder quiser navegar o material completo como página (artifact) |
+| `references/politica-de-dados.md` | Ao responder qualquer pergunta sobre dados, privacidade, memória ou confidencialidade |
