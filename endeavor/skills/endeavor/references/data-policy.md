@@ -204,8 +204,9 @@ conexão, envia um pedido ao sistema de agendamento da Endeavor.
 - **Resultado das suas buscas de mentor** e das análises que você pediu antes: o texto entregue e o
   pedido que o gerou, para você consultar depois.
 - **Feedback que você manda pelo plugin**: o texto, como você escreveu, com o seu e-mail, a
-  empresa e a data. Quem lê é o time do produto, para decidir o que melhorar. A telemetria guarda
-  só que um feedback foi enviado, o tipo e o tamanho, nunca o texto.
+  empresa e a data. Ele também vai para o banco analítico da Endeavor, onde o time da Endeavor lê
+  para decidir o que melhorar no produto. A telemetria guarda só que um feedback foi enviado, o
+  tipo e o tamanho, nunca o texto.
 - **Memória das suas conversas**: os eventos do seu fluxo (busca de mentor, pedido de conexão,
   avaliação que você deu) e um **perfil consolidado seu**, em texto, que o plugin relê quando você
   pede uma busca de mentor, para não te pedir o mesmo contexto duas vezes.
