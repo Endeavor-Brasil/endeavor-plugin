@@ -11,7 +11,7 @@ compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, match_mentores, consultar_analise, buscar_rede,
   mentor_session, company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
-  registrar_feedback, open_menu, priority.
+  registrar_feedback, send_feedback, open_menu, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -74,6 +74,7 @@ antes de enviar:
   `match_mentores`, repasse o `desafio_id`; o `theme` e o `rank` do aviso são ignorados ali,
   porque o servidor os deriva da ficha. Se for para `buscar_rede`, que não lê a ficha, siga
   mandando `de_desafio`, `tema_desafio` e `rank_desafio` com o `theme` e o `rank` do aviso.
+- `feedback` (o founder quer mandar um feedback para o time): Bloco 10.
 - `criar_priority`: Bloco 9.
 - `atualizar_priority:<id>` e `arquivar_priority:<id>`: Bloco 9.
 - `trocar_empresa` (founder com mais de uma empresa vinculada): chame `open_menu` de novo passando
@@ -96,6 +97,8 @@ o roteamento é o de sempre:
 - **3. Conecte-se com a rede Endeavor** (um desafio em que quer ajuda de um mentor, ou pessoas e
   empresas da rede que ele quer achar): vá para o Bloco 1.
 - **4. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
+- **5. Mandar um feedback** (crítica, sugestão, bug ou elogio sobre o plugin, uma conexão ou a
+  Endeavor, para o time): vá para o Bloco 10.
 - Pedido de diagnóstico ("quero um diagnóstico", "descobrir e priorizar desafios"): vá para o
   Bloco 2.
 - Pedido direto para conversar/treinar com um mentor específico ("quero conversar com o Bazzi"): vá
@@ -331,6 +334,29 @@ desafio que continua na lista, com a história dele preservada.
 - Nunca crie um desafio a partir de conversa solta. Criação exige a entrevista.
 - Arquivar não apaga. Diga isso ao confirmar.
 
+### Bloco 10. Mandar um feedback
+
+O founder quer falar com o time do produto: um bug, uma sugestão, uma crítica ou um elogio, sobre o
+plugin, uma conexão ou a Endeavor. Tudo vai pela tool `send_feedback`, que o time lê num lugar só.
+
+1. Se ele já disse o que quer contar, não pergunte de novo: vá para o passo 2. Se não disse,
+   pergunte em uma frase só o que ele quer contar ao time. Não peça nota, não ofereça categorias,
+   não faça entrevista.
+2. Chame `send_feedback(empresa, mensagem, tipo)`. `mensagem` são as palavras dele, sem resumir,
+   corrigir nem reescrever; se ele contou em mais de uma mensagem, junte as partes na ordem.
+   `tipo` você escolhe pelo texto: `bug` (algo quebrou ou não funcionou), `sugestao` (algo que ele
+   queria que existisse ou fosse diferente), `elogio`, ou `outro`.
+3. Confirme em uma linha que o time recebeu e lê todos os feedbacks. Não prometa prazo, resposta
+   nem que a sugestão vai ser feita. Depois, se fizer sentido, ofereça voltar ao que ele estava
+   fazendo.
+
+**Feedback no meio de outro fluxo.** Se, em qualquer bloco, o founder criticar ou sugerir algo
+sobre o próprio produto (o plugin, uma resposta, a conexão, a Endeavor), ofereça uma vez na
+conversa: "Quer que eu mande isso para o time como feedback?". Só chame `send_feedback` com o sim
+dele, e siga o fluxo em que ele estava. Com o não, não ofereça de novo na mesma conversa.
+
+Sem pergunta de nota e sem `analise_renderizada` aqui.
+
 ### Telemetria (entrega e feedback)
 
 Só registram sinal e não disparam análise. As chamadas são silenciosas, sem narrar a telemetria
@@ -387,6 +413,9 @@ ao founder:
   `mudar_visibilidade` alterna entre desafio da empresa e desafio só do founder (Bloco 9.4);
   `repriorizar` muda `nivel` e/ou `status` (Bloco 9.5).
   Nada é apagado: arquivar é reversível com `desarquivar`. Fluxo no Bloco 9.
+- `send_feedback(empresa, mensagem, tipo?)`: **síncrona**. Manda ao time do produto o feedback
+  geral do founder, com as palavras dele (até 4000 caracteres). `tipo` é `bug` | `sugestao` |
+  `elogio` | `outro`. Não é a nota de um match. Fluxo no Bloco 10.
 - `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir a
   lista do match ao founder.
 - `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
@@ -416,6 +445,8 @@ ao founder:
   o founder saiu achando que tinha pedido a conexão quando nada tinha sido enviado.
 - Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
   pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
+- Nunca chamar `send_feedback` sem o founder querer mandar, e nunca mandar um resumo seu no lugar
+  das palavras dele.
 - Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
   `references/data-policy.md`, e nunca alegar que registrou ou executou pedido de exclusão.
 
@@ -433,12 +464,12 @@ ao founder:
 | `references/scheduling.md`     | Ao founder escolher conexão ao vivo (dentro do Bloco 1 ou 3) |
 | `references/briefing.md`       | Ao compor os dois briefings, no passo de envio do `scheduling.md` |
 
-Os Blocos 6 (Minha agenda) e 7 (Radar proativo) não têm reference próprio: são fluxos curtos,
+Os Blocos 6 (Minha agenda), 7 (Radar proativo) e 10 (Mandar um feedback) não têm reference próprio: são fluxos curtos,
 conduzidos por este arquivo. Reference é para fluxo longo com regras críticas, ou, no caso do
 Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.0**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.2**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.

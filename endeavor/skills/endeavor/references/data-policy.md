@@ -81,7 +81,7 @@ Versão 3 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do f
 1. O plugin lê o que a Endeavor já tem registrado sobre a sua empresa e sobre a rede.
 2. O plugin grava os desafios que você registra, as suas contribuições ao dossiê da empresa, o
    resultado das suas buscas de mentor e a memória das suas conversas, para não te fazer repetir
-   contexto.
+   contexto, e o feedback que você manda ao time.
 3. O que você escreve no chat só sai do seu Claude quando você aciona uma capacidade do plugin. Quando
    você autoriza uma conexão com mentor, o pedido vai para o time de agendamento da Endeavor e o
    mentor recebe um documento de preparação.
@@ -203,6 +203,10 @@ conexão, envia um pedido ao sistema de agendamento da Endeavor.
   contestação marca o trecho como contestado. **Nada é apagado.**
 - **Resultado das suas buscas de mentor** e das análises que você pediu antes: o texto entregue e o
   pedido que o gerou, para você consultar depois.
+- **Feedback que você manda pelo plugin**: o texto, como você escreveu, com o seu e-mail, a
+  empresa e a data. Ele também vai para o banco analítico da Endeavor, onde o time da Endeavor lê
+  para decidir o que melhorar no produto. A telemetria guarda só que um feedback foi enviado, o
+  tipo e o tamanho, nunca o texto.
 - **Memória das suas conversas**: os eventos do seu fluxo (busca de mentor, pedido de conexão,
   avaliação que você deu) e um **perfil consolidado seu**, em texto, que o plugin relê quando você
   pede uma busca de mentor, para não te pedir o mesmo contexto duas vezes.
