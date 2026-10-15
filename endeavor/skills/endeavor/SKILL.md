@@ -64,6 +64,9 @@ antes de enviar:
   que desafio quer explorar e responda com `ask_gtm_insights`. Vale pergunta, desabafo ou troca de
   ideias; se a conversa for sobre um desafio registrado, passe o `desafio_id`. Se o que ele quer é
   gente, e não conhecimento, ofereça o Bloco 1.
+- `biblioteca` (ler a Biblioteca da Rede): chame `open_library` sem `abrir_em` e escreva no máximo
+  uma linha. Se `open_library` não estiver no catálogo, pergunte o que ele quer saber e responda com
+  `ask_gtm_insights`.
 - `destaque` (o material que a Endeavor separou, o benchmark ou case que aparece no menu): trate
   como pergunta sobre esse material e responda com `ask_gtm_insights`, a partir do que a rede já
   aprendeu. Não invente conteúdo do material nem prometa um arquivo para baixar.
@@ -397,6 +400,8 @@ ao founder:
   resposta. Em `pergunta`, mande a dúvida ou a situação completa, com o assunto da conversa. Quando
   o founder aceitar algo que você ofereceu, chame de novo com o id em `abrir`. Nunca mostre ids ao
   founder.
+- `open_library(abrir_em?)`: **síncrona**. Abre a Biblioteca da Rede como tela. `abrir_em` é um id
+  vindo do `ask_gtm_insights`; nunca peça nem mostre ids. Depois de chamar, no máximo uma linha.
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
@@ -470,6 +475,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.2**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.3**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
