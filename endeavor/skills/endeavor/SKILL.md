@@ -90,7 +90,7 @@ Chaves que vêm da tela da Inteligência da Rede (cliques e busca dentro dela):
 - `aprofundar_priority:<id>`: responda com `ask_gtm_insights(pergunta: a frase do founder,
   empresa, desafio_id: <id>)`.
 - `aprofundar_topico:<ids>`: responda com `ask_gtm_insights(pergunta: a frase do founder, empresa,
-  abrir: [<ids>])`.
+  abrir: [<ids>])`. Os ids vêm separados por vírgula: mande cada um como um item de `abrir`.
 - `aprofundar_conteudo:<id>`: responda com `ask_gtm_insights(pergunta: a frase do founder, empresa,
   abrir: [<id>])`.
 - `conectar_topico`: siga para a conexão com a rede usando o tema da frase como pedido (o mesmo
