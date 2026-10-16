@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 3 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, seus conectores, o que não acessa)
 2. Isto é IA, e IA erra
@@ -46,8 +46,8 @@ Para ancorar a resposta rápido. O corpo está na Versão 3 (outubro de 2026), n
   o comentário de manutenção que fecha o arquivo.
 - Não invente nada que não esteja no corpo. Sem prazo de exclusão, sem fornecedor fora da lista da
   seção 6, sem certificação de segurança. Se perguntarem, o time da Endeavor responde.
-- Não afirme que a telemetria não guarda conteúdo. Hoje guarda o texto de algumas perguntas e do
-  comentário, conforme a seção 4.
+- Não afirme que a telemetria não guarda conteúdo. Hoje guarda o texto do que o founder pediu e das
+  respostas entregues, e o comentário, conforme a seção 4.
 - Pergunta sobre o que sai numa conexão com mentor: responda pela seção 4, **sem suavizar**. O
   mentor recebe o documento de preparação, e o pedido vai ao time de agendamento.
 - Pergunta sobre segurança, pen test ou certificação: responda pela subseção "Como o acesso é
@@ -72,7 +72,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 3 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 3 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
+Versão 4 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
 
 ---
 
@@ -224,11 +224,14 @@ com cada um; o plugin não passa o seu número ao mentor nem o dele a você.
 Registro de uso, para sabermos se o produto funciona e onde falha: qual capacidade você acionou,
 quanto tempo levou, se deu erro, se a entrega chegou à sua tela, e a nota e o comentário que você deu.
 
-Com transparência sobre o alcance: hoje essa telemetria também guarda **o texto de algumas
-perguntas**: a pergunta que você fez à rede, à base de mentorias e sobre os dados da sua empresa,
-e o seu comentário livre. O texto das respostas entregues não é guardado, só o tamanho. Está no
-roteiro reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito conforme a
-seção 6.
+Com transparência sobre o alcance: hoje essa telemetria também guarda **o conteúdo das suas
+conversas com o produto**: o que você pediu ou escreveu em cada chamada (a pergunta à rede, à base de
+mentorias e sobre os dados da sua empresa, o desafio que você registra, a sua contribuição ao
+dossiê, o pedido de conexão com mentor) e **o texto que o produto devolveu como resposta**, além do
+seu comentário livre. Texto muito longo é cortado. E-mail e telefone de terceiros que aparecem num
+pedido não são guardados. Ficam de fora o texto do feedback geral que você manda pelo plugin, que
+vai só para o banco do produto, e o roteiro fixo da sessão simulada com mentor. Está no roteiro
+reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito conforme a seção 6.
 
 ---
 
