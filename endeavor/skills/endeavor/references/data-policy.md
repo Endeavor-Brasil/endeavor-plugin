@@ -30,13 +30,15 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 5 (outubro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, seus conectores, o que não acessa)
 2. Isto é IA, e IA erra
 3. O que os seus sócios enxergam (inclui o desafio só seu)
-4. Quais dados o plugin grava, e onde (banco do produto, pedido de conexão com mentor, telemetria)
-5. Como os dados são utilizados (Biblioteca, filtro de confidencialidade, o que não fazemos)
+4. Quais dados o plugin grava, e onde (banco do produto, inclusive a página de cada desafio, pedido
+   de conexão com mentor, telemetria)
+5. Como os dados são utilizados (página de cada desafio, Biblioteca, filtro de confidencialidade, o
+   que não fazemos)
 6. Quem tem acesso (inclui o mentor da conexão e como o acesso é controlado)
 7. Seus direitos, e como exercer
 
@@ -58,6 +60,9 @@ Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), n
   prometa integração direta nem sugira que ele passe credencial para o time.
 - Pergunta sobre o que o sócio enxerga: responda pela seção 3, **sem suavizar**. É melhor o founder
   saber antes.
+- Pergunta sobre a página de um desafio na Inteligência da Rede: responda pelas seções 4 e 5, **sem
+  suavizar**. Uma rotina manda o texto dos desafios ativos ao modelo sem o founder pedir, inclusive o
+  desafio só dele, e a página fica guardada no banco do produto.
 - Pergunta sobre gravações de sessão: a política está na seção 4. Se o que ele quer é o link de uma
   gravação específica, isso é o Bloco 5, que entrega o link para ele abrir. Você não abre nem
   transcreve gravação.
@@ -72,7 +77,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 4 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
+Versão 5 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
 
 ---
 
@@ -81,7 +86,8 @@ Versão 4 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do f
 1. O plugin lê o que a Endeavor já tem registrado sobre a sua empresa e sobre a rede.
 2. O plugin grava os desafios que você registra, as suas contribuições ao dossiê da empresa, o
    resultado das suas buscas de mentor e a memória das suas conversas, para não te fazer repetir
-   contexto, e o feedback que você manda ao time.
+   contexto, e o feedback que você manda ao time. Para cada desafio ativo, a IA também escreve e
+   guarda, sem você pedir, uma página com aprendizados da rede ligados a ele.
 3. O que você escreve no chat só sai do seu Claude quando você aciona uma capacidade do plugin. Quando
    você autoriza uma conexão com mentor, o pedido vai para o time de agendamento da Endeavor e o
    mentor recebe um documento de preparação.
@@ -122,7 +128,7 @@ apoiou. Esse dado é da pessoa logada, não da empresa, e não aparece para o se
   rede, e as pessoas dela com nome, cargo e LinkedIn. Serve para você achar pares e benchmark.
 - **A Biblioteca da Rede**: aprendizados de mentorias, primeiras conversas e acompanhamentos de
   empresas da rede, com autores anonimizados e números só como faixa ou mediana de pelo menos três
-  empresas.
+  empresas. Os playbooks da Biblioteca, escritos por especialistas, levam o nome de quem escreveu.
 
 Sobre outras empresas você **não** recebe: faturamento, captação, valuation, número de funcionários,
 notas de mentoria, nem detalhe de sessão. Dos assuntos que aquela empresa levou à rede, você vê só o
@@ -161,6 +167,9 @@ substituem julgamento seu, do seu board ou de um profissional.
 - **A sessão simulada com mentor é uma simulação** construída a partir de material público e de
   mentorias registradas. Não é o mentor falando, e não deve ser citada como se fosse.
 - **A recomendação de mentores é uma sugestão.** A introdução real acontece sempre via Endeavor.
+- **A página de cada desafio na Inteligência da Rede é escrita pela IA**, a partir do desafio e da
+  Biblioteca da Rede, sem revisão de uma pessoa antes de aparecer para você. Use como ponto de
+  partida.
 
 ---
 
@@ -170,12 +179,13 @@ Esta é a parte que mais gera surpresa, então vai direto.
 
 **O registro é da empresa, não da pessoa.** Qualquer sócio ou executivo cadastrado da sua empresa
 que use o plugin enxerga o mesmo conjunto: o cadastro, **os desafios da empresa com o texto
-completo**, o histórico de mentorias com **as notas de sessão e os links de gravação**, as avaliações
-com comentário, e o dossiê da empresa.
+completo** e a página que a IA escreve para cada um deles, o histórico de mentorias com **as notas
+de sessão e os links de gravação**, as avaliações com comentário, e o dossiê da empresa.
 
 **O que é individual e não chega ao seu sócio:** as suas horas de giveback, a memória das suas
 conversas com o plugin, o perfil que o plugin monta sobre você ao longo do tempo, e o desafio que
-você registrar como **só seu**. O desafio só seu continua visível para o time da Endeavor.
+você registrar como **só seu**, com a página dele. O desafio só seu continua visível para o time da
+Endeavor.
 
 Duas recomendações honestas:
 
@@ -196,6 +206,10 @@ conexão, envia um pedido ao sistema de agendamento da Endeavor.
 ### Banco do produto, na infraestrutura da Endeavor
 - **Desafios que você registra ou corrige** pelo plugin, com o texto, quem escreveu e quando. Cada
   alteração fica guardada como revisão; arquivar não apaga.
+- **Página de cada desafio ativo, na Inteligência da Rede**: um texto que a IA escreve a partir do
+  desafio e da Biblioteca da Rede, com aprendizados da rede ligados a ele. Vale para todo desafio em
+  andamento ou no backlog, inclusive o desafio só seu, e a página é refeita quando o desafio ou a
+  Biblioteca mudam. Quem vê a página é quem vê o desafio, conforme a seção 3.
 - **Dossiê vivo da empresa**: documento em texto que reúne o que a Endeavor sabe da empresa. Cada
   alteração fica registrada com autor e data.
 - **Suas contribuições ao dossiê**: quando você adiciona ou contesta uma informação, o texto que
@@ -223,6 +237,8 @@ com cada um; o plugin não passa o seu número ao mentor nem o dele a você.
 ### Telemetria de produto
 Registro de uso, para sabermos se o produto funciona e onde falha: qual capacidade você acionou,
 quanto tempo levou, se deu erro, se a entrega chegou à sua tela, e a nota e o comentário que você deu.
+A preparação da página de cada desafio também deixa um registro, ligado à empresa: quanto tempo
+levou, quanto usou do modelo e se passou nas checagens, sem o texto do desafio nem o da página.
 
 Com transparência sobre o alcance: hoje essa telemetria também guarda **o conteúdo das suas
 conversas com o produto**: o que você pediu ou escreveu em cada chamada (a pergunta à rede, à base de
@@ -239,13 +255,20 @@ reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito 
 
 - **Para responder você.** O dado da sua empresa entra no contexto do que você pediu e sai na
   resposta que só você recebe.
+- **Para preparar a página de cada desafio.** Sem você pedir, uma rotina do servidor manda ao modelo
+  de IA o nome da empresa e o texto de cada desafio ativo (título, tema, nível, status, contexto,
+  impacto, alternativas já testadas e perguntas-chave), inclusive o desafio só seu, junto com
+  trechos da Biblioteca da Rede. Isso roda de tempos em tempos e também quando você abre a tela e a
+  página ainda não está pronta. O modelo é o do provedor listado na seção 6, e a página volta para o
+  banco do produto (seção 4).
 - **Para não te fazer repetir contexto.** A memória e o dossiê existem para que a segunda conversa
   comece mais adiante que a primeira.
 - **Para preparar uma conexão que você autorizou.** O mentor recebe o documento descrito na seção 4,
   e só ele.
 - **Para comparar com a rede, sempre de forma anônima e agregada.** A Biblioteca da Rede responde
   com aprendizados de conversas com empresas da rede, com autores anonimizados e números só como faixa ou
-  mediana de pelo menos três empresas. Você recebe o padrão, nunca o caso nominal.
+  mediana de pelo menos três empresas. Você recebe o padrão, nunca o caso nominal. Os playbooks,
+  escritos por especialistas, levam o nome de quem escreveu.
 - **Para melhorar o produto.** A telemetria de uso e o seu feedback orientam o roadmap.
 
 ### Filtro de confidencialidade
