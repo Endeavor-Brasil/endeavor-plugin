@@ -11,7 +11,7 @@ compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, match_mentores, consultar_analise, buscar_rede,
   mentor_session, company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
-  registrar_feedback, send_feedback, open_menu, priority.
+  registrar_feedback, send_feedback, open_menu, open_library, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -64,9 +64,10 @@ antes de enviar:
   que desafio quer explorar e responda com `ask_gtm_insights`. Vale pergunta, desabafo ou troca de
   ideias; se a conversa for sobre um desafio registrado, passe o `desafio_id`. Se o que ele quer é
   gente, e não conhecimento, ofereça o Bloco 1.
-- `biblioteca` (ler a Biblioteca da Rede): chame `open_library` sem `abrir_em` e escreva no máximo
-  uma linha. Se `open_library` não estiver no catálogo, pergunte o que ele quer saber e responda com
-  `ask_gtm_insights`.
+- `biblioteca` (abrir a Inteligência da Rede): chame `open_library` sem `abrir_em` (passe `empresa`
+  só se o founder estiver numa empresa que não é a primeira) e escreva no máximo uma linha. A tela
+  já abre nos desafios da empresa. Se `open_library` não estiver no catálogo, pergunte o que ele
+  quer saber e responda com `ask_gtm_insights`.
 - `destaque` (o material que a Endeavor separou, o benchmark ou case que aparece no menu): trate
   como pergunta sobre esse material e responda com `ask_gtm_insights`, a partir do que a rede já
   aprendeu. Não invente conteúdo do material nem prometa um arquivo para baixar.
@@ -82,6 +83,21 @@ antes de enviar:
 - `atualizar_priority:<id>` e `arquivar_priority:<id>`: Bloco 9.
 - `trocar_empresa` (founder com mais de uma empresa vinculada): chame `open_menu` de novo passando
   a empresa que ele escolheu, e entregue o novo menu.
+
+Chaves que vêm da tela da Inteligência da Rede (cliques e busca dentro dela):
+
+- `perguntar_inteligencia`: responda com `ask_gtm_insights(pergunta: a frase do founder, empresa)`.
+- `aprofundar_priority:<id>`: responda com `ask_gtm_insights(pergunta: a frase do founder,
+  empresa, desafio_id: <id>)`.
+- `aprofundar_topico:<ids>`: responda com `ask_gtm_insights(pergunta: a frase do founder, empresa,
+  abrir: [<ids>])`. Os ids vêm separados por vírgula: mande cada um como um item de `abrir`.
+- `aprofundar_conteudo:<id>`: responda com `ask_gtm_insights(pergunta: a frase do founder, empresa,
+  abrir: [<id>])`.
+- `conectar_topico`: siga para a conexão com a rede usando o tema da frase como pedido (o mesmo
+  fluxo de "Conecte-se com a rede").
+- `priority:<id>` e `criar_priority` vindos da tela seguem as rotas que já existem para o menu.
+
+Os ids nunca aparecem para o founder.
 
 **Chaves do menu anterior.** `ultimos_desafios` e `radar_proativo` continuam roteando como sempre
 (Bloco 5 e Bloco 7), e `diagnostico` vai para o Bloco 2, que hoje só explica que ele saiu. O host
@@ -400,9 +416,11 @@ ao founder:
   aprendeu e devolve material, não a resposta pronta: escreva seguindo as `instrucoes` que vêm na
   resposta. Em `pergunta`, mande a dúvida ou a situação completa, com o assunto da conversa. Quando
   o founder aceitar algo que você ofereceu, chame de novo com o id em `abrir`. Nunca mostre ids ao
-  founder.
-- `open_library(abrir_em?)`: **síncrona**. Abre a Biblioteca da Rede como tela. `abrir_em` é um id
-  vindo do `ask_gtm_insights`; nunca peça nem mostre ids. Depois de chamar, no máximo uma linha.
+  founder. Itens com `na_tela: true` podem ser abertos na tela com `open_library(abrir_em)`; os
+  demais, traga para a conversa com `abrir`.
+- `open_library(abrir_em?, empresa?)`: **síncrona**. Abre a Inteligência da Rede como tela, já nos
+  desafios da empresa. `abrir_em` é um id vindo do `ask_gtm_insights` (só quando `na_tela` for
+  true) ou o id de um desafio; nunca peça nem mostre ids. Depois de chamar, no máximo uma linha.
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
@@ -476,6 +494,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.4**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.5**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
