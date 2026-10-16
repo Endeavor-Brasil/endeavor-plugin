@@ -150,8 +150,8 @@ Consequência prática: o que voltar de um conector seu entra na conversa e pode
 alimentar algo que você pediu, vai junto no contexto, e aí vale a seção 4.
 
 ### O que o plugin não acessa
-- Nada seu por iniciativa própria: não varre sua caixa de entrada, sua agenda ou seus arquivos, e
-  não puxa dado de conector nenhum fora do que você acabou de pedir.
+- Nada das suas ferramentas por iniciativa própria: não varre sua caixa de entrada, sua agenda ou
+  seus arquivos, e não puxa dado de conector nenhum fora do que você acabou de pedir.
 - Dados de outras empresas além do descrito acima.
 - Dados financeiros de mentores ou das empresas deles.
 
@@ -179,7 +179,7 @@ Esta é a parte que mais gera surpresa, então vai direto.
 
 **O registro é da empresa, não da pessoa.** Qualquer sócio ou executivo cadastrado da sua empresa
 que use o plugin enxerga o mesmo conjunto: o cadastro, **os desafios da empresa com o texto
-completo** e a página que a IA escreve para cada um deles, o histórico de mentorias com **as notas
+completo e a página que a IA escreve para cada um deles**, o histórico de mentorias com **as notas
 de sessão e os links de gravação**, as avaliações com comentário, e o dossiê da empresa.
 
 **O que é individual e não chega ao seu sócio:** as suas horas de giveback, a memória das suas
@@ -237,8 +237,6 @@ com cada um; o plugin não passa o seu número ao mentor nem o dele a você.
 ### Telemetria de produto
 Registro de uso, para sabermos se o produto funciona e onde falha: qual capacidade você acionou,
 quanto tempo levou, se deu erro, se a entrega chegou à sua tela, e a nota e o comentário que você deu.
-A preparação da página de cada desafio também deixa um registro, ligado à empresa: quanto tempo
-levou, quanto usou do modelo e se passou nas checagens, sem o texto do desafio nem o da página.
 
 Com transparência sobre o alcance: hoje essa telemetria também guarda **o conteúdo das suas
 conversas com o produto**: o que você pediu ou escreveu em cada chamada (a pergunta à rede, à base de
@@ -248,6 +246,10 @@ seu comentário livre. Texto muito longo é cortado. E-mail e telefone de tercei
 pedido não são guardados. Ficam de fora o texto do feedback geral que você manda pelo plugin, que
 vai só para o banco do produto, e o roteiro fixo da sessão simulada com mentor. Está no roteiro
 reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito conforme a seção 6.
+
+A preparação da página de cada desafio deixa um registro à parte, ligado à empresa: quanto tempo
+levou, quanto usou do modelo e se passou nas checagens, sem o texto do desafio. O texto da página não
+vai para a telemetria.
 
 ---
 
@@ -267,8 +269,8 @@ reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito 
   e só ele.
 - **Para comparar com a rede, sempre de forma anônima e agregada.** A Biblioteca da Rede responde
   com aprendizados de conversas com empresas da rede, com autores anonimizados e números só como faixa ou
-  mediana de pelo menos três empresas. Você recebe o padrão, nunca o caso nominal. Os playbooks,
-  escritos por especialistas, levam o nome de quem escreveu.
+  mediana de pelo menos três empresas. Você recebe o padrão, nunca o caso nominal. A exceção são os
+  playbooks, escritos por especialistas, que levam o nome de quem escreveu.
 - **Para melhorar o produto.** A telemetria de uso e o seu feedback orientam o roadmap.
 
 ### Filtro de confidencialidade
