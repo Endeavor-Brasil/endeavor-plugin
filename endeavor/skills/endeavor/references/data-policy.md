@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 5 (outubro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, seus conectores, o que não acessa)
 2. Isto é IA, e IA erra
@@ -72,7 +72,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 4 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
+Versão 5 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
 
 ---
 
@@ -249,10 +249,10 @@ reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito 
 - **Para melhorar o produto.** A telemetria de uso e o seu feedback orientam o roadmap.
 
 ### Filtro de confidencialidade
-A recomendação de mentores passa por uma etapa separada de curadoria antes de chegar a você. Ela
-remove identidade e números de outras empresas, benchmarks nominais, notas e volume de mentoria,
-sinais internos de staff da Endeavor e dados financeiros de terceiros. As demais respostas já
-partem só dos dados que a seção 1 libera para você.
+Nas conexões com a rede, o que aparece para você vem só de dados liberados para exibição. O texto
+que a IA escreve, como o motivo de cada pessoa aparecer, passa por um teste automático de vazamento
+antes de chegar a você, e o que não passar não é mostrado. As demais respostas já partem só dos
+dados que a seção 1 libera para você.
 
 ### O que não fazemos
 - Não usamos seus dados para treinar modelos de IA.

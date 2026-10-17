@@ -381,8 +381,10 @@ Sem pergunta de nota aqui.
   Pedido e fluxo em `references/experts.md`.
 - `show_matches(empresa, job_id)`: **síncrona**. Mostra a lista que o `find_matches` montou, com a
   mesma `empresa` e o mesmo `job_id`. Chame quando o `consultar_analise` disser que está pronto. Onde
-  há tela, a lista abre na conversa e você escreve no máximo uma linha; sem tela, vem em texto. É
-  também como se reabre a lista no "adicionar mais alguém".
+  há tela, a lista abre na conversa e você escreve no máximo uma linha; se o resultado vier só em
+  texto (sem `structuredContent`), apresente esse texto na hora. É também como se reabre a lista no
+  "adicionar mais alguém", e a tela não guarda as marcas anteriores: você mantém a lista aprovada
+  (passo 6 de `references/experts.md`).
 - `match_feedback(empresa, job_id, reacoes)`: **síncrona**. Chame em silêncio quando chegar a
   mensagem "Minha seleção para…", com as reações do contexto da tela: `reacoes` é uma lista de
   `{ id, reacao, origem? }`, com `reacao` `conectar` | `saber_mais` | `nao_faz_sentido` e `origem`
@@ -395,7 +397,8 @@ Sem pergunta de nota aqui.
   escrito na pergunta. É o caminho de quem NÃO tem um desafio como base, e também do "adicionar mais
   alguém" depois do `find_matches`. Fluxo em `references/buscar-rede.md`. Aceita também `tema`
   (`gtm` | `fundraising` | `outro`) e `motivo` (`direto` | `cascata` | `lookup` | `empresa`),
-  opcionais, só de telemetria do roteador: preencha o `motivo` sempre que a chamada vier do Bloco 1.
+  opcionais, só de telemetria do roteador: preencha o `motivo` sempre que a chamada vier do Bloco 1;
+  o `tema` só se já for óbvio da conversa, nunca como passo de classificação.
 - `company_data(empresa, pergunta)`: **síncrona**. Pergunta em texto livre sobre os dados da
   PRÓPRIA empresa; devolve JSON com os resultados na mesma chamada — sem `job_id`. O servidor
   garante o escopo (só a empresa autorizada; giveback só do usuário logado). Fluxo em
