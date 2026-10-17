@@ -75,9 +75,9 @@ de propósito. Abra com 1 linha mostrando que conhece a empresa e, na MESMA mens
 > Como você quer usar a rede agora?
 >
 > - **Tenho um desafio**: me conta o que está travando e eu procuro quem já resolveu isso.
-> - **Já sei com quem quero falar** — você tem um nome na cabeça e eu te levo até essa pessoa, com
+> - **Já sei com quem quero falar**: você tem um nome na cabeça e eu te levo até essa pessoa, com
 >   trajetória e como chegar nela.
-> - **Quero conhecer empresas da rede** — pares, benchmark, quem se parece com a sua empresa ou já
+> - **Quero conhecer empresas da rede**: pares, benchmark, quem se parece com a sua empresa ou já
 >   passou pelo mesmo momento.
 
 Se a tool `AskUserQuestion` estiver disponível, use-a SEMPRE aqui: uma pergunta, as três opções
@@ -125,13 +125,13 @@ aviso do menu traz só o PONTEIRO (o id, o tema e a posição); a **ficha inteir
 com `acao: "listar"`, que você chama antes de qualquer pergunta e na qual acha a que tem esse id:
 título, contexto, impacto, o que já tentaram e as perguntas em aberto.
 
-- **Pule a pergunta guiada de três opções.** Ele não está escolhendo entre desafio, pessoa e tema:
+- **Pule a pergunta guiada de três opções.** Ele não está escolhendo entre desafio, pessoa e empresa:
   ele apontou para um desafio específico que já está registrado.
 - **A varredura silenciosa usa a ficha que você carregou.** NÃO chame `varredura_empresa` de
   novo para descobrir o desafio: ele está na sua frente. (A empresa você ainda resolve, se não a
   tiver: `find_matches` exige `empresa`.)
 - **A pergunta de enriquecimento muda de forma.** Em vez de "o que está puxando isso agora?",
-  pergunte **"o que mudou desde que registramos isso?"** — o registro pode ter meses.
+  pergunte **"o que mudou desde que registramos isso?"**, porque o registro pode ter meses.
 - **Se a resposta dele CORRIGIR o registro** ("na verdade a gente nunca testou ABM"), desvie para o
   Bloco 9 (`priority` com `acao: "propor"`) ANTES de buscar. Buscar em cima de um texto que
   ele acabou de dizer que está errado desperdiça a busca e o turno dele.
@@ -284,10 +284,11 @@ Se ele disser que nenhuma das pessoas serve, é o caso de adicionar: ofereça ou
 **Não existe menu de formatos.** Só existe um caminho, a conexão ao vivo, e menu de uma opção é um
 turno gasto para confirmar o óbvio. Não chame `mentor_session()` aqui.
 
-- Quem o founder acabou de aprovar com o "podemos seguir" (passo 6): não pergunte de novo, siga para
-  `references/scheduling.md`.
-- Quem ele nomeou por fora da lista (pelo `buscar_rede`, ou no texto sem tela): faça a pergunta
-  direta.
+- Quem já estava na lista aprovada (passo 6) quando ele disse "podemos seguir": não pergunte de
+  novo, siga para `references/scheduling.md`. Isso vale também para quem veio do `buscar_rede` e já
+  entrou na pergunta de fechamento.
+- Quem ele nomeou por fora dessa lista (do `buscar_rede` e ainda NÃO listado na pergunta de
+  fechamento, ou pelo nome no texto sem tela): faça a pergunta direta, uma vez.
 
 > Quer que eu marque uma conversa ao vivo com o {nome}?
 
