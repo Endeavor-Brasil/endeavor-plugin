@@ -7,6 +7,19 @@ decide sozinha se a resposta é de mentor, de empresa ou das duas (`alvo` no JSO
 precisa rotear. Voz do founder, prosa fluida, sem "|", barras nem tabelas ASCII; tom de operador
 sênior.
 
+## Quando é este o caminho
+
+É o caminho de quem **não tem um desafio como base** (o teste do passo 2.5 do
+`references/experts.md`): o founder nomeou uma pessoa ou uma empresa, quer empresas da rede
+(pares, benchmark), ou fez uma pergunta aberta sobre gente sem uma situação dele por trás. Com um
+desafio registrado ou descrito no chat, o caminho é `find_matches`, não este.
+
+Este reference vale também para o **"adicionar mais alguém"** depois da lista do `find_matches`
+(passo 6 do `experts.md`): o founder pede uma pessoa que já conhece ou um ângulo novo, e a busca
+vem por aqui, com `motivo: "cascata"`. Nesse caso, depois de apresentar o que veio, retome a
+pergunta de fechamento do `experts.md` com a lista atualizada: quem já estava nela mais quem ele
+escolheu agora.
+
 ## Fluxo
 1. Entenda a pergunta do founder (ex.: "quem já escalou vendas B2B em SaaS", "mentores de pricing",
    "empresas da rede que vendem para PME", "quem são meus pares de turma no Scale-Up").
@@ -14,7 +27,7 @@ sênior.
 2. **Se o recorte depende do perfil do founder** (pares, concorrentes, "empresas de benchmark para
    os meus desafios"), escreva esse perfil DENTRO da pergunta — a tool não recebe a empresa dele.
    Use o que a conversa já estabeleceu (setor, modelo, ICP; resultado de `varredura_empresa`
-   ou match de experts, se houver). Ex.: "sou fintech B2B que vende para PME; quais
+   ou a lista do `find_matches`, se houver). Ex.: "sou fintech B2B que vende para PME; quais
    empresas da rede se parecem comigo?".
 3. Chame `buscar_rede(pergunta)` com a pergunta em texto livre. É **síncrona**: devolve **JSON** na
    mesma chamada (sem job_id, sem polling), com `mentores` e/ou `empresas` conforme o `alvo`.
@@ -24,8 +37,7 @@ sênior.
      lista, não ofereça mais nomes que ele não pediu.
    - **Gente para um recorte**: escolha os **3 melhores** e apresente só eles, em prosa fluida, cada
      um com nome, empresa atual, cargo, por que aparece e o LinkedIn. **Guarde os próximos 10** para
-     o "ver mais". É o mesmo formato do caminho da wiki, de propósito: o founder não deve perceber
-     de onde veio a resposta.
+     o "ver mais".
    - **Empresas**: lista, como descrito na seção "quando a resposta traz empresas". Aqui a lista É a
      resposta, e cortar em 3 seria pior.
    - **Os dois** (`alvo: "ambos"`): 3 pessoas mais a lista de empresas, cada uma no seu registro,
@@ -67,6 +79,10 @@ tem relação ativa com a Endeavor: nome, cargo e LinkedIn).
 **O menu abaixo vale para QUALQUER PESSOA que apareceu na busca**, tanto no array `mentores` quanto
 dentro de `empresas.pessoas`. Todas têm relação ativa com a Endeavor (a busca não devolve gente de
 fora da rede), então todas podem receber um pedido de conexão pela Endeavor, com a mesma mecânica.
+
+**Quem veio daqui não traz `person_id`.** O JSON não o devolve, então o `agendar_conexao` dessa
+pessoa vai só com `mentor_nome`, sem `mentor_person_id` (o servidor a acha pelo nome). O
+`mentor_person_id` é só de quem veio do `match_feedback`.
 
 **A exceção é não ter NOME.** Se o founder quiser falar com "alguém da [Empresa]" e aquele cartão
 veio sem nenhuma pessoa no JSON, não há quem levar adiante: aí o caminho é o

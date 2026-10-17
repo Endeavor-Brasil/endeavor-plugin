@@ -66,7 +66,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), n
 - Pedido de exclusão ou de recusa da memória: **não diga que registrou o pedido e não diga que já
   apagou**. O plugin não tem canal de registro hoje. Diga que o caminho é o contato de
   relacionamento dele na Endeavor, e confirme só isso. A seção 7 diz o mesmo.
-- Sem pergunta de feedback neste bloco, e sem `analise_renderizada`: não há entrega de job aqui.
+- Sem pergunta de feedback neste bloco: não há entrega de job aqui.
 
 <!-- BEGIN CORPO ENTREGAVEL -->
 
