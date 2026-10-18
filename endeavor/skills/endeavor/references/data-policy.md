@@ -80,8 +80,8 @@ Versão 5 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do f
 
 1. O plugin lê o que a Endeavor já tem registrado sobre a sua empresa e sobre a rede.
 2. O plugin grava os desafios que você registra, as suas contribuições ao dossiê da empresa, o
-   resultado das suas buscas de mentor e a memória das suas conversas, para não te fazer repetir
-   contexto, e o feedback que você manda ao time.
+   resultado das suas buscas de conexão, as suas reações às sugestões e a memória das suas
+   conversas, para não te fazer repetir contexto, e o feedback que você manda ao time.
 3. O que você escreve no chat só sai do seu Claude quando você aciona uma capacidade do plugin. Quando
    você autoriza uma conexão com mentor, o pedido vai para o time de agendamento da Endeavor e o
    mentor recebe um documento de preparação.
@@ -115,20 +115,30 @@ costuma haver só título, tema e data. Ausência de registro não significa que
 apoiou. Esse dado é da pessoa logada, não da empresa, e não aparece para o seu sócio.
 
 ### Sobre a rede
-- **Mentores ativos**: nome, cargo e empresa atuais, biografia, competências, histórico de cargos e
-  empresas por onde passaram, e o LinkedIn.
-- **Outras empresas da rede**: empreendedores Endeavor ativos e a turma atual do Scale-Up, com o que
-  a empresa faz, setor, vertical, modelo, estado, ano, site, os temas que ela já trabalhou com a
-  rede, e as pessoas dela com nome, cargo e LinkedIn. Serve para você achar pares e benchmark.
+- **Pessoas da rede**: nome, cargo e empresa atuais, biografia, competências, histórico de cargos e
+  empresas por onde passaram, e o LinkedIn. Quando liberados para exibição, também os temas em que
+  a pessoa já ajudou outros founders, frases dela, o estilo e como se preparar para a conversa,
+  tirados das mentorias registradas.
+- **Outras empresas**: empresas da rede Endeavor, inclusive as que já saíram do portfólio ou foram
+  vendidas, a turma atual do Scale-Up e empresas onde pessoas da rede trabalham ou trabalharam. De
+  cada uma: o que a empresa faz, setor, vertical, modelo, estado, ano, site, os temas que ela já
+  trabalhou com a rede, e as pessoas dela com nome, cargo e LinkedIn. Serve para você achar pares,
+  benchmark e conexões.
 - **A Biblioteca da Rede**: aprendizados de mentorias, primeiras conversas e acompanhamentos de
   empresas da rede, com autores anonimizados e números só como faixa ou mediana de pelo menos três
   empresas.
 
 Sobre outras empresas você **não** recebe: faturamento, captação, valuation, número de funcionários,
 notas de mentoria, nem detalhe de sessão. Dos assuntos que aquela empresa levou à rede, você vê só o
-tema, nunca o conteúdo da conversa. E o inverso também vale: **a sua empresa aparece para outros
-founders no mesmo nível**: o que ela faz, o cadastro básico, os temas e as pessoas de contato. Nada
-de números, nada de histórico de conversas.
+tema, nunca o conteúdo da conversa. Para escolher as sugestões de conexão, o plugin usa também
+informação interna da Endeavor sobre as pessoas e empresas da rede, sem mostrar a você. A seção 5
+explica como.
+
+E o inverso também vale: **a sua empresa aparece para outros founders no mesmo nível**: o que ela
+faz, o cadastro básico, os temas e as pessoas de contato. Nada de números, nada de histórico de
+conversas. Para sugerir conexões a outros founders, o plugin também usa, sem mostrar, os temas que a
+sua empresa já levou à rede e o que a Endeavor registra da trajetória dela. A sua empresa pode
+aparecer como uma empresa que já passou por um desafio parecido, sem o conteúdo das conversas.
 
 ### Seus conectores e a sua stack: quem faz o quê
 O plugin **pode pedir ao seu Claude** que use os conectores que **você** já autorizou ali (agenda,
@@ -160,7 +170,8 @@ substituem julgamento seu, do seu board ou de um profissional.
 - **As notas de sessão são automáticas**, geradas da gravação. Trate como notas, não como ata oficial.
 - **A sessão simulada com mentor é uma simulação** construída a partir de material público e de
   mentorias registradas. Não é o mentor falando, e não deve ser citada como se fosse.
-- **A recomendação de mentores é uma sugestão.** A introdução real acontece sempre via Endeavor.
+- **A recomendação de pessoas e empresas é uma sugestão.** A introdução real acontece sempre via
+  Endeavor.
 
 ---
 
@@ -201,15 +212,18 @@ conexão, envia um pedido ao sistema de agendamento da Endeavor.
 - **Suas contribuições ao dossiê**: quando você adiciona ou contesta uma informação, o texto que
   você escreveu fica guardado com o seu e-mail. A adição entra rotulada como declaração sua; a
   contestação marca o trecho como contestado. **Nada é apagado.**
-- **Resultado das suas buscas de mentor** e das análises que você pediu antes: o texto entregue e o
-  pedido que o gerou, para você consultar depois.
+- **Resultado das suas buscas de conexão**, de pessoas e de empresas, e das análises que você pediu
+  antes: o texto entregue e o pedido que o gerou, para você consultar depois.
+- **Suas reações às sugestões de conexão**: quando você marca Conectar, Saber mais ou "não faz
+  sentido" numa pessoa ou empresa da lista, guardamos a marcação com o seu e-mail, a empresa, a
+  busca a que ela se refere e a data. Uma marcação nova na mesma pessoa substitui a anterior.
 - **Feedback que você manda pelo plugin**: o texto, como você escreveu, com o seu e-mail, a
   empresa e a data. Ele também vai para o banco analítico da Endeavor, onde o time da Endeavor lê
   para decidir o que melhorar no produto. A telemetria guarda só que um feedback foi enviado, o
   tipo e o tamanho, nunca o texto.
-- **Memória das suas conversas**: os eventos do seu fluxo (busca de mentor, pedido de conexão,
+- **Memória das suas conversas**: os eventos do seu fluxo (busca de conexão, pedido de conexão,
   avaliação que você deu) e um **perfil consolidado seu**, em texto, que o plugin relê quando você
-  pede uma busca de mentor, para não te pedir o mesmo contexto duas vezes.
+  pede uma busca de conexão, para não te pedir o mesmo contexto duas vezes.
 
 ### Pedido de conexão com mentor
 Quando você autoriza uma conexão, o plugin envia ao sistema de agendamento da Endeavor: a sua
@@ -249,15 +263,17 @@ reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito 
 - **Para melhorar o produto.** A telemetria de uso e o seu feedback orientam o roadmap.
 
 ### Filtro de confidencialidade
-Nas conexões com a rede, o que aparece para você vem só de dados liberados para exibição. O texto
-que a IA escreve, como o motivo de cada pessoa aparecer, passa por um teste automático de vazamento
-antes de chegar a você, e o que não passar não é mostrado. As demais respostas já partem só dos
-dados que a seção 1 libera para você.
+Nas conexões com a rede, a escolha das pessoas e empresas usa também informação interna da Endeavor
+sobre a trajetória delas, que não é mostrada a você. O que aparece vem de dados liberados para
+exibição e do texto que a IA escreve, como o motivo de cada sugestão. Esse texto passa por um teste
+automático de vazamento antes de chegar a você, e o que não passar não é mostrado. As demais
+respostas já partem só dos dados que a seção 1 libera para você.
 
 ### O que não fazemos
 - Não usamos seus dados para treinar modelos de IA.
 - Não vendemos, não licenciamos e não compartilhamos seus dados com terceiros comerciais.
-- Não mostramos sua empresa como caso nominal a outro founder sem sua autorização explícita.
+- Não mostramos a outro founder os números da sua empresa nem o conteúdo das conversas dela com a
+  rede. Numa sugestão de conexão, ela pode aparecer pelo nome, como a seção 1 descreve.
 - Não passamos telefone nem e-mail de ninguém da rede. A introdução é sempre via Endeavor.
 
 ---
