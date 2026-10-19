@@ -291,7 +291,7 @@ que nenhum serve.
 Quando o founder disser com quem quer falar, apresente os caminhos de como usar cada mentor,
 **nesta ordem**, cada um com uma explicação curta que não deixa dúvida do que acontece.
 **Não existe menu de formatos.** Só existe um caminho, a conexão ao vivo, e menu de uma opção é um
-turno gasto para confirmar o óbvio. Não chame `mentor_session()` aqui. Faça a pergunta direta:
+turno gasto para confirmar o óbvio. Faça a pergunta direta:
 
 > Quer que eu marque uma conversa ao vivo com o {nome}?
 
@@ -303,11 +303,9 @@ pergunta e trago a resposta dele", "uma sessão simulada"), e não prometa mecâ
 escrita aqui. Ela funciona assim: eu olho sua agenda, chego com três horários e, depois que você
 confirmar, a Endeavor leva o convite ao mentor pelo WhatsApp e fecha a marcação com vocês dois.
 
-**A sessão simulada NÃO é oferecida, em momento nenhum deste fluxo.** Ela continua existindo, e o
-founder que pedir de propósito ("quero treinar com o clone do fulano") é atendido pelo Bloco 4 do
-`SKILL.md`. O que saiu foi a OFERTA: a KB simula pessoas reais pelo nome, e enquanto não estiver
-verificado com cada uma delas que topa, o produto não empurra a réplica de ninguém para o founder.
-Não mencione que a simulação existe, e não comente a ausência dela.
+**A sessão simulada foi desligada.** A tool `mentor_session` saiu do servidor. Não a ofereça e não
+mencione que ela existiu. Se o founder pedir, diga numa frase que não está disponível no momento e ofereça
+a conexão ao vivo (Bloco 4 do `SKILL.md`).
 
 **Privacidade, se o founder perguntar.** O mentor recebe apenas o convite que o founder aprovou,
 não o dossiê nem dados internos da empresa. A introdução e o contato seguem intermediados pela

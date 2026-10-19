@@ -10,7 +10,7 @@ description: >
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, match_mentores, consultar_analise, buscar_rede,
-  mentor_session, company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
+  company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
   registrar_feedback, send_feedback, open_menu, open_library, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
@@ -58,7 +58,7 @@ antes de enviar:
 - `meus_dados` (ver e corrigir os dados dele): Bloco 5.
 - `radar_proativo`: Bloco 7.
 - `experts` (conectar com pessoas e empresas da rede, para um desafio ou para achar alguém): Bloco 1.
-- `sessao_simulada`: Bloco 4.
+- `sessao_simulada` (só chega de menu antigo em cache: a sessão simulada foi desligada): Bloco 4, que só explica isso e oferece a conexão real.
 - `diagnostico` (só chega de menu antigo em cache: o diagnóstico saiu do produto): Bloco 2.
 - `oraculo` (perguntar ao conhecimento acumulado das mentorias): pergunte o que ele quer saber ou
   que desafio quer explorar e responda com `ask_gtm_insights`. Vale pergunta, desabafo ou troca de
@@ -120,8 +120,8 @@ o roteamento é o de sempre:
   Endeavor, para o time): vá para o Bloco 10.
 - Pedido de diagnóstico ("quero um diagnóstico", "descobrir e priorizar desafios"): vá para o
   Bloco 2.
-- Pedido direto para conversar/treinar com um mentor específico ("quero conversar com o Bazzi"): vá
-  para o Bloco 4, como hoje.
+- Pedido para treinar ou simular uma conversa com um mentor específico ("quero treinar com o clone do Bazzi"):
+  vá para o Bloco 4, que explica que a sessão simulada não está disponível e oferece a conexão real.
 - Pergunta sobre dados, privacidade, confidencialidade, LGPD, segurança, quem tem acesso, o que os
   sócios enxergam, ou pedido de exclusão: vá para o Bloco 8. Não confunda com o item 2: mentorias,
   notas de sessão, prioridades e agenda continuam sendo o Bloco 5, e o link de uma gravação
@@ -160,18 +160,13 @@ Não chame `diagnostico` nem `dossie_empresa` aqui, e não prometa que o diagnó
 Buscar a rede deixou de ser um bloco separado: virou um dos destinos do roteador do Bloco 1. O
 número fica reservado para não quebrar as referências cruzadas do resto do arquivo.
 
-### Bloco 4. Sessão simulada com um mentor
+### Bloco 4. (sessão simulada desligada em 2026-10)
 
-**Este bloco só abre quando o founder PEDE.** A sessão simulada não é oferecida em lugar nenhum:
-nem no menu de formatos, nem depois do match, nem na preparação de uma conexão marcada. A KB
-simula pessoas reais pelo nome, e enquanto não estiver verificado com cada uma delas que topa, o
-produto não empurra a réplica de ninguém. Quem chegar aqui por vontade própria é atendido
-normalmente.
-
-
-Carregue `references/mentor-session.md` e conduza a sessão de lá: catálogo via `mentor_session()`,
-pack via `mentor_session(mentor)`, roleplay inteiro aqui no client (turnos curtos, uma pergunta
-por vez), boundaries do pack invioláveis, e ponte para a conexão real só no fechamento.
+A sessão simulada com mentor saiu do produto por enquanto: a tool `mentor_session` não existe mais no
+servidor. Não a ofereça em lugar nenhum e não a mencione sem o founder pedir. Se ele pedir (pelo menu em
+cache ou com as próprias palavras, como "quero treinar com o clone do Bazzi"), diga numa frase que a
+sessão simulada não está disponível no momento e ofereça a conexão real: vá para o Bloco 1 com o desafio
+dele. Não chame `mentor_session`. O número fica reservado para não quebrar as referências cruzadas.
 
 ### Bloco 5. Meus dados na Endeavor
 
@@ -396,8 +391,7 @@ ao founder:
   sua, nunca exibida crua).
 - `dossie_empresa(empresa, versao?)`: sincrona. Devolve o retrato seguro do dossie interno (metricas
   estimadas, divergencias por impacto, arquetipo provavel). Memoria interna sua, nunca exibida
-  crua ao founder. Omita `versao`. Usada para aprofundar a sessão simulada (Bloco 4) e o preparo
-  da agenda (Bloco 6).
+  crua ao founder. Omita `versao`. Usada para o preparo da agenda (Bloco 6).
 - `match_mentores(pedido)`: assíncrona. Devolve um `job_id`. Devolve uma LISTA RANQUEADA (top-13 por
   default via `n`) com um marcador `<<<RESERVA_NAO_MOSTRAR>>>`; o client mostra 3 e revela +10;
   `excluir`/`angulo` re-chamam para explorar/pivotar. SEM `formato` (o founder escolhe o tipo depois
@@ -424,10 +418,6 @@ ao founder:
 - `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
   (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
   Quando pronto, apresente só o resultado curado.
-- `mentor_session(mentor?)`: **síncrona**. Sem argumento devolve o catálogo (JSON) dos mentores
-  com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack, roteiro interno do
-  roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
-  `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`.
 - `priority(empresa, acao, desafio_id?, respostas?, fala?, campos?, versao?, visibilidade?,
   nivel?, status?, confirmado?)`: **síncrona**. Lê, cria, atualiza, reprioriza ou arquiva um
   desafio registrado da empresa do founder. `acao` é `listar` | `criar` | `propor` | `atualizar` |
@@ -467,8 +457,6 @@ ao founder:
 - A pergunta de nota de 1 a 5 não existe em nenhum bloco: não a faça. Em especial, **nunca use a
   pergunta de nota como jeito de encerrar** uma conversa de conexão: em teste ela apareceu no lugar de enviar o pedido, e
   o founder saiu achando que tinha pedido a conexão quando nada tinha sido enviado.
-- Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
-  pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 - Nunca chamar `send_feedback` sem o founder querer mandar, e nunca mandar um resumo seu no lugar
   das palavras dele.
 - Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
@@ -482,7 +470,6 @@ ao founder:
 | `references/experts.md`        | Ao entrar em Conexão com a rede (Bloco 1)     |
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
 | `references/buscar-rede.md`    | Ao roteador escolher rede ampla ou lookup (dentro do Bloco 1) |
-| `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
 | `references/scheduling.md`     | Ao founder escolher conexão ao vivo (dentro do Bloco 1 ou 3) |
@@ -494,6 +481,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.5**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.6**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
