@@ -149,8 +149,7 @@ substância).
   `desafio` com o texto.
 - **Não**: vá para `buscar_rede(pergunta)`. É o caso de quem nomeia uma pessoa ou empresa ("quem é o
   Jorge Tung", "a Aurora Suh está na base?", "quem é o founder da Blip"), de quem quer empresas
-  ("quais empresas da rede são marketplaces", "quem são meus pares de turma no Scale-Up",
-  "empresas de benchmark para o meu caso") e de quem faz uma pergunta aberta sobre gente, sem uma
+  ("quais empresas da rede são marketplaces", "empresas de benchmark para o meu caso") e de quem faz uma pergunta aberta sobre gente, sem uma
   situação dele por trás ("quem já escalou vendas B2B em SaaS").
 
 **Quem pediu um nome ou uma empresa não passa por intake.** Chame `buscar_rede` com o nome e responda
