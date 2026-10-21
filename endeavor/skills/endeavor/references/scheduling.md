@@ -189,22 +189,42 @@ segue para o passo 4.
 
 ### O convite (o texto que vai à pessoa)
 
-Cinco blocos curtos, em prosa corrida, sem título de seção:
+**Quem fala é sempre a Endeavor**: "Aqui é a Endeavor", "Queremos te convidar", "Pensamos em você".
+O founder aparece em terceira pessoa, pelo nome. Nunca "sou o", "meu nome é", "eu gostaria", nunca
+assinado pelo founder, nem quando ele pedir. A conversa é sempre de 1 hora.
 
-1. **Saudação, quem fala e o convite.** Primeiro nome da pessoa, "tudo bem?", a Endeavor se
-   apresentando, e o convite nomeando o founder, o cargo e a empresa. Quem senta na conversa é quem
-   está falando com você, então é o nome dele que vai no convite. Não pergunte quem vai participar.
-2. **O que a empresa faz e qual o desafio, juntos.** Duas a quatro linhas. A solução em uma frase, o
-   desafio em seguida, incluindo o que já tentaram se o founder contou.
-3. **Por que ele.** Uma frase ligando a experiência nomeada dele ao desafio. É o parágrafo que
+Sete blocos curtos, em prosa corrida, sem título de seção, com **no máximo 1.300 caracteres**
+contando tudo (a frase de saída e as URLs completas inclusive). Não há mínimo: convite curto porque
+a base tem pouco é melhor que convite alongado com enchimento ou dado inventado.
+
+1. **Saudação e convite.** Primeiro nome da pessoa, "tudo bem?", "Aqui é a Endeavor", e o convite
+   para uma conversa de 1h nomeando o founder, o cargo e a empresa, "empresa da nossa rede". Quem
+   senta na conversa é quem está falando com você, então é o nome dele que vai no convite. Não
+   pergunte quem vai participar.
+2. **A empresa.** O que ela faz, em uma ou duas frases, e um sinal concreto de estágio ou tração
+   que **não seja financeiro**: número de clientes, mercados onde atua, nome da rodada sem valor
+   ("Série A"), programa de que participou. Só o que veio da base ou do founder.
+3. **O desafio.** O que está travando, com o detalhe que o torna específico, e as dúvidas principais
+   do founder dentro da própria descrição. Inclua o que já tentaram, se ele contou. Nunca um
+   parágrafo separado dizendo o que o founder "gostaria de ouvir": isso é adivinhar a pergunta dele.
+4. **Por que ele.** Uma frase ligando a experiência nomeada dele ao desafio. É o parágrafo que
    decide se ele responde, então tem que ser específico: "pela sua experiência montando o time de
    vendas enterprise da [empresa dele]", não "pela sua vasta experiência".
-4. **O pedido.** Interesse mais os três horários, **escritos por extenso dentro da mensagem**. Aqui
+5. **Para conhecer um pouco mais.** A linha "Para conhecer um pouco mais:" e, cada um em linha
+   própria, como URL crua: o site da empresa (o `website` da `varredura_empresa`) e o LinkedIn de
+   quem vai à conversa (o time da empresa no `company_data`; se ainda não estiver na conversa, uma
+   chamada pedindo o LinkedIn dele).
+   - O time da empresa não diz quem está falando com você: ache a pessoa **pelo nome completo**. Se
+     nenhuma bater, ou se mais de uma bater, a linha do LinkedIn sai.
+   - Se o founder pedir para não mandar o LinkedIn, a linha sai.
+   - O que não vier sai; sem site e sem LinkedIn, o bloco inteiro sai. Nunca monte nem complete um
+     link. WhatsApp não renderiza link com texto, então nome entre colchetes vira lixo na tela.
+6. **O pedido.** Interesse mais os três horários, **escritos por extenso dentro da mensagem**. Aqui
    o convite INVERTE o padrão de e-mail do time interno: não peça horários à pessoa, ofereça os
    três que o founder já confirmou. "Topa? Ela consegue terça 26 às 14h, quarta 27 às 10h ou quinta
    28 às 16h" está certo. "Temos algumas janelas pré-alinhadas" está errado: a pessoa não tem o que
    responder.
-5. **A saída.** Uma linha, parágrafo próprio, depois dos horários:
+7. **A saída.** Uma linha, parágrafo próprio, depois dos horários:
 
    > Se nenhum desses funcionar, me diga qual horário funciona melhor, e se não for o momento,
    > sem problema.
@@ -214,14 +234,14 @@ Cinco blocos curtos, em prosa corrida, sem título de seção:
    contrapor horário é caminho que existe. **Não** acrescente prazo de resposta: continua sendo
    anti-padrão.
 
-O link do site da empresa entra como URL crua, em linha própria antes do pedido. WhatsApp não
-renderiza link com texto, então nome entre colchetes vira lixo na tela. Não link a pessoa: ela é
-quem recebe a mensagem.
+**Nenhum número financeiro no convite**: faturamento, receita, valor captado, valuation, margem,
+EBITDA, crescimento percentual. Nem da base, nem da fala do founder. Esse contexto vai no documento
+de preparação do mentor (`references/briefing.md`), que tem as regras dele.
 
 **De onde vem o conteúdo.** Além do que o founder falou e do resultado curado do match, use o que a
 Endeavor já sabe sobre a empresa dele. A `varredura_empresa` e o `dossie_empresa` têm o que a empresa
-faz, estágio, porte, captação, mercado e o histórico do desafio, e é isso que dá lastro ao convite em
-vez de deixá-lo genérico. A amarra é o desafio: o dado entra porque explica POR QUE esta conversa faz
+faz, estágio, porte, mercado e o histórico do desafio, e é isso que dá lastro ao convite em vez de
+deixá-lo genérico. A amarra é o desafio: o dado entra porque explica POR QUE esta conversa faz
 sentido agora, não como currículo.
 
 O parágrafo do **"por que ele"** é a única exceção: ele sai do resultado curado do match, não do
@@ -242,27 +262,34 @@ perfil bruto do mentor. O curado já passou pelos filtros de confidencialidade d
 4. **Tabela, JSON ou trecho colado da saída da tool.** Você reescreve em prosa. A saída da
    `varredura_empresa` é memória de trabalho sua, nunca texto de saída.
 
-**Nunca:** inventar dado que não está em lugar nenhum, inventar ou montar URL, usar negrito, usar
-travessão, usar rótulo de seção ("Desafio:", "Contexto:"), prometer prazo, dizer que a Endeavor
-garante a conversa, ou usar jargão vazio ("sinergia", "ecossistema de inovação", "jornada
-transformadora", "empoderar", "trajetória brilhante").
+**Nunca:** escrever em primeira pessoa do founder, citar número financeiro, inventar dado que não
+está em lugar nenhum, inventar ou montar URL, usar negrito, usar travessão, usar lista ou rótulo de
+seção ("Desafio:", "Contexto:"), prometer prazo, dizer que a Endeavor garante a conversa, ou usar
+jargão vazio ("sinergia", "ecossistema de inovação", "jornada transformadora", "empoderar",
+"trajetória brilhante").
 
 Exemplo hipotético, para calibrar extensão e ritmo:
 
 > Oi Alexandre, tudo bem?
 >
-> Aqui é a Endeavor. Queria te convidar para uma conversa de 1h com a Marina Duarte, cofundadora e
+> Aqui é a Endeavor. Queremos te convidar para uma conversa de 1h com a Marina Duarte, cofundadora e
 > CEO da Nortis, empresa da nossa rede.
 >
-> A Nortis vende software de gestão de frota para transportadoras de médio porte. Levantaram Série A
-> no ano passado, cresceram com venda fundadora e agora estão montando o primeiro time comercial. O
-> desafio é o de sempre nessa virada: o processo que funcionava na mão da Marina não está passando
-> para os vendedores novos, e o ciclo de venda dobrou.
+> A Nortis vende software de gestão de frota para transportadoras de médio porte. Levantou Série A no
+> ano passado e hoje atende 120 transportadoras em quatro estados.
 >
-> nortis.com.br
+> O desafio é a virada da venda feita pela fundadora para um time comercial: o processo que
+> funcionava na mão da Marina não está passando para os vendedores novos, o ciclo de venda dobrou, e
+> ela ainda não sabe se o problema é o perfil de quem contratou ou a falta de um playbook.
 >
 > Pensamos em você pela sua experiência construindo a máquina de vendas enterprise da Escala, saindo
-> do founder-led. Topa? Ela consegue terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h.
+> do founder-led.
+>
+> Para conhecer um pouco mais:
+> nortis.com.br
+> linkedin.com/in/marinaduarte
+>
+> Topa? Ela consegue terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h.
 >
 > Se nenhum desses funcionar, me diga qual horário funciona melhor, e se não for o momento, sem
 > problema.
@@ -275,7 +302,7 @@ Chame `agendar_conexao`:
 empresa:          <a empresa do founder, já conhecida da conversa>
 mentor_nome:      <nome da pessoa como apareceu na busca ou no match>
 disponibilidade:  [<ISO 8601 com fuso EXPLÍCITO>, ...]
-convite:          <o texto escrito no passo 3, que o founder autorizou pelo resumo>
+convite:          <o texto escrito no passo 3, no formato fixo da Endeavor>
 observacao:       <preferência de horário do founder, se ele disse alguma>
 job_id:           <o job do match que gerou a lista, se veio de um match>
 briefing_mentor:  <os campos do documento do mentor, ver references/briefing.md>
