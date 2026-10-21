@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 5 (outubro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, seus conectores, o que não acessa)
 2. Isto é IA, e IA erra
@@ -72,7 +72,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 4 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
+Versão 5 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
 
 ---
 
@@ -215,10 +215,13 @@ conexão, envia um pedido ao sistema de agendamento da Endeavor.
 Quando você autoriza uma conexão, o plugin envia ao sistema de agendamento da Endeavor: a sua
 empresa, você e o mentor, os horários que você ofereceu, o convite que o mentor vai ler, os
 telefones de você e do mentor que já estão no cadastro da Endeavor, e dois documentos de
-preparação, um para o mentor e um para você. O documento do mentor traz o contexto da empresa, os
-temas que você quer tratar e empresas de referência; ele é montado a partir do que você contou na
-conversa e você vê o resumo antes de autorizar. O telefone serve para o time de agendamento falar
-com cada um; o plugin não passa o seu número ao mentor nem o dele a você.
+preparação, um para o mentor e um para você. O convite é escrito pela Endeavor, em nome dela, e
+apresenta a sua empresa, o desafio, por que o mentor foi escolhido, o site da empresa e o seu
+LinkedIn, quando estão no cadastro da Endeavor; se você pedir, o LinkedIn não vai. O documento do
+mentor traz o contexto da empresa, os temas que você quer tratar e empresas de referência; ele é
+montado a partir do que você contou na conversa. Antes de autorizar, você vê para quem vai, o
+assunto e os horários, e pode pedir para ver o texto do convite. O telefone serve para o time de
+agendamento falar com cada um; o plugin não passa o seu número ao mentor nem o dele a você.
 
 ### Telemetria de produto
 Registro de uso, para sabermos se o produto funciona e onde falha: qual capacidade você acionou,
