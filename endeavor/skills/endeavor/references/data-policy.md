@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 5 (outubro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, seus conectores, o que não acessa)
 2. Isto é IA, e IA erra
@@ -50,6 +50,10 @@ Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), n
   respostas entregues, e o comentário, conforme a seção 4.
 - Pergunta sobre o que sai numa conexão com mentor: responda pela seção 4, **sem suavizar**. O
   mentor recebe o documento de preparação, e o pedido vai ao time de agendamento.
+- Pergunta sobre quem vê o telefone ou o convite quando o pedido não foi agendado sozinho: responda
+  pela seção 4, **sem suavizar**. Uma pessoa do time da Endeavor vê o convite e os dois telefones num
+  painel interno, só enquanto o caso está com ela, e escreve a cada um pelo WhatsApp. O plugin continua
+  sem passar o número de um ao outro.
 - Pergunta sobre segurança, pen test ou certificação: responda pela subseção "Como o acesso é
   controlado" da seção 6. Não afirme que existe pen test, certificação ou auditoria; o que o corpo
   não diz, o time da Endeavor responde.
@@ -72,7 +76,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 4 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 4 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
+Versão 5 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
 
 ---
 
@@ -84,7 +88,8 @@ Versão 4 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do f
    contexto, e o feedback que você manda ao time.
 3. O que você escreve no chat só sai do seu Claude quando você aciona uma capacidade do plugin. Quando
    você autoriza uma conexão com mentor, o pedido vai para o time de agendamento da Endeavor e o
-   mentor recebe um documento de preparação.
+   mentor recebe um documento de preparação. Se o agendamento automático não resolve, uma pessoa do
+   time vê o convite e os telefones num painel interno.
 4. **O que está registrado sobre a empresa é visível para os sócios dela.** Vale a pena ler a seção 3.
 5. Números da sua empresa não chegam a outro founder, e os deles não chegam a você.
 6. Você pode contestar, corrigir ou pedir a exclusão do que gravamos.
@@ -220,6 +225,12 @@ temas que você quer tratar e empresas de referência; ele é montado a partir d
 conversa e você vê o resumo antes de autorizar. O telefone serve para o time de agendamento falar
 com cada um; o plugin não passa o seu número ao mentor nem o dele a você.
 
+Se o agendamento automático não consegue fechar o horário e passa o caso para uma pessoa, alguém do
+time da Endeavor vê, num painel interno, o convite, os horários que você ofereceu e os telefones de
+você e do mentor, e escreve para cada um pelo WhatsApp. No painel, o telefone só aparece enquanto o
+caso está com uma pessoa. O painel também guarda, para cada caso, qual pessoa do time marcou que
+enviou o convite e que fez as cobranças seguintes, e quando.
+
 ### Telemetria de produto
 Registro de uso, para sabermos se o produto funciona e onde falha: qual capacidade você acionou,
 quanto tempo levou, se deu erro, se a entrega chegou à sua tela, e a nota e o comentário que você deu.
@@ -270,8 +281,10 @@ partem só dos dados que a seção 1 libera para você.
 - **Founders de outras empresas**: só o perfil da sua empresa descrito na seção 1.
 - **O mentor de uma conexão que você autorizou**: o documento de preparação e o convite descritos
   na seção 4.
-- **Time da Endeavor**: o squad do produto, o time de agendamento e os analistas que curam os
-  dossiês, para operar e melhorar o serviço, sujeitos às políticas internas de confidencialidade.
+- **Time da Endeavor**: o squad do produto, o time de agendamento, quem acompanha os pedidos de
+  conexão que o agendamento automático passou para uma pessoa (que vê o convite e os telefones no
+  painel interno descrito na seção 4) e os analistas que curam os dossiês, para operar e melhorar o
+  serviço, sujeitos às políticas internas de confidencialidade.
 - **Parceiro de engenharia contratado pela Endeavor**: acesso técnico à infraestrutura para
   desenvolvimento e suporte, sob contrato.
 - **Provedores de infraestrutura**, como subprocessadores: Anthropic (modelo e busca na web), Google
