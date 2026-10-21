@@ -107,9 +107,24 @@ são SUAS, não lição de casa do founder. Nunca as recite para ele. Se o horá
 passa, diga só o que muda: "essa terça é cedo demais pra pessoa conseguir responder, consigo a
 seguinte".
 
-Se a tool `AskUserQuestion` estiver disponível, ofereça as três saídas como opções (`Mandar esses
-três` / `Trocar um deles` / `Outros dias`). Ela pode não estar disponível: nesse caso a frase acima
-já é o turno completo e o founder responde em texto. Não trate o menu como pré-requisito de nada.
+Se a tool `AskUserQuestion` estiver disponível, **a pergunta da caixa traz os três horários por
+extenso**, a duração e o nome da pessoa, e termina perguntando se pode mandar:
+
+> Consigo terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h, uma hora cada. Mando esses três
+> para o [Nome]?
+
+As opções são `Mandar esses três` / `Trocar um deles` / `Outros dias`.
+**Nunca abra a caixa sem os horários escritos nela.** Em produção, o Claude pulou a frase com os
+horários e abriu a caixa só com o nome da pessoa no título, e o founder aprovou horários que não
+tinha visto. Com os horários dentro
+da pergunta, a frase "Olhei sua agenda..." antes da caixa passa a ser opcional.
+
+A tool pode não estar disponível: nesse caso a frase com os horários é o turno completo e o founder
+responde em texto. Não trate o menu como pré-requisito de nada.
+
+**Se ele pular a pergunta** (o "Pular" da caixa), nada segue e o pedido dessa pessoa fica pendente.
+Diga em uma linha que não enviou nada e que continua quando ele pedir. Um pedido escrito depois
+("pode mandar esses três") retoma daqui.
 
 ## Passo 3: o resumo e a autorização
 
@@ -312,6 +327,7 @@ Depois disso, pare. Não pergunte se ele quer chamar mais alguém e não peça n
 - ❌ Concluir que não há ferramenta de calendário porque nenhuma tem o nome exato citado aqui.
 - ❌ Enviar horário que o founder não confirmou, ou convite que ele não leu.
 - ❌ Propor janela ("terça de manhã") ou faixa ("das 10h às 11h30") em vez de instante de 1 hora.
+- ❌ Abrir a caixa do passo 2 sem os três horários escritos na pergunta.
 - ❌ Calcular dia da semana de cabeça em vez de ler a data que o calendário devolveu.
 - ❌ Mandar horário sem fuso na tool, ou chamar a tool duas vezes por causa disso.
 - ❌ Mandar os mesmos horários para duas pessoas.
