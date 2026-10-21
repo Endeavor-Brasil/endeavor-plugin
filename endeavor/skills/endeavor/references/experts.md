@@ -321,7 +321,7 @@ fechada aqui é ao vivo. **Confirme o {quem, ângulo}** e feche.
 **Handoff.** A conexão **ao vivo** segue `references/scheduling.md`, e você **carrega esse arquivo
 antes de agir**: a sequência abaixo é um índice, não a receita. Você lê a agenda, propõe três
 horários, confirma os horários, e então **mostra o CARTÃO de autorização, que é a própria pergunta**
-(quem, assunto, o que o mentor vai saber sobre ele, horários, duração) e só chama `agendar_conexao`
+(para quem, assunto, horários, duração) e só chama `agendar_conexao`
 depois do sim. Nunca pergunte "envio assim?" sem o cartão: foi o defeito de 23/09, 24/09 e 01/10. A
 tool registra o PEDIDO; o convite ao mentor sai depois, em segundo plano. Não marque data como certa, não prometa prazo, e não diga
 que o mentor já foi avisado.
