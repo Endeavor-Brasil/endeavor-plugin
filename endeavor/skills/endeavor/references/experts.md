@@ -233,20 +233,24 @@ de novo devolve as mesmas pessoas. Sem tela, responda só com o que você já te
 nada, ofereça um ângulo novo pelo `buscar_rede`.
 
 ### 5. A seleção do founder (a mensagem "Minha seleção para…")
-Quando o founder enviar a seleção pela tela, a mensagem dele começa com "Minha seleção para…" e a
-tela manda junto, no contexto da conversa, os ids e as reações dele. Chame **`match_feedback`**
-**em silêncio**, sem avisar que está gravando:
+Quando o founder enviar a seleção pela tela, a mensagem dele começa com "Minha seleção para…" e
+traz uma linha por reação, com os nomes: "Pedir conexão: …", "Quero saber mais sobre: …" e "Não faz
+sentido para mim: …". Chame **`match_feedback`** **em silêncio**, sem avisar que está gravando:
 
-- `empresa` e `job_id`: os mesmos do passo 4 (o `job_id` também vem no contexto da tela).
-- `reacoes`: a lista do contexto da tela, como ela veio, cada item com `id`, `reacao`
-  (`conectar` | `saber_mais` | `nao_faz_sentido`) e, quando vier, `origem` (`pessoa` | `empresa`).
-  Não invente id e não complete reação que o founder não marcou. Id que não está no resultado
-  daquele job faz a tool recusar sem gravar.
+- `empresa` e `job_id`: os mesmos do passo 4.
+- `reacoes`: uma por pessoa da mensagem, com `reacao` pela linha em que ela aparece ("Pedir
+  conexão" = `conectar`, "Quero saber mais sobre" = `saber_mais`, "Não faz sentido para mim" =
+  `nao_faz_sentido`) e `nome` como está na mensagem, com o "(cargo · empresa)" que vem depois. Se o
+  contexto da tela trouxer os ids, pode mandar `id` no lugar de `nome`. O servidor acha cada pessoa
+  no resultado daquele job; se algum nome não casar, ele não grava nada e diz qual: corrija só esse
+  e chame de novo. Não invente nome e não complete reação que o founder não marcou.
 
 A resposta é um JSON com `saber_mais`, `para_conectar` e uma `nota`. Siga a `nota`:
 
-1. **Mostre o saber mais** de quem foi marcado, em prosa curta e só com o que veio em `saber_mais`
-   (carreira, frases liberadas, desafios que a pessoa já enfrentou, como ela prefere conversar).
+1. **Mostre o saber mais** de quem foi marcado, em prosa curta e só com o que veio em `saber_mais`:
+   comece pelo `perfil` e pelo `motivo`, depois o que a pessoa viveu (frases liberadas, trajetória,
+   desafios que já enfrentou), o `voce_sai_com`, as `perguntas` que vale fazer e como ela prefere
+   conversar. Quem veio de um card de empresa traz `empresa_sugerida`: uma linha sobre a empresa.
    Não complete com conhecimento seu.
 2. **Não comente o "não faz sentido"**: nem agradeça, nem pergunte por quê, nem cite quem foi
    marcado assim.
@@ -272,7 +276,9 @@ carregou, faça o que ela diz. Sem pergunta de nota de 1 a 5.
   passo 5 lista essa soma, não só o `para_conectar` mais recente. Isso vale mesmo quando a `nota`
   daquela chamada trouxer só a lista nova.
 - **Seguir.** O "podemos seguir" dele já é o sim para a conexão com quem está na lista: vá para o
-  passo 7, uma pessoa por vez, na ordem da lista.
+  passo 7, uma pessoa por vez, na ordem da lista. A lista é uma fila: se ele cancelar uma pessoa no
+  meio do caminho, siga para a próxima, e feche com um resumo de a quem o pedido foi feito e quem
+  ficou de fora (regra em `references/scheduling.md`).
 
 Se ele disser que nenhuma das pessoas serve, é o caso de adicionar: ofereça outro ângulo pelo
 `buscar_rede`. Não anuncie a troca de fonte: para o founder é a mesma conversa.
@@ -343,7 +349,7 @@ Os dois passos seguintes têm pedido próprio:
 
 ```
 show_matches:   empresa, job_id                                       # os mesmos do find_matches
-match_feedback: empresa, job_id, reacoes: [{ id, reacao, origem? }]   # tudo do contexto da tela, sem inventar
+match_feedback: empresa, job_id, reacoes: [{ nome, reacao, origem? }]   # um por pessoa da mensagem "Minha seleção para…", sem inventar (id no lugar de nome, se o contexto da tela trouxer)
 ```
 
 Você **não** classifica o assunto do desafio, **não** monta perfil da empresa e **não** passa lista
