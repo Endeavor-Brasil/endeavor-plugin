@@ -120,7 +120,8 @@ apoiou. Esse dado é da pessoa logada, não da empresa, e não aparece para o se
   a pessoa já ajudou outros founders, frases dela, o estilo e como se preparar para a conversa,
   tirados das mentorias registradas.
 - **Outras empresas**: empresas da rede Endeavor, inclusive as que já saíram do portfólio ou foram
-  vendidas, a turma atual do Scale-Up e empresas onde pessoas da rede trabalham ou trabalharam. De
+  vendidas, a turma atual do Scale-Up (marcada como turma, para você poder buscar só nela) e empresas
+  onde pessoas da rede trabalham ou trabalharam. De
   cada uma: o que a empresa faz, setor, vertical, modelo, estado, ano, site, os temas que ela já
   trabalhou com a rede, e as pessoas dela com nome, cargo e LinkedIn. Serve para você achar pares,
   benchmark e conexões.
