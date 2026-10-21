@@ -49,7 +49,8 @@ Para ancorar a resposta rápido. O corpo está na Versão 5 (outubro de 2026), n
 - Não afirme que a telemetria não guarda conteúdo. Hoje guarda o texto do que o founder pediu e das
   respostas entregues, e o comentário, conforme a seção 4.
 - Pergunta sobre o que sai numa conexão com mentor: responda pela seção 4, **sem suavizar**. O
-  mentor recebe o documento de preparação, e o pedido vai ao time de agendamento.
+  mentor recebe o convite, com o site da empresa e o LinkedIn do founder, e o documento de
+  preparação, e o pedido vai ao time de agendamento.
 - Pergunta sobre segurança, pen test ou certificação: responda pela subseção "Como o acesso é
   controlado" da seção 6. Não afirme que existe pen test, certificação ou auditoria; o que o corpo
   não diz, o time da Endeavor responde.
@@ -244,8 +245,8 @@ reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito 
   resposta que só você recebe.
 - **Para não te fazer repetir contexto.** A memória e o dossiê existem para que a segunda conversa
   comece mais adiante que a primeira.
-- **Para preparar uma conexão que você autorizou.** O mentor recebe o documento descrito na seção 4,
-  e só ele.
+- **Para preparar uma conexão que você autorizou.** O mentor recebe o convite e o documento descritos
+  na seção 4, e só eles.
 - **Para comparar com a rede, sempre de forma anônima e agregada.** A Biblioteca da Rede responde
   com aprendizados de conversas com empresas da rede, com autores anonimizados e números só como faixa ou
   mediana de pelo menos três empresas. Você recebe o padrão, nunca o caso nominal.
