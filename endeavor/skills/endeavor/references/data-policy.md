@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 6 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 7 (outubro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, seus conectores, o que não acessa)
 2. Isto é IA, e IA erra
@@ -64,7 +64,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 6 (outubro de 2026), n
   prometa integração direta nem sugira que ele passe credencial para o time.
 - Pergunta sobre o que o sócio enxerga: responda pela seção 3, **sem suavizar**. É melhor o founder
   saber antes.
-- Pergunta sobre a página de um desafio na Inteligência da Rede: responda pelas seções 4 e 5, **sem
+- Pergunta sobre a página de um desafio no Cérebro Endeavor (antes Inteligência da Rede): responda pelas seções 4 e 5, **sem
   suavizar**. Uma rotina manda o texto dos desafios ativos ao modelo sem o founder pedir, inclusive o
   desafio só dele, e a página fica guardada no banco do produto.
 - Pergunta sobre gravações de sessão: a política está na seção 4. Se o que ele quer é o link de uma
@@ -81,7 +81,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 6 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 6 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
+Versão 7 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
 
 ---
 
@@ -219,7 +219,7 @@ conexão, envia um pedido ao sistema de agendamento da Endeavor.
 ### Banco do produto, na infraestrutura da Endeavor
 - **Desafios que você registra ou corrige** pelo plugin, com o texto, quem escreveu e quando. Cada
   alteração fica guardada como revisão; arquivar não apaga.
-- **Página de cada desafio ativo, na Inteligência da Rede**: um texto que a IA escreve a partir do
+- **Página de cada desafio ativo, no Cérebro Endeavor** (a tela que antes se chamava Inteligência da Rede): um texto que a IA escreve a partir do
   desafio e da Biblioteca da Rede, com aprendizados da rede ligados a ele. Vale para todo desafio em
   andamento ou no backlog, inclusive o desafio só seu, e a página é refeita quando o desafio ou a
   Biblioteca mudam. Quem vê a página é quem vê o desafio, conforme a seção 3.
