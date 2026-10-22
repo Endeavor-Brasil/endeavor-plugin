@@ -87,6 +87,45 @@ antes de enviar:
 - `trocar_empresa` (founder com mais de uma empresa vinculada): chame `open_menu` de novo passando
   a empresa que ele escolheu, e entregue o novo menu.
 
+Chaves do menu novo (cliques num desafio ou numa pessoa; o aviso traz o id):
+
+- `pedir_reuniao:<desafio_id>:<person_id>`: siga `references/scheduling.md` com `mentor_nome` (o nome da
+  frase, sem o que está entre parênteses), `mentor_person_id` (o `<person_id>`) e `desafio_id` (o
+  `<desafio_id>`). O convite cita o desafio: leia a ficha com `priority` `acao: "listar"` antes de
+  escrever.
+- `sugerir_conexoes:<desafio_id>`: chame `find_matches` com o `desafio_id` direto, sem nenhuma pergunta
+  antes, acompanhe com `consultar_analise` e abra com `show_matches`, seguindo o `references/experts.md`
+  a partir daí. As opções novas ficam na conversa. Sem `find_matches` no catálogo, Bloco 1.
+- `insights_priority:<desafio_id>`: chame `open_library` com `abrir_em: <desafio_id>` e escreva no
+  máximo uma linha, oferecendo aprofundar com a IA (`ask_gtm_insights` com o `desafio_id`) se ele
+  quiser. Sem `open_library` no catálogo, responda com `ask_gtm_insights` com o `desafio_id`.
+- `concluir_priority:<id>`: Bloco 9.5, `acao: "repriorizar"` com `status: "concluded"`, depois de uma
+  confirmação curta ("Marco o desafio <título> como concluído?").
+- `atualizar_priority:<id>` e `arquivar_priority:<id>`: como acima (Bloco 9).
+
+Frases do menu novo que chegam sem aviso (reconheça pela frase):
+
+- "Quero registrar um desafio novo.": Bloco 9.1, que termina com a oferta "Quer que eu já procure na
+  rede quem resolveu isso?". Se ele aceitar, `find_matches` com o `desafio_id` que o registro devolveu.
+- "Quero explorar a rede da Endeavor.": Bloco 1.
+- "Quero buscar conhecimento no Cérebro Endeavor.": como a chave `biblioteca`.
+- "Quero ver o benchmark de startups B2B de IA.": `open_library` com `abrir_em: "pares-resumo"`. Sem
+  `open_library` no catálogo, `ask_gtm_insights` sobre o benchmark de pares de IA B2B.
+- "Mostre o prompt da rotina <letra> · <nome>.": Bloco 7.
+- "Quero mandar um feedback ou uma ideia para o time da Endeavor.": Bloco 10.
+
+Quando o aviso de um clique de desafio não chega e só a frase aparece ("Quero pedir uma reunião com
+<nome> (<cargo> · <empresa>) para o meu desafio: <título>", "Quero mais sugestões de conexão para o meu
+desafio: <título>", "Quero sugestões de conexão para o meu desafio: <título>", "Quero ver o que o
+Cérebro Endeavor sabe sobre o meu desafio: <título>", "Quero marcar como concluído o desafio
+"<título>""): ache o desafio pelo título com `priority` `acao: "listar"` (o título pode vir cortado,
+terminando em "...") e siga como se a chave tivesse chegado, com o `desafio_id`. No pedido de reunião,
+mande o nome sem o parêntese e o `desafio_id`, sem `mentor_person_id`: o servidor acha a pessoa nas
+sugestões daquele desafio. Título que não bate com nenhum desafio, ou com mais de um: pergunte qual.
+
+Depois do `open_menu` do menu novo, no máximo uma linha. Se o texto da tool trouxer "Outras empresas
+suas", a linha é "Você também tem a <empresa>; é só pedir para trocar."
+
 Chaves que vêm da tela do Cérebro Endeavor (cliques e busca dentro dela):
 
 - `perguntar_inteligencia`: responda com `ask_gtm_insights(pergunta: a frase do founder, empresa)`.
@@ -112,25 +151,28 @@ Chave que você não reconhecer: entenda o objetivo pela frase e roteie como sem
 menu. Sem chave nenhuma (ele escreveu com as próprias palavras, ou respondeu o número do cardápio),
 o roteamento é o de sempre:
 
-- **1. Minha agenda** (próxima conexão, próximos eventos, cronograma, "o que vem"): vá para o Bloco 6.
-- **2. Meu histórico** (última conexão, o que ficou das sessões, mentorias, prioridades, perfil, meus
-  dados): vá para o Bloco 5. Sem recorte específico, comece pelo retrospecto da última conexão
-  concluída, como descrito no Bloco 5.
-- **3. Conecte-se com a rede Endeavor** (um desafio em que quer ajuda de um mentor, ou pessoas e
-  empresas da rede que ele quer achar): vá para o Bloco 1.
-- **4. Criar radar proativo** (automação, rotina): vá para o Bloco 7.
-- **5. Mandar um feedback** (crítica, sugestão, bug ou elogio sobre o plugin, uma conexão ou a
-  Endeavor, para o time): vá para o Bloco 10.
+- **1. Explorar a Rede** (um desafio em que quer ajuda de alguém da rede, ou pessoas e empresas que ele
+  quer achar): vá para o Bloco 1.
+- **2. Buscar Conhecimento**: como a chave `biblioteca`.
+- **3. Benchmark AI B2B**: como a frase "Quero ver o benchmark de startups B2B de IA.".
+- **4. Criar Rotina** (automação, rotina, radar): vá para o Bloco 7.
+- **5. Mandar feedback ou ideia** (crítica, sugestão, bug ou elogio, para o time): vá para o Bloco 10.
+- Agenda (próxima conexão, próximos eventos, cronograma, "o que vem"): Bloco 6.
+- Histórico (última conexão, o que ficou das sessões, mentorias, prioridades, perfil, meus dados):
+  Bloco 5, começando pelo retrospecto da última conexão concluída, como descrito lá.
+- Pergunta ao que a rede já aprendeu nas mentorias ("o que a rede sabe sobre X", "como outras
+  empresas fizeram Y"): como a chave `oraculo`.
+- Trocar de empresa (founder com mais de uma): como a chave `trocar_empresa`.
 - Pedido de diagnóstico ("quero um diagnóstico", "descobrir e priorizar desafios"): vá para o
   Bloco 2.
 - Pedido para treinar ou simular uma conversa com um mentor específico ("quero treinar com o clone do Bazzi"):
   vá para o Bloco 4, que explica que a sessão simulada não está disponível e oferece a conexão real.
 - Pergunta sobre dados, privacidade, confidencialidade, LGPD, segurança, quem tem acesso, o que os
-  sócios enxergam, ou pedido de exclusão: vá para o Bloco 8. Não confunda com o item 2: mentorias,
+  sócios enxergam, ou pedido de exclusão: vá para o Bloco 8. Não confunda com o Histórico: mentorias,
   notas de sessão, prioridades e agenda continuam sendo o Bloco 5, e o link de uma gravação
   específica também é o Bloco 5.
 
-Se o founder descrever um desafio direto no campo aberto, trate como o item 3 e siga para o Bloco 1
+Se o founder descrever um desafio direto no campo aberto, trate como o item 1 e siga para o Bloco 1
 sem repetir o menu.
 
 ### Bloco 1. Conexão com a rede
@@ -184,7 +226,7 @@ pergunta)` — **síncrona**, devolve JSON na mesma chamada — raciocine sobre 
 em prosa. Para mudar o recorte, re-pergunte. Honestidade sobre cobertura: resumos ricos
 existem de 2023/2024 em diante.
 
-Entrada pelo item 2 do menu (Meu histórico) sem recorte específico: comece pelo retrospecto da última
+Entrada pelo Meu histórico do menu, ou pedido de histórico, sem recorte específico: comece pelo retrospecto da última
 conexão concluída com `company_data(empresa, "o que ficou da minha última mentoria concluída: resumo,
 notas e link da gravação?")`. Apresente em prosa (o que aconteceu, com quem, o que ficou) e, se vier
 link da gravação, entregue-o para o founder abrir (a IA não abre nem transcreve). Sem pergunta de
@@ -198,7 +240,7 @@ O founder quer saber o que vem e chegar preparado. Fluxo curto, sem reference pr
    agendadas com data futura e os próximos eventos da rede")`. Síncrona, devolve JSON; raciocine sobre
    ele, nunca o exiba.
 2. Apresente a agenda em prosa: o que vem, com quem, quando. Sem conexão agendada, diga com
-   honestidade e ofereça buscar um expert (item 3) em vez de inventar. Os eventos que voltam são
+   honestidade e ofereça buscar um expert (Bloco 1) em vez de inventar. Os eventos que voltam são
    só os que têm vínculo com ele: as coletivas para as quais foi convidado e os grupos P2P de que
    faz parte. O que ele não foi convidado não aparece (nem encontro de outro grupo, nem evento
    que a Endeavor ainda não confirmou), então não anuncie a lista como "tudo o que a Endeavor
@@ -212,17 +254,24 @@ O founder quer saber o que vem e chegar preparado. Fluxo curto, sem reference pr
 4. Guardrails: contexto do mentor em nível overview; introdução real sempre via Endeavor; sem pergunta
    de feedback aqui.
 
-### Bloco 7. Criar radar proativo
+### Bloco 7. Criar uma rotina
 
-Nesta versão a opção entrega uma rotina pronta, não uma automação sob medida. Explique em uma ou duas
-frases: a Endeavor pode acompanhar sua semana e, numa rotina automática, sugerir conexões da rede e
-insights. Depois entregue a rotina para o founder copiar e agendar no Claude dele:
+O founder recebe um prompt pronto para criar, no Claude dele, uma rotina que usa a Endeavor. O plugin
+não cria nem roda nada: entrega o texto para ele copiar. As seis rotinas e os prompts estão em
+`references/rotinas.md`; carregue o arquivo antes de responder.
 
-> Radar Endeavor (quinzenal): leia minha semana (reuniões e agenda dos próximos 14 dias), identifique o
-> desafio dominante e, usando as tools do MCP da Endeavor, sugira no máximo uma conexão da rede mais um
-> insight de mentoria pra esse desafio. Devolva curto.
-
-Diga que ele pode ajustar o intervalo e o canal de entrega. Não prometa a automação autônoma completa.
+- Rotina escolhida ("Mostre o prompt da rotina D · Second brain.", ou a letra ou o nome dela): devolva
+  **só o prompt daquela rotina, exatamente como está no arquivo**, num bloco de código para copiar, e
+  depois uma linha só com onde colar, tirada do "Onde roda" dela (por exemplo: "Cole numa conversa nova
+  do Claude. Onde roda: Agendados ou Rotina."). Nada antes do bloco, nada além dessa linha depois.
+- Pedido de rotina sem uma escolhida (a chave `radar_proativo` de um menu antigo, o item 4 do cardápio,
+  ou o founder pedindo com as próprias palavras): liste as seis com letra, nome, "Use se você" e "Onde
+  roda", curto, e pergunte qual ele quer. Escolhida, faça como acima.
+- Várias rotinas rodam em outro lugar do Claude (Claude Code, Cowork, Agendados), onde o plugin também
+  precisa estar instalado. Se ele disser que lá o plugin não aparece, mostre o trecho "Instalar o MCP
+  Endeavor" do mesmo arquivo.
+- Não prometa automação além do que o prompt faz. Se ele quiser ajustar o prompt, ajude depois de
+  entregar o original.
 
 ### Bloco 8. Privacidade e uso de dados
 
@@ -496,12 +545,13 @@ Sem pergunta de nota aqui.
 - `send_feedback(empresa, mensagem, tipo?)`: **síncrona**. Manda ao time do produto o feedback
   geral do founder, com as palavras dele (até 4000 caracteres). `tipo` é `bug` | `sugestao` |
   `elogio` | `outro`. Não é a nota de um match. Fluxo no Bloco 10.
-- `agendar_conexao(empresa, disponibilidade, mentor_nome, mentor_person_id?, convite?, observacao?, mentor_email?, job_id?, briefing_mentor?, briefing_founder?)`:
+- `agendar_conexao(empresa, disponibilidade, mentor_nome, mentor_person_id?, desafio_id?, convite?, observacao?, mentor_email?, job_id?, briefing_mentor?, briefing_founder?)`:
   cria o pedido de conexão ao vivo e aciona o time em segundo plano. Para quem veio do
   `match_feedback`, mande o `person_id` em `mentor_person_id` e o `nome` em `mentor_nome`, os dois
   EXATAMENTE como vieram em `para_conectar`: o servidor confere o nome com o cadastro desse id, e
   nome mudado ou abreviado faz o pedido ser recusado. Quem veio do `buscar_rede` vai só pelo nome,
-  sem `mentor_person_id`. `job_id` é o do `find_matches`, quando a lista veio dele. Devolve confirmação de que o
+  sem `mentor_person_id`. `job_id` é o do `find_matches`, quando a lista veio dele. `desafio_id` vai
+  quando o pedido veio do menu (Bloco 0): o do aviso do clique, ou o achado pelo título. Devolve confirmação de que o
   PEDIDO foi registrado, não de que o mentor já foi notificado. `disponibilidade` são 2 a 5
   horários em ISO 8601 com fuso explícito (`2026-08-26T14:00:00-03:00`); sem fuso a tool recusa.
   `convite` é a mensagem de WhatsApp pronta para o mentor. Fluxo em `references/scheduling.md`.
@@ -544,13 +594,14 @@ Sem pergunta de nota aqui.
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
 | `references/scheduling.md`     | Ao founder escolher conexão ao vivo (dentro do Bloco 1 ou 3) |
 | `references/briefing.md`       | Ao compor os dois briefings, no passo de envio do `scheduling.md` |
+| `references/rotinas.md`        | Ao entrar em Criar uma rotina (Bloco 7)       |
 
-Os Blocos 6 (Minha agenda), 7 (Radar proativo) e 10 (Mandar um feedback) não têm reference próprio: são fluxos curtos,
+Os Blocos 6 (Minha agenda) e 10 (Mandar um feedback) não têm reference próprio: são fluxos curtos,
 conduzidos por este arquivo. Reference é para fluxo longo com regras críticas, ou, no caso do
 Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.7**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.8**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.

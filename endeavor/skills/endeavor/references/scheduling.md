@@ -3,6 +3,7 @@
 Entra em cena quando o founder já escolheu COM QUEM falar e escolheu **conexão ao vivo**. Vale
 tanto para a lista do `find_matches` (quem ele aprovou com o "podemos seguir") quanto para a busca
 livre do `buscar_rede`, os dois destinos do roteador do Bloco 1: o fim dos dois fluxos é o mesmo.
+Vale também para o pedido de reunião feito numa sugestão do menu (Bloco 0), que chega aqui direto.
 
 São cinco passos, nesta ordem, e o founder responde em dois turnos: um para confirmar os horários,
 um para autorizar o envio. Se você está fazendo uma terceira pergunta, saiu do roteiro.
@@ -318,6 +319,7 @@ Chame `agendar_conexao`:
 empresa:          <a empresa do founder, já conhecida da conversa>
 mentor_nome:      <nome da pessoa; de quem veio do match_feedback, EXATAMENTE o nome do para_conectar>
 mentor_person_id: <o person_id do para_conectar do match_feedback | omita se a pessoa veio do buscar_rede>
+desafio_id:       <o desafio, quando o pedido veio do menu (aviso do clique, ou achado pelo título) | omita fora do menu>
 disponibilidade:  [<ISO 8601 com fuso EXPLÍCITO>, ...]
 convite:          <o texto escrito no passo 3, no formato fixo da Endeavor>
 observacao:       <preferência de horário do founder, se ele disse alguma>
@@ -333,6 +335,11 @@ cadastro daquele id, e nome que não bate faz o pedido ser recusado, para o conv
 errada. Se a tool disser que não conseguiu confirmar a pessoa, confira que o `person_id` e o nome
 seguiram sem alteração e, se estavam certos, faça o que a tool pediu, sem insistir. Nunca mostre o
 `person_id` ao founder. Quem veio do `buscar_rede` não tem `person_id`: vai só pelo nome.
+
+**Pedido vindo do menu.** Quando o founder pediu a reunião pelo menu ("Quero pedir uma reunião com X
+(...) para o meu desafio: Y"), mande o `desafio_id` daquele desafio e o nome como veio, sem o
+parêntese; com o aviso do clique, mande também o `mentor_person_id` que veio nele. O servidor confere o
+desafio e acha a pessoa nas sugestões dele. O convite cita o desafio.
 
 Junto do convite, componha os dois briefings e mande nos campos `briefing_mentor` e
 `briefing_founder`. As regras estão em `references/briefing.md`.
