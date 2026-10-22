@@ -23,7 +23,7 @@ No Claude Code, adicione este marketplace e instale o plugin:
 Depois de instalado, o Claude do founder passa a ter:
 
 - o conector MCP **endeavor** (HTTP) apontando para o servidor;
-- a skill concierge `endeavor`, que roteia conexão com a rede, meus dados, agenda, desafios e sessão simulada.
+- a skill concierge `endeavor`, que roteia conexão com a rede, meus dados, agenda e desafios.
 
 ## Conteúdo
 
