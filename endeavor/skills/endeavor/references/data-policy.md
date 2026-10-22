@@ -122,7 +122,7 @@ Dados que a Endeavor já mantém pela relação do programa. Não vêm do seu Cl
 - **Agenda**: as conexões da empresa marcadas ou em andamento, com a situação do pedido que foi ao
   mentor pelo agendamento da Endeavor (aguardando o mentor, definindo horários ou recusado pelo
   mentor), e os próximos encontros da rede para os quais você tem convite, com o link da inscrição
-  quando ela está aberta.
+  quando ela está aberta e a indicação de que você já confirmou presença, quando confirmou.
 
 Cobertura, com honestidade: resumos ricos de sessão existem de 2023/2024 em diante. Antes disso
 costuma haver só título, tema e data. Ausência de registro não significa que não aconteceu.
@@ -132,7 +132,8 @@ costuma haver só título, tema e data. Ausência de registro não significa que
 apoiou. Esse dado é da pessoa logada, não da empresa, e não aparece para o seu sócio.
 
 O plugin também lê o seu nome no cadastro da Endeavor, para o menu te cumprimentar pelo primeiro
-nome.
+nome. O nome não é gravado no banco do produto, mas o texto do menu, que traz o primeiro nome, fica
+na telemetria, conforme a seção 4.
 
 ### Sobre a rede
 - **Pessoas da rede**: nome, cargo e empresa atuais, biografia, competências, histórico de cargos e
@@ -178,8 +179,8 @@ As rotinas prontas que o plugin oferece, como a revisão semanal ou a de depois 
 diretoria, são criadas por você e rodam no seu Claude, com os seus conectores, do mesmo jeito. O
 servidor da Endeavor não roda nada por causa delas. Para a Endeavor vai só o que a rotina pede ao
 plugin, como a lista dos seus desafios ou uma busca de pessoas, e isso segue a seção 4. Os textos das
-rotinas pedem que, numa busca, vá só uma descrição curta do desafio, sem o conteúdo das suas
-reuniões e notas.
+rotinas pedem que, numa busca, vá só uma descrição curta do desafio ou da decisão, sem o conteúdo
+das suas reuniões e notas.
 
 ### O que o plugin não acessa
 - Nada das suas ferramentas por iniciativa própria: não varre sua caixa de entrada, sua agenda ou
@@ -217,7 +218,9 @@ com comentário, e o dossiê da empresa.
 **O que é individual e não chega ao seu sócio:** as suas horas de giveback, a memória das suas
 conversas com o plugin, o perfil que o plugin monta sobre você ao longo do tempo, e o desafio que
 você registrar como **só seu**, com a página e as sugestões dele. O desafio só seu continua visível
-para o time da Endeavor.
+para o time da Endeavor. Se você pedir uma conexão a partir de uma sugestão de um desafio só seu, a
+conexão aparece na agenda da empresa para os seus sócios, mesmo com o desafio e as sugestões
+escondidos.
 
 Duas recomendações honestas:
 
@@ -300,10 +303,13 @@ pedido não são guardados. Fica de fora o texto do feedback geral que você man
 vai só para o banco do produto. Está no roteiro
 reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito conforme a seção 6.
 
-Na tela do menu, a telemetria pode registrar também o que você abre lá dentro: qual desafio e qual
-aba, de qual pessoa sugerida você abriu o perfil e em que posição ela estava na lista, e cliques como
-o do LinkedIn, o da inscrição num encontro e o de ver mais. Ficam o identificador da pessoa e o do
-desafio e o tema do desafio, sem o texto dele.
+Na tela do menu, a telemetria pode registrar também o que você abre lá dentro: qual desafio, em que
+posição ele está na lista e qual aba, de qual pessoa sugerida você abriu o perfil e em que posição
+ela estava na lista, e cliques como o do LinkedIn, o da inscrição num encontro e o de ver mais. Desse
+registro de cliques ficam só o identificador da pessoa, o do desafio, a posição do desafio na lista e
+o tema dele. O texto do menu que o plugin devolve (o seu primeiro nome, os títulos dos desafios, as
+pessoas sugeridas e a agenda) fica na telemetria como qualquer outra resposta, conforme o parágrafo
+acima.
 
 A preparação da página de cada desafio deixa um registro à parte, ligado à empresa: quanto tempo
 levou, quanto usou do modelo e se passou nas checagens, sem o texto do desafio. O texto da página não
