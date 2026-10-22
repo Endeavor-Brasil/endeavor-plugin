@@ -89,13 +89,15 @@ antes de enviar:
 
 Chaves do menu novo (cliques num desafio ou numa pessoa; o aviso traz o id):
 
-- `pedir_reuniao:<desafio_id>:<person_id>`: siga `references/scheduling.md` com `mentor_nome` (o nome da
-  frase, sem o que está entre parênteses), `mentor_person_id` (o `<person_id>`) e `desafio_id` (o
-  `<desafio_id>`). O convite cita o desafio: leia a ficha com `priority` `acao: "listar"` antes de
-  escrever.
+- `pedir_reuniao:<desafio_id>:<person_id>`: siga `references/scheduling.md` com `mentor_nome`,
+  `mentor_person_id` (o `<person_id>`) e `desafio_id` (o `<desafio_id>`). O `mentor_nome` é o nome
+  escrito no aviso, entre "pedir reunião com" e "para o desafio", exatamente como está ali: a frase
+  visível pode ter sido editada pelo founder, e o servidor confere o nome com o cadastro desse id. O
+  convite cita o desafio: leia a ficha com `priority` `acao: "listar"` antes de escrever.
 - `sugerir_conexoes:<desafio_id>`: chame `find_matches` com o `desafio_id` direto, sem nenhuma pergunta
   antes, acompanhe com `consultar_analise` e abra com `show_matches`, seguindo o `references/experts.md`
-  a partir daí. As opções novas ficam na conversa. Sem `find_matches` no catálogo, Bloco 1.
+  a partir daí. As opções novas ficam na conversa. Sem `find_matches` no catálogo, veja "Sem
+  `find_matches`" logo abaixo.
 - `insights_priority:<desafio_id>`: chame `open_library` com `abrir_em: <desafio_id>` e escreva no
   máximo uma linha, oferecendo aprofundar com a IA (`ask_gtm_insights` com o `desafio_id`) se ele
   quiser. Sem `open_library` no catálogo, responda com `ask_gtm_insights` com o `desafio_id`.
@@ -103,10 +105,16 @@ Chaves do menu novo (cliques num desafio ou numa pessoa; o aviso traz o id):
   confirmação curta ("Marco o desafio <título> como concluído?").
 - `atualizar_priority:<id>` e `arquivar_priority:<id>`: como acima (Bloco 9).
 
+**Sem `find_matches`.** Quando uma rota do menu novo pede `find_matches` e a tool não está no catálogo,
+leia a ficha do desafio com `priority` `acao: "listar"` e chame `buscar_rede` com uma pergunta que
+traga o título e o contexto da ficha. Apresente o resultado como o Bloco 1 faz com `buscar_rede`,
+carregando `references/buscar-rede.md`.
+
 Frases do menu novo que chegam sem aviso (reconheça pela frase):
 
 - "Quero registrar um desafio novo.": Bloco 9.1, que termina com a oferta "Quer que eu já procure na
-  rede quem resolveu isso?". Se ele aceitar, `find_matches` com o `desafio_id` que o registro devolveu.
+  rede quem resolveu isso?". Se ele aceitar, `find_matches` com o `desafio_id` que o registro devolveu
+  (sem `find_matches` no catálogo, como em "Sem `find_matches`" acima).
 - "Quero explorar a rede da Endeavor.": Bloco 1.
 - "Quero buscar conhecimento no Cérebro Endeavor.": como a chave `biblioteca`.
 - "Quero ver o benchmark de startups B2B de IA.": `open_library` com `abrir_em: "pares-resumo"`. Sem
@@ -149,7 +157,9 @@ qualquer uma delas quebra quem ainda não recarregou.
 
 Chave que você não reconhecer: entenda o objetivo pela frase e roteie como sempre, sem repetir o
 menu. Sem chave nenhuma (ele escreveu com as próprias palavras, ou respondeu o número do cardápio),
-o roteamento é o de sempre:
+o roteamento é o de sempre (os números 1 a 5 abaixo são os do cardápio estático; se o cardápio na
+conversa veio do texto do `open_menu`, vale o número daquele texto, que no menu novo continua depois
+dos desafios):
 
 - **1. Explorar a Rede** (um desafio em que quer ajuda de alguém da rede, ou pessoas e empresas que ele
   quer achar): vá para o Bloco 1.
