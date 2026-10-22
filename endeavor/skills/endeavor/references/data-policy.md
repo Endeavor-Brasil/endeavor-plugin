@@ -154,13 +154,11 @@ alimentar algo que você pediu, vai junto no contexto, e aí vale a seção 4.
 
 ## 2. Isto é IA, e IA erra
 
-As respostas, recomendações e sessões simuladas são geradas por um modelo de linguagem sobre os
+As respostas e recomendações são geradas por um modelo de linguagem sobre os
 dados descritos aqui. Podem conter imprecisão, podem inferir demais a partir de pouco, e não
 substituem julgamento seu, do seu board ou de um profissional.
 
 - **As notas de sessão são automáticas**, geradas da gravação. Trate como notas, não como ata oficial.
-- **A sessão simulada com mentor é uma simulação** construída a partir de material público e de
-  mentorias registradas. Não é o mentor falando, e não deve ser citada como se fosse.
 - **A recomendação de mentores é uma sugestão.** A introdução real acontece sempre via Endeavor.
 
 ---
@@ -233,8 +231,8 @@ conversas com o produto**: o que você pediu ou escreveu em cada chamada (a perg
 mentorias e sobre os dados da sua empresa, o desafio que você registra, a sua contribuição ao
 dossiê, o pedido de conexão com mentor) e **o texto que o produto devolveu como resposta**, além do
 seu comentário livre. Texto muito longo é cortado. E-mail e telefone de terceiros que aparecem num
-pedido não são guardados. Ficam de fora o texto do feedback geral que você manda pelo plugin, que
-vai só para o banco do produto, e o roteiro fixo da sessão simulada com mentor. Está no roteiro
+pedido não são guardados. Fica de fora o texto do feedback geral que você manda pelo plugin, que
+vai só para o banco do produto. Está no roteiro
 reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito conforme a seção 6.
 
 ---

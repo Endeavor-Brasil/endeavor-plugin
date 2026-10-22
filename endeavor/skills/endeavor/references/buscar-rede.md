@@ -74,8 +74,7 @@ repasse — "levo seu interesse à Endeavor, que faz a ponte com alguém da [Emp
 brando, sem data, sem mecânica, sem tool.
 
 **Quando o founder nomear a pessoa com quem quer falar, não existe menu de formatos.** Só existe
-um caminho, a conexão ao vivo, e menu de uma opção é um turno gasto para confirmar o óbvio. Não
-chame `mentor_session()` aqui: a simulação deixou de ser oferecida (ver abaixo). Faça a pergunta
+um caminho, a conexão ao vivo, e menu de uma opção é um turno gasto para confirmar o óbvio. Faça a pergunta
 direta:
 
 > Quer que eu marque uma conversa ao vivo com o {nome}?
@@ -88,11 +87,9 @@ pergunta e trago a resposta dele", "uma sessão simulada"), e não prometa mecâ
 escrita aqui. Ela funciona assim: eu olho sua agenda, chego com três horários e, depois que você
 confirmar, a Endeavor leva o convite a essa pessoa pelo WhatsApp e fecha a marcação com vocês dois.
 
-**A sessão simulada NÃO é oferecida.** Ela continua existindo e o founder que pedir de propósito
-("quero treinar com o clone do fulano") é atendido pelo Bloco 4 do `SKILL.md`. O que saiu foi a
-OFERTA: a KB simula pessoas reais pelo nome, e enquanto não estiver verificado com cada uma delas
-que topa, o produto não empurra a réplica de ninguém para o founder. Não mencione que a simulação
-existe, e não comente a ausência dela.
+**A sessão simulada foi desligada.** A tool `mentor_session` saiu do servidor. Não a ofereça e não
+mencione que ela existiu. Se o founder pedir, diga numa frase que não está disponível no momento e ofereça
+a conexão ao vivo (Bloco 4 do `SKILL.md`).
 
 **Fechamento: empresa e plano.** Ao fechar uma conexão, se a empresa do
 founder ainda não apareceu na conversa, confirme em 1 linha ("você tá tocando a [Empresa],
