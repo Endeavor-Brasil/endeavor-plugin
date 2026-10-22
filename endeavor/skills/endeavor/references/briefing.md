@@ -172,11 +172,11 @@ vendo mais".`
 
 | Bloco | Fonte |
 |---|---|
-| Paralelo, nos dois documentos | O resultado curado do match, mais o que o founder falou nesta conversa |
+| Paralelo, nos dois documentos | O que a lista e o saber mais do `match_feedback` mostraram da pessoa (ou o resultado do `buscar_rede`), mais o que o founder falou nesta conversa |
 | Empresa: fundação, modelo, escala, produtos | `varredura_empresa` e `dossie_empresa` |
 | Empresa: captação | **Só pesquisa pública.** Nunca o valor de captação que a base traz |
 | Diferenciais competitivos e pares | Pesquisa na web no turno, ancorada no que a varredura e o dossiê dizem do modelo |
-| Mentor: tudo | `buscar_rede` com o nome do mentor, mais o resultado curado do match |
+| Mentor: tudo | `buscar_rede` com o nome do mentor, mais o que a lista e o saber mais mostraram dele |
 
 Sobre a captação: a base tem esse campo e ele erra com frequência, porque é cadastro e não é
 atualizado a cada rodada. Fonte pública é mais correta e é dizível a um terceiro. Se a pesquisa não

@@ -1,20 +1,33 @@
 # Buscar a rede: a conversa
 
-O founder explora a rede da Endeavor livremente: **mentores ativos e empresas da rede** (os
-empreendedores Endeavor ativos e a turma de scale-up). Você recebe a pergunta dele, chama a tool
+O founder explora a rede da Endeavor livremente: **pessoas da rede e empresas** (as empresas da
+rede Endeavor e as empresas onde gente da rede trabalha ou trabalhou). Você recebe a pergunta dele, chama a tool
 `buscar_rede`, e **raciocina sobre o JSON** que volta para apresentar os perfis seguros. A tool
 decide sozinha se a resposta é de mentor, de empresa ou das duas (`alvo` no JSON) — você não
 precisa rotear. Voz do founder, prosa fluida, sem "|", barras nem tabelas ASCII; tom de operador
 sênior.
 
+## Quando é este o caminho
+
+É o caminho de quem **não tem um desafio como base** (o teste do passo 2.5 do
+`references/experts.md`): o founder nomeou uma pessoa ou uma empresa, quer empresas da rede
+(pares, benchmark), ou fez uma pergunta aberta sobre gente sem uma situação dele por trás. Com um
+desafio registrado ou descrito no chat, o caminho é `find_matches`, não este.
+
+Este reference vale também para o **"adicionar mais alguém"** depois da lista do `find_matches`
+(passo 6 do `experts.md`): o founder pede uma pessoa que já conhece ou um ângulo novo, e a busca
+vem por aqui, com `motivo: "cascata"`. Nesse caso, depois de apresentar o que veio, retome a
+pergunta de fechamento do `experts.md` com a lista atualizada: quem já estava nela mais quem ele
+escolheu agora.
+
 ## Fluxo
 1. Entenda a pergunta do founder (ex.: "quem já escalou vendas B2B em SaaS", "mentores de pricing",
-   "empresas da rede que vendem para PME", "quem são meus pares de turma no Scale-Up").
+   "empresas da rede que vendem para PME").
    Se estiver vaga, faça 1 pergunta para focar.
 2. **Se o recorte depende do perfil do founder** (pares, concorrentes, "empresas de benchmark para
    os meus desafios"), escreva esse perfil DENTRO da pergunta — a tool não recebe a empresa dele.
    Use o que a conversa já estabeleceu (setor, modelo, ICP; resultado de `varredura_empresa`
-   ou match de experts, se houver). Ex.: "sou fintech B2B que vende para PME; quais
+   ou a lista do `find_matches`, se houver). Ex.: "sou fintech B2B que vende para PME; quais
    empresas da rede se parecem comigo?".
 3. Chame `buscar_rede(pergunta)` com a pergunta em texto livre. É **síncrona**: devolve **JSON** na
    mesma chamada (sem job_id, sem polling), com `mentores` e/ou `empresas` conforme o `alvo`.
@@ -24,8 +37,7 @@ sênior.
      lista, não ofereça mais nomes que ele não pediu.
    - **Gente para um recorte**: escolha os **3 melhores** e apresente só eles, em prosa fluida, cada
      um com nome, empresa atual, cargo, por que aparece e o LinkedIn. **Guarde os próximos 10** para
-     o "ver mais". É o mesmo formato do caminho da wiki, de propósito: o founder não deve perceber
-     de onde veio a resposta.
+     o "ver mais".
    - **Empresas**: lista, como descrito na seção "quando a resposta traz empresas". Aqui a lista É a
      resposta, e cortar em 3 seria pior.
    - **Os dois** (`alvo: "ambos"`): 3 pessoas mais a lista de empresas, cada uma no seu registro,
@@ -38,20 +50,30 @@ sênior.
    sem abrir o menu de caminhos. Quando o founder disser com quem quer falar, siga a seção "os
    caminhos" abaixo. O LinkedIn é público e você sempre mostra; telefone/e-mail você nunca passa.
 
+## Quando a resposta traz pessoas
+
+Cada pessoa vem com `name`, `tipo_na_rede`, `company_name` e `title` (empresa e cargo atuais),
+`biography`, `linkedin`, `skills`, `experiences` (a trajetória, cargo por cargo),
+`desafios_exibiveis` (desafios que ela já ajudou a resolver) e `frases_liberadas` (frases dela
+liberadas para uso).
+
+- **O "por que aparece"** sai de `desafios_exibiveis`, `skills`, `experiences` e da bio.
+  `frases_liberadas` você pode citar como frase da pessoa.
+- **Campo vazio é esperado**: nem todo perfil tem tudo. Use o que veio, sem comentar o que falta.
+
 ## Quando a resposta traz empresas
 
-Cada empresa vem com `grupo` (`EE ativo` = empresa de empreendedor Endeavor; `Scale-Up` = turma
-atual do programa Scale-Up), o que ela faz (`perfil`), setor/vertical/modelo, estado, ano de
-fundação, site, `temas` (temas de desafio que ela já trabalhou com a rede) e `pessoas` (quem dela
-tem relação ativa com a Endeavor: nome, cargo e LinkedIn).
+Cada empresa vem com `company_name`, o que ela faz (`description`), `industry`, `business_model`,
+`buyer` (quem compra dela), `year_founded`, `organization_type`, `is_endeavor_network` e `pessoas`
+(quem da rede está ou esteve lá: `name`, `title`, `link_type` e `linkedin`).
 
-- **Apresente**: nome, o grupo em linguagem natural ("empresa da rede Endeavor" / "da turma atual
-  do Scale-Up"), 1-2 linhas do que faz, e as pessoas com cargo e LinkedIn quando vierem. Site
-  pode. `temas` só quando for o motivo do match ("já trabalhou pricing com a rede") — como fato
-  temático, nunca como problema, nota ou detalhe de sessão de outra empresa.
-- **Scale-up vem sem `pessoas`** — é esperado, não é dado faltando. Apresente a empresa e, se o
-  founder quiser falar com alguém de lá, use o repasse descrito em "os caminhos": sem nome não há
-  pedido a montar.
+- **Apresente**: nome, 1-2 linhas do que faz, e as pessoas com cargo e LinkedIn quando vierem. Com
+  `is_endeavor_network` verdadeiro, diga que é "empresa da rede Endeavor". Com falso, ela é uma
+  empresa por onde passou gente da rede: não a chame de empresa da rede.
+- **Tire da lista a empresa do próprio founder.** A tool não sabe quem pergunta e pode devolvê-la.
+- **Empresa sem `pessoas`** é esperado, não é dado faltando. Apresente a empresa e, se o founder
+  quiser falar com alguém de lá, use o repasse descrito em "os caminhos": sem nome não há pedido a
+  montar.
 - **Números financeiros de outra empresa não existem nesta conversa.** O JSON não traz
   faturamento, captação, valuation nem número de funcionários — e você NÃO completa com
   conhecimento próprio, mesmo se o founder perguntar ("quanto a X fatura?" → honestidade: esse
@@ -67,6 +89,10 @@ tem relação ativa com a Endeavor: nome, cargo e LinkedIn).
 **O menu abaixo vale para QUALQUER PESSOA que apareceu na busca**, tanto no array `mentores` quanto
 dentro de `empresas.pessoas`. Todas têm relação ativa com a Endeavor (a busca não devolve gente de
 fora da rede), então todas podem receber um pedido de conexão pela Endeavor, com a mesma mecânica.
+
+**Quem veio daqui não traz `person_id`.** O JSON não o devolve, então o `agendar_conexao` dessa
+pessoa vai só com `mentor_nome`, sem `mentor_person_id` (o servidor a acha pelo nome). O
+`mentor_person_id` é só de quem veio do `match_feedback`.
 
 **A exceção é não ter NOME.** Se o founder quiser falar com "alguém da [Empresa]" e aquele cartão
 veio sem nenhuma pessoa no JSON, não há quem levar adiante: aí o caminho é o
@@ -131,5 +157,4 @@ Nenhuma promessa de mecânica ou prazo.
 - ❌ Prometer mecânica de conexão quando não existe NOME (empresa sem `pessoas`: o caminho é o
   repasse à Endeavor).
 - ❌ Completar dado financeiro de outra empresa com conhecimento próprio do modelo.
-- ❌ Apresentar `temas` como "a empresa sofre com X" ou citar conteúdo de sessão (é só "já
-  trabalhou o tema com a rede").
+- ❌ Chamar de "empresa da rede Endeavor" uma empresa com `is_endeavor_network` falso.

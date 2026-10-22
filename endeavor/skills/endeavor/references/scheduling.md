@@ -1,20 +1,18 @@
 # Marcação: da agenda ao pedido de conexão
 
 Entra em cena quando o founder já escolheu COM QUEM falar e escolheu **conexão ao vivo**. Vale
-tanto para o match curado na wiki quanto para a busca na rede ampla, que desde 2026-09 são os
-dois destinos do roteador do Bloco 1: o fim dos dois fluxos é o mesmo.
+tanto para a lista do `find_matches` (quem ele aprovou com o "podemos seguir") quanto para a busca
+livre do `buscar_rede`, os dois destinos do roteador do Bloco 1: o fim dos dois fluxos é o mesmo.
 
-São cinco passos, nesta ordem, e no caminho feliz o founder responde em dois turnos: um para
-confirmar os horários, um para autorizar o envio. Mostrar a caixa ou o cartão de novo depois de ele
-trocar um horário, corrigir um fato ou pedir uma mudança de tom que você recusou não conta como
-pergunta nova. Fora isso, se você está fazendo uma terceira pergunta, saiu do roteiro.
+São cinco passos, nesta ordem, e o founder responde em dois turnos: um para confirmar os horários,
+um para autorizar o envio. Se você está fazendo uma terceira pergunta, saiu do roteiro.
 
-**Este fluxo tem exatamente três saídas: `agendar_conexao` chamada, o founder cancelando, ou o pedido
-pendente porque ele pulou a pergunta (passos 2 e 3).** Não existe quarta. Depois que ele confirma os
-horários, o próximo movimento é SEMPRE o resumo do passo 3, e depois do "enviar" é SEMPRE a chamada
-da tool. Encerrar a conversa depois de ele dizer "ok" nos horários, sem ter chamado nada, deixa o
-founder achando que pediu a conexão quando nada aconteceu. Foi o pior defeito visto em teste, em
-21/08. Pendente não é encerrar em silêncio: você diz em uma linha que nada saiu.
+**Para cada pessoa, este fluxo tem exatamente duas saídas: `agendar_conexao` chamada, ou o founder
+cancelando aquela pessoa.** Não existe terceira. Com mais gente na lista aprovada, as duas saídas
+levam à próxima pessoa (regra "Uma pessoa por vez"). Depois que ele confirma os horários, o próximo movimento é SEMPRE o resumo do passo
+3, e depois do "enviar" é SEMPRE a chamada da tool. Encerrar a conversa depois de ele dizer "ok" nos
+horários, sem ter chamado nada, deixa o founder achando que pediu a conexão quando nada aconteceu.
+Foi o pior defeito visto em teste, em 21/08.
 
 **Não faça pergunta de nota (1 a 5) neste fluxo.** O produto não pede nota em nenhum fluxo. Perguntar
 aqui, ainda mais no lugar de enviar o pedido, encerra a conversa no meio do caminho.
@@ -22,9 +20,11 @@ aqui, ainda mais no lugar de enviar o pedido, encerra a conversa no meio do cami
 ## Regras que não se quebram
 
 - **Uma pessoa por vez.** Se o founder quer falar com duas, complete o ciclo da primeira e só então
-  ofereça a segunda. A agenda é relida a cada pedido, então a segunda nunca recebe os mesmos
-  horários. Um pedido pendente (ele pulou a pergunta) conta como ciclo fechado: se ele quiser outra
-  pessoa, siga.
+  parta para a segunda. A agenda é relida a cada pedido, então a segunda nunca recebe os mesmos
+  horários. Quando a lista veio do `match_feedback` e ele disse "podemos seguir", todas as pessoas
+  dela já estão aprovadas: ao fechar uma, comece a próxima pelo passo 1, na ordem da lista, sem
+  perguntar de novo se ele quer. A lista é uma fila: "fechar" vale para o pedido enviado e também
+  para o "Cancelar" de uma pessoa. Nos dois casos, siga para a próxima até a fila acabar.
 - **A empresa se estabelece UMA vez.** Se ela já apareceu na conversa, ou está na memória, ou saiu
   de uma `varredura_empresa`, use e siga. Se realmente não apareceu ainda (o founder pode entrar
   direto nomeando a pessoa, sem passar pelo match), pergunte UMA vez, junto de outra coisa, e nunca
@@ -164,9 +164,16 @@ a última linha pergunta "Posso enviar o convite para o [Nome]?".
 Resumo dentro do raciocínio não conta: o founder não lê o raciocínio. O convite você só escreve na
 chamada da tool (passo 4); ele não precisa aparecer em mensagem nenhuma.
 
-- **Enviar convite:** vá para o passo 4.
-- **Trocar horários:** volte ao passo 2 com o que ele pedir e depois mostre o cartão de novo.
-- **Cancelar:** encerre sem chamar a tool e sem insistir. Não pergunte o motivo.
+A linha "o que ele vai saber" é a razão de o cartão existir. É ali que o founder percebe um número
+errado ou um recorte que ele não quer contar, sem precisar ler a mensagem inteira. Ela nunca sai do
+cartão. Se ele pedir para ver o texto exato do convite, mostre; só não ofereça por conta própria.
+
+- **Enviar:** vá para o passo 4.
+- **Alterar:** ele diz o que muda, você refaz o resumo e pergunta de novo.
+- **Cancelar:** não chame a tool para essa pessoa, não insista e não pergunte o motivo. Se a lista
+  aprovada (o "podemos seguir" do `match_feedback`) ainda tiver gente, diga em uma linha que essa
+  pessoa ficou de fora e comece a próxima pelo passo 1. Cancelar uma pessoa não encerra a fila. Só
+  feche quando a fila acabar, com um resumo curto: a quem o pedido foi feito e quem ficou de fora.
 
 **O que ele escrever no campo livre** (o "Outro" do `AskUserQuestion`, ou uma resposta em texto) cai
 numa de duas caixas:
@@ -245,14 +252,16 @@ a base tem pouco é melhor que convite alongado com enchimento ou dado inventado
 EBITDA, crescimento percentual. Nem da base, nem da fala do founder. Esse contexto vai no documento
 de preparação do mentor (`references/briefing.md`), que tem as regras dele.
 
-**De onde vem o conteúdo.** Além do que o founder falou e do resultado curado do match, use o que a
+**De onde vem o conteúdo.** Além do que o founder falou e do que a lista e o saber mais do
+`match_feedback` mostraram da pessoa, use o que a
 Endeavor já sabe sobre a empresa dele. A `varredura_empresa` e o `dossie_empresa` têm o que a empresa
 faz, estágio, porte, mercado e o histórico do desafio, e é isso que dá lastro ao convite em vez de
 deixá-lo genérico. A amarra é o desafio: o dado entra porque explica POR QUE esta conversa faz
 sentido agora, não como currículo.
 
-O parágrafo do **"por que ele"** é a única exceção: ele sai do resultado curado do match, não do
-perfil bruto do mentor. O curado já passou pelos filtros de confidencialidade do servidor.
+O parágrafo do **"por que ele"** é a única exceção: ele sai do que a lista e o saber mais
+mostraram da pessoa (o que o servidor liberou), não do perfil bruto dela. Não acrescente
+trajetória que você conhece por conta própria.
 
 **Quatro coisas que estão na base e NÃO podem sair daqui:**
 
@@ -307,14 +316,23 @@ Chame `agendar_conexao`:
 
 ```
 empresa:          <a empresa do founder, já conhecida da conversa>
-mentor_nome:      <nome da pessoa como apareceu na busca ou no match>
+mentor_nome:      <nome da pessoa; de quem veio do match_feedback, EXATAMENTE o nome do para_conectar>
+mentor_person_id: <o person_id do para_conectar do match_feedback | omita se a pessoa veio do buscar_rede>
 disponibilidade:  [<ISO 8601 com fuso EXPLÍCITO>, ...]
 convite:          <o texto escrito no passo 3, no formato fixo da Endeavor>
 observacao:       <preferência de horário do founder, se ele disse alguma>
-job_id:           <o job do match que gerou a lista, se veio de um match>
+job_id:           <o job do find_matches que gerou a lista, se veio dele>
 briefing_mentor:  <os campos do documento do mentor, ver references/briefing.md>
 briefing_founder: <os campos do documento do founder, ver references/briefing.md>
 ```
+
+**`mentor_person_id` e `mentor_nome` andam juntos.** Para quem veio do `match_feedback`, o
+`para_conectar` traz `person_id` e `nome`: mande os dois exatamente como vieram, sem encurtar o nome,
+sem trocar por como o founder chama a pessoa e sem tirar acento. O servidor confere o nome com o
+cadastro daquele id, e nome que não bate faz o pedido ser recusado, para o convite nunca ir à pessoa
+errada. Se a tool disser que não conseguiu confirmar a pessoa, confira que o `person_id` e o nome
+seguiram sem alteração e, se estavam certos, faça o que a tool pediu, sem insistir. Nunca mostre o
+`person_id` ao founder. Quem veio do `buscar_rede` não tem `person_id`: vai só pelo nome.
 
 Junto do convite, componha os dois briefings e mande nos campos `briefing_mentor` e
 `briefing_founder`. As regras estão em `references/briefing.md`.
@@ -373,7 +391,9 @@ a próxima pessoa:
 A última linha só entra se você REALMENTE criou os eventos. Sem ferramenta de calendário, troque por:
 "não consegui bloquear sua agenda por aqui, então vale segurar esses horários na mão".
 
-Depois disso, pare. Não pergunte se ele quer chamar mais alguém e não peça nota.
+Depois disso, se ainda há alguém na lista que ele aprovou, siga para a próxima pessoa pelo passo 1
+e diga em uma linha quem é. Se não há, pare. Não pergunte se ele quer chamar mais alguém e não peça
+nota.
 
 ## Anti-comportamentos
 

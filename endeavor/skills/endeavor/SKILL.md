@@ -9,9 +9,9 @@ description: >
   dados", "isso é seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
-  varredura_empresa, dossie_empresa, match_mentores, consultar_analise, buscar_rede,
-  company_data, ask_gtm_insights, agendar_conexao, analise_renderizada,
-  registrar_feedback, send_feedback, open_menu, open_library, priority.
+  varredura_empresa, dossie_empresa, find_matches, show_matches, match_feedback,
+  consultar_analise, buscar_rede, mentor_session, company_data, ask_gtm_insights,
+  agendar_conexao, send_feedback, open_menu, open_library, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
 ---
@@ -74,10 +74,11 @@ antes de enviar:
 - `priority:<id>` (o founder clicou num desafio do menu e quer seguir para conexões): Bloco 1,
   carregando `references/experts.md`. **Antes de qualquer pergunta, carregue a ficha**: chame
   `priority` com `acao: "listar"` e ache a que tem esse id. Ela traz contexto, impacto, o que já
-  tentaram e as perguntas em aberto, escritos pelo próprio founder. Se o fluxo for para
-  `match_mentores`, repasse o `desafio_id`; o `theme` e o `rank` do aviso são ignorados ali,
-  porque o servidor os deriva da ficha. Se for para `buscar_rede`, que não lê a ficha, siga
-  mandando `de_desafio`, `tema_desafio` e `rank_desafio` com o `theme` e o `rank` do aviso.
+  tentaram e as perguntas em aberto, escritos pelo próprio founder. O caminho é `find_matches`,
+  com o `desafio_id` e mais nada sobre o desafio; o `theme` e o `rank` do aviso são ignorados ali,
+  porque o servidor lê a ficha. Se depois ele pedir uma busca livre com `buscar_rede`, que não lê a
+  ficha, siga mandando `de_desafio`, `tema_desafio` e `rank_desafio` com o `theme` e o `rank` do
+  aviso.
 - `feedback` (o founder quer mandar um feedback para o time): Bloco 10.
 - `criar_priority`: Bloco 9.
 - `atualizar_priority:<id>` e `arquivar_priority:<id>`: Bloco 9.
@@ -134,14 +135,18 @@ sem repetir o menu.
 
 Carregue `references/experts.md` e conduza a conversa de lá: resolver a empresa, varredura
 silenciosa, abertura contextual, **rotear** (passo 2.5), e daí seguir o caminho que o roteador
-escolheu.
+escolheu. O teste é um só: **tem um desafio como base?** Com desafio (registrado ou descrito no
+chat), o caminho é `find_matches`, acompanhado com `consultar_analise` e aberto com `show_matches`.
+Sem desafio (um nome, uma empresa, uma pergunta aberta sobre gente), o caminho é `buscar_rede`.
 
-Quando o roteador mandar para a **rede ampla** ou para o **lookup**, carregue TAMBÉM
-`references/buscar-rede.md`: é ele que descreve a apresentação e os caminhos de conexão desse lado.
-Quando mandar para a **wiki**, siga o `experts.md` até o fim.
+Quando o roteador mandar para `buscar_rede`, carregue TAMBÉM `references/buscar-rede.md`: é ele que
+descreve a apresentação e os caminhos de conexão desse lado. Quando mandar para `find_matches`, siga
+o `experts.md` até o fim: a seleção que o founder faz na tela chega como uma mensagem que começa com
+"Minha seleção para", e a resposta a ela está no passo 5 de lá.
 
-Neste bloco NÃO há pergunta de feedback. Logo após os 3 nomes vem o convite para escolher, explorar
-ou dizer que nenhum serve, como manda o `references/experts.md`.
+Neste bloco NÃO há pergunta de feedback nem pergunta de nota. A última pergunta antes das conexões
+é a que fecha a seleção ("Quer adicionar mais alguém na lista ou podemos seguir para a(s)
+conexão(ões) com:"), como manda o `references/experts.md`.
 
 ### Bloco 2. (diagnóstico removido em 2026-10)
 
@@ -233,7 +238,7 @@ Nunca diga nem sugira que um desafio marcado como "só meu" fica invisível para
 ancorada na seção que a cobre, e oferecer o texto completo uma vez; a entrega integral do corpo
 verbatim acontece só a pedido dele. Pergunta que o documento não cobre: diga que verifica com o
 time da Endeavor, nunca invente. Pedido de exclusão: encaminhe ao contato de relacionamento, sem
-dizer que registrou nem que apagou. Sem pergunta de feedback e sem `analise_renderizada` aqui.
+dizer que registrou nem que apagou. Sem pergunta de feedback aqui.
 
 ### Bloco 9. Meus desafios
 
@@ -422,20 +427,7 @@ sobre o próprio produto (o plugin, uma resposta, a conexão, a Endeavor), ofere
 conversa: "Quer que eu mande isso para o time como feedback?". Só chame `send_feedback` com o sim
 dele, e siga o fluxo em que ele estava. Com o não, não ofereça de novo na mesma conversa.
 
-Sem pergunta de nota e sem `analise_renderizada` aqui.
-
-### Telemetria (entrega e feedback)
-
-Só registram sinal e não disparam análise. As chamadas são silenciosas, sem narrar a telemetria
-ao founder:
-
-- `analise_renderizada(empresa, job_id)`: logo após exibir ao founder o resultado de um match (a
-  lista de mentores). É o único sinal de que a entrega chegou; o servidor não enxerga o que é
-  renderizado no chat.
-- `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: o produto não pede nota em
-  nenhum fluxo. Chame a tool apenas se o founder der espontaneamente uma nota inteira de 1 a 5
-  (1 = nada útil; 5 = muito útil), com o comentário, se houver. Nunca deduza a nota de elogio,
-  crítica ou silêncio.
+Sem pergunta de nota aqui.
 
 ## Contratos das tools
 
@@ -443,17 +435,34 @@ ao founder:
   sua, nunca exibida crua).
 - `dossie_empresa(empresa, versao?)`: sincrona. Devolve o retrato seguro do dossie interno (metricas
   estimadas, divergencias por impacto, arquetipo provavel). Memoria interna sua, nunca exibida
-  crua ao founder. Omita `versao`. Usada para o preparo da agenda (Bloco 6).
-- `match_mentores(pedido)`: assíncrona. Devolve um `job_id`. Devolve uma LISTA RANQUEADA (top-13 por
-  default via `n`) com um marcador `<<<RESERVA_NAO_MOSTRAR>>>`; o client mostra 3 e revela +10;
-  `excluir`/`angulo` re-chamam para explorar/pivotar. SEM `formato` (o founder escolhe o tipo depois
-  de escolher com quem falar). Campos em `references/experts.md`.
+  crua ao founder. Omita `versao`. Usada para aprofundar a sessão simulada (Bloco 4) e o preparo
+  da agenda (Bloco 6).
+- `find_matches(empresa, desafio_id? | desafio?)`: **assíncrona**. Procura as pessoas e as empresas
+  da rede que mais ajudam num desafio. Vai UM dos dois: `desafio_id` (a ficha que o founder
+  registrou; o servidor a lê) ou `desafio` (o desafio em texto, de 20 a 4.000 caracteres); os dois
+  juntos, ou nenhum, a tool recusa. Devolve um `job_id`. Sem desafio como base, use `buscar_rede`.
+  Pedido e fluxo em `references/experts.md`.
+- `show_matches(empresa, job_id)`: **síncrona**. Mostra a lista que o `find_matches` montou, com a
+  mesma `empresa` e o mesmo `job_id`. Chame quando o `consultar_analise` disser que está pronto. Onde
+  há tela, a lista abre na conversa e você escreve no máximo uma linha; se o resultado vier só em
+  texto (sem `structuredContent`), apresente esse texto na hora. É também como se reabre a lista no
+  "adicionar mais alguém", e a tela não guarda as marcas anteriores: você mantém a lista aprovada
+  (passo 6 de `references/experts.md`).
+- `match_feedback(empresa, job_id, reacoes)`: **síncrona**. Chame em silêncio quando chegar a
+  mensagem "Minha seleção para…", com uma reação por pessoa da mensagem: `reacoes` é uma lista de
+  `{ nome, reacao, origem? }` (ou `id` no lugar de `nome`, se o contexto da tela trouxer), com `nome`
+  como está na mensagem, `reacao` `conectar` | `saber_mais` | `nao_faz_sentido` pela linha em que a
+  pessoa aparece e `origem` `pessoa` | `empresa`. Devolve JSON com `saber_mais`, `para_conectar` (cada um com `person_id`,
+  `nome`, `cargo`, `empresa`) e uma `nota` que você segue. Não comente o "não faz sentido". Nunca
+  mostre `person_id` ao founder. Fluxo no passo 5 de `references/experts.md`.
 - `buscar_rede(pergunta)`: **síncrona**. Recebe a pergunta do founder em texto livre e devolve
   **JSON** com `mentores` e/ou `empresas` da rede (com LinkedIn) na mesma chamada — sem `job_id`;
   a tool infere o alvo sozinha. Não recebe a empresa do founder: contexto de pares/benchmark vai
-  escrito na pergunta. Fluxo em `references/buscar-rede.md`. Aceita também `tema` (`gtm` |
-  `fundraising` | `outro`) e `motivo` (`direto` | `cascata` | `lookup` | `empresa`), opcionais, só
-  de telemetria do roteador: preencha sempre que a chamada vier do Bloco 1.
+  escrito na pergunta. É o caminho de quem NÃO tem um desafio como base, e também do "adicionar mais
+  alguém" depois do `find_matches`. Fluxo em `references/buscar-rede.md`. Aceita também `tema`
+  (`gtm` | `fundraising` | `outro`) e `motivo` (`direto` | `cascata` | `lookup` | `empresa`),
+  opcionais, só de telemetria do roteador: preencha o `motivo` sempre que a chamada vier do Bloco 1;
+  o `tema` só se já for óbvio da conversa, nunca como passo de classificação.
 - `company_data(empresa, pergunta)`: **síncrona**. Pergunta em texto livre sobre os dados da
   PRÓPRIA empresa; devolve JSON com os resultados na mesma chamada — sem `job_id`. O servidor
   garante o escopo (só a empresa autorizada; giveback só do usuário logado). Fluxo em
@@ -462,14 +471,17 @@ ao founder:
   aprendeu e devolve material, não a resposta pronta: escreva seguindo as `instrucoes` que vêm na
   resposta. Em `pergunta`, mande a dúvida ou a situação completa, com o assunto da conversa. Quando
   o founder aceitar algo que você ofereceu, chame de novo com o id em `abrir`. Nunca mostre ids ao
-  founder. Itens com `na_tela: true` podem ser abertos na tela com `open_library(abrir_em)`; os
-  demais, traga para a conversa com `abrir`.
-- `open_library(abrir_em?, empresa?)`: **síncrona**. Abre a Inteligência da Rede como tela, já nos
-  desafios da empresa. `abrir_em` é um id vindo do `ask_gtm_insights` (só quando `na_tela` for
-  true) ou o id de um desafio; nunca peça nem mostre ids. Depois de chamar, no máximo uma linha.
-- `consultar_analise(job_id)`: polling. Enquanto a resposta começar com "⏳", execute `sleep 30`
-  (ou aguarde ~30s) e só então chame de novo | nunca chame duas vezes seguidas sem essa pausa.
-  Quando pronto, apresente só o resultado curado.
+  founder.
+- `open_library(abrir_em?)`: **síncrona**. Abre a Biblioteca da Rede como tela. `abrir_em` é um id
+  vindo do `ask_gtm_insights`; nunca peça nem mostre ids. Depois de chamar, no máximo uma linha.
+- `consultar_analise(job_id)`: polling do `find_matches`. Enquanto a resposta começar com "⏳", o
+  que vem depois é o andamento: repasse em uma linha curta, execute `sleep 30` (ou aguarde ~30s) e
+  só então chame de novo | nunca chame duas vezes seguidas sem essa pausa. Quando pronto, devolve só
+  um resumo curto; a lista vem do `show_matches`.
+- `mentor_session(mentor?)`: **síncrona**. Sem argumento devolve o catálogo (JSON) dos mentores
+  com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack, roteiro interno do
+  roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
+  `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`.
 - `priority(empresa, acao, desafio_id?, respostas?, fala?, campos?, versao?, visibilidade?,
   nivel?, status?, confirmado?)`: **síncrona**. Lê, cria, atualiza, reprioriza ou arquiva um
   desafio registrado da empresa do founder. `acao` é `listar` | `criar` | `propor` | `atualizar` |
@@ -482,13 +494,12 @@ ao founder:
 - `send_feedback(empresa, mensagem, tipo?)`: **síncrona**. Manda ao time do produto o feedback
   geral do founder, com as palavras dele (até 4000 caracteres). `tipo` é `bug` | `sugestao` |
   `elogio` | `outro`. Não é a nota de um match. Fluxo no Bloco 10.
-- `analise_renderizada(empresa, job_id)`: síncrona, só telemetria. Chame logo após exibir a
-  lista do match ao founder.
-- `registrar_feedback(empresa, job_id, avaliacao, comentario?)`: síncrona, só telemetria.
-  `avaliacao` é uma nota inteira de 1 a 5; `comentario` é opcional. Chame somente após o founder
-  informar a nota explicitamente; nunca a infira. Não peça nota.
-- `agendar_conexao(empresa, disponibilidade, mentor_nome, convite?, observacao?, mentor_email?, job_id?, briefing_mentor?, briefing_founder?)`:
-  cria o pedido de conexão ao vivo e aciona o time em segundo plano. Devolve confirmação de que o
+- `agendar_conexao(empresa, disponibilidade, mentor_nome, mentor_person_id?, convite?, observacao?, mentor_email?, job_id?, briefing_mentor?, briefing_founder?)`:
+  cria o pedido de conexão ao vivo e aciona o time em segundo plano. Para quem veio do
+  `match_feedback`, mande o `person_id` em `mentor_person_id` e o `nome` em `mentor_nome`, os dois
+  EXATAMENTE como vieram em `para_conectar`: o servidor confere o nome com o cadastro desse id, e
+  nome mudado ou abreviado faz o pedido ser recusado. Quem veio do `buscar_rede` vai só pelo nome,
+  sem `mentor_person_id`. `job_id` é o do `find_matches`, quando a lista veio dele. Devolve confirmação de que o
   PEDIDO foi registrado, não de que o mentor já foi notificado. `disponibilidade` são 2 a 5
   horários em ISO 8601 com fuso explícito (`2026-08-26T14:00:00-03:00`); sem fuso a tool recusa.
   `convite` é a mensagem de WhatsApp pronta para o mentor. Fluxo em `references/scheduling.md`.
@@ -502,13 +513,17 @@ ao founder:
 ## Guardrails e anti-comportamentos
 
 - Nunca exibir o retrato cru (tabela ou JSON) nem dado interno ao founder.
-- Nunca ranquear ou nomear mentores você mesmo; isso é do servidor.
+- Nunca ranquear ou nomear pessoas da rede você mesmo; isso é do servidor.
 - Nunca narrar processo nem gerar arquivo no fluxo conversacional.
 - Nunca chegar com o desafio pronto para o founder só confirmar.
 - Nunca chamar `diagnostico`: a tool ficou só para versões antigas do plugin e não roda nada.
 - A pergunta de nota de 1 a 5 não existe em nenhum bloco: não a faça. Em especial, **nunca use a
   pergunta de nota como jeito de encerrar** uma conversa de conexão: em teste ela apareceu no lugar de enviar o pedido, e
   o founder saiu achando que tinha pedido a conexão quando nada tinha sido enviado.
+- Nunca chamar `match_feedback` sem a mensagem "Minha seleção para…", nem com nome, id ou reação que
+  não veio da seleção do founder. Nunca comentar o "não faz sentido" do founder, e nunca mostrar `person_id`.
+- Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
+  pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 - Nunca chamar `send_feedback` sem o founder querer mandar, e nunca mandar um resumo seu no lugar
   das palavras dele.
 - Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
@@ -521,7 +536,8 @@ ao founder:
 | `references/menu-ui.md`        | Ao montar o cardápio (passo 0)                |
 | `references/experts.md`        | Ao entrar em Conexão com a rede (Bloco 1)     |
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
-| `references/buscar-rede.md`    | Ao roteador escolher rede ampla ou lookup (dentro do Bloco 1) |
+| `references/buscar-rede.md`    | Ao roteador escolher `buscar_rede`, ou no "adicionar mais alguém" (dentro do Bloco 1) |
+| `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
 | `references/scheduling.md`     | Ao founder escolher conexão ao vivo (dentro do Bloco 1 ou 3) |
