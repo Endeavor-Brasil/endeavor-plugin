@@ -30,13 +30,14 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 7 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 8 (outubro de 2026), não use de memória:
 
-1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, seus conectores, o que não acessa)
+1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, seus conectores e as
+   rotinas prontas, o que não acessa)
 2. Isto é IA, e IA erra
-3. O que os seus sócios enxergam (inclui o desafio só seu)
-4. Quais dados o plugin grava, e onde (banco do produto, inclusive a página de cada desafio, pedido
-   de conexão com mentor, telemetria)
+3. O que os seus sócios enxergam (inclui o desafio só seu, as sugestões de cada desafio e a agenda)
+4. Quais dados o plugin grava, e onde (banco do produto, inclusive a página e as conexões sugeridas
+   de cada desafio, pedido de conexão com mentor, telemetria, inclusive a da tela do menu)
 5. Como os dados são utilizados (página de cada desafio, Biblioteca, filtro de confidencialidade, o
    que não fazemos)
 6. Quem tem acesso (inclui o mentor da conexão e como o acesso é controlado)
@@ -62,6 +63,9 @@ Para ancorar a resposta rápido. O corpo está na Versão 7 (outubro de 2026), n
 - "Vocês integram com o meu CRM, ERP ou agenda?": responda pela seção 1. Quem integra é o Claude
   dele, com as credenciais dele, dentro da conversa dele. A Endeavor não conecta direto. Não
   prometa integração direta nem sugira que ele passe credencial para o time.
+- Pergunta sobre o que uma rotina pronta lê ou manda à Endeavor: responda pela seção 1. A rotina roda
+  no Claude dele, com os conectores dele; o que ela pede ao plugin chega à Endeavor como qualquer
+  pedido dele e segue a seção 4.
 - Pergunta sobre o que o sócio enxerga: responda pela seção 3, **sem suavizar**. É melhor o founder
   saber antes.
 - Pergunta sobre a página de um desafio no Cérebro Endeavor (antes Inteligência da Rede): responda pelas seções 4 e 5, **sem
@@ -81,7 +85,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 7 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 7 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
+Versão 8 · outubro de 2026. Vale para o plugin Endeavor rodando no Claude do founder.
 
 ---
 
@@ -115,7 +119,10 @@ Dados que a Endeavor já mantém pela relação do programa. Não vêm do seu Cl
   quando existir. Você abre a gravação; o plugin não abre nem transcreve por você.
 - **Avaliações que a empresa deu** às mentorias, com a nota e o comentário escrito.
 - **Pessoas da empresa** com relação ativa com a Endeavor: nome, cargo, LinkedIn.
-- **Agenda**: próximas conexões marcadas e próximos eventos da rede.
+- **Agenda**: as conexões da empresa marcadas ou em andamento, com a situação do pedido que foi ao
+  mentor pelo agendamento da Endeavor (aguardando o mentor, definindo horários ou recusado pelo
+  mentor), e os próximos encontros da rede para os quais você tem convite, com o link da inscrição
+  quando ela está aberta.
 
 Cobertura, com honestidade: resumos ricos de sessão existem de 2023/2024 em diante. Antes disso
 costuma haver só título, tema e data. Ausência de registro não significa que não aconteceu.
@@ -123,6 +130,9 @@ costuma haver só título, tema e data. Ausência de registro não significa que
 ### Sobre você, individualmente
 **Horas de giveback**, quando você doa tempo à rede, com a data, o tema e a pessoa que você
 apoiou. Esse dado é da pessoa logada, não da empresa, e não aparece para o seu sócio.
+
+O plugin também lê o seu nome no cadastro da Endeavor, para o menu te cumprimentar pelo primeiro
+nome.
 
 ### Sobre a rede
 - **Pessoas da rede**: nome, cargo e empresa atuais, biografia, competências, histórico de cargos e
@@ -164,6 +174,13 @@ os seus sistemas.
 Consequência prática: o que voltar de um conector seu entra na conversa e pode ser usado ali. Se
 alimentar algo que você pediu, vai junto no contexto, e aí vale a seção 4.
 
+As rotinas prontas que o plugin oferece, como a revisão semanal ou a de depois da reunião de
+diretoria, são criadas por você e rodam no seu Claude, com os seus conectores, do mesmo jeito. O
+servidor da Endeavor não roda nada por causa delas. Para a Endeavor vai só o que a rotina pede ao
+plugin, como a lista dos seus desafios ou uma busca de pessoas, e isso segue a seção 4. Os textos das
+rotinas pedem que, numa busca, vá só uma descrição curta do desafio, sem o conteúdo das suas
+reuniões e notas.
+
 ### O que o plugin não acessa
 - Nada das suas ferramentas por iniciativa própria: não varre sua caixa de entrada, sua agenda ou
   seus arquivos, e não puxa dado de conector nenhum fora do que você acabou de pedir.
@@ -192,13 +209,15 @@ Esta é a parte que mais gera surpresa, então vai direto.
 
 **O registro é da empresa, não da pessoa.** Qualquer sócio ou executivo cadastrado da sua empresa
 que use o plugin enxerga o mesmo conjunto: o cadastro, **os desafios da empresa com o texto
-completo e a página que a IA escreve para cada um deles**, o histórico de mentorias com **as notas
-de sessão e os links de gravação**, as avaliações com comentário, e o dossiê da empresa.
+completo, a página que a IA escreve para cada um deles e as pessoas sugeridas para cada um**, o
+histórico de mentorias com **as notas de sessão e os links de gravação**, **a agenda de conexões da
+empresa, com a situação de cada pedido a mentor, inclusive quando o mentor recusou**, as avaliações
+com comentário, e o dossiê da empresa.
 
 **O que é individual e não chega ao seu sócio:** as suas horas de giveback, a memória das suas
 conversas com o plugin, o perfil que o plugin monta sobre você ao longo do tempo, e o desafio que
-você registrar como **só seu**, com a página dele. O desafio só seu continua visível para o time da
-Endeavor.
+você registrar como **só seu**, com a página e as sugestões dele. O desafio só seu continua visível
+para o time da Endeavor.
 
 Duas recomendações honestas:
 
@@ -223,6 +242,9 @@ conexão, envia um pedido ao sistema de agendamento da Endeavor.
   desafio e da Biblioteca da Rede, com aprendizados da rede ligados a ele. Vale para todo desafio em
   andamento ou no backlog, inclusive o desafio só seu, e a página é refeita quando o desafio ou a
   Biblioteca mudam. Quem vê a página é quem vê o desafio, conforme a seção 3.
+- **Conexões sugeridas para cada desafio, no menu**: pessoas da rede que a Endeavor sugere para um
+  desafio, com o motivo da sugestão, a trajetória da pessoa e o que a empresa dela faz. Quem vê o
+  desafio vê as sugestões dele, conforme a seção 3.
 - **Dossiê vivo da empresa**: documento em texto que reúne o que a Endeavor sabe da empresa. Cada
   alteração fica registrada com autor e data.
 - **Suas contribuições ao dossiê**: quando você adiciona ou contesta uma informação, o texto que
@@ -261,6 +283,10 @@ você e do mentor, e escreve para cada um pelo WhatsApp. No painel, o telefone s
 caso está com uma pessoa. O painel também guarda, para cada caso, qual pessoa do time marcou que
 enviou o convite e que fez as cobranças seguintes, e quando.
 
+Quando o pedido sai de uma pessoa sugerida no menu, o banco do produto guarda também com quem você
+pediu a reunião, a partir de qual desafio, o seu e-mail e a reunião criada. Essa pessoa deixa de
+aparecer nas sugestões daquele desafio para todos que veem o desafio.
+
 ### Telemetria de produto
 Registro de uso, para sabermos se o produto funciona e onde falha: qual capacidade você acionou,
 quanto tempo levou, se deu erro, se a entrega chegou à sua tela, e a nota e o comentário que você deu.
@@ -273,6 +299,11 @@ seu comentário livre. Texto muito longo é cortado. E-mail e telefone de tercei
 pedido não são guardados. Fica de fora o texto do feedback geral que você manda pelo plugin, que
 vai só para o banco do produto. Está no roteiro
 reduzir isso ao mínimo necessário. Até lá, o acesso a essa base é restrito conforme a seção 6.
+
+Na tela do menu, a telemetria pode registrar também o que você abre lá dentro: qual desafio e qual
+aba, de qual pessoa sugerida você abriu o perfil e em que posição ela estava na lista, e cliques como
+o do LinkedIn, o da inscrição num encontro e o de ver mais. Ficam o identificador da pessoa e o do
+desafio e o tema do desafio, sem o texto dele.
 
 A preparação da página de cada desafio deixa um registro à parte, ligado à empresa: quanto tempo
 levou, quanto usou do modelo e se passou nas checagens, sem o texto do desafio. O texto da página não
