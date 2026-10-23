@@ -1,9 +1,12 @@
 ---
 name: endeavor
 description: >
-  A rede Endeavor no Claude do founder: mentores e empreendedores, desafios, agenda e o que a
-  rede já aprendeu. Use quando o founder digitar /endeavor, pedir algo da Endeavor ou da rede,
-  ou perguntar o que a Endeavor faz com os dados dele.
+  O /endeavor abre um menu com os principais desafios da sua empresa e a sua agenda com a
+  Endeavor. A partir dele, você recebe sugestões de mentores e empreendedores da rede para cada
+  desafio, pede uma reunião com quem fizer sentido, explora a rede por nome, empresa ou tema e
+  conversa com o que a Endeavor Brasil já aprendeu com a rede sobre o assunto. Use ao digitar
+  /endeavor, pedir algo da Endeavor ou da rede, ou perguntar o que a Endeavor faz com os seus
+  dados.
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, find_matches, show_matches, match_feedback,
@@ -546,6 +549,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.8**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.7**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
