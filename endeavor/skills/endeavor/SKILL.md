@@ -1,12 +1,12 @@
 ---
 name: endeavor
 description: >
-  Concierge da Endeavor para founders dentro do Claude. Mostra um menu de capacidades de
-  Go-to-Market e roteia para a certa. Use quando o founder abrir o plugin, disser que precisa
-  de ajuda com GTM, quiser falar com mentores, ou quiser explorar a rede:
-  "/endeavor", "preciso de ajuda com [tema]", "que mentor me ajuda",
-  "quem na rede já fez X", "quero conversar com o [mentor]", "o que vocês fazem com os meus
-  dados", "isso é seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
+  O /endeavor abre um menu com os principais desafios da sua empresa e a sua agenda com a
+  Endeavor. A partir dele, você recebe sugestões de mentores e empreendedores da rede para cada
+  desafio, pede uma reunião com quem fizer sentido, explora a rede por nome, empresa ou tema e
+  conversa com o que a Endeavor Brasil já aprendeu com a rede sobre o assunto. Use ao digitar
+  /endeavor, pedir algo da Endeavor ou da rede, ou perguntar o que a Endeavor faz com os seus
+  dados.
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, find_matches, show_matches, match_feedback,
