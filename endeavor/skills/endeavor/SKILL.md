@@ -1,12 +1,15 @@
 ---
 name: endeavor
 description: >
-  Concierge da Endeavor para founders dentro do Claude. Mostra um menu de capacidades de
-  Go-to-Market e roteia para a certa. Use quando o founder abrir o plugin, disser que precisa
-  de ajuda com GTM, quiser falar com mentores, ou quiser explorar a rede:
-  "/endeavor", "preciso de ajuda com [tema]", "que mentor me ajuda",
-  "quem na rede já fez X", "quero conversar com o [mentor]", "o que vocês fazem com os meus
-  dados", "isso é seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
+  A Endeavor dentro do Claude do founder. Abre o menu com os desafios da empresa e a agenda
+  com a Endeavor e leva cada pedido ao fluxo certo: achar mentores e empreendedores da rede
+  que já resolveram o desafio e pedir uma reunião com eles; ver o que a rede já aprendeu sobre
+  um tema; registrar, atualizar e concluir desafios; consultar os dados da empresa na Endeavor;
+  mandar feedback. Use quando o founder abrir o plugin ou pedir algo da Endeavor: "/endeavor",
+  "preciso de ajuda com [tema]", "quem na rede já resolveu X", "que mentor me ajuda",
+  "quero conversar com o [mentor]", "quero registrar um desafio", "o que a rede sabe sobre
+  [tema]", "minha agenda com a Endeavor", "o que vocês fazem com os meus dados", "isso é
+  seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, find_matches, show_matches, match_feedback,
@@ -549,6 +552,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.7**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.8**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.

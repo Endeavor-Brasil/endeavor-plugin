@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Marketplace de plugins da rede Endeavor para o Claude do founder.",
-    "version": "0.9.7"
+    "version": "0.9.8"
   },
   "plugins": [
     {
       "name": "endeavor",
       "source": "./endeavor",
-      "description": "Concierge de Go-to-Market da Endeavor: menu unico /endeavor organizado pela jornada do founder (proxima e ultima conexao, cronograma, meus dados), desafios de negocio (conexao com a rede) e automacao (radar proativo).",
-      "version": "0.9.7",
+      "description": "A Endeavor dentro do Claude do founder: mentores e empreendedores da rede que já resolveram o seu desafio, o que a rede aprendeu sobre cada tema, os seus desafios, a sua agenda e os dados da sua empresa na Endeavor, tudo a partir do /endeavor.",
+      "version": "0.9.8",
       "author": {
         "name": "Endeavor",
         "email": "admin@endeavor.org.br"
