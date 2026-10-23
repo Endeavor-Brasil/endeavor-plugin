@@ -2,7 +2,7 @@
   "name": "endeavor",
   "displayName": "Endeavor",
   "version": "0.9.8",
-  "description": "Leve um desafio da sua empresa até a pessoa certa da rede Endeavor: registre o desafio, veja quem já passou por ele e peça a reunião sem sair do Claude. Comece digitando /endeavor.",
+  "description": "A rede Endeavor no Claude do founder: mentores e empreendedores, desafios, agenda e o que a rede já aprendeu. Comece digitando /endeavor.",
   "author": {
     "name": "Endeavor",
     "email": "admin@endeavor.org.br"
