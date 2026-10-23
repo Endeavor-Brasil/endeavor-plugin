@@ -1,15 +1,9 @@
 ---
 name: endeavor
 description: >
-  A Endeavor dentro do Claude do founder. Abre o menu com os desafios da empresa e a agenda
-  com a Endeavor e leva cada pedido ao fluxo certo: achar mentores e empreendedores da rede
-  que já resolveram o desafio e pedir uma reunião com eles; ver o que a rede já aprendeu sobre
-  um tema; registrar, atualizar e concluir desafios; consultar os dados da empresa na Endeavor;
-  mandar feedback. Use quando o founder abrir o plugin ou pedir algo da Endeavor: "/endeavor",
-  "preciso de ajuda com [tema]", "quem na rede já resolveu X", "que mentor me ajuda",
-  "quero conversar com o [mentor]", "quero registrar um desafio", "o que a rede sabe sobre
-  [tema]", "minha agenda com a Endeavor", "o que vocês fazem com os meus dados", "isso é
-  seguro", "vocês veem os meus dados", "o que o meu sócio enxerga".
+  A rede Endeavor no Claude do founder: mentores e empreendedores, desafios, agenda e o que a
+  rede já aprendeu. Use quando o founder digitar /endeavor, pedir algo da Endeavor ou da rede,
+  ou perguntar o que a Endeavor faz com os dados dele.
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, find_matches, show_matches, match_feedback,
