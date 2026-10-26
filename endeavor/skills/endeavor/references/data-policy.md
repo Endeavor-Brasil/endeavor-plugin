@@ -120,8 +120,9 @@ Dados que a Endeavor já mantém pela relação do programa. Não vêm do seu Cl
 - **Avaliações que a empresa deu** às mentorias, com a nota e o comentário escrito.
 - **Pessoas da empresa** com relação ativa com a Endeavor: nome, cargo, LinkedIn.
 - **Agenda**: as conexões da empresa marcadas ou em andamento, com a situação do pedido que foi ao
-  mentor pelo agendamento da Endeavor (aguardando o mentor, definindo horários ou recusado pelo
-  mentor), e os próximos encontros da rede para os quais você tem convite, com o link da inscrição
+  mentor pelo agendamento da Endeavor (aguardando a resposta do mentor, combinando o horário, com o
+  time da Endeavor, ou encerrado sem reunião quando o mentor recusou, não respondeu ou o pedido foi
+  cancelado), e os próximos encontros da rede para os quais você tem convite, com o link da inscrição
   quando ela está aberta e a indicação de que você já confirmou presença, quando confirmou.
 
 Cobertura, com honestidade: resumos ricos de sessão existem de 2023/2024 em diante. Antes disso
@@ -212,7 +213,7 @@ Esta é a parte que mais gera surpresa, então vai direto.
 que use o plugin enxerga o mesmo conjunto: o cadastro, **os desafios da empresa com o texto
 completo, a página que a IA escreve para cada um deles e as pessoas sugeridas para cada um**, o
 histórico de mentorias com **as notas de sessão e os links de gravação**, **a agenda de conexões da
-empresa, com a situação de cada pedido a mentor, inclusive quando o mentor recusou**, as avaliações
+empresa, com a situação de cada pedido a mentor, inclusive quando ele terminou sem reunião**, as avaliações
 com comentário, e o dossiê da empresa.
 
 **O que é individual e não chega ao seu sócio:** as suas horas de giveback, a memória das suas
