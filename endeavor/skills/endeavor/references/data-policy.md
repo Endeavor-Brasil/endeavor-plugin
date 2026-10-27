@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 7 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 8 (outubro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, exemplo fictício de ficha, seus
    conectores, o que não acessa)
@@ -92,7 +92,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 7 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 7 · outubro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 8 · outubro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -403,9 +403,10 @@ vai para a telemetria.
   banco do produto (seção 4).
 - **Para o modelo de IA da Anthropic trabalhar.** O texto vai ao modelo para classificar e propor
   desafios, escrever a página de cada desafio, curar o dossiê e o seu perfil, responder perguntas à
-  Biblioteca (com o perfil da empresa, até cinco desafios e a memória das suas conversas) e filtrar e
+  Biblioteca (com o perfil da empresa, até cinco desafios e a memória das suas conversas), filtrar e
   ordenar as sugestões de conexão (com o desafio e uma ficha restrita de cada candidato, mais busca na
-  web).
+  web) e as buscas na rede (com a sua pergunta e a ficha pública de cada pessoa ou empresa que passou
+  nos filtros).
 - **Para não te fazer repetir contexto.** A memória e o dossiê existem para que a segunda conversa
   comece mais adiante que a primeira.
 - **Para preparar uma conexão que você autorizou.** O mentor recebe o convite e o documento descritos

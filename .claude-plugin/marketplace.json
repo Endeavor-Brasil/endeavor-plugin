@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Marketplace de plugins da rede Endeavor para o Claude do founder.",
-    "version": "0.9.7"
+    "version": "0.9.8"
   },
   "plugins": [
     {
       "name": "endeavor",
       "source": "./endeavor",
       "description": "A rede Endeavor no Claude do founder: mentores e empreendedores, desafios, agenda e o que a rede já aprendeu. Comece digitando /endeavor.",
-      "version": "0.9.7",
+      "version": "0.9.8",
       "author": {
         "name": "Endeavor",
         "email": "admin@endeavor.org.br"
