@@ -1,8 +1,8 @@
 {
   "name": "endeavor",
   "displayName": "Endeavor",
-  "version": "0.9.8",
-  "description": "Concierge de Go-to-Market da Endeavor: menu unico /endeavor com os seus desafios e as pessoas da rede sugeridas para cada um, a sua agenda de conexoes e encontros, e rotinas prontas para o Claude rodar.",
+  "version": "0.9.9",
+  "description": "A rede Endeavor no Claude do founder: mentores e empreendedores, desafios, agenda e o que a rede já aprendeu. Comece digitando /endeavor.",
   "author": {
     "name": "Endeavor",
     "email": "admin@endeavor.org.br"
