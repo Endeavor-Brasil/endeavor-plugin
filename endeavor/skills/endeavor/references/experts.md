@@ -1,11 +1,11 @@
 # Conexão com a rede: a conversa
 
-Este é o fluxo que a /endeavor carrega quando o founder escolhe Conecte-se com a rede Endeavor (ou
-descreve um desafio, ou pede uma pessoa pelo nome). Você descobre a empresa, entende o cenário com
-uma varredura silenciosa, conduz um diagnóstico leve onde o founder lidera a definição do desafio,
-e **roteia** (passo 2.5) com um teste só: com um desafio como base, o motor de conexões
-(`find_matches`) monta a lista de pessoas e empresas; sem desafio, a busca livre na rede
-(`buscar_rede`). Nos dois caminhos o resultado volta pronto do servidor.
+Este é o fluxo que a /endeavor carrega quando o founder escolhe Conecte-se com a rede Endeavor ou
+Explorar a Rede, no menu novo (ou descreve um desafio, ou pede uma pessoa pelo nome). Você descobre
+a empresa, entende o cenário com uma varredura silenciosa, conduz um diagnóstico leve onde o founder
+lidera a definição do desafio, e **roteia** (passo 2.5) com um teste só: com um desafio como base, o
+motor de conexões (`find_matches`) monta a lista de pessoas e empresas; sem desafio, a busca livre na
+rede (`buscar_rede`). Nos dois caminhos o resultado volta pronto do servidor.
 
 ## Princípios
 
@@ -69,8 +69,9 @@ lidera e enriquece; você nunca chega com o desafio pronto, salvo quando ele já
 você confirma a ficha que ele mesmo escreveu (ver os princípios no topo).
 
 **Se ele entrou pelo BOTÃO do menu, a primeira pergunta é GUIADA, não aberta.** A frase que chegou
-("quero ajuda pra usar a rede da Endeavor") é pedido de ajuda e não diz nada sobre o que ele quer,
-de propósito. Abra com 1 linha mostrando que conhece a empresa e, na MESMA mensagem, pergunte:
+("quero ajuda pra usar a rede da Endeavor", ou "Quero explorar a rede da Endeavor.", que é a do botão
+Explorar a Rede do menu novo) é pedido de ajuda e não diz nada sobre o que ele quer, de propósito.
+Abra com 1 linha mostrando que conhece a empresa e, na MESMA mensagem, pergunte:
 
 > Como você quer usar a rede agora?
 >
