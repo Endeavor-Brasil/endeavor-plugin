@@ -2,7 +2,17 @@
 
 **Antes de tudo, saiba qual dos dois casos é o seu.**
 
-**Caso A — o `open_menu` respondeu, mas o host não renderiza widget.** A tool devolve, além do
+**Caso A — o `open_menu` respondeu, mas o host não renderiza widget.**
+
+**Menu novo.** Se o texto da tool tiver o bloco **Explore**, é o menu novo: saudação, **Seus desafios**
+numerados com as conexões sugeridas embaixo de cada um, **Explore** continuando a numeração (Explorar a
+Rede, Buscar Conhecimento, Benchmark AI B2B, Criar Rotina, Mandar feedback ou ideia), a linha do "Saber
+mais" com o link, **Sua agenda** (Suas conexões e Próximos encontros Endeavor, sem número), as outras
+empresas e a linha dos dados. Renderize como veio. Número de desafio: siga com aquele desafio,
+perguntando se ele quer conexões, insights ou atualizar. Número do Explore: o atalho, como nas frases do
+menu novo do Bloco 0.
+
+**Menu de hoje** (sem o bloco **Explore**). A tool devolve, além do
 payload, um cardápio em TEXTO já pronto, e ele **já lista os desafios do founder numerados no
 topo**, com as portas continuando a numeração (se ele tem 3 desafios, as portas vão de 4 a 8).
 Depois das portas ele traz o bloco **Sua agenda**, com duas seções — **Conexões** e **Eventos**,
@@ -21,26 +31,22 @@ nem agenda para listar (os dois vêm no payload da tool), e o cardápio é o de 
 
 ---
 
-Apresente o cardápio cru, sem chamar o MCP, como lista numerada de 1 a 5 sob 4 cabeçalhos. Não use
+Apresente o cardápio cru, sem chamar o MCP, como lista numerada de 1 a 5 sob um cabeçalho. Não use
 popup de escolha (a tool de escolha só comporta quatro opções por pergunta). Voz da Endeavor: direto,
 concreto, profissional e simples. Sem travessão, sem emoji, sem jargão de IA.
 
 Texto de abertura e cardápio (renderize como está):
 
-> Produto em Beta. Mande seus feedbacks por aqui, no item Mandar um feedback. Obrigado!
+> Produto em Beta. Mande seus feedbacks por aqui, no item Mandar feedback ou ideia. Obrigado!
 >
-> **Sua Jornada**
-> 1. Minha agenda: próximas conexões e eventos, com preparo para a próxima mentoria
-> 2. Meu histórico: mentorias, o que ficou de cada sessão, prioridades e meus dados
+> **Explore**
+> 1. Explorar a Rede: os mentores e as pessoas da rede certos para o seu desafio
+> 2. Buscar Conhecimento: o que a rede já aprendeu, no Cérebro Endeavor
+> 3. Benchmark AI B2B: como startups B2B de IA se comparam
+> 4. Criar Rotina: um prompt pronto para a Endeavor entrar na rotina do seu Claude
+> 5. Mandar feedback ou ideia: sobre o plugin, uma conexão ou a Endeavor. O time lê tudo
 >
-> **Desafios de Negócio**
-> 3. Conecte-se com a rede Endeavor: os mentores certos para o seu desafio, e as pessoas e empresas da rede que você quer achar
->
-> **Automatizar**
-> 4. Criar radar proativo: a Endeavor de olho na sua semana, em rotina automática
->
-> **Feedback**
-> 5. Mandar um feedback: sobre o plugin, uma conexão ou a Endeavor. O time lê tudo
+> Saber mais sobre o plugin e o programa: https://scaleup.endeavor.org.br
 >
 > Escolha um número ou me conte com suas palavras, que eu vou tentar te ajudar da melhor forma.
 >
@@ -48,15 +54,17 @@ Texto de abertura e cardápio (renderize como está):
 
 ## Regras
 - Renderize a abertura, os itens e a linha final como estão. Itens sempre numerados de 1 a 5, na
-  ordem acima, sob os 4 cabeçalhos. O founder responde pelo número, pelo nome ou com as próprias
+  ordem acima, sob um cabeçalho. O founder responde pelo número, pelo nome ou com as próprias
   palavras.
-- Desafio descrito direto no campo aberto: trate como o item 3 e siga para o Bloco 1 sem repetir o
+- Desafio descrito direto no campo aberto: trate como o item 1 e siga para o Bloco 1 sem repetir o
   menu.
 - Sem travessão, sem emoji, sem separador de ponto no meio dos itens.
+- A linha do "Saber mais" fica fora da numeração, logo depois do item 5, com o link como está.
 - A linha final sobre dados fica fora da numeração, sempre por último. Ela não é uma sexta opção:
   o founder chega nela perguntando, não escolhendo número.
 - **As regras acima valem para o caso B.** No caso A quem manda é o texto que a tool devolveu: ele
   já vem com a abertura, os desafios, as portas renumeradas, o bloco da agenda e a linha final no
   lugar certo.
-- O item 1 ("Minha agenda") continua existindo nos dois casos. Ele é a porta para o preparo da
-  próxima conexão, não um jeito de ver a lista: no caso A a lista já está na tela.
+- No caso B a agenda não tem número: quem pedir a próxima conexão, os eventos ou o preparo vai para o
+  Bloco 6. No menu de hoje do caso A, o item "Minha agenda" continua sendo a porta para o preparo da
+  próxima conexão, não um jeito de ver a lista, que já está na tela.

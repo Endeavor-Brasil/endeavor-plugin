@@ -3,6 +3,7 @@
 Entra em cena quando o founder já escolheu COM QUEM falar e escolheu **conexão ao vivo**. Vale
 tanto para a lista do `find_matches` (quem ele aprovou com o "podemos seguir") quanto para a busca
 livre do `buscar_rede`, os dois destinos do roteador do Bloco 1: o fim dos dois fluxos é o mesmo.
+Vale também para o pedido de reunião feito numa sugestão do menu (Bloco 0), que chega aqui direto.
 
 São cinco passos, nesta ordem, e o founder responde em dois turnos: um para confirmar os horários,
 um para autorizar o envio. Se você está fazendo uma terceira pergunta, saiu do roteiro.
@@ -260,7 +261,8 @@ deixá-lo genérico. A amarra é o desafio: o dado entra porque explica POR QUE 
 sentido agora, não como currículo.
 
 O parágrafo do **"por que ele"** é a única exceção: ele sai do que a lista e o saber mais
-mostraram da pessoa (o que o servidor liberou), não do perfil bruto dela. Não acrescente
+mostraram da pessoa (o que o servidor liberou; num pedido vindo do menu, a linha dela no texto do
+`open_menu`), não do perfil bruto dela. Não acrescente
 trajetória que você conhece por conta própria.
 
 **Quatro coisas que estão na base e NÃO podem sair daqui:**
@@ -316,8 +318,9 @@ Chame `agendar_conexao`:
 
 ```
 empresa:          <a empresa do founder, já conhecida da conversa>
-mentor_nome:      <nome da pessoa; de quem veio do match_feedback, EXATAMENTE o nome do para_conectar>
-mentor_person_id: <o person_id do para_conectar do match_feedback | omita se a pessoa veio do buscar_rede>
+mentor_nome:      <nome da pessoa; de quem veio do match_feedback, EXATAMENTE o nome do para_conectar | do menu, EXATAMENTE o nome do aviso do clique>
+mentor_person_id: <o person_id do para_conectar do match_feedback | o do aviso do clique do menu | omita se a pessoa veio do buscar_rede>
+desafio_id:       <o desafio, quando o pedido veio do menu (aviso do clique, ou achado pelo título) | omita fora do menu>
 disponibilidade:  [<ISO 8601 com fuso EXPLÍCITO>, ...]
 convite:          <o texto escrito no passo 3, no formato fixo da Endeavor>
 observacao:       <preferência de horário do founder, se ele disse alguma>
@@ -333,6 +336,14 @@ cadastro daquele id, e nome que não bate faz o pedido ser recusado, para o conv
 errada. Se a tool disser que não conseguiu confirmar a pessoa, confira que o `person_id` e o nome
 seguiram sem alteração e, se estavam certos, faça o que a tool pediu, sem insistir. Nunca mostre o
 `person_id` ao founder. Quem veio do `buscar_rede` não tem `person_id`: vai só pelo nome.
+
+**Pedido vindo do menu.** Quando o founder pediu a reunião pelo menu ("Quero pedir uma reunião com X
+(...) para o meu desafio: Y"), mande o `desafio_id` daquele desafio. Com o aviso do clique, mande
+também o `mentor_person_id` que veio nele e, em `mentor_nome`, o nome exatamente como está no aviso
+(a frase visível pode ter sido editada). Sem o aviso, mande o nome da frase sem o parêntese e sem
+`mentor_person_id`. O servidor confere o desafio e acha a pessoa nas sugestões dele. O convite cita
+o desafio. Aqui não houve lista nem saber mais: o parágrafo do "por que ele" sai da linha daquela
+pessoa no texto do `open_menu` (nome, cargo, empresa e o motivo curto), nunca do perfil bruto dela.
 
 Junto do convite, componha os dois briefings e mande nos campos `briefing_mentor` e
 `briefing_founder`. As regras estão em `references/briefing.md`.

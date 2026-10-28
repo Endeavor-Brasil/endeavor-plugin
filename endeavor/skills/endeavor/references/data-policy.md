@@ -30,14 +30,15 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 8 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 9 (outubro de 2026), não use de memória:
 
-1. Quais dados o plugin acessa (empresa, você, rede e Biblioteca, exemplo fictício de ficha, seus
-   conectores, o que não acessa)
+1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
+   seus conectores e as rotinas prontas, o que não acessa)
 2. Isto é IA, e IA erra
-3. O que os seus sócios enxergam (inclui o desafio só seu)
-4. Quais dados o plugin grava, e onde (onde ficam os dados, gravação das sessões, banco do produto, inclusive a página de cada desafio, pedido
-   de conexão com mentor, telemetria)
+3. O que os seus sócios enxergam (inclui o desafio só seu, as sugestões de cada desafio e a agenda)
+4. Quais dados o plugin grava, e onde (onde ficam os dados, gravação das sessões, banco do produto,
+   inclusive a página e as conexões sugeridas de cada desafio, pedido de conexão com mentor,
+   telemetria, inclusive a da tela do menu)
 5. Como os dados são utilizados (página de cada desafio, Biblioteca, filtro de confidencialidade, o
    que não fazemos)
 6. Quem tem acesso (inclui o mentor da conexão e como o acesso é controlado)
@@ -63,16 +64,20 @@ Para ancorar a resposta rápido. O corpo está na Versão 8 (outubro de 2026), n
 - "Vocês integram com o meu CRM, ERP ou agenda?": responda pela seção 1. Quem integra é o assistente de IA
   dele, com as credenciais dele, dentro da conversa dele. A Endeavor não conecta direto. Não
   prometa integração direta nem sugira que ele passe credencial para o time.
+- Pergunta sobre o que uma rotina pronta lê ou manda à Endeavor: responda pela seção 1. A rotina roda
+  no assistente de IA dele, com os conectores dele; o que ela pede ao plugin chega à Endeavor como
+  qualquer pedido dele e segue a seção 4.
 - "A OpenAI (ou a Anthropic, ou o meu LLM) vê os meus dados?": responda pela seção 6. O provedor do
   assistente dele recebe o que ele escreve e o que o plugin devolve, conforme os termos do plano
   dele; a Endeavor não controla esse provedor. Não afirme o que o provedor faz com os dados.
-- Pergunta sobre a agenda: responda pela seção 1, **sem suavizar**. O plugin lê a agenda conectada
-  sem perguntar antes, para propor horários, e cria os blocos da conexão pedida.
+- Pergunta sobre a agenda conectada dele: responda pela seção 1, **sem suavizar**. O plugin lê a
+  agenda conectada sem perguntar antes, para propor horários, e cria os blocos da conexão pedida.
+  Pergunta sobre quem vê a agenda de conexões da empresa, a do menu, é a seção 3.
 - Pergunta sobre onde os dados ficam: responda pela subseção "Onde ficam os dados" da seção 4. Não
   cite região, país nem prazo de retenção; o time da Endeavor responde.
 - Pergunta sobre o que o sócio enxerga: responda pela seção 3, **sem suavizar**. É melhor o founder
   saber antes.
-- Pergunta sobre a página de um desafio na Inteligência da Rede: responda pelas seções 4 e 5, **sem
+- Pergunta sobre a página de um desafio no Cérebro Endeavor (antes Inteligência da Rede): responda pelas seções 4 e 5, **sem
   suavizar**. Uma rotina manda o texto dos desafios ativos ao modelo sem o founder pedir, inclusive o
   desafio só dele, e a página fica guardada no banco do produto.
 - Pergunta sobre gravações de sessão: a política está na subseção "Gravação das sessões" da seção 4,
@@ -92,7 +97,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 8 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 8 · outubro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 9 · outubro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -129,7 +134,11 @@ Dados que a Endeavor já mantém pela relação do programa. Não vêm do seu as
   quando existir. Você abre a gravação; o plugin não abre nem transcreve por você.
 - **Avaliações que a empresa deu** às mentorias, com a nota e o comentário escrito.
 - **Pessoas da empresa** com relação ativa com a Endeavor: nome, cargo, LinkedIn.
-- **Agenda**: próximas conexões marcadas e próximos eventos da rede.
+- **Agenda**: as conexões da empresa marcadas ou em andamento, com a situação do pedido que foi ao
+  mentor pelo agendamento da Endeavor (aguardando a resposta do mentor, combinando o horário, com o
+  time da Endeavor, ou encerrado sem reunião quando o mentor recusou, não respondeu ou o pedido foi
+  cancelado), e os próximos encontros da rede para os quais você tem convite, com o link da inscrição
+  quando ela está aberta e a indicação de que você já confirmou presença, quando confirmou.
 
 Cobertura: resumos ricos de sessão existem de 2023/2024 em diante. Antes disso
 costuma haver só título, tema e data. Ausência de registro não significa que não aconteceu.
@@ -137,6 +146,10 @@ costuma haver só título, tema e data. Ausência de registro não significa que
 ### Sobre você, individualmente
 **Horas de giveback**, quando você doa tempo à rede, com a data, o tema e a pessoa que você
 apoiou. Esse dado é da pessoa logada, não da empresa, e não aparece para o seu sócio.
+
+O plugin também lê o seu nome no cadastro da Endeavor, para o menu te cumprimentar pelo primeiro
+nome. O nome não é gravado no banco do produto, mas o texto do menu, que traz o primeiro nome, fica
+na telemetria, conforme a seção 4.
 
 ### Sobre a rede
 A rede inclui **você e a sua empresa**. Você é uma pessoa da rede e a sua empresa é uma empresa da rede,
@@ -228,8 +241,7 @@ O plugin **pode pedir ao seu assistente de IA** que use os conectores que **voc�
 e-mail, Drive, CRM) para tarefas do fluxo: ver os seus horários livres na agenda para propor
 horários de mentoria, criar na sua agenda um bloco "[Endeavor] - Block Conexão" para cada horário
 oferecido depois que você pede a conexão, ler reuniões, arquivos e anexos que você indicar para
-entender o seu desafio, puxar um número que você mencionou, salvar um plano. Se você agendar a rotina
-de acompanhamento do plugin, ela lê as suas reuniões e a sua agenda dos próximos 14 dias. Quem executa é o seu
+entender o seu desafio, puxar um número que você mencionou, salvar um plano. Quem executa é o seu
 assistente de IA, com as suas credenciais, dentro da sua conversa. Para propor horários, o plugin
 lê a sua agenda conectada sem perguntar antes. As demais ações você aprova ou recusa como aprova
 qualquer outra.
@@ -243,6 +255,14 @@ alimentar algo que você pediu, vai junto no contexto. Isso inclui o que o seu a
 colocou num desafio, numa contribuição ao dossiê, numa pergunta à rede ou num convite: esse texto sai
 do seu assistente, é gravado conforme a seção 4, passa pela telemetria e pode ir ao modelo de IA da
 seção 5.
+
+As rotinas prontas que o plugin oferece, como a revisão semanal ou a de depois da reunião de
+diretoria, são criadas por você e rodam no seu assistente de IA, com os seus conectores, do mesmo
+jeito. Cada rotina lê as fontes que você escolher ao criá-la, como as suas reuniões, a sua agenda, as
+suas notas ou a ata da diretoria. O servidor da Endeavor não roda nada por causa delas. Para a
+Endeavor vai só o que a rotina pede ao plugin, como a lista dos seus desafios ou uma busca de
+pessoas, e isso segue a seção 4. Os textos das rotinas pedem que, numa busca, vá só uma descrição
+curta do desafio ou da decisão, sem o conteúdo das suas reuniões e notas.
 
 ### O que o plugin não acessa
 - Nada das suas ferramentas além do que o fluxo precisa e que você autorizou. Se você conectou a
@@ -276,16 +296,21 @@ substituem julgamento seu, do seu board ou de um profissional.
 ## 3. O que os seus sócios enxergam (inclui o desafio só seu)
 
 **O registro é da empresa, não da pessoa.** Qualquer sócio fundador da sua empresa que esteja sendo
-apoiado pela Endeavor atualmente e use o plugin enxerga o mesmo conjunto: o cadastro, **os desafios da empresa com o texto
-completo e a página que a IA escreve para cada um deles**, o histórico de mentorias com **as notas
-de sessão e os links de gravação**, as avaliações com comentário, e o retrato da empresa que o plugin
-monta a partir do dossiê e das mentorias. O dossiê em si, como documento, não é devolvido ao plugin;
-ele alimenta as respostas e as sugestões de mentor.
+apoiado pela Endeavor atualmente e use o plugin enxerga o mesmo conjunto: o cadastro, **os desafios
+da empresa com o texto completo, a página que a IA escreve para cada um deles e as pessoas sugeridas
+para cada um**, o histórico de mentorias com **as notas de sessão e os links de gravação**, **a agenda
+de conexões da empresa, com a situação de cada pedido a mentor, inclusive quando ele terminou sem
+reunião**, as avaliações com comentário, e o retrato da empresa que o plugin monta a partir do dossiê
+e das mentorias. O dossiê em si, como documento, não é devolvido ao plugin; ele alimenta as respostas
+e as sugestões de mentor.
 
 **O que é individual e não chega ao seu sócio:** as suas horas de giveback, a memória das suas
 conversas com o plugin, o perfil que o plugin monta sobre você ao longo do tempo, e o desafio que
-você registrar como **só seu**, com a página dele. O desafio só seu continua visível para o time da
-Endeavor. O texto do desafio só seu também passa pela telemetria de produto, como descrito na seção 4.
+você registrar como **só seu**, com a página e as sugestões dele. O desafio só seu continua visível
+para o time da Endeavor. O texto do desafio só seu também passa pela telemetria de produto, como
+descrito na seção 4. Se você pedir uma conexão a partir de uma sugestão de um desafio só seu, a
+conexão aparece na agenda da empresa para os seus sócios, mesmo com o desafio e as sugestões
+escondidos.
 
 Duas recomendações:
 
@@ -305,7 +330,8 @@ e as avaliações ele só lê. Ele grava em dois lugares do produto e, quando vo
 conexão, envia um pedido ao sistema de agendamento da Endeavor.
 
 ### Onde ficam os dados
-- **Banco do produto** (desafios, dossiê, buscas, reações, feedback, memória): servidores da AWS.
+- **Banco do produto** (desafios, conexões sugeridas, dossiê, buscas, reações, feedback, memória):
+  servidores da AWS.
 - **Banco analítico da Endeavor** (cadastro, mentorias, avaliações, base da rede): Google Cloud.
 - **Telemetria de produto**: PostHog.
 - **Gravações e transcrições das sessões**: Fireflies. A transcrição e o resumo também ficam no banco
@@ -323,10 +349,13 @@ não fazem parte desta política.
 ### Banco do produto, na infraestrutura da Endeavor
 - **Desafios que você registra ou corrige** pelo plugin, com o texto, quem escreveu e quando. Cada
   alteração fica guardada como revisão; arquivar não apaga.
-- **Página de cada desafio ativo, na Inteligência da Rede**: um texto que a IA escreve a partir do
+- **Página de cada desafio ativo, no Cérebro Endeavor** (a tela que antes se chamava Inteligência da Rede): um texto que a IA escreve a partir do
   desafio e da Biblioteca da Rede, com aprendizados da rede ligados a ele. Vale para todo desafio em
   andamento ou no backlog, inclusive o desafio só seu, e a página é refeita quando o desafio ou a
   Biblioteca mudam. Quem vê a página é quem vê o desafio, conforme a seção 3.
+- **Conexões sugeridas para cada desafio, no menu**: pessoas da rede que a Endeavor sugere para um
+  desafio, com o motivo da sugestão, a trajetória da pessoa e o que a empresa dela faz. Quem vê o
+  desafio vê as sugestões dele, conforme a seção 3.
 - **Dossiê vivo da empresa**: documento em texto que reúne o que a Endeavor sabe da empresa. Cada
   alteração fica registrada com autor e data. O plugin não devolve esse documento inteiro a ninguém;
   ele alimenta as respostas e as sugestões de mentor.
@@ -369,6 +398,10 @@ você e do mentor, e escreve para cada um pelo WhatsApp. No painel, o telefone s
 caso está com uma pessoa. O painel também guarda, para cada caso, qual pessoa do time marcou que
 enviou o convite e que fez as cobranças seguintes, e quando.
 
+Quando o pedido sai de uma pessoa sugerida no menu, o banco do produto guarda também com quem você
+pediu a reunião, a partir de qual desafio, o seu e-mail e a reunião criada. Essa pessoa deixa de
+aparecer nas sugestões daquele desafio para todos que veem o desafio.
+
 ### Telemetria de produto
 Registro de uso, para sabermos se o produto funciona e onde falha: qual capacidade você acionou,
 quanto tempo levou, se deu erro, se a entrega chegou à sua tela, e a nota e o comentário que você deu.
@@ -384,6 +417,14 @@ escrito no meio de um texto livre pode ficar. Cada registro leva o seu e-mail co
 sua empresa como grupo. Os servidores também guardam em log técnico a pergunta que você fez à rede e a
 consulta gerada a partir dela. Fica de fora o texto do feedback geral que você manda pelo plugin. Está
 no roteiro reduzir isso ao mínimo necessário.
+
+Na tela do menu, a telemetria pode registrar também o que você abre lá dentro: qual desafio, em que
+posição ele está na lista e qual aba, de qual pessoa sugerida você abriu o perfil e em que posição
+ela estava na lista, e cliques como o do LinkedIn, o da inscrição num encontro e o de ver mais. Desse
+registro de cliques ficam só o identificador da pessoa, o do desafio, a posição do desafio na lista e
+o tema dele. O texto do menu que o plugin devolve (o seu primeiro nome, os títulos dos desafios, as
+pessoas sugeridas e a agenda) fica na telemetria como qualquer outra resposta, conforme o parágrafo
+acima.
 
 A preparação da página de cada desafio deixa um registro à parte, ligado à empresa: quanto tempo
 levou, quanto usou do modelo e se passou nas checagens, sem o texto do desafio. O texto da página não
