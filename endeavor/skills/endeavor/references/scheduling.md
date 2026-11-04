@@ -33,6 +33,7 @@ aqui, ainda mais no lugar de enviar o pedido, encerra a conversa no meio do cami
 - **Nada sai sem o founder autorizar.** Nem horário, nem pedido.
 - **Horário cravado, nunca janela.** "terça 26 às 14h", não "terça de manhã".
 - **Duração de 1h**, fuso de São Paulo.
+- **Horário só dentro da janela: do 5º ao 10º dia útil depois de hoje** (passo 2). Nenhum fora dela.
 - **Não prometa prazo** de resposta e não diga que a pessoa já foi avisada.
 - Depois do envio, **a marcação vive no WhatsApp**. Diga isso e não ofereça acompanhar por aqui.
 
@@ -78,15 +79,28 @@ a agenda. Não invente que reservou.
 
 ## Passo 2: propor três horários
 
-Com a agenda em mão, escolha 3 com critério, não os primeiros buracos livres:
+Com a agenda em mão, escolha 3 com critério, não os primeiros buracos livres. **Os horários saem só
+da janela: do 5º ao 10º dia útil depois de hoje.** Nenhum fora dela, nem o primeiro buraco livre da
+agenda, nem um que o founder sugira.
 
-- Segunda ou terça hoje: os 3 dentro desta semana.
-- Quarta ou quinta hoje: ao menos 1 nesta semana, o resto na próxima.
-- Sexta, sábado ou domingo hoje: nas duas semanas seguintes.
-- Menos de 3 janelas boas na semana alvo: avance para a semana seguinte em vez de espremer.
+- **Hoje** é o dia do pedido, no fuso de São Paulo. **Dia útil** é de segunda a sexta; feriado não
+  entra na conta.
+- Conte a partir de amanhã, pulando sábado e domingo: o primeiro dia útil depois de hoje é o 1º. O 5º
+  abre a janela e o 10º a fecha, os dois dentro. São seis dias úteis, e só neles você propõe.
+- Para conferir a conta: de segunda a sexta, a janela vai do mesmo dia da semana de hoje na semana
+  que vem até o mesmo dia da semana na semana seguinte (hoje quarta 04/11: de quarta 11/11 a quarta
+  18/11). Sábado e domingo contam como a sexta que passou (hoje sábado 21/11: de sexta 27/11 a sexta
+  04/12).
+- Entre os seis dias, prefira os primeiros e, podendo, use dias diferentes.
 - Horário comercial, evitando primeira e última hora e evitando colar em outro compromisso.
-- Nunca antes de 48h a partir de agora, nunca além de 3 semanas. **Confira isso ANTES de propor:**
-  propor um horário e retirá-lo depois queima a confiança no resto.
+- Menos de 3 horários bons na janela: ofereça só os bons, no mínimo 2, em vez de espremer ou de
+  olhar além da janela. Com 2, escreva "dois" onde este arquivo diz "três".
+- Menos de 2 horários bons na janela: não proponha. Diga em uma linha que a agenda está cheia na
+  janela e peça um horário dele dentro dela, ou que libere algum: "sua agenda está cheia entre 11/11
+  e 18/11, me passa um horário nesses dias ou libera algum que eu sigo".
+- A janela vale para toda proposta deste arquivo: a primeira, a troca ("Trocar um deles", "Outros
+  dias", "Trocar horários") e a que volta do "Pular". **Confira isso ANTES de propor:** propor um
+  horário e retirá-lo depois queima a confiança no resto.
 
 **Cada opção é um instante de 1 hora, nunca uma faixa.** "terça 26 às 14h" está certo; "terça das
 10h às 11h30" está errado, porque é disponibilidade sua, não convite para a pessoa.
