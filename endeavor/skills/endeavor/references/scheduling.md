@@ -70,8 +70,9 @@ frase deste fluxo que o founder não tem como conferir, e errar nela custa a con
 
 Se a leitura falhar, ou se nenhuma ferramenta de calendário existir, aí sim peça os horários, e diga
 o motivo em uma linha: "não consegui enxergar sua agenda por aqui, me passa dois ou três horários
-que funcionam nas próximas semanas". O founder pode responder "qualquer terça de manhã"; converta em
-instantes exatos, mostre o que entendeu e siga.
+que funcionam entre [início da janela, dd/mm] e [fim da janela, dd/mm]". São as datas da janela do
+passo 2, sem nome de dia da semana, porque você não leu a agenda. O founder pode responder "qualquer
+terça de manhã"; converta em instantes exatos dentro da janela, mostre o que entendeu e siga.
 
 Existe um caso intermediário: o founder tem ferramenta de LEITURA de calendário mas nenhuma de
 escrita. Aí você propõe os horários normalmente e, no último passo, avisa que não conseguiu reservar
@@ -121,10 +122,11 @@ Apresente assim, trocando só os horários:
 Nada de "me diz qual faz mais sentido", "quanto mais opção melhor", "pra facilitar a marcação".
 Você já fez o trabalho: apresente o resultado.
 
-As regras deste arquivo (mínimo de 48h, teto de 3 semanas, instante em vez de faixa, 2 a 5 opções)
+As regras deste arquivo (a janela de 5 a 10 dias úteis, instante em vez de faixa, 2 a 5 opções)
 são SUAS, não lição de casa do founder. Nunca as recite para ele. Se o horário que ele pediu não
 passa, diga só o que muda: "essa terça é cedo demais pra pessoa conseguir responder, consigo a
-seguinte".
+seguinte", ou, do outro lado, "essa data fica longe demais pra essa conversa, consigo mais perto".
+Em seguida proponha o que cabe na janela.
 
 Se a tool `AskUserQuestion` estiver disponível, **a pergunta da caixa traz os três horários por
 extenso**, a duração e o nome da pessoa, e termina perguntando se pode mandar:
@@ -213,8 +215,9 @@ que ele pedir depois disso segue as mesmas duas caixas. Não ofereça o texto po
 **"Pular" nunca é autorização.** Se ele pular a pergunta (o "Pular" da caixa), não chame a tool:
 o pedido dessa pessoa fica pendente. Diga em uma linha que não enviou nada e que envia quando ele
 pedir. Um pedido escrito depois ("pode enviar", "envia para o Rodrigo") vale como autorização e
-segue para o passo 4, desde que os três horários ainda estejam a mais de 48h e dentro de 3 semanas.
-Se algum saiu da janela, volte ao passo 2 antes do cartão e confirme horários novos com ele.
+segue para o passo 4, desde que os três horários ainda estejam dentro da janela de hoje (do 5º ao
+10º dia útil, contados a partir do dia em que ele escreve, como no passo 2). Se algum saiu da janela,
+volte ao passo 2 antes do cartão e confirme horários novos com ele.
 
 ### O convite (o texto que vai à pessoa)
 
@@ -425,7 +428,8 @@ nota.
 - ❌ Perguntar "envio assim?", ou qualquer pergunta de envio que não diga para quem, sobre o quê e
   em quais horários, ou que venha sem o cartão de resumo logo acima, na mesma mensagem.
 - ❌ Pedir a autorização em texto corrido quando `AskUserQuestion` está disponível.
-- ❌ Pedir horário ao founder tendo ferramenta de calendário disponível.
+- ❌ Pedir horário ao founder tendo ferramenta de calendário disponível, a não ser que a janela esteja
+  cheia (passo 2).
 - ❌ Concluir que não há ferramenta de calendário porque nenhuma tem o nome exato citado aqui.
 - ❌ Enviar horário que o founder não confirmou, ou convite que ele não autorizou pelo cartão.
 - ❌ Propor janela ("terça de manhã") ou faixa ("das 10h às 11h30") em vez de instante de 1 hora.
@@ -444,7 +448,8 @@ nota.
   falhar. Nada saiu.
 - ❌ Criar bloqueio na agenda quando o pedido não entrou.
 - ❌ Chamar a tool de novo com o MESMO conteúdo depois de um erro de ambiente.
-- ❌ Recitar ao founder as regras de horário (48h, 3 semanas, instante em vez de faixa).
+- ❌ Recitar ao founder as regras de horário (a janela de 5 a 10 dias úteis, instante em vez de faixa).
+- ❌ Propor horário fora da janela, nem a pedido do founder, nem por ser o primeiro buraco livre.
 - ❌ Escrever nome de dia da semana sem ter lido a data na ferramenta de calendário.
 - ❌ Perguntar quem vai participar da conversa. É quem está falando com você.
 - ❌ Deixar o convite sem os horários escritos por extenso.
