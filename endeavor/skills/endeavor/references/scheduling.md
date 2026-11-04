@@ -134,7 +134,8 @@ extenso**, a duração e o nome da pessoa, e termina perguntando se pode mandar:
 > Consigo terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h, uma hora cada. Mando esses três
 > para o [Nome]?
 
-As opções são `Mandar esses três` / `Trocar um deles` / `Outros dias`.
+As opções são `Mandar esses três` / `Trocar um deles` / `Outros dias`. Com 2 horários, a pergunta
+termina em "Mando esses dois para o [Nome]?" e a primeira opção vira `Mandar esses dois`.
 **Nunca abra a caixa sem os horários escritos nela.** Em produção, o Claude pulou a frase com os
 horários e abriu a caixa só com o nome da pessoa no título, e o founder aprovou horários que não
 tinha visto. Com os horários dentro
