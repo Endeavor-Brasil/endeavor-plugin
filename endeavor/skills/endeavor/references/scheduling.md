@@ -362,7 +362,7 @@ se a correção é trocar um horário, volte ao passo 2 e confirme com ele antes
 
 **Se ela falhar por erro de ambiente ou de servidor, o pedido NÃO existe.** Diga isso ao founder com
 essas palavras: nada saiu, ninguém foi avisado. Depois siga a instrução que a própria tool devolveu
-sobre tentar de novo ou não, e **não crie bloqueios na agenda**, porque não há o que segurar.
+sobre tentar de novo ou não.
 
 Três frases que você NUNCA escreve quando a tool falha, porque são mentira:
 
@@ -373,20 +373,12 @@ Três frases que você NUNCA escreve quando a tool falha, porque são mentira:
 Ninguém do outro lado recebeu nada. Prometer encaminhamento humano que não vai acontecer é pior que
 o erro.
 
-## Passo 5: segurar os horários na agenda
+## Passo 5: fechar
 
-Assim que a tool responder, **crie um evento por horário proposto** na agenda do founder. É a última
-ação do fluxo e é o que impede alguém ocupar o horário enquanto a pessoa não responde.
+**Não crie evento nenhum na agenda do founder.** Quem segura os horários é o serviço de agendamento
+da Endeavor, do lado dele; a agenda do founder aqui é só lida (passo 1).
 
-A ferramenta é a que **cria** um evento, descrita como algo próximo de `create a calendar event`.
-Não é a de atualizar evento existente, e de novo: casa pelo que ela faz, não pelo nome exato. Um
-evento por horário, com:
-
-- título exatamente `[Endeavor] - Block Conexão`
-- 1 hora, no horário proposto
-- descrição dizendo que é reserva provisória enquanto a pessoa responde, e que pode ser apagada
-
-Feche com uma confirmação e o que acontece daqui pra frente, em bullets, sem gancho e sem oferecer
+Assim que a tool responder, feche com uma confirmação e o que acontece daqui pra frente, em bullets, sem gancho e sem oferecer
 a próxima pessoa:
 
 ```
@@ -395,12 +387,7 @@ a próxima pessoa:
 - A Endeavor leva o convite pro WhatsApp de [Nome]
 - A pessoa pode aceitar um dos horários ou avisar que não consegue
 - A partir daí a marcação corre por lá, e a confirmação chega no seu WhatsApp
-- Deixei os três horários reservados na sua agenda como `[Endeavor] - Block Conexão`
-- É só um save the date, pode apagar quando ela escolher um
 ```
-
-A última linha só entra se você REALMENTE criou os eventos. Sem ferramenta de calendário, troque por:
-"não consegui bloquear sua agenda por aqui, então vale segurar esses horários na mão".
 
 Depois disso, se ainda há alguém na lista que ele aprovou, siga para a próxima pessoa pelo passo 1
 e diga em uma linha quem é. Se não há, pare. Não pergunte se ele quer chamar mais alguém e não peça
@@ -423,12 +410,11 @@ nota.
 - ❌ Levar à pessoa a leitura interna da Endeavor (status na rede, classificação, gerente da conta).
 - ❌ Citar no convite outro mentor, ou empresa que apareceu no dossiê.
 - ❌ Usar número marcado com ⚠ ou escolher entre dois números divergentes do dossiê.
-- ❌ Enviar o pedido e não criar os blocos, tendo ferramenta de calendário.
-- ❌ Dizer que reservou a agenda sem ter criado os eventos.
+- ❌ Criar evento, bloqueio ou reserva na agenda do founder, em qualquer momento do fluxo.
+- ❌ Dizer que reservou ou bloqueou a agenda do founder.
 - ❌ Prometer prazo de resposta, ou dizer que a pessoa já foi notificada.
 - ❌ Prometer encaminhamento manual, ou dizer que a Endeavor leva nos bastidores, depois de a tool
   falhar. Nada saiu.
-- ❌ Criar bloqueio na agenda quando o pedido não entrou.
 - ❌ Chamar a tool de novo com o MESMO conteúdo depois de um erro de ambiente.
 - ❌ Recitar ao founder as regras de horário (48h, 3 semanas, instante em vez de faixa).
 - ❌ Escrever nome de dia da semana sem ter lido a data na ferramenta de calendário.
