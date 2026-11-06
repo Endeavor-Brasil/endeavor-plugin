@@ -33,6 +33,7 @@ aqui, ainda mais no lugar de enviar o pedido, encerra a conversa no meio do cami
 - **Nada sai sem o founder autorizar.** Nem horário, nem pedido.
 - **Horário cravado, nunca janela.** "terça 26 às 14h", não "terça de manhã".
 - **Duração de 1h**, fuso de São Paulo.
+- **Horário só dentro da janela: do 5º ao 10º dia útil depois de hoje** (passo 2). Nenhum fora dela.
 - **Não prometa prazo** de resposta e não diga que a pessoa já foi avisada.
 - Depois do envio, **a marcação vive no WhatsApp**. Diga isso e não ofereça acompanhar por aqui.
 
@@ -69,8 +70,9 @@ frase deste fluxo que o founder não tem como conferir, e errar nela custa a con
 
 Se a leitura falhar, ou se nenhuma ferramenta de calendário existir, aí sim peça os horários, e diga
 o motivo em uma linha: "não consegui enxergar sua agenda por aqui, me passa dois ou três horários
-que funcionam nas próximas semanas". O founder pode responder "qualquer terça de manhã"; converta em
-instantes exatos, mostre o que entendeu e siga.
+que funcionam entre [início da janela, dd/mm] e [fim da janela, dd/mm]". São as datas da janela do
+passo 2, sem nome de dia da semana, porque você não leu a agenda. O founder pode responder "qualquer
+terça de manhã"; converta em instantes exatos dentro da janela, mostre o que entendeu e siga.
 
 Existe um caso intermediário: o founder tem ferramenta de LEITURA de calendário mas nenhuma de
 escrita. Aí você propõe os horários normalmente e, no último passo, avisa que não conseguiu reservar
@@ -78,15 +80,28 @@ a agenda. Não invente que reservou.
 
 ## Passo 2: propor três horários
 
-Com a agenda em mão, escolha 3 com critério, não os primeiros buracos livres:
+Com a agenda em mão, escolha 3 com critério, não os primeiros buracos livres. **Os horários saem só
+da janela: do 5º ao 10º dia útil depois de hoje.** Nenhum fora dela, nem o primeiro buraco livre da
+agenda, nem um que o founder sugira.
 
-- Segunda ou terça hoje: os 3 dentro desta semana.
-- Quarta ou quinta hoje: ao menos 1 nesta semana, o resto na próxima.
-- Sexta, sábado ou domingo hoje: nas duas semanas seguintes.
-- Menos de 3 janelas boas na semana alvo: avance para a semana seguinte em vez de espremer.
+- **Hoje** é o dia do pedido, no fuso de São Paulo. **Dia útil** é de segunda a sexta; feriado não
+  entra na conta.
+- Conte a partir de amanhã, pulando sábado e domingo: o primeiro dia útil depois de hoje é o 1º. O 5º
+  abre a janela e o 10º a fecha, os dois dentro. São seis dias úteis, e só neles você propõe.
+- Para conferir a conta: de segunda a sexta, a janela vai do mesmo dia da semana de hoje na semana
+  que vem até o mesmo dia da semana na semana seguinte (hoje quarta 04/11: de quarta 11/11 a quarta
+  18/11). Sábado e domingo contam como a sexta que passou (hoje sábado 21/11: de sexta 27/11 a sexta
+  04/12).
+- Entre os seis dias, prefira os primeiros e, podendo, use dias diferentes.
 - Horário comercial, evitando primeira e última hora e evitando colar em outro compromisso.
-- Nunca antes de 48h a partir de agora, nunca além de 3 semanas. **Confira isso ANTES de propor:**
-  propor um horário e retirá-lo depois queima a confiança no resto.
+- Menos de 3 horários bons na janela: ofereça só os bons, no mínimo 2, em vez de espremer ou de
+  olhar além da janela. Com 2, escreva "dois" onde este arquivo diz "três".
+- Menos de 2 horários bons na janela: não proponha. Diga em uma linha que a agenda está cheia na
+  janela e peça um horário dele dentro dela, ou que libere algum: "sua agenda está cheia entre 11/11
+  e 18/11, me passa um horário nesses dias ou libera algum que eu sigo".
+- A janela vale para toda proposta deste arquivo: a primeira, a troca ("Trocar um deles", "Outros
+  dias", "Trocar horários") e a que volta do "Pular". **Confira isso ANTES de propor:** propor um
+  horário e retirá-lo depois queima a confiança no resto.
 
 **Cada opção é um instante de 1 hora, nunca uma faixa.** "terça 26 às 14h" está certo; "terça das
 10h às 11h30" está errado, porque é disponibilidade sua, não convite para a pessoa.
@@ -107,10 +122,11 @@ Apresente assim, trocando só os horários:
 Nada de "me diz qual faz mais sentido", "quanto mais opção melhor", "pra facilitar a marcação".
 Você já fez o trabalho: apresente o resultado.
 
-As regras deste arquivo (mínimo de 48h, teto de 3 semanas, instante em vez de faixa, 2 a 5 opções)
+As regras deste arquivo (a janela de 5 a 10 dias úteis, instante em vez de faixa, 2 a 5 opções)
 são SUAS, não lição de casa do founder. Nunca as recite para ele. Se o horário que ele pediu não
 passa, diga só o que muda: "essa terça é cedo demais pra pessoa conseguir responder, consigo a
-seguinte".
+seguinte", ou, do outro lado, "essa data fica longe demais pra essa conversa, consigo mais perto".
+Em seguida proponha o que cabe na janela.
 
 Se a tool `AskUserQuestion` estiver disponível, **a pergunta da caixa traz os três horários por
 extenso**, a duração e o nome da pessoa, e termina perguntando se pode mandar:
@@ -118,7 +134,8 @@ extenso**, a duração e o nome da pessoa, e termina perguntando se pode mandar:
 > Consigo terça 26 às 14h, quarta 27 às 10h ou quinta 28 às 16h, uma hora cada. Mando esses três
 > para o [Nome]?
 
-As opções são `Mandar esses três` / `Trocar um deles` / `Outros dias`.
+As opções são `Mandar esses três` / `Trocar um deles` / `Outros dias`. Com 2 horários, a pergunta
+termina em "Mando esses dois para o [Nome]?" e a primeira opção vira `Mandar esses dois`.
 **Nunca abra a caixa sem os horários escritos nela.** Em produção, o Claude pulou a frase com os
 horários e abriu a caixa só com o nome da pessoa no título, e o founder aprovou horários que não
 tinha visto. Com os horários dentro
@@ -199,8 +216,9 @@ que ele pedir depois disso segue as mesmas duas caixas. Não ofereça o texto po
 **"Pular" nunca é autorização.** Se ele pular a pergunta (o "Pular" da caixa), não chame a tool:
 o pedido dessa pessoa fica pendente. Diga em uma linha que não enviou nada e que envia quando ele
 pedir. Um pedido escrito depois ("pode enviar", "envia para o Rodrigo") vale como autorização e
-segue para o passo 4, desde que os três horários ainda estejam a mais de 48h e dentro de 3 semanas.
-Se algum saiu da janela, volte ao passo 2 antes do cartão e confirme horários novos com ele.
+segue para o passo 4, desde que os três horários ainda estejam dentro da janela de hoje (do 5º ao
+10º dia útil, contados a partir do dia em que ele escreve, como no passo 2). Se algum saiu da janela,
+volte ao passo 2 antes do cartão e confirme horários novos com ele.
 
 ### O convite (o texto que vai à pessoa)
 
@@ -411,7 +429,8 @@ nota.
 - ❌ Perguntar "envio assim?", ou qualquer pergunta de envio que não diga para quem, sobre o quê e
   em quais horários, ou que venha sem o cartão de resumo logo acima, na mesma mensagem.
 - ❌ Pedir a autorização em texto corrido quando `AskUserQuestion` está disponível.
-- ❌ Pedir horário ao founder tendo ferramenta de calendário disponível.
+- ❌ Pedir horário ao founder tendo ferramenta de calendário disponível, a não ser que a janela esteja
+  cheia (passo 2).
 - ❌ Concluir que não há ferramenta de calendário porque nenhuma tem o nome exato citado aqui.
 - ❌ Enviar horário que o founder não confirmou, ou convite que ele não autorizou pelo cartão.
 - ❌ Propor janela ("terça de manhã") ou faixa ("das 10h às 11h30") em vez de instante de 1 hora.
@@ -430,7 +449,8 @@ nota.
   falhar. Nada saiu.
 - ❌ Criar bloqueio na agenda quando o pedido não entrou.
 - ❌ Chamar a tool de novo com o MESMO conteúdo depois de um erro de ambiente.
-- ❌ Recitar ao founder as regras de horário (48h, 3 semanas, instante em vez de faixa).
+- ❌ Recitar ao founder as regras de horário (a janela de 5 a 10 dias úteis, instante em vez de faixa).
+- ❌ Propor horário fora da janela, nem a pedido do founder, nem por ser o primeiro buraco livre.
 - ❌ Escrever nome de dia da semana sem ter lido a data na ferramenta de calendário.
 - ❌ Perguntar quem vai participar da conversa. É quem está falando com você.
 - ❌ Deixar o convite sem os horários escritos por extenso.
