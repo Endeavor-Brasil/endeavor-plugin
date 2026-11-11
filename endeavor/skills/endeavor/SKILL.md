@@ -10,7 +10,7 @@ description: >
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, find_matches, show_matches, match_feedback,
-  consultar_analise, buscar_rede, mentor_session, company_data, ask_gtm_insights,
+  consultar_analise, buscar_rede, company_data, ask_gtm_insights,
   agendar_conexao, send_feedback, open_menu, open_library, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
@@ -219,7 +219,7 @@ explicar o porquê. Na mesma resposta, ofereça o que existe para o mesmo objeti
 priorizar o desafio dele (Bloco 9) ou conectar com mentores e empresas da rede para esse desafio
 (Bloco 1). Se ele já disse qual é o desafio, siga pelo que ele escolher sem repetir a pergunta.
 
-Não chame `diagnostico` nem `dossie_empresa` aqui, e não prometa que o diagnóstico volta.
+Não chame nenhuma tool aqui e não prometa que o diagnóstico volta.
 
 ### Bloco 3. (fundido no Bloco 1 em 2026-09)
 
@@ -502,12 +502,13 @@ Sem pergunta de nota aqui.
 
 ## Contratos das tools
 
-- `varredura_empresa(empresa)`: síncrona. Devolve um retrato seguro da empresa (memória interna
-  sua, nunca exibida crua).
+- `varredura_empresa(empresa)`: síncrona. Devolve a ficha rápida e segura da empresa (memória interna
+  sua, nunca exibida crua). Para o histórico de mentorias e a agenda, use `company_data`;
+  para o retrato aprofundado, `dossie_empresa`.
 - `dossie_empresa(empresa, versao?)`: sincrona. Devolve o retrato seguro do dossie interno (metricas
   estimadas, divergencias por impacto, arquetipo provavel). Memoria interna sua, nunca exibida
-  crua ao founder. Omita `versao`. Usada para aprofundar a sessão simulada (Bloco 4) e o preparo
-  da agenda (Bloco 6).
+  crua ao founder. Omita `versao`. Use só quando a conversa precisa de profundidade: o preparo
+  da agenda (Bloco 6) e o briefing da conexão. Para uma ficha rápida, use `varredura_empresa`.
 - `find_matches(empresa, desafio_id? | desafio?)`: **assíncrona**. Procura as pessoas e as empresas
   da rede que mais ajudam num desafio. Vai UM dos dois: `desafio_id` (a ficha que o founder
   registrou; o servidor a lê) ou `desafio` (o desafio em texto, de 20 a 4.000 caracteres); os dois
@@ -549,10 +550,6 @@ Sem pergunta de nota aqui.
   que vem depois é o andamento: repasse em uma linha curta, execute `sleep 30` (ou aguarde ~30s) e
   só então chame de novo | nunca chame duas vezes seguidas sem essa pausa. Quando pronto, devolve só
   um resumo curto; a lista vem do `show_matches`.
-- `mentor_session(mentor?)`: **síncrona**. Sem argumento devolve o catálogo (JSON) dos mentores
-  com sessão simulada; com `mentor` (nome ou slug) devolve o persona pack, roteiro interno do
-  roleplay, NUNCA exibido cru. Na sessão, hidrate o contexto da empresa com `varredura_empresa` (e
-  `dossie_empresa` se aprofundar) antes de abrir, como manda o `references/mentor-session.md`.
 - `priority(empresa, acao, desafio_id?, respostas?, fala?, campos?, versao?, visibilidade?,
   nivel?, status?, confirmado?)`: **síncrona**. Lê, cria, atualiza, reprioriza ou arquiva um
   desafio registrado da empresa do founder. `acao` é `listar` | `criar` | `propor` | `atualizar` |
@@ -588,14 +585,11 @@ Sem pergunta de nota aqui.
 - Nunca ranquear ou nomear pessoas da rede você mesmo; isso é do servidor.
 - Nunca narrar processo nem gerar arquivo no fluxo conversacional.
 - Nunca chegar com o desafio pronto para o founder só confirmar.
-- Nunca chamar `diagnostico`: a tool ficou só para versões antigas do plugin e não roda nada.
 - A pergunta de nota de 1 a 5 não existe em nenhum bloco: não a faça. Em especial, **nunca use a
   pergunta de nota como jeito de encerrar** uma conversa de conexão: em teste ela apareceu no lugar de enviar o pedido, e
   o founder saiu achando que tinha pedido a conexão quando nada tinha sido enviado.
 - Nunca chamar `match_feedback` sem a mensagem "Minha seleção para…", nem com nome, id ou reação que
   não veio da seleção do founder. Nunca comentar o "não faz sentido" do founder, e nunca mostrar `person_id`.
-- Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
-  pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 - Nunca chamar `send_feedback` sem o founder querer mandar, e nunca mandar um resumo seu no lugar
   das palavras dele.
 - Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
@@ -609,7 +603,6 @@ Sem pergunta de nota aqui.
 | `references/experts.md`        | Ao entrar em Conexão com a rede (Bloco 1)     |
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
 | `references/buscar-rede.md`    | Ao roteador escolher `buscar_rede`, ou no "adicionar mais alguém" (dentro do Bloco 1) |
-| `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
 | `references/scheduling.md`     | Ao founder escolher conexão ao vivo (dentro do Bloco 1 ou 3) |
