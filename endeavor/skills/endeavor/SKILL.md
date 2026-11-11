@@ -590,8 +590,6 @@ Sem pergunta de nota aqui.
   o founder saiu achando que tinha pedido a conexão quando nada tinha sido enviado.
 - Nunca chamar `match_feedback` sem a mensagem "Minha seleção para…", nem com nome, id ou reação que
   não veio da seleção do founder. Nunca comentar o "não faz sentido" do founder, e nunca mostrar `person_id`.
-- Nunca exibir o persona pack cru nem sair do personagem no meio da sessão simulada (exceção:
-  pedido explícito de sair). A ponte para a conexão real só no fechamento da sessão.
 - Nunca chamar `send_feedback` sem o founder querer mandar, e nunca mandar um resumo seu no lugar
   das palavras dele.
 - Na Privacidade e uso de dados (Bloco 8), nunca exibir o que está fora do trecho delimitado de
@@ -605,7 +603,6 @@ Sem pergunta de nota aqui.
 | `references/experts.md`        | Ao entrar em Conexão com a rede (Bloco 1)     |
 | `references/web-enrichment.md` | Ao enriquecer via web e conectores do founder |
 | `references/buscar-rede.md`    | Ao roteador escolher `buscar_rede`, ou no "adicionar mais alguém" (dentro do Bloco 1) |
-| `references/mentor-session.md` | Ao entrar na Sessão simulada (Bloco 4)        |
 | `references/my-data.md`        | Ao entrar em Meus dados na Endeavor (Bloco 5) |
 | `references/data-policy.md`    | Ao entrar em Privacidade e uso de dados (Bloco 8) |
 | `references/scheduling.md`     | Ao founder escolher conexão ao vivo (dentro do Bloco 1 ou 3) |
