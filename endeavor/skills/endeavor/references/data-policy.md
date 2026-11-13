@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 9 (outubro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 10 (novembro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
@@ -38,7 +38,8 @@ Para ancorar a resposta rápido. O corpo está na Versão 9 (outubro de 2026), n
 3. O que os seus sócios enxergam (inclui o desafio só seu, as sugestões de cada desafio e a agenda)
 4. Quais dados o plugin grava, e onde (onde ficam os dados, gravação das sessões, banco do produto,
    inclusive a página e as conexões sugeridas de cada desafio, pedido de conexão com mentor,
-   telemetria, inclusive a da tela do menu)
+   inclusive a cópia em PDF de cada documento de preparação no Google Drive, telemetria, inclusive a
+   da tela do menu)
 5. Como os dados são utilizados (página de cada desafio, Biblioteca, filtro de confidencialidade, o
    que não fazemos)
 6. Quem tem acesso (inclui o mentor da conexão e como o acesso é controlado)
@@ -53,7 +54,8 @@ Para ancorar a resposta rápido. O corpo está na Versão 9 (outubro de 2026), n
 - Não afirme que a telemetria não guarda conteúdo. Hoje guarda o texto do que o founder pediu e das
   respostas entregues, e o comentário, conforme a seção 4.
 - Pergunta sobre o que sai numa conexão com mentor: responda pela seção 4, **sem suavizar**. O
-  mentor recebe o documento de preparação, e o pedido vai ao time de agendamento.
+  mentor recebe o documento de preparação e o convite da reunião, que leva o link da cópia em PDF do
+  documento dele, e o pedido vai ao time de agendamento.
 - Pergunta sobre quem vê o telefone ou o convite quando o pedido não foi agendado sozinho: responda
   pela seção 4, **sem suavizar**. Uma pessoa do time da Endeavor vê o convite e os dois telefones num
   painel interno, só enquanto o caso está com ela, e escreve a cada um pelo WhatsApp. O plugin continua
@@ -97,7 +99,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 9 (outubro de 2026), n
 
 # Política de dados do plugin Endeavor
 
-Versão 9 · outubro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 10 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -333,6 +335,7 @@ conexão, envia um pedido ao sistema de agendamento da Endeavor.
 - **Banco do produto** (desafios, conexões sugeridas, dossiê, buscas, reações, feedback, memória):
   servidores da AWS.
 - **Banco analítico da Endeavor** (cadastro, mentorias, avaliações, base da rede): Google Cloud.
+- **Documentos de preparação das conexões**: uma cópia em PDF de cada um, no Google Drive da Endeavor.
 - **Telemetria de produto**: PostHog.
 - **Gravações e transcrições das sessões**: Fireflies. A transcrição e o resumo também ficam no banco
   analítico da Endeavor (Google Cloud).
@@ -391,6 +394,11 @@ mentor traz o contexto da empresa, os temas que você quer tratar e empresas de 
 montado a partir do que você contou na conversa. Antes de autorizar, você vê para quem vai, o
 assunto e os horários, e pode pedir para ver o texto do convite. O telefone serve para o time de
 agendamento falar com cada um; o plugin não passa o seu número ao mentor nem o dele a você.
+
+Uma cópia em PDF de cada documento de preparação fica numa pasta do Google Drive da Endeavor, aberta
+só para o e-mail de quem deve ler e para o time da Endeavor: a do mentor, para o mentor; a sua, para
+você. O convite da reunião na agenda leva o link das duas cópias, e quem abre o link do outro lado
+não consegue ver o documento. Quem lê não consegue baixar, imprimir nem copiar o PDF.
 
 Se o agendamento automático não consegue fechar o horário e passa o caso para uma pessoa, alguém do
 time da Endeavor vê, num painel interno, o convite, os horários que você ofereceu e os telefones de
@@ -490,8 +498,8 @@ das empresas no histórico de cargos das pessoas, que aparece na busca livre à 
   Não a sua memória, o seu perfil individual nem o desafio que você marcou como só seu.
 - **Founders de outras empresas**: o perfil da sua empresa e, se você está na base de pessoas da
   rede, o seu perfil, como a seção 1 descreve.
-- **O mentor de uma conexão que você autorizou**: o documento de preparação e o convite descritos
-  na seção 4.
+- **O mentor de uma conexão que você autorizou**: o documento de preparação dele, a cópia em PDF
+  desse documento e o convite, descritos na seção 4.
 - **Time da Endeavor**: o squad do produto, o time de agendamento, quem acompanha os pedidos de
   conexão que o agendamento automático passou para uma pessoa (que vê o convite e os telefones no
   painel interno descrito na seção 4) e os analistas que curam os dossiês, para operar e melhorar o
@@ -499,8 +507,9 @@ das empresas no histórico de cargos das pessoas, que aparece na busca livre à 
 - **Parceiro de engenharia contratado pela Endeavor**: acesso técnico à infraestrutura para
   desenvolvimento e suporte, sob contrato.
 - **Provedores de infraestrutura**, como subprocessadores: Anthropic (modelo e busca na web), Google
-  Cloud (banco analítico), AWS (banco do produto), PostHog (telemetria), Fireflies (gravação e
-  transcrição das sessões) e o provedor de WhatsApp que o time de agendamento usa.
+  (banco analítico no Google Cloud e cópias em PDF dos documentos de preparação no Google Drive),
+  AWS (banco do produto), PostHog (telemetria), Fireflies (gravação e transcrição das sessões) e o
+  provedor de WhatsApp que o time de agendamento usa.
 - **O provedor do seu assistente de IA** (Anthropic, OpenAI ou outro): recebe o que você escreve e
   tudo que o plugin te devolve, conforme os termos do seu plano com ele. Esse provedor é escolha sua, e
   a Endeavor não controla o que ele faz com a conversa.
