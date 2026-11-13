@@ -73,7 +73,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 10 (novembro de 2026),
   assistente dele recebe o que ele escreve e o que o plugin devolve, conforme os termos do plano
   dele; a Endeavor não controla esse provedor. Não afirme o que o provedor faz com os dados.
 - Pergunta sobre a agenda conectada dele: responda pela seção 1, **sem suavizar**. O plugin lê a
-  agenda conectada sem perguntar antes, para propor horários, e cria os blocos da conexão pedida.
+  agenda conectada sem perguntar antes, para propor horários. Não cria nem altera evento nela.
   Pergunta sobre quem vê a agenda de conexões da empresa, a do menu, é a seção 3.
 - Pergunta sobre onde os dados ficam: responda pela subseção "Onde ficam os dados" da seção 4. Não
   cite região, país nem prazo de retenção; o time da Endeavor responde.
@@ -241,8 +241,7 @@ escrever o motivo da sugestão, e o texto passa por um teste de vazamento antes 
 ### Seus conectores e a sua stack: quem faz o quê
 O plugin **pode pedir ao seu assistente de IA** que use os conectores que **você** já autorizou ali (agenda,
 e-mail, Drive, CRM) para tarefas do fluxo: ver os seus horários livres na agenda para propor
-horários de mentoria, criar na sua agenda um bloco "[Endeavor] - Block Conexão" para cada horário
-oferecido depois que você pede a conexão, ler reuniões, arquivos e anexos que você indicar para
+horários de mentoria, ler reuniões, arquivos e anexos que você indicar para
 entender o seu desafio, puxar um número que você mencionou, salvar um plano. Quem executa é o seu
 assistente de IA, com as suas credenciais, dentro da sua conversa. Para propor horários, o plugin
 lê a sua agenda conectada sem perguntar antes. As demais ações você aprova ou recusa como aprova
@@ -268,8 +267,8 @@ curta do desafio ou da decisão, sem o conteúdo das suas reuniões e notas.
 
 ### O que o plugin não acessa
 - Nada das suas ferramentas além do que o fluxo precisa e que você autorizou. Se você conectou a
-  agenda, o plugin consulta os seus blocos livres para propor horários e cria os blocos da conexão que
-  você pediu. Não varre sua caixa de entrada nem seus arquivos por conta própria, e não puxa dado de
+  agenda, o plugin consulta os seus horários livres para propor horários, e não cria nem altera evento
+  nela. Não varre sua caixa de entrada nem seus arquivos por conta própria, e não puxa dado de
   conector nenhum fora do que o fluxo em andamento pede, ou do que você indicar.
 - Dados de outras empresas além do descrito acima.
 - Dados financeiros de mentores ou das empresas deles.
