@@ -75,6 +75,10 @@ Da sexta em diante você nomeia, com a regra de "extras" mais abaixo. Numa finte
 linha de regulatório; numa empresa de infraestrutura, o motion de vendas. Não complete a tabela só
 para ela ficar com seis linhas.
 
+A linha **"Na Endeavor"** (se a empresa é Empreendedora Endeavor ou está no Scale-Up, com o ano em
+que foi selecionada) é escrita pelo servidor, a partir do cadastro, e entra sozinha no topo da
+tabela. Não escreva essa linha: se você mandar uma com esse rótulo, ela é descartada.
+
 ### `diferenciais`
 
 De três a cinco itens, cada um com `titulo` e até dois `pontos`. O título é a afirmação, e os pontos
@@ -199,6 +203,8 @@ Esta lista **não tem rede de segurança do lado do servidor**. Se passar aqui, 
   nominalmente nos registros de desafio. Nenhum deles vai para o documento.
 - ❌ **Leitura interna da Endeavor.** Status na rede, classificação de faixa, nota de mentoria,
   quantidade de mentorias, notas de relacionamento, nome do gerente da conta, e qualquer avaliação.
+  A única exceção é a linha "Na Endeavor" do resumo da empresa, que o servidor escreve; você não
+  escreve nada disso.
 - ❌ **Número marcado com ⚠ no dossiê.** O dossiê sinaliza dado divergente, desatualizado ou com
   erro de transcrição de propósito. Quando há dois números para a mesma coisa, não escolha: prefira o
   que o founder falou nesta conversa, ou não cite número nenhum.

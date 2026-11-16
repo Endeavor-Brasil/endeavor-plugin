@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 10 (novembro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 11 (novembro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
@@ -99,7 +99,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 10 (novembro de 2026),
 
 # Política de dados do plugin Endeavor
 
-Versão 10 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 11 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -129,6 +129,8 @@ Dados que a Endeavor já mantém pela relação do programa. Não vêm do seu as
 
 - **Cadastro**: nome, setor, vertical, modelo de negócio, estágio de investimento, descrição, ano de
   fundação, estado, site, LinkedIn, número de funcionários, e quem é o seu contato na Endeavor.
+- **Relação com a Endeavor**: se a empresa é Empreendedora Endeavor ou está no Scale-Up, e o ano em
+  que a empresa foi selecionada.
 - **Desafios** que você e o time da Endeavor registraram, com o texto completo: o desafio, o
   contexto, o impacto, as perguntas-chave, as alternativas já testadas e os momentos decisivos.
 - **Mentorias da empresa**: data, mentor, tema, duração, resumo, tópicos e insights.
@@ -389,8 +391,9 @@ telefones de você e do mentor que já estão no cadastro da Endeavor, e dois do
 preparação, um para o mentor e um para você. O convite é escrito pela Endeavor, em nome dela, e
 apresenta a sua empresa, o desafio, por que o mentor foi escolhido, o site da empresa e o seu
 LinkedIn, quando estão no cadastro da Endeavor; se você pedir, o LinkedIn não vai. O documento do
-mentor traz o contexto da empresa, os temas que você quer tratar e empresas de referência; ele é
-montado a partir do que você contou na conversa. Antes de autorizar, você vê para quem vai, o
+mentor traz o contexto da empresa, os temas que você quer tratar e empresas de referência, montados
+a partir do que você contou na conversa, e, do cadastro da Endeavor, se a sua empresa é Empreendedora
+Endeavor ou está no Scale-Up, com o ano em que foi selecionada. Antes de autorizar, você vê para quem vai, o
 assunto e os horários, e pode pedir para ver o texto do convite. O telefone serve para o time de
 agendamento falar com cada um; o plugin não passa o seu número ao mentor nem o dele a você.
 
