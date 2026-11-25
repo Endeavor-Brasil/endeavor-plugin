@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 10 (novembro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 11 (novembro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
@@ -99,7 +99,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 10 (novembro de 2026),
 
 # Política de dados do plugin Endeavor
 
-Versão 10 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 11 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -158,19 +158,24 @@ A rede inclui **você e a sua empresa**. Você é uma pessoa da rede e a sua emp
 então o que esta seção descreve também vale para o seu perfil e para o da sua empresa quando outros
 founders buscam a rede. O que os outros veem de você está no fim desta seção.
 
-- **Pessoas da rede**: nome, tipo de vínculo com a rede (por exemplo mentor), cargo e empresa atuais,
-  biografia, competências, histórico de cargos e empresas por onde passaram, e o LinkedIn. Na busca
-  livre à rede, para cada empresa do histórico de cargos, vem também o nível de maturidade que a
-  Endeavor atribui a ela.
+- **Pessoas da rede**: nome, tipo de vínculo com a rede (por exemplo mentor ou founder da turma do
+  Scale-Up), cargo e empresa atuais, a cidade e o país onde mora, biografia, histórico de cargos e
+  empresas por onde passaram, e o LinkedIn. Para cada empresa do histórico de cargos vem também o nível
+  de maturidade que a Endeavor atribui a ela. A biografia chega sem números de negócio e sem temas
+  pessoais sensíveis, como saúde ou litígios.
   Quando liberados para exibição, também os temas em que
-  a pessoa já ajudou outros founders (veja o exemplo abaixo), frases dela, o estilo e como se preparar para a conversa,
-  tirados das mentorias registradas.
+  a pessoa já ajudou outros founders (veja o exemplo abaixo), o estilo e como se preparar para a conversa,
+  tirados das mentorias registradas, e as experiências que ela viveu, revisadas antes de aparecer:
+  só o que pode ser mostrado, sem números internos nem detalhes de quem ela mentorou.
+  Na busca livre à rede, a pessoa que já está com a agenda de mentorias cheia aparece com essa marca,
+  para você saber antes de pedir a conversa. As datas e os nomes das mentorias dela não aparecem.
 - **Outras empresas**: empresas da rede Endeavor, inclusive as que já saíram do portfólio ou foram
   vendidas, a turma atual do Scale-Up (marcada como turma, para você poder buscar só nela) e empresas
   onde pessoas da rede trabalham ou trabalharam. De
   cada uma: o que a empresa faz, setor, modelo de negócio, quem costuma ser o comprador, ano de
-  fundação, tipo de organização, se é da rede Endeavor ou da turma do Scale-Up, e as pessoas dela com
-  nome, cargo e LinkedIn. Na sugestão de conexão também vem o site da empresa (veja o exemplo abaixo).
+  fundação, tipo de organização, se é da rede Endeavor ou da turma do Scale-Up, o nível de maturidade
+  que a Endeavor atribui a ela (de 1 a 5), os investidores dela, e as pessoas dela com nome, cargo e
+  LinkedIn. Na sugestão de conexão também vem o site da empresa (veja o exemplo abaixo).
   Serve para você achar pares, benchmark e conexões.
 - **A Biblioteca da Rede**: aprendizados de mentorias, primeiras conversas e acompanhamentos de
   empresas da rede, com autores anonimizados e números só como faixa ou mediana de pelo menos três
@@ -180,8 +185,8 @@ Sobre outras empresas você **não** recebe: faturamento, captação, valuation,
 notas de mentoria, nem detalhe de sessão. Dos assuntos que aquela empresa levou à rede, você vê só o
 tema, nunca o conteúdo da conversa. Para escolher as sugestões de conexão, o plugin usa também
 informação interna da Endeavor sobre as pessoas e empresas da rede, sem mostrar a você. A seção 5
-explica como. A única informação interna que você vê é o nível de maturidade das empresas no
-histórico de cargos de cada pessoa, na busca livre à rede, descrito acima.
+explica como. As únicas informações internas que você vê são o nível de maturidade das empresas, os
+investidores delas e a marca de agenda cheia, descritos acima.
 
 E o inverso também vale: **você e a sua empresa aparecem para outros founders**. Da empresa: o que ela
 faz, o cadastro básico e as pessoas de contato. De você: nome, cargo e LinkedIn, como pessoa de
@@ -193,7 +198,7 @@ aparecer como uma empresa que já passou por um desafio parecido, sem o conteúd
 
 ### O que chega a você, na prática: um exemplo fictício
 Quando você pede sugestões de conexão, o plugin mostra uma ficha por pessoa e uma por empresa. Só entram
-as camadas pública (cadastro e carreira) e liberada (frases, temas e estilo aprovados para exibição).
+as camadas pública (cadastro e carreira) e liberada (experiências revisadas, temas e estilo aprovados para exibição).
 A camada interna da Endeavor, com as decisões que a pessoa viveu, os casos que ela mentorou, as
 prioridades e os concorrentes das empresas, não chega a você. Ela só ajuda a escolher quem sugerir e a
 escrever o motivo da sugestão, e o texto passa por um teste de vazamento antes de aparecer.
@@ -205,9 +210,12 @@ escrever o motivo da sugestão, e o texto passa por um teste de vazamento antes 
 **Pessoa: Paula Ferraz, mentora, fundadora e CEO da Norte Growth (fictícia)**
 
 - Nome, cargo atual (CEO e fundadora) e empresa atual (Norte Growth), com o link do LinkedIn.
-- Por que sugerir: até duas frases liberadas. No caso dela: "Foi VP de vendas da Trilha Software,
-  plataforma de gestão de frotas para transportadoras, e liderou a expansão comercial da empresa para o
-  México." e "Fundou e lidera a Norte Growth, que ajuda scale-ups B2B a montar a operação de receita."
+- Por que sugerir: o cargo e os temas dela, e uma frase que cita a experiência que encaixa no seu
+  desafio. No caso dela: "Liderou a expansão comercial da Trilha Software para o México, montando o
+  time de vendas local."
+- Até três experiências que ela viveu, já revisadas para a rede, quando você pede para saber mais. No
+  caso dela, por exemplo: "Montou o primeiro time de vendas enterprise da Trilha Software e saiu da
+  venda direta em 2020."
 - Trajetória, até cinco cargos com o período: CEO e fundadora na Norte Growth (2022 até hoje),
   conselheira na Casa Verde Alimentos (2023 até hoje), VP de vendas na Trilha Software (2018 a 2022),
   gerente comercial na Rota Certa Logística (2014 a 2018) e analista de inteligência de mercado na
@@ -220,7 +228,8 @@ escrever o motivo da sugestão, e o texto passa por um teste de vazamento antes 
   que viveu e fecha com um plano de 90 dias."
 - Como se preparar: "Leve o funil dos últimos seis meses e a estrutura atual do time; a conversa rende
   mais quando parte dos dados."
-- O motivo da sugestão para o seu desafio e o que você sai da conversa sabendo, escritos pela IA.
+- O motivo da sugestão para o seu desafio, o que você sai da conversa sabendo e o que vale perguntar a
+  ela, escritos pela IA para ela, a partir da experiência que encaixa.
 - O que não aparece: telefone, e-mail, as decisões que ela viveu, as empresas que ela mentorou, notas ou
   avaliações das mentorias dela.
 
@@ -235,8 +244,9 @@ escrever o motivo da sugestão, e o texto passa por um teste de vazamento antes 
 - Na busca livre à rede, também o setor (software de gestão de frotas e logística), o modelo de negócio
   (B2B), quem costuma ser o comprador (diretores de operação de transportadoras), o ano de fundação
   (2015), o tipo de organização (operadora) e se é da rede Endeavor (sim).
-- O que não aparece: faturamento, captação, prioridades, mentorias, decisões, concorrentes nem
-  investidores da empresa.
+- O nível de maturidade da empresa na régua da Endeavor (por exemplo, 3, Escala) e os investidores dela.
+- O que não aparece: faturamento, captação, prioridades, mentorias, decisões nem concorrentes da
+  empresa.
 
 ### Seus conectores e a sua stack: quem faz o quê
 O plugin **pode pedir ao seu assistente de IA** que use os conectores que **você** já autorizou ali (agenda,
