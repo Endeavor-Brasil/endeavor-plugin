@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 11 (novembro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 12 (novembro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
@@ -99,7 +99,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 11 (novembro de 2026),
 
 # Política de dados do plugin Endeavor
 
-Versão 11 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 12 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -180,6 +180,11 @@ founders buscam a rede. O que os outros veem de você está no fim desta seção
 - **A Biblioteca da Rede**: aprendizados de mentorias, primeiras conversas e acompanhamentos de
   empresas da rede, com autores anonimizados e números só como faixa ou mediana de pelo menos três
   empresas. Os playbooks da Biblioteca, escritos por especialistas, levam o nome de quem escreveu.
+- **Lições e casos vividos das mentorias** (em teste, ainda fora do ambiente que você usa): o que um
+  mentor recomendou ou viveu, na versão revisada para a rede, sem o nome de quem disse nem da empresa
+  da conversa, a não ser quando a pessoa liberou. De uma mesma conversa vêm no máximo dois, e de uma
+  mesma empresa no máximo três, para que juntar pedaços não revele de onde vieram. Lição de conversa
+  com uma concorrente da sua empresa não aparece.
 
 Sobre outras empresas você **não** recebe: faturamento, captação, valuation, número de funcionários,
 notas de mentoria, nem detalhe de sessão. Dos assuntos que aquela empresa levou à rede, você vê só o
@@ -463,8 +468,10 @@ vai para a telemetria.
   desafios, escrever a página de cada desafio, curar o dossiê e o seu perfil, responder perguntas à
   Biblioteca (com o perfil da empresa, até cinco desafios e a memória das suas conversas), filtrar e
   ordenar as sugestões de conexão (com o desafio e uma ficha restrita de cada candidato, mais busca na
-  web) e as buscas na rede (com a sua pergunta e a ficha pública de cada pessoa ou empresa que passou
-  nos filtros).
+  web), as buscas na rede (com a sua pergunta e a ficha pública de cada pessoa ou empresa que passou
+  nos filtros) e a busca de lições das mentorias (com a sua pergunta, a ficha pública da sua empresa e
+  o material interno das mentorias, inclusive trechos das transcrições, que o modelo lê só para
+  escolher e não devolve).
 - **Para não te fazer repetir contexto.** A memória e o dossiê existem para que a segunda conversa
   comece mais adiante que a primeira.
 - **Para preparar uma conexão que você autorizou.** O mentor recebe o convite e o documento descritos
@@ -487,7 +494,8 @@ Nas conexões com a rede, a escolha das pessoas e empresas usa também informaç
 sobre a trajetória delas, que não é mostrada a você. O que aparece vem de dados liberados para
 exibição e do texto que a IA escreve, como o motivo de cada sugestão. Esse texto passa por um teste
 automático de vazamento antes de chegar a você, e o que não passar não é mostrado. As demais
-respostas já partem só dos dados que a seção 1 libera para você. A exceção é o nível de maturidade
+respostas já partem só dos dados que a seção 1 libera para você. Na busca de lições das mentorias, a
+escolha lê o material interno e o que chega a você é só a versão revisada para a rede. A exceção é o nível de maturidade
 das empresas no histórico de cargos das pessoas, que aparece na busca livre à rede.
 
 ### O que não fazemos

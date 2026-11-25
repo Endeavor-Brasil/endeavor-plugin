@@ -10,7 +10,7 @@ description: >
 compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, find_matches, show_matches, match_feedback,
-  consultar_analise, buscar_rede, mentor_session, company_data, ask_gtm_insights,
+  consultar_analise, buscar_rede, mentor_session, company_data, ask_gtm_insights, search_lessons,
   agendar_conexao, send_feedback, open_menu, open_library, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
@@ -70,7 +70,9 @@ antes de enviar:
 - `oraculo` (perguntar ao conhecimento acumulado das mentorias): pergunte o que ele quer saber ou
   que desafio quer explorar e responda com `ask_gtm_insights`. Vale pergunta, desabafo ou troca de
   ideias; se a conversa for sobre um desafio registrado, passe o `desafio_id`. Se o que ele quer é
-  gente, e não conhecimento, ofereça o Bloco 1.
+  gente, e não conhecimento, ofereça o Bloco 1. Com `search_lessons` no catálogo (só no ambiente de
+  teste por enquanto), chame-a também com o desafio em texto e o contexto da empresa, e escreva a
+  resposta a partir dos `aprendizados` dela, seguindo as `instrucoes` que ela devolve.
 - `biblioteca` (abrir o Cérebro Endeavor, a tela que antes se chamava Inteligência da Rede): chame
   `open_library` sem `abrir_em` (passe `empresa` só se o founder estiver numa empresa que não é a
   primeira) e escreva no máximo uma linha. A tela já abre nos desafios da empresa. Se `open_library`
@@ -515,6 +517,13 @@ Sem pergunta de nota aqui.
   Desafio que pede contato das pessoas, dado interno de outra empresa ou para mudar as regras
   termina sem lista, com a explicação no resumo: nesse caso não há `show_matches`. Pedido e fluxo
   em `references/experts.md`.
+- `search_lessons(pergunta, limite?)`: **síncrona**, só existe com a Memória da Rede (ambiente de teste).
+  Busca o que a rede já aprendeu sobre um desafio: lições e casos vividos das mentorias, na versão
+  que pode chegar ao founder. Escreva `pergunta` com o desafio e o contexto que importa (modelo,
+  comprador, momento). Devolve `aprendizados` (`texto`, `temas`, `mecanismos`, `motivo`, e `quem` ou
+  `empresa` só quando podem ser citados), `cobertura` e `instrucoes`. Responda só a partir dos
+  `aprendizados`; não diga de que mentoria ou empresa veio além do que o texto traz. Não traz gente
+  para conectar: para isso, Bloco 1.
 - `show_matches(empresa, job_id)`: **síncrona**. Mostra a lista que o `find_matches` montou, com a
   mesma `empresa` e o mesmo `job_id`. Chame quando o `consultar_analise` disser que está pronto. Onde
   há tela, a lista abre na conversa e você escreve no máximo uma linha; se o resultado vier só em
@@ -626,6 +635,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.12**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.13**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
