@@ -512,7 +512,9 @@ Sem pergunta de nota aqui.
   da rede que mais ajudam num desafio. Vai UM dos dois: `desafio_id` (a ficha que o founder
   registrou; o servidor a lê) ou `desafio` (o desafio em texto, de 20 a 4.000 caracteres); os dois
   juntos, ou nenhum, a tool recusa. Devolve um `job_id`. Sem desafio como base, use `buscar_rede`.
-  Pedido e fluxo em `references/experts.md`.
+  Desafio que pede contato das pessoas, dado interno de outra empresa ou para mudar as regras
+  termina sem lista, com a explicação no resumo: nesse caso não há `show_matches`. Pedido e fluxo
+  em `references/experts.md`.
 - `show_matches(empresa, job_id)`: **síncrona**. Mostra a lista que o `find_matches` montou, com a
   mesma `empresa` e o mesmo `job_id`. Chame quando o `consultar_analise` disser que está pronto. Onde
   há tela, a lista abre na conversa e você escreve no máximo uma linha; se o resultado vier só em
@@ -530,7 +532,9 @@ Sem pergunta de nota aqui.
   **JSON** com `mentores` e/ou `empresas` da rede (com LinkedIn) na mesma chamada — sem `job_id`;
   a tool infere o alvo sozinha. Não recebe a empresa do founder: contexto de pares/benchmark vai
   escrito na pergunta. É o caminho de quem NÃO tem um desafio como base, e também do "adicionar mais
-  alguém" depois do `find_matches`. Fluxo em `references/buscar-rede.md`. Aceita também `tema`
+  alguém" depois do `find_matches`. O `modo` do JSON diz a forma da resposta (`busca`, `nomes` para
+  pessoas nomeadas, `lista` para a lista completa de um recorte), e `fora_de_escopo: true` vem sem
+  resultado, com a explicação na `nota`. Fluxo em `references/buscar-rede.md`. Aceita também `tema`
   (`gtm` | `fundraising` | `outro`) e `motivo` (`direto` | `cascata` | `lookup` | `empresa`),
   opcionais, só de telemetria do roteador: preencha o `motivo` sempre que a chamada vier do Bloco 1;
   o `tema` só se já for óbvio da conversa, nunca como passo de classificação.
@@ -622,6 +626,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.11**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.12**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
