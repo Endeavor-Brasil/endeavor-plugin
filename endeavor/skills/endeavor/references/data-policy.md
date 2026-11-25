@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 12 (novembro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
@@ -99,7 +99,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 12 (novembro de 2026),
 
 # Política de dados do plugin Endeavor
 
-Versão 12 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 13 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -182,7 +182,10 @@ founders buscam a rede. O que os outros veem de você está no fim desta seção
   empresas. Os playbooks da Biblioteca, escritos por especialistas, levam o nome de quem escreveu.
 - **Lições e casos vividos das mentorias** (em teste, ainda fora do ambiente que você usa): o que um
   mentor recomendou ou viveu, na versão revisada para a rede, sem o nome de quem disse nem da empresa
-  da conversa, a não ser quando a pessoa liberou. De uma mesma conversa vêm no máximo dois, e de uma
+  da conversa, a não ser quando a pessoa liberou. Lição que ainda não tem a versão revisada chega só
+  com a recomendação e com quando ela vale ou não vale, sem a história, sem número de negócio e sem
+  citar a empresa da conversa, quem disse ou quem essa pessoa mentorou; a que não passa nesse teste
+  automático não aparece. De uma mesma conversa vêm no máximo dois, e de uma
   mesma empresa no máximo três, para que juntar pedaços não revele de onde vieram. Lição de conversa
   com uma concorrente da sua empresa não aparece.
 

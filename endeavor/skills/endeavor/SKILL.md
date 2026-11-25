@@ -521,7 +521,8 @@ Sem pergunta de nota aqui.
   Busca o que a rede já aprendeu sobre um desafio: lições e casos vividos das mentorias, na versão
   que pode chegar ao founder. Escreva `pergunta` com o desafio e o contexto que importa (modelo,
   comprador, momento). Devolve `aprendizados` (`texto`, `temas`, `mecanismos`, `motivo`, e `quem` ou
-  `empresa` só quando podem ser citados), `cobertura` e `instrucoes`. Responda só a partir dos
+  `empresa` só quando podem ser citados, e `versao`: `generica` é só a recomendação e as condições, sem a
+  história, e você não inventa o caso por trás), `cobertura` e `instrucoes`. Responda só a partir dos
   `aprendizados`; não diga de que mentoria ou empresa veio além do que o texto traz. Não traz gente
   para conectar: para isso, Bloco 1.
 - `show_matches(empresa, job_id)`: **síncrona**. Mostra a lista que o `find_matches` montou, com a
@@ -635,6 +636,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.13**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.14**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
