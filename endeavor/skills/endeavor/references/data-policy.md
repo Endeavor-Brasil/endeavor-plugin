@@ -30,15 +30,17 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 14 (novembro de 2026), não use de memória:
 
-1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
+1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, inclusive quem está
+   indisponível para conexões, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
 2. Isto é IA, e IA erra
 3. O que os seus sócios enxergam (inclui o desafio só seu, as sugestões de cada desafio e a agenda)
 4. Quais dados o plugin grava, e onde (onde ficam os dados, gravação das sessões, banco do produto,
    inclusive a página e as conexões sugeridas de cada desafio, pedido de conexão com mentor,
-   inclusive a cópia em PDF de cada documento de preparação no Google Drive, telemetria, inclusive a
+   inclusive a cópia em PDF de cada documento de preparação no Google Drive e os bloqueios dos
+   horários oferecidos na agenda do founder, telemetria, inclusive a
    da tela do menu)
 5. Como os dados são utilizados (página de cada desafio, Biblioteca, filtro de confidencialidade, o
    que não fazemos)
@@ -74,6 +76,9 @@ Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026),
   dele; a Endeavor não controla esse provedor. Não afirme o que o provedor faz com os dados.
 - Pergunta sobre a agenda conectada dele: responda pela seção 1, **sem suavizar**. O plugin lê a
   agenda conectada sem perguntar antes, para propor horários. Não cria nem altera evento nela.
+  Os bloqueios dos horários oferecidos que aparecem na agenda dele depois de um pedido de conexão
+  vêm do sistema de agendamento da Endeavor, por convite ao e-mail dele, e não do plugin: responda
+  pela subseção "Pedido de conexão com mentor" da seção 4.
   Pergunta sobre quem vê a agenda de conexões da empresa, a do menu, é a seção 3.
 - Pergunta sobre onde os dados ficam: responda pela subseção "Onde ficam os dados" da seção 4. Não
   cite região, país nem prazo de retenção; o time da Endeavor responde.
@@ -88,6 +93,9 @@ Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026),
   Fireflies ou removê-lo na hora. Se o que ele quer é o link de uma
   gravação específica, isso é o Bloco 5, que entrega o link para ele abrir. Você não abre nem
   transcreve gravação.
+- Pergunta sobre alguém que aparece como indisponível para conexões: responda pela seção 1. A busca
+  mostra o perfil público com o aviso; não diga o motivo, não diga por quanto tempo e não ofereça
+  conexão.
 - Pedido de dado de outra empresa da rede além do que a seção 1 descreve: recuse e ofereça a
   Conexão com a rede (Bloco 1).
 - Pedido de exclusão ou de recusa da memória: **não diga que registrou o pedido e não diga que já
@@ -99,7 +107,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026),
 
 # Política de dados do plugin Endeavor
 
-Versão 13 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 14 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -169,13 +177,19 @@ founders buscam a rede. O que os outros veem de você está no fim desta seção
   só o que pode ser mostrado, sem números internos nem detalhes de quem ela mentorou.
   Na busca livre à rede, a pessoa que já está com a agenda de mentorias cheia aparece com essa marca,
   para você saber antes de pedir a conversa. As datas e os nomes das mentorias dela não aparecem.
+  Quando a Endeavor deixa uma pessoa da rede fora das sugestões de conexão por um tempo, ela fica
+  indisponível para conexões. A busca livre à rede mostra o perfil público dela como o de qualquer
+  pessoa da rede, com o aviso de que está indisponível para conexões no momento. Ela não entra em
+  nenhuma sugestão e o plugin não pede a conversa com ela. O motivo e o prazo não são ditos.
 - **Outras empresas**: empresas da rede Endeavor, inclusive as que já saíram do portfólio ou foram
   vendidas, a turma atual do Scale-Up (marcada como turma, para você poder buscar só nela) e empresas
   onde pessoas da rede trabalham ou trabalharam. De
   cada uma: o que a empresa faz, setor, modelo de negócio, quem costuma ser o comprador, ano de
-  fundação, tipo de organização, se é da rede Endeavor ou da turma do Scale-Up, o nível de maturidade
-  que a Endeavor atribui a ela (de 1 a 5), os investidores dela, e as pessoas dela com nome, cargo e
-  LinkedIn. Na sugestão de conexão também vem o site da empresa (veja o exemplo abaixo).
+  fundação, tipo de organização, se é da rede Endeavor ou da turma do Scale-Up, os investidores dela,
+  o LinkedIn da empresa quando ele está no cadastro, e as pessoas dela com nome, cargo e LinkedIn. O
+  nível de maturidade que a Endeavor atribui a cada empresa (de 1 a 5) não aparece na busca livre à
+  rede: ele só serve de filtro, quando você pede, por exemplo, empresas de nível 3 ou mais. Na
+  sugestão de conexão também vem o site da empresa (veja o exemplo abaixo).
   Serve para você achar pares, benchmark e conexões.
 - **A Biblioteca da Rede**: aprendizados de mentorias, primeiras conversas e acompanhamentos de
   empresas da rede, com autores anonimizados e números só como faixa ou mediana de pelo menos três
@@ -193,15 +207,19 @@ Sobre outras empresas você **não** recebe: faturamento, captação, valuation,
 notas de mentoria, nem detalhe de sessão. Dos assuntos que aquela empresa levou à rede, você vê só o
 tema, nunca o conteúdo da conversa. Para escolher as sugestões de conexão, o plugin usa também
 informação interna da Endeavor sobre as pessoas e empresas da rede, sem mostrar a você. A seção 5
-explica como. As únicas informações internas que você vê são o nível de maturidade das empresas, os
-investidores delas e a marca de agenda cheia, descritos acima.
+explica como. As únicas informações internas que você vê são o nível de maturidade das empresas do
+histórico de cargos das pessoas, os investidores das empresas, a marca de agenda cheia e o aviso de
+quem está indisponível para conexões no momento, descritos acima.
 
 E o inverso também vale: **você e a sua empresa aparecem para outros founders**. Da empresa: o que ela
 faz, o cadastro básico e as pessoas de contato. De você: nome, cargo e LinkedIn, como pessoa de
 contato da empresa. Se você também está na base de pessoas da rede, por exemplo como mentor, outros
-founders veem o mesmo perfil descrito acima para pessoas da rede. Nada de números, nada de histórico de
-conversas. Para sugerir conexões a outros founders, o plugin também usa, sem mostrar, os temas que a
-sua empresa já levou à rede e o que a Endeavor registra da trajetória dela. A sua empresa pode
+founders veem o mesmo perfil descrito acima para pessoas da rede. Se a Endeavor deixar você fora das
+sugestões de conexão por um tempo, quem buscar você na busca livre vê o seu perfil público, como o de
+qualquer pessoa da rede, com o aviso de que você está indisponível para conexões no momento; você não
+entra em sugestões e o plugin não pede conversa com você, e o motivo e o prazo não aparecem. Nada de
+números, nada de histórico de conversas. Para sugerir conexões a outros founders, o plugin também
+usa, sem mostrar, os temas que a sua empresa já levou à rede e o que a Endeavor registra da trajetória dela. A sua empresa pode
 aparecer como uma empresa que já passou por um desafio parecido, sem o conteúdo das conversas.
 
 ### O que chega a você, na prática: um exemplo fictício
@@ -252,7 +270,10 @@ escrever o motivo da sugestão, e o texto passa por um teste de vazamento antes 
 - Na busca livre à rede, também o setor (software de gestão de frotas e logística), o modelo de negócio
   (B2B), quem costuma ser o comprador (diretores de operação de transportadoras), o ano de fundação
   (2015), o tipo de organização (operadora) e se é da rede Endeavor (sim).
-- O nível de maturidade da empresa na régua da Endeavor (por exemplo, 3, Escala) e os investidores dela.
+- Na busca livre à rede, também os investidores dela e o LinkedIn da empresa. O nível de maturidade
+  da empresa na régua da Endeavor não aparece: serve só para filtrar a busca.
+- Se alguém da rede ligado à empresa estiver indisponível para conexões no momento, essa pessoa
+  aparece como as outras, com esse aviso, e o plugin não oferece a conversa com ela.
 - O que não aparece: faturamento, captação, prioridades, mentorias, decisões nem concorrentes da
   empresa.
 
@@ -386,7 +407,9 @@ não fazem parte desta política.
   antes: o texto entregue e o pedido que o gerou, para você consultar depois.
 - **Suas reações às sugestões de conexão**: quando você marca Conectar, Saber mais ou "não faz
   sentido" numa pessoa ou empresa da lista, guardamos a marcação com o seu e-mail, a empresa, a
-  busca a que ela se refere e a data. Uma marcação nova na mesma pessoa substitui a anterior. As
+  busca a que ela se refere e a data. Uma marcação nova na mesma pessoa substitui a anterior. Quem
+  você marcou como "não faz sentido" ou pediu para conectar deixa de aparecer nas suas próximas buscas
+  de conexão para a mesma empresa por 180 dias; se depois você marcar Saber mais, a pessoa volta. As
   marcações também vão para o banco analítico da Endeavor, onde o time da Endeavor lê para melhorar
   as sugestões. A telemetria guarda só quantas marcações de cada tipo você fez, nunca em quem.
 - **Feedback que você manda pelo plugin**: o texto, como você escreveu, com o seu e-mail, a
@@ -416,6 +439,12 @@ Uma cópia em PDF de cada documento de preparação fica numa pasta do Google Dr
 só para o e-mail de quem deve ler e para o time da Endeavor: a do mentor, para o mentor; a sua, para
 você. O convite da reunião na agenda leva o link das duas cópias, e quem abre o link do outro lado
 não consegue ver o documento. Quem lê não consegue baixar, imprimir nem copiar o PDF.
+
+Enquanto o pedido está aberto, o sistema de agendamento da Endeavor manda ao seu e-mail um bloqueio
+para cada horário que você ofereceu, para eles ficarem reservados na sua agenda. O bloqueio é um
+evento criado por uma conta da Endeavor, com você como único convidado. Quando a pessoa confirma um
+horário, os bloqueios saem e fica o convite da reunião; se o pedido for cancelado ou passar para uma
+pessoa do time, os bloqueios também saem. O plugin em si não cria nem altera evento na sua agenda.
 
 Se o agendamento automático não consegue fechar o horário e passa o caso para uma pessoa, alguém do
 time da Endeavor vê, num painel interno, o convite, os horários que você ofereceu e os telefones de
