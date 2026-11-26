@@ -407,7 +407,9 @@ não fazem parte desta política.
   antes: o texto entregue e o pedido que o gerou, para você consultar depois.
 - **Suas reações às sugestões de conexão**: quando você marca Conectar, Saber mais ou "não faz
   sentido" numa pessoa ou empresa da lista, guardamos a marcação com o seu e-mail, a empresa, a
-  busca a que ela se refere e a data. Uma marcação nova na mesma pessoa substitui a anterior. As
+  busca a que ela se refere e a data. Uma marcação nova na mesma pessoa substitui a anterior. Quem
+  você marcou como "não faz sentido" ou pediu para conectar deixa de aparecer nas suas próximas buscas
+  de conexão para a mesma empresa por 180 dias; se depois você marcar Saber mais, a pessoa volta. As
   marcações também vão para o banco analítico da Endeavor, onde o time da Endeavor lê para melhorar
   as sugestões. A telemetria guarda só quantas marcações de cada tipo você fez, nunca em quem.
 - **Feedback que você manda pelo plugin**: o texto, como você escreveu, com o seu e-mail, a
