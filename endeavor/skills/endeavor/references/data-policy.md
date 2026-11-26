@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 14 (novembro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
@@ -38,7 +38,8 @@ Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026),
 3. O que os seus sócios enxergam (inclui o desafio só seu, as sugestões de cada desafio e a agenda)
 4. Quais dados o plugin grava, e onde (onde ficam os dados, gravação das sessões, banco do produto,
    inclusive a página e as conexões sugeridas de cada desafio, pedido de conexão com mentor,
-   inclusive a cópia em PDF de cada documento de preparação no Google Drive, telemetria, inclusive a
+   inclusive a cópia em PDF de cada documento de preparação no Google Drive e os bloqueios dos
+   horários oferecidos na agenda do founder, telemetria, inclusive a
    da tela do menu)
 5. Como os dados são utilizados (página de cada desafio, Biblioteca, filtro de confidencialidade, o
    que não fazemos)
@@ -74,6 +75,9 @@ Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026),
   dele; a Endeavor não controla esse provedor. Não afirme o que o provedor faz com os dados.
 - Pergunta sobre a agenda conectada dele: responda pela seção 1, **sem suavizar**. O plugin lê a
   agenda conectada sem perguntar antes, para propor horários. Não cria nem altera evento nela.
+  Os bloqueios dos horários oferecidos que aparecem na agenda dele depois de um pedido de conexão
+  vêm do sistema de agendamento da Endeavor, por convite ao e-mail dele, e não do plugin: responda
+  pela subseção "Pedido de conexão com mentor" da seção 4.
   Pergunta sobre quem vê a agenda de conexões da empresa, a do menu, é a seção 3.
 - Pergunta sobre onde os dados ficam: responda pela subseção "Onde ficam os dados" da seção 4. Não
   cite região, país nem prazo de retenção; o time da Endeavor responde.
@@ -99,7 +103,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026),
 
 # Política de dados do plugin Endeavor
 
-Versão 13 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 14 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -416,6 +420,12 @@ Uma cópia em PDF de cada documento de preparação fica numa pasta do Google Dr
 só para o e-mail de quem deve ler e para o time da Endeavor: a do mentor, para o mentor; a sua, para
 você. O convite da reunião na agenda leva o link das duas cópias, e quem abre o link do outro lado
 não consegue ver o documento. Quem lê não consegue baixar, imprimir nem copiar o PDF.
+
+Enquanto o pedido está aberto, o sistema de agendamento da Endeavor manda ao seu e-mail um bloqueio
+para cada horário que você ofereceu, para eles ficarem reservados na sua agenda. O bloqueio é um
+evento criado por uma conta da Endeavor, com você como único convidado. Quando a pessoa confirma um
+horário, os bloqueios saem e fica o convite da reunião; se o pedido for cancelado ou passar para uma
+pessoa do time, os bloqueios também saem. O plugin em si não cria nem altera evento na sua agenda.
 
 Se o agendamento automático não consegue fechar o horário e passa o caso para uma pessoa, alguém do
 time da Endeavor vê, num painel interno, o convite, os horários que você ofereceu e os telefones de

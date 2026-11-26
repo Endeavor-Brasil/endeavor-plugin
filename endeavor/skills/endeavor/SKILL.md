@@ -29,6 +29,7 @@ servidor; você é fino e conversacional.
 - Client fino: você conversa e roteia. O servidor detém dados, match e curadoria.
 - Mostre o mínimo de processo. O founder não vê "deixa eu puxar", "cruzando", nem dado interno.
 - O resultado vem pronto do servidor. Apresente o que voltar, não reordene nem acrescente.
+- Todo LinkedIn que você mostra ao founder na conversa vira link markdown clicável, com o nome da pessoa ou da empresa como texto e a URL completa, com `https://`: [João Vitor Innecco](https://www.linkedin.com/in/joaoinnecco). Vale em qualquer bloco: `buscar_rede`, `show_matches` em texto, o Cérebro Endeavor, o menu em texto, a agenda. Nunca deixe o endereço como texto puro (`linkedin.com/in/joaoinnecco`), que não abre. Use a URL que a tool devolveu; se ela vier sem `https://`, acrescente, e nunca monte uma URL que a tool não deu. A única exceção é o texto do convite ao mentor (`references/scheduling.md`), que vai por WhatsApp e segue a regra dele.
 
 ## Fluxo
 
@@ -636,6 +637,6 @@ Bloco 8, porque o reference É o conteúdo a ser entregue, não só o roteiro.
 
 ## Versão desta skill
 
-Esta skill é a **0.9.14**. Se alguém perguntar qual versão você carregou, responda com esse número e
+Esta skill é a **0.9.15**. Se alguém perguntar qual versão você carregou, responda com esse número e
 nada mais. Serve para conferir, num teste, se a versão nova entrou de verdade ou se o client serviu
 uma cópia em cache.
