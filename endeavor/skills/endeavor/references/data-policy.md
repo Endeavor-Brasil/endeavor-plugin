@@ -32,7 +32,8 @@ texto e os guardrails, é interno e nunca é exibido.
 
 Para ancorar a resposta rápido. O corpo está na Versão 14 (novembro de 2026), não use de memória:
 
-1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
+1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, inclusive quem está
+   indisponível para conexões, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
 2. Isto é IA, e IA erra
 3. O que os seus sócios enxergam (inclui o desafio só seu, as sugestões de cada desafio e a agenda)
@@ -92,6 +93,8 @@ Para ancorar a resposta rápido. O corpo está na Versão 14 (novembro de 2026),
   Fireflies ou removê-lo na hora. Se o que ele quer é o link de uma
   gravação específica, isso é o Bloco 5, que entrega o link para ele abrir. Você não abre nem
   transcreve gravação.
+- Pergunta sobre alguém que aparece como indisponível para conexões: responda pela seção 1. A busca
+  mostra só o nome e o aviso; não diga o motivo, não diga por quanto tempo e não ofereça conexão.
 - Pedido de dado de outra empresa da rede além do que a seção 1 descreve: recuse e ofereça a
   Conexão com a rede (Bloco 1).
 - Pedido de exclusão ou de recusa da memória: **não diga que registrou o pedido e não diga que já
@@ -173,13 +176,20 @@ founders buscam a rede. O que os outros veem de você está no fim desta seção
   só o que pode ser mostrado, sem números internos nem detalhes de quem ela mentorou.
   Na busca livre à rede, a pessoa que já está com a agenda de mentorias cheia aparece com essa marca,
   para você saber antes de pedir a conversa. As datas e os nomes das mentorias dela não aparecem.
+  Quando a Endeavor deixa uma pessoa da rede fora das sugestões de conexão por um tempo, ela fica
+  indisponível para conexões: não entra em nenhuma sugestão e o plugin não pede a conversa com ela.
+  Se você buscar essa pessoa pelo nome, ou buscar a empresa dela ou quem trabalha lá, a busca
+  livre mostra só o nome dela e que ela faz parte da rede, mas está indisponível para conexões no
+  momento. Nada além disso: nem cargo, biografia, LinkedIn, experiências ou o motivo.
 - **Outras empresas**: empresas da rede Endeavor, inclusive as que já saíram do portfólio ou foram
   vendidas, a turma atual do Scale-Up (marcada como turma, para você poder buscar só nela) e empresas
   onde pessoas da rede trabalham ou trabalharam. De
   cada uma: o que a empresa faz, setor, modelo de negócio, quem costuma ser o comprador, ano de
-  fundação, tipo de organização, se é da rede Endeavor ou da turma do Scale-Up, o nível de maturidade
-  que a Endeavor atribui a ela (de 1 a 5), os investidores dela, e as pessoas dela com nome, cargo e
-  LinkedIn. Na sugestão de conexão também vem o site da empresa (veja o exemplo abaixo).
+  fundação, tipo de organização, se é da rede Endeavor ou da turma do Scale-Up, os investidores dela,
+  o LinkedIn da empresa quando ele está no cadastro, e as pessoas dela com nome, cargo e LinkedIn. O
+  nível de maturidade que a Endeavor atribui a cada empresa (de 1 a 5) não aparece na busca livre à
+  rede: ele só serve de filtro, quando você pede, por exemplo, empresas de nível 3 ou mais. Na
+  sugestão de conexão também vem o site da empresa (veja o exemplo abaixo).
   Serve para você achar pares, benchmark e conexões.
 - **A Biblioteca da Rede**: aprendizados de mentorias, primeiras conversas e acompanhamentos de
   empresas da rede, com autores anonimizados e números só como faixa ou mediana de pelo menos três
@@ -197,15 +207,18 @@ Sobre outras empresas você **não** recebe: faturamento, captação, valuation,
 notas de mentoria, nem detalhe de sessão. Dos assuntos que aquela empresa levou à rede, você vê só o
 tema, nunca o conteúdo da conversa. Para escolher as sugestões de conexão, o plugin usa também
 informação interna da Endeavor sobre as pessoas e empresas da rede, sem mostrar a você. A seção 5
-explica como. As únicas informações internas que você vê são o nível de maturidade das empresas, os
-investidores delas e a marca de agenda cheia, descritos acima.
+explica como. As únicas informações internas que você vê são o nível de maturidade das empresas do
+histórico de cargos das pessoas, os investidores das empresas, a marca de agenda cheia e o aviso de
+quem está indisponível para conexões no momento, descritos acima.
 
 E o inverso também vale: **você e a sua empresa aparecem para outros founders**. Da empresa: o que ela
 faz, o cadastro básico e as pessoas de contato. De você: nome, cargo e LinkedIn, como pessoa de
 contato da empresa. Se você também está na base de pessoas da rede, por exemplo como mentor, outros
-founders veem o mesmo perfil descrito acima para pessoas da rede. Nada de números, nada de histórico de
-conversas. Para sugerir conexões a outros founders, o plugin também usa, sem mostrar, os temas que a
-sua empresa já levou à rede e o que a Endeavor registra da trajetória dela. A sua empresa pode
+founders veem o mesmo perfil descrito acima para pessoas da rede. Se a Endeavor deixar você fora das
+sugestões de conexão por um tempo, quem buscar pelo seu nome ou pela sua empresa vê só o seu nome e
+que você faz parte da rede, mas está indisponível para conexões no momento. Nada de números, nada de
+histórico de conversas. Para sugerir conexões a outros founders, o plugin também usa, sem mostrar, os
+temas que a sua empresa já levou à rede e o que a Endeavor registra da trajetória dela. A sua empresa pode
 aparecer como uma empresa que já passou por um desafio parecido, sem o conteúdo das conversas.
 
 ### O que chega a você, na prática: um exemplo fictício
@@ -256,7 +269,10 @@ escrever o motivo da sugestão, e o texto passa por um teste de vazamento antes 
 - Na busca livre à rede, também o setor (software de gestão de frotas e logística), o modelo de negócio
   (B2B), quem costuma ser o comprador (diretores de operação de transportadoras), o ano de fundação
   (2015), o tipo de organização (operadora) e se é da rede Endeavor (sim).
-- O nível de maturidade da empresa na régua da Endeavor (por exemplo, 3, Escala) e os investidores dela.
+- Na busca livre à rede, também os investidores dela e o LinkedIn da empresa. O nível de maturidade
+  da empresa na régua da Endeavor não aparece: serve só para filtrar a busca.
+- Se alguém da rede ligado à empresa estiver indisponível para conexões no momento, aparece só o nome
+  dessa pessoa, com esse aviso, e o plugin não oferece a conversa com ela.
 - O que não aparece: faturamento, captação, prioridades, mentorias, decisões nem concorrentes da
   empresa.
 
