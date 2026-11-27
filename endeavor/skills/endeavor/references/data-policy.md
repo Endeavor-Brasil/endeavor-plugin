@@ -30,7 +30,7 @@ texto e os guardrails, é interno e nunca é exibido.
 
 ## Mapa das seções do corpo
 
-Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026), não use de memória:
+Para ancorar a resposta rápido. O corpo está na Versão 14 (novembro de 2026), não use de memória:
 
 1. Quais dados o plugin acessa (empresa e agenda, você, rede e Biblioteca, exemplo fictício de ficha,
    seus conectores e as rotinas prontas, o que não acessa)
@@ -99,7 +99,7 @@ Para ancorar a resposta rápido. O corpo está na Versão 13 (novembro de 2026),
 
 # Política de dados do plugin Endeavor
 
-Versão 13 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
+Versão 14 · novembro de 2026. Vale para o plugin Endeavor rodando no assistente de IA do founder (Claude, ChatGPT ou outro LLM).
 
 ---
 
@@ -188,6 +188,14 @@ founders buscam a rede. O que os outros veem de você está no fim desta seção
   automático não aparece. De uma mesma conversa vêm no máximo dois, e de uma
   mesma empresa no máximo três, para que juntar pedaços não revele de onde vieram. Lição de conversa
   com uma concorrente da sua empresa não aparece.
+- **Mentorias inteiras em perguntas e respostas** (em teste, ainda fora do ambiente que você usa): a
+  conversa de uma mentoria da rede sobre um desafio parecido com o seu, na versão revisada para a
+  rede: as perguntas na forma genérica e o que o mentor respondeu, com uma linha de contexto (setor,
+  modelo e porte, nunca o nome). Não vêm o nome de quem participou, o da empresa mentorada nem valores
+  em dinheiro; cada pergunta e resposta passa por um teste automático de nomes e por uma checagem
+  que barra o que, somado, revelaria de que empresa a conversa veio, e o que não passa não aparece.
+  Não aparecem mentorias da sua empresa ou de concorrentes dela, nem as feitas por alguém de uma
+  delas, nem as que receberam nota baixa, nem as com mais de 18 meses (12 quando o assunto é IA).
 
 Sobre outras empresas você **não** recebe: faturamento, captação, valuation, número de funcionários,
 notas de mentoria, nem detalhe de sessão. Dos assuntos que aquela empresa levou à rede, você vê só o
@@ -498,7 +506,9 @@ sobre a trajetória delas, que não é mostrada a você. O que aparece vem de da
 exibição e do texto que a IA escreve, como o motivo de cada sugestão. Esse texto passa por um teste
 automático de vazamento antes de chegar a você, e o que não passar não é mostrado. As demais
 respostas já partem só dos dados que a seção 1 libera para você. Na busca de lições das mentorias, a
-escolha lê o material interno e o que chega a você é só a versão revisada para a rede. A exceção é o nível de maturidade
+escolha lê o material interno e o que chega a você é só a versão revisada para a rede. Na busca de
+mentorias inteiras, também: a busca e as travas leem o material interno, e o texto que chega a você é
+só a versão revisada. A exceção é o nível de maturidade
 das empresas no histórico de cargos das pessoas, que aparece na busca livre à rede.
 
 ### O que não fazemos

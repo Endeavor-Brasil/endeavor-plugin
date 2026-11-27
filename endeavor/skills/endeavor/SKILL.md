@@ -11,6 +11,7 @@ compatibility: >
   Roda no Claude do founder com o plugin Endeavor conectado. Usa as tools do MCP:
   varredura_empresa, dossie_empresa, find_matches, show_matches, match_feedback,
   consultar_analise, buscar_rede, mentor_session, company_data, ask_gtm_insights, search_lessons,
+  search_mentorships, show_mentorships,
   agendar_conexao, send_feedback, open_menu, open_library, priority.
   Pode usar web_search e os conectores
   do próprio Claude do founder. Acesso à memória para resolver a empresa.
@@ -73,6 +74,13 @@ antes de enviar:
   gente, e não conhecimento, ofereça o Bloco 1. Com `search_lessons` no catálogo (só no ambiente de
   teste por enquanto), chame-a também com o desafio em texto e o contexto da empresa, e escreva a
   resposta a partir dos `aprendizados` dela, seguindo as `instrucoes` que ela devolve.
+  Com `search_mentorships` no catálogo (só no ambiente de teste por enquanto) e o founder querendo
+  entender como outras empresas resolveram, ver casos ou "como alguém fez", ela vem PRIMEIRO, no
+  lugar do `ask_gtm_insights` e do `search_lessons`: a resposta são 2 ou 3 casos inteiros, não
+  lições soltas. Chame com o desafio e os termos que um mentor usaria; do cardápio que volta, escolha
+  você 2 ou 3 e chame de novo com os ids em `abrir`; escreva seguindo as `instrucoes` da segunda
+  resposta. Não ofereça o Cérebro Endeavor nessa resposta. Se ela disser que a rede não tem mentoria
+  sobre o tema, aí sim use `ask_gtm_insights`.
 - `biblioteca` (abrir o Cérebro Endeavor, a tela que antes se chamava Inteligência da Rede): chame
   `open_library` sem `abrir_em` (passe `empresa` só se o founder estiver numa empresa que não é a
   primeira) e escreva no máximo uma linha. A tela já abre nos desafios da empresa. Se `open_library`
@@ -525,6 +533,22 @@ Sem pergunta de nota aqui.
   história, e você não inventa o caso por trás), `cobertura` e `instrucoes`. Responda só a partir dos
   `aprendizados`; não diga de que mentoria ou empresa veio além do que o texto traz. Não traz gente
   para conectar: para isso, Bloco 1.
+- `search_mentorships(pergunta, abrir?, excluir?)`: **síncrona**, só existe com a Memória da Rede
+  (ambiente de teste). Traz mentorias da rede sobre um desafio parecido, cada uma INTEIRA em perguntas e
+  respostas, já na versão que pode chegar ao founder (sem nomes de quem participou, da empresa
+  mentorada nem valores). Em duas chamadas: (1) `pergunta` com o desafio e os termos, sinônimos e
+  jargões que um mentor usaria devolve `candidatas` (um cardápio, que você não mostra ao founder);
+  (2) a mesma `pergunta` com até 3 ids em `abrir` devolve as `mentorias` e as `instrucoes` de forma e
+  voz, que você segue. Para mais casos, chame de novo com os ids já vistos em `excluir`. O fato é de
+  quem viveu: o que o mentor fez é do mentor, nunca da empresa do founder. Não traz gente para
+  conectar: para isso, Bloco 1.
+- `show_mentorships(pergunta, abrir, sintese?, casos?, lado_a_lado?, muda_para_voce?, pergunta_para_levar?)`:
+  **síncrona**, só existe onde há tela e com a Memória da Rede. Abre os casos que o `search_mentorships` abriu como tela
+  na conversa. Chame quando as `instrucoes` do `search_mentorships` pedirem, com a apresentação que elas descrevem; texto
+  que quebrar as regras de sigilo não aparece. Depois, no máximo uma linha. A resposta traz as mentorias inteiras: se o
+  founder perguntar sobre os casos, responda a partir delas, sem chamar tool. Os botões da tela mandam mensagens em nome
+  dele ("Quero falar com alguém da rede que viveu isso." vai para o Bloco 1; "Me traga mais casos parecidos." chama o
+  `search_mentorships` com os ids já vistos em `excluir`).
 - `show_matches(empresa, job_id)`: **síncrona**. Mostra a lista que o `find_matches` montou, com a
   mesma `empresa` e o mesmo `job_id`. Chame quando o `consultar_analise` disser que está pronto. Onde
   há tela, a lista abre na conversa e você escreve no máximo uma linha; se o resultado vier só em
